@@ -1,0 +1,6 @@
+# Vendor DLKM File Contexts
+/vendor_dlkm(/.*)?                   u:object_r:vendor_file:s0
+/vendor_dlkm/lib/modules(/.*)?       u:object_r:vendor_modules_exec:s0
+/vendor_dlkm/etc(/.*)?               u:object_r:vendor_configs_file:s0
+/vendor_dlkm/etc/init(/.*)?          u:object_r:vendor_init_exec:s0
+/vendor_dlkm/build\.prop             u:object_r:vendor_build_prop:s0

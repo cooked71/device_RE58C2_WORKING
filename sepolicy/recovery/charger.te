@@ -1,0 +1,3 @@
+# Allow charger to read sysfs battery properties
+allow charger sysfs:file read;
+allow charger sysfs_batteryinfo:file read;

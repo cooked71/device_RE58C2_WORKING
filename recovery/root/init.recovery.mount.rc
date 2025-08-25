@@ -1,0 +1,63 @@
+# init.recovery.mount.rc
+# Realme (Dynamic Partitions) — LineageOS 21
+# Auto-mount key partitions early in recovery
+
+on early-init
+    # Create required mount points
+    mkdir /system 0755 root root
+    mkdir /system_ext 0755 root root
+    mkdir /product 0755 root root
+    mkdir /vendor 0755 root root
+    mkdir /odm 0755 root root
+    mkdir /vendor_dlkm 0755 root root
+    mkdir /data 0771 system system
+    mkdir /metadata 0771 root root
+    mkdir /cache 0770 system cache
+    mkdir /persist 0771 system system
+    mkdir /misc  0755 root root
+    mkdir /mnt 0755 root root
+
+    # Set encryption properties for recovery
+    setprop ro.crypto.state encrypted
+    setprop vold.decrypt trigger_default_encryption
+
+on fs
+    # Mount metadata first (required for encryption)
+    mount ext4 /dev/block/by-name/metadata /metadata wait,formattable,check,first_stage_mount
+
+    # Mount dynamic partitions (logical partitions)
+    mount erofs system /system ro,wait,logical,slotselect,first_stage_mount,avb=vbmeta_system
+    mount erofs system_ext /system_ext ro,wait,logical,slotselect,first_stage_mount,avb=vbmeta_system
+    mount erofs product /product ro,wait,logical,slotselect,first_stage_mount,avb=vbmeta_product
+    mount erofs vendor /vendor ro,wait,logical,slotselect,first_stage_mount,avb=vbmeta_vendor
+    mount erofs odm /odm ro,wait,logical,slotselect,first_stage_mount,avb=vbmeta_odm
+    mount erofs vendor_dlkm /vendor_dlkm ro,wait,logical,slotselect,first_stage_mount,avb=vbmeta_system_ext
+
+    # Mount persist for calibration and modem configs
+    mount ext4 /dev/block/by-name/persist /persist ro,nosuid,nodev,barrier=1 wait
+
+    # Mount cache if present
+    mount f2fs /dev/block/by-name/cache /cache noatime,nosuid,nodev,discard wait,check,formattable
+
+    # Mount userdata (data)
+    mount f2fs /dev/block/by-name/userdata /data noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065,inline_xattr,inline_data,inlinecrypt,fsync_mode=nobarrier latemount,wait,check,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,reservedsize=128M,checkpoint=fs,formattable
+
+    # Mount misc for BCB (bootloader control block)
+    mount emmc /dev/block/by-name/misc /misc defaults recoveryonly wait
+
+on post-fs
+    # Set correct SELinux contexts
+    restorecon_recursive /system
+    restorecon_recursive /system_ext
+    restorecon_recursive /product
+    restorecon_recursive /vendor
+    restorecon_recursive /odm
+    restorecon_recursive /vendor_dlkm
+    restorecon_recursive /persist
+    restorecon_recursive /data
+    restorecon_recursive /cache
+    restorecon_recursive /misc
+    mkdir /metadata/ota 0755 root root
+
+
+

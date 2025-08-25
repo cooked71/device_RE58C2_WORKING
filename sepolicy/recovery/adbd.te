@@ -1,0 +1,11 @@
+# DO NOT redeclare 'type adbd' or 'type adbd_exec'
+
+# Set domain behavior for adbd
+init_daemon_domain(adbd)
+
+# Recovery-specific permissive mode for debugging
+recovery_only(`
+    userdebug_or_eng(`
+        permissive adbd;
+    ')
+')
