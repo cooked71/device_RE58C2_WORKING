@@ -49,9 +49,10 @@ DEVICE_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manif
 
 DEVICE_FRAMEWORK_MANIFEST_FILE :=  device/realme/RE58C2/vintf/device/manifest.xml
 DEVICE_FRAMEWORK_MANIFEST_FILES :=  device/realme/RE58C2/vintf/device/manifest/*.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
 
 # Product framework compatibility matrix
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := \
+#DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := \
    vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
 
 # Device framework compatibility matrix (if you have one)
