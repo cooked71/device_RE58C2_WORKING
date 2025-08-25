@@ -38,9 +38,9 @@ DEVICE_VENDOR_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf
 DEVICE_VENDOR_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml
 
 # ODM manifests (device HALs)
-DEVICE_ODM_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest.xml
-DEVICE_ODM_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/odm/etc/vintf/odm/manifest/*.xml \
-                             vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml
+ODM_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest.xml\
+    vendor/realme/RE58C2/proprietary/odm/etc/vintf/odm/manifest/*.xml \
+    vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml
 
 # Framework/system manifests
 DEVICE_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml  
@@ -52,7 +52,7 @@ DEVICE_FRAMEWORK_MANIFEST_FILES :=  device/realme/RE58C2/vintf/device/manifest/*
 
 # Product framework compatibility matrix
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := \
-   vendor/realme/RE58C2/proprietary/product/vintf/device_framework_matrix_product.xml
+   vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
 
 # Device framework compatibility matrix (if you have one)
 DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := \
