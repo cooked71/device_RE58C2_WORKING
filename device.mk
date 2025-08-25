@@ -39,7 +39,7 @@ DEVICE_VENDOR_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vint
 
 # ODM manifests (device HALs)
 ODM_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest.xml\
-    vendor/realme/RE58C2/proprietary/odm/etc/vintf/odm/manifest/*.xml \
+    vendor/realme/RE58C2/proprietary/odm/etc/vintf/odm/manifest/manifest_kernel.xml \
     vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml
 
 # Framework/system manifests
