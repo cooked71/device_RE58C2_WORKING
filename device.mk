@@ -51,6 +51,8 @@ DEVICE_FRAMEWORK_MANIFEST_FILE :=  device/realme/RE58C2/vintf/device/manifest.xm
 DEVICE_FRAMEWORK_MANIFEST_FILES :=  device/realme/RE58C2/vintf/device/manifest/*.xml
 
 
+PRODUCT_SHIPPING_API_LEVEL := 33
+TARGET_PRODUCT_SHIPPING_API_LEVEL := 33
 
 
 
