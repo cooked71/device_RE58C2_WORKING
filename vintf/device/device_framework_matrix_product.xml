@@ -392,16 +392,16 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+   <hal format="hidl">
     <name>android.hardware.thermal</name>
     <version>2.0</version>
     <transport>hwbinder</transport>
-    <instance>default</instance>
-    <!-- Map to vendor SPRD HAL -->
     <interface>
-        <name>vendor.sprd.hardware.thermal</name>
-        <version>2.0</version>
+        <name>IThermal</name>
+        <instance>default</instance>
     </interface>
+</hal>
+
 </hal>
 
 
