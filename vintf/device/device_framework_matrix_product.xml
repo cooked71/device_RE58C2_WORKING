@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
     Cleaned-up Framework Compatibility Matrix
     Device: Realme RE58C2
@@ -11,6 +12,16 @@
         <interface>
             <name>ISap</name>
             <instance>slot2</instance>
+        </interface>
+    </hal>
+
+    <!-- Android Thermal HAL - Added proper interface -->
+    <hal format="hidl" optional="true">
+        <name>android.hardware.thermal</name>
+        <version>2.0</version>
+        <interface>
+            <name>IThermal</name>
+            <instance>default</instance>
         </interface>
     </hal>
 
@@ -214,16 +225,6 @@
         </interface>
     </hal>
 
-     <!-- <hal format="hidl" optional="true">
-        <name>vendor.sprd.hardware.thermal</name>
-        <version>1.0</version>
-        <version>2.0</version>
-        <interface>
-            <name>IExtThermal</name>
-            <instance>default</instance>
-        </interface>
-    </hal> -->
-
     <hal format="aidl" optional="true">
         <name>vendor.sprd.hardware.trusty</name>
         <interface>
@@ -392,17 +393,5 @@
             <instance>default</instance>
         </interface>
     </hal>
-   <hal format="hidl">
-    <name>android.hardware.thermal</name>
-    <version>2.0</version>
-    <transport>hwbinder</transport>
-    <interface>
-        <name>IThermal</name>
-        <instance>default</instance>
-    </interface>
-</hal>
-
-</hal>
-
 
 </compatibility-matrix>
