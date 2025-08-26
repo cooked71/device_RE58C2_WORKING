@@ -393,5 +393,14 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="hidl" optional="true">
+    <name>vendor.sprd.hardware.thermal</name>
+    <version>1.0</version>
+    <interface>
+        <name>IThermal</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+
 
 </compatibility-matrix>
