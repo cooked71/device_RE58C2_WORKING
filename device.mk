@@ -49,7 +49,10 @@ DEVICE_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manif
 
 DEVICE_FRAMEWORK_MANIFEST_FILE :=  device/realme/RE58C2/vintf/device/manifest.xml
 DEVICE_FRAMEWORK_MANIFEST_FILES :=  device/realme/RE58C2/vintf/device/manifest/*.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
+
+
+
+
 
 # Product framework compatibility matrix
 #DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := \
@@ -62,6 +65,10 @@ DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := \
 # Optional enforcement
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
+
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@2.0-service \
+    vendor.sprd.hardware.thermal@2.0-service
 
 
 
