@@ -36,6 +36,7 @@ PRODUCT_ENABLE_UFFD_GC := false
 # Vendor manifests
 DEVICE_VENDOR_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
 DEVICE_VENDOR_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml
+DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := device/realme/RE58C2/compatibility_matrix.device.xml
 
 # ODM manifests (device HALs)
 ODM_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest.xml\
@@ -55,15 +56,6 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE :=  device/realme/RE58C2/vintf/device
 PRODUCT_SHIPPING_API_LEVEL := 33
 TARGET_PRODUCT_SHIPPING_API_LEVEL := 33
 
-
-
-# Product framework compatibility matrix
-#DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := \
-   vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
-
-# Device framework compatibility matrix (if you have one)
-DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := \
-    device/realme/RE58C2/compatibility_matrix.device.xml
 
 # Optional enforcement
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
