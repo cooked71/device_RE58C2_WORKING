@@ -73,9 +73,9 @@ BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD += $(BOOT_KERNEL_MODULES)
 
 # Kernel - Use either source OR prebuilt, not both
 # Option 1: Build from source (comment out prebuilt lines)
-#TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
-#TARGET_KERNEL_CONFIG := RE58C2_defconfig
-#TARGET_KERNEL_CLANG_VERSION := r416183b
+TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
+TARGET_KERNEL_CONFIG := RE58C2_defconfig
+TARGET_KERNEL_CLANG_VERSION := r416183b
 
 # Option 2: Use prebuilt (comment out source lines above)
 TARGET_FORCE_PREBUILT_KERNEL := true
