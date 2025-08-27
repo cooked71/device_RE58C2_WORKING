@@ -45,10 +45,6 @@ PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
 
 
-PRODUCT_PACKAGES += \
-    manifest_oplus_performance.xml \
-    manifest_dualsim.xml \
-    manifest_media_c2_V1_1_unisoc.xml
 
 # Hardware-specific manifests
 HARDWARE_MANIFESTS := \
@@ -105,10 +101,7 @@ PRODUCT_COPY_FILES += \
 
 
 
-# Boot control HAL
-PRODUCT_PACKAGES += \
-    vendor.sprd.hardware.boot@1.2-impl \
-    vendor.sprd.hardware.boot@1.2-impl.recovery \
+    
 
 # Recovery tools
 PRODUCT_PACKAGES += \
@@ -270,9 +263,13 @@ PRODUCT_PACKAGES += \
     bootctrl.recovery \
     bootctrl.ums9230 \
     android.hardware.boot@1.2-impl \
-    android.hardware.boot@1.2-impl.recovery 
+    android.hardware.boot@1.2-impl.recovery \
+    vendor.sprd.hardware.boot@1.2-impl \
+    vendor.sprd.hardware.boot@1.2-impl.recovery \
+    manifest_oplus_performance.xml \
+    manifest_dualsim.xml \
+    manifest_media_c2_V1_1_unisoc.xml
 
-    
 
 
 
