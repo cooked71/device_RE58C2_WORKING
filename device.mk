@@ -14,40 +14,27 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := false
 
-# Vendor manifests
-#DEVICE_VENDOR_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
-#DEVICE_VENDOR_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml
-#DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := device/realme/RE58C2/compatibility_matrix.device.xml
 
-# ODM manifests (device HALs)
-#ODM_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest.xml\
-    vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest/manifest_kernel.xml \
-    vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml
+# ✅ CORRECT: Device manifests (your device + vendor HALs)
+DEVICE_MANIFEST_FILE := device/realme/RE58C2/manifest.xml
+DEVICE_MANIFEST_FILES := \
+    device/realme/RE58C2/manifest.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
 
-# Framework/system manifests
-#DEVICE_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml  
-#DEVICE_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml 
+# Add any additional vendor manifests if they exist
+ifneq ($(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml),)
+DEVICE_MANIFEST_FILES += \
+    $(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml)
+endif
 
-
-#DEVICE_FRAMEWORK_MANIFEST_FILE :=  device/realme/RE58C2/vintf/device/manifest.xml
-#DEVICE_FRAMEWORK_MANIFEST_FILES :=  device/realme/RE58C2/vintf/device/manifest/*.xml
-#DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE :=  device/realme/RE58C2/vintf/device/device_framework_matrix_product.xml
-
-DEVICE_VENDOR_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
-DEVICE_VENDOR_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml 
-
-# USE THE DEVICE COMPATIBILITY MATRIX (not the framework one)
+# ✅ Device compatibility matrices
 DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := \
-    device/realme/RE58C2/compatibility_matrix.device.xml  # NOT the vintf/ one!
+    device/realme/RE58C2/compatibility_matrix.device.xml
 
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := \
     device/realme/RE58C2/product/compatibility_matrix.xml
 
-# Enable VINTF enforcement
-PRODUCT_ENFORCE_VINTF_MANIFEST := true
-PRODUCT_SHIPPING_API_LEVEL := 33
-
-
+# ✅ Enable VINTF
 
 PRODUCT_SHIPPING_API_LEVEL := 33
 TARGET_PRODUCT_SHIPPING_API_LEVEL := 33
@@ -55,7 +42,6 @@ TARGET_PRODUCT_SHIPPING_API_LEVEL := 33
 
 # Optional enforcement
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
-PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
 
 
