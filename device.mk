@@ -18,7 +18,6 @@ PRODUCT_ENABLE_UFFD_GC := false
 # ✅ CORRECT: Device manifests (your device + vendor HALs)
 DEVICE_MANIFEST_FILE := device/realme/RE58C2/manifest.xml
 DEVICE_MANIFEST_FILES := \
-    device/realme/RE58C2/manifest.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
 
 # Add any additional vendor manifests if they exist
