@@ -32,16 +32,21 @@ PRODUCT_ENABLE_UFFD_GC := false
 #DEVICE_FRAMEWORK_MANIFEST_FILE :=  device/realme/RE58C2/vintf/device/manifest.xml
 #DEVICE_FRAMEWORK_MANIFEST_FILES :=  device/realme/RE58C2/vintf/device/manifest/*.xml
 #DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE :=  device/realme/RE58C2/vintf/device/device_framework_matrix_product.xml
+
+DEVICE_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
+DEVICE_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml 
+
+# USE THE DEVICE COMPATIBILITY MATRIX (not the framework one)
+DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := \
+    device/realme/RE58C2/compatibility_matrix.device.xml  # NOT the vintf/ one!
+
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := \
     device/realme/RE58C2/product/compatibility_matrix.xml
 
-DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := \
-    device/realme/RE58C2/compatibility_matrix.device.xml
+# Enable VINTF enforcement
+PRODUCT_ENFORCE_VINTF_MANIFEST := true
+PRODUCT_SHIPPING_API_LEVEL := 33
 
-# Manifest files
-DEVICE_MANIFEST_FILES := \
-    device/realme/RE58C2/manifest.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
 
 
 PRODUCT_SHIPPING_API_LEVEL := 33
