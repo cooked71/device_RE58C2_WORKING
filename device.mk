@@ -15,23 +15,33 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 PRODUCT_ENABLE_UFFD_GC := false
 
 # Vendor manifests
-DEVICE_VENDOR_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
-DEVICE_VENDOR_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml
-DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := device/realme/RE58C2/compatibility_matrix.device.xml
+#DEVICE_VENDOR_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
+#DEVICE_VENDOR_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml
+#DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := device/realme/RE58C2/compatibility_matrix.device.xml
 
 # ODM manifests (device HALs)
-ODM_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest.xml\
+#ODM_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest.xml\
     vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest/manifest_kernel.xml \
     vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml
 
 # Framework/system manifests
-DEVICE_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml  
-DEVICE_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml 
+#DEVICE_MANIFEST_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml  
+#DEVICE_MANIFEST_FILES := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml 
 
 
-DEVICE_FRAMEWORK_MANIFEST_FILE :=  device/realme/RE58C2/vintf/device/manifest.xml
-DEVICE_FRAMEWORK_MANIFEST_FILES :=  device/realme/RE58C2/vintf/device/manifest/*.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE :=  device/realme/RE58C2/vintf/device/device_framework_matrix_product.xml
+#DEVICE_FRAMEWORK_MANIFEST_FILE :=  device/realme/RE58C2/vintf/device/manifest.xml
+#DEVICE_FRAMEWORK_MANIFEST_FILES :=  device/realme/RE58C2/vintf/device/manifest/*.xml
+#DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE :=  device/realme/RE58C2/vintf/device/device_framework_matrix_product.xml
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := \
+    device/realme/RE58C2/product/compatibility_matrix.xml
+
+DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := \
+    device/realme/RE58C2/compatibility_matrix.device.xml
+
+# Manifest files
+DEVICE_MANIFEST_FILES := \
+    device/realme/RE58C2/manifest.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
 
 
 PRODUCT_SHIPPING_API_LEVEL := 33
@@ -209,7 +219,7 @@ PRODUCT_PACKAGES += $(INIT_RC_FILES)
 PRODUCT_PREBUILT_DTBO_IMAGE := $(TARGET_PREBUILT_DTBO)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/dtb.img:$(TARGET_COPY_OUT)/dtb.img \
-    $(LOCAL_PATH)/prebuilts/dtbo.img:dtbo.img
+    $(LOCAL_PATH)/prebuilts/dtbo.img:$(TARGET_COPY_OUT)/dtbo.img
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
