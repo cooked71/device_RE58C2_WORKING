@@ -22,11 +22,6 @@ TARGET_PRODUCT_SHIPPING_API_LEVEL := 33
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 
-
-
-
-
-
 # Hardware-specific manifests
 HARDWARE_MANIFESTS := \
     ai_engine-default \
