@@ -15,29 +15,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 PRODUCT_ENABLE_UFFD_GC := false
 
 
-# ✅ CORRECT: Device manifests (your device + vendor HALs)
-DEVICE_MANIFEST_FILE := device/realme/RE58C2/manifest.xml
-DEVICE_MANIFEST_FILES := \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
 
-# Add any additional vendor manifests if they exist
-ifneq ($(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml),)
-DEVICE_MANIFEST_FILES += \
-    $(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml)
-endif
-
-# ✅ Device compatibility matrices
-DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := \
-    device/realme/RE58C2/compatibility_matrix.device.xml
-
-# ✅ Enable VINTF
-
+DEVICE_MATRIX_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
 PRODUCT_SHIPPING_API_LEVEL := 33
 TARGET_PRODUCT_SHIPPING_API_LEVEL := 33
-
-
-# Optional enforcement
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
+
+
 
 
 
