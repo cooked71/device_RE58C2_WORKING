@@ -42,9 +42,6 @@ TARGET_PRODUCT_SHIPPING_API_LEVEL := 33
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service \
-    vendor.sprd.hardware.thermal@2.0-service
 
 
 
@@ -110,13 +107,8 @@ PRODUCT_COPY_FILES += \
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl \
-    android.hardware.boot@1.2-impl.recovery \
     vendor.sprd.hardware.boot@1.2-impl \
     vendor.sprd.hardware.boot@1.2-impl.recovery \
-    bootctrl \
-    bootctrl.recovery \
-    bootctrl.ums9230
 
 # Recovery tools
 PRODUCT_PACKAGES += \
@@ -257,15 +249,31 @@ PRODUCT_PACKAGES += \
     Launcher3QuickStep \
     DocumentsUI \
     TeleService \
-    Phone \
     Contacts \
     MmsService \
-    Messaging \
     Gallery2 \
-    Calculator \
     Calendar \
     Music \
     Browser2 \
-    Terminal \
     Updater \
     LatinIME
+
+# offending packages
+#PRODUCT_PACKAGES += \
+    Calculator \
+    Messaging \
+    Phone \
+    Terminal \
+    android.hardware.thermal@2.0-service \
+    vendor.sprd.hardware.thermal@2.0-service \
+    bootctrl \
+    bootctrl.recovery \
+    bootctrl.ums9230 \
+    android.hardware.boot@1.2-impl \
+    android.hardware.boot@1.2-impl.recovery 
+
+    
+
+
+
+
