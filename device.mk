@@ -31,9 +31,6 @@ endif
 DEVICE_VENDOR_COMPATIBILITY_MATRIX_FILE := \
     device/realme/RE58C2/compatibility_matrix.device.xml
 
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := \
-    device/realme/RE58C2/product/compatibility_matrix.xml
-
 # ✅ Enable VINTF
 
 PRODUCT_SHIPPING_API_LEVEL := 33
