@@ -15,7 +15,7 @@ ALLOW_MISSING_DEPENDENCIES := false
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 #ramdisk prebuild
-BOARD_VENDOR_RAMDISK_SUPPORT := false
+BOARD_VENDOR_RAMDISK_SUPPORT := true
 
 # SEPolicy
 BOARD_SEPOLICY_VERS := 33.0
@@ -54,10 +54,12 @@ AB_OTA_PARTITIONS += \
 # Vendor Boot configuration
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE :=
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 BOARD_USES_VENDOR_DLKMIMAGE := true
+BOARD_USES_RECOVERY_AS_BOOT := false
+BOARD_BUILD_RECOVERY_IMAGE := true
+
 
 # Dynamic partitions
 BOARD_HAS_DYNAMIC_PARTITIONS := true
@@ -194,7 +196,152 @@ BOARD_RECOVERY_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/recovery
 
 # Kernel modules
 BOOT_KERNEL_MODULES += \
-    # ... (your existing modules list)
+aes-ce-ccm.ko \
+aes-neon-blk.ko \
+apsys-dvfs.ko \
+arc4.ko \
+asix.ko \
+ax88179_178a.ko \
+bq2560x-charger.ko \
+bq2597x-charger.ko \
+chipone-tddi.ko\
+clk-sprd.ko \
+core.ko \
+cpufreq_userspace.ko \
+device_info.ko \
+extcon-usb-gpio.ko \
+fan53555.ko \
+focaltech_touch-modules.ko \
+focaltech_tp.ko \
+ghash-ce.ko \
+gnss_common_ctl_all.ko \
+gnss_dbg.ko \
+gnss_pmnotify_ctl.ko \
+gpio-eic-sprd.ko \
+gpio.ko \
+gpio-pmic-eic-sprd.ko \
+gpio-sprd.ko \
+hardware_info.ko \
+himax_mmi.ko \
+hung_task_enhance.ko \
+hyb.ko \
+i2c-sprd-hw-v2.ko \
+i2c-sprd.ko \
+ims_bridge.ko \
+ims_bridge_t.ko \
+ion_cma_heap.ko \
+ion_ipc_trusty.ko \
+kfifo_buf.ko \
+lcd_bias_adjust.ko \
+leds-sc27xx-bltc.ko \
+ledtrig-pattern.ko \
+lzo.ko \
+lzo-rle.ko \
+mipi_driver.ko \
+misc_sprd_uid.ko \
+mmc_hsq.ko \
+mmc_swcq.ko \
+musb_hdrc.ko \
+musb_sprd.ko \
+nq-nci.ko \
+nvmem-sc27xx-efuse.ko \
+nvmem_sprd_cache_efuse.ko \
+nvmem_sprd_efuse.ko \
+omnivision_tcm.ko \
+oplus_chg.ko \
+op_rf_cable_monitor.ko \
+phy-sprd-qogirl6.ko \
+pinctrl.ko \
+pinctrl-sprd.ko \
+pinctrl-sprd-qogirl6.ko \
+pwm-sprd.ko \
+rpmb.ko \
+rtc-sc27xx.ko \
+sblock_bridge.ko \
+sbuf_bridge.ko \
+sc2332_sipc_wlan.ko \
+sc2355_sdio_wlan.ko \
+sc2355_sipc_wlan.ko \
+sc2730-regulator.ko \
+sc27xx_adc.ko \
+sc27xx_fuel_gauge.ko \
+sc27xx-poweroff.ko \
+sc27xx_tsensor_thermal.ko \
+sc27xx_typec.ko \
+sc27xx-vibra.ko \
+sdhci-sprd.ko \
+sensorhub.ko \
+seth.ko \
+sfp_core.ko \
+sha1-ce.ko \
+sipc-core.ko \
+sipx.ko \
+slog_bridge.ko \
+spipe.ko \
+spi-sprd-adi.ko \
+spi-sprd.ko \
+spool.ko \
+sprd_7sreset.ko \
+sprd_cp_dvfs.ko \
+sprd_cpu_cooling.ko \
+sprd-cpufreq-public.ko \
+sprd-cpufreq-v2.ko \
+sprd_ddr_dvfs.ko \
+sprd_disp_pm_domain_sharkl3.ko \
+sprd-dma.ko \
+sprd_gpu_cooling.ko \
+sprd_hwspinlock.ko \
+sprd-ion.ko \
+sprd_iq.ko \
+sprd_manufacturer_model.ko \
+sprd_map.ko \
+sprd_mipi.ko \
+sprd_modem_loader.ko \
+sprd_net_helper.ko \
+sprd_pdbg.ko \
+sprd_pmic_refout.ko \
+sprd_pmic_smpl.ko \
+sprd_pmic_syscon.ko \
+sprd_pmic_wdt.ko \
+sprd_power_manager.ko \
+sprd-sc27xx-spi.ko \
+sprd_shm.ko \
+sprd-sipc-virt-bus.ko \
+sprd_sip_svc.ko \
+sprd_soc_id.ko \
+sprd_soc_thm.ko \
+sprd_systimer.ko \
+sprd_thermal.ko \
+sprd_time_sync_cp.ko \
+sprd_time_sync.ko \
+sprd-top-dvfs.ko \
+sprd_u_ether.ko \
+sprd_usb_f_rndis.ko \
+sprd_usbpinmux_qogirl6.ko \
+sprd_wdf.ko \
+sprd_wdt_fiq.ko \
+sprd_wlan.ko \
+thermal-generic-adc.ko \
+trusty-ipc.ko \
+trusty-irq.ko \
+trusty.ko \
+trusty-log.ko \
+trusty-pm.ko \
+trusty-tui.ko \
+trusty-virtio.ko \
+twofish_common.ko \
+twofish_generic.ko \
+ufs-sprd_qogirl6.ko \
+ump518-regulator.ko \
+ums9230-clk.ko \
+unisoc-iommu.ko \
+unisoc-mailbox.ko \
+usb_f_vser.ko \
+virt-dma.ko \
+virtio_crypto.ko \
+wcn_bsp.ko \
+zram.ko \
+zsmalloc.ko
 
 BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/prebuilts/vendor_dlkm/lib/modules/*.ko)
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(BOOT_KERNEL_MODULES)
