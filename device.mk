@@ -17,6 +17,8 @@ PRODUCT_ENABLE_UFFD_GC := false
 
 
 DEVICE_MATRIX_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/realme/RE58C2/compatibility_matrix.device.xml
+
 PRODUCT_SHIPPING_API_LEVEL := 33
 TARGET_PRODUCT_SHIPPING_API_LEVEL := 33
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
