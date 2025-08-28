@@ -46,7 +46,7 @@
     
     <!-- CORRECT sepolicy version for Android 13 -->
     <sepolicy>
-        <version>30.0</version>
+        <version>33.0</version>
     </sepolicy>
     
     <!-- Kernel version -->
