@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<compatibility-matrix version="7.0" type="device">
-    <hal format="hidl" optional="true">
-        <name>vendor.nxp.nxpnfc</name>
-        <version>2.0</version>
-        <interface>
-            <name>INxpNfc</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.nxp.nxpnfclegacy</name>
-        <version>1.0</version>
-        <interface>
-            <name>INxpNfcLegacy</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
+<!-- For LineageOS 20 (Android 13) -->
+<compatibility-matrix version="5.0" type="device">
+    
+    <!-- Add all vendor HALs from your manifest -->
     <hal format="hidl" optional="true">
         <name>vendor.oppo.engnative.engineer</name>
         <version>1.0</version>
@@ -56,8 +43,12 @@
             <instance>default</instance>
         </interface>
     </hal>
+    
+    <!-- CORRECT sepolicy version for Android 13 -->
     <sepolicy>
-        <version>33.0</version>
+        <version>30.0</version>
     </sepolicy>
+    
+    <!-- Kernel version -->
     <kernel version="6.0"/>
 </compatibility-matrix>
