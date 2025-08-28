@@ -14,10 +14,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := false
 
-
-
+DEVICE_MANIFEST_SKUS := default
+DEVICE_MANIFEST_DEFAULT_FILES := device/realme/RE58C2/manifest.xml
 DEVICE_MATRIX_FILE := vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/realme/RE58C2/compatibility_matrix.device.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
+
 
 PRODUCT_SHIPPING_API_LEVEL := 33
 TARGET_PRODUCT_SHIPPING_API_LEVEL := 33
