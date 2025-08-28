@@ -112,7 +112,7 @@ BOARD_SUPER_PARTITION_GROUPS := realme_dynamic_partitions
 BOARD_REALME_DYNAMIC_PARTITIONS_PARTITION_LIST := system product system_ext vendor odm vendor_dlkm
 
 # Calculate dynamic partition size properly (8MB for metadata)
-BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 8388608000 - 8388608
+BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 8388608000
 
 # Dynamic partitions filesystem
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := erofs
