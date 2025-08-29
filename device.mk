@@ -73,7 +73,7 @@ DEVICE_MANIFEST_FILES += $(foreach manifest,$(HARDWARE_MANIFESTS),\
 
 # recovery.fstab → recovery ramdisk (vendor_boot)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/root/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/etc/recovery.fstab
+    $(LOCAL_PATH)/recovery/root/system/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/etc/recovery.fstab
 
 # init.recovery.mount.rc → root of recovery ramdisk
 PRODUCT_COPY_FILES += \
