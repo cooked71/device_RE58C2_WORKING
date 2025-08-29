@@ -46,8 +46,8 @@ TARGET_SCREEN_DENSITY := 320
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
     boot \
-    vendor_boot \ # <-- THIS IS CRITICAL
-    dtbo \        # <-- THIS IS WHY dtbo.img IS MISSING
+    vendor_boot \
+    dtbo \
     system \
     system_ext \
     vendor \
