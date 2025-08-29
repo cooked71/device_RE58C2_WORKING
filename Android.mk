@@ -8,5 +8,10 @@ LOCAL_PATH := $(call my-dir)
 
 $(info TARGET_DEVICE=$(TARGET_DEVICE))
 
+ifeq ($(TARGET_DEVICE),RE58C2)
+include $(call all-subdir-makefiles,$(LOCAL_PATH))
+endif
+
+
 
 
