@@ -16,7 +16,7 @@ ALLOW_MISSING_DEPENDENCIES := false
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 #ramdisk prebuild
-BOARD_VENDOR_RAMDISK_SUPPORT := false
+BOARD_USES_VENDOR_RAMDISK := true
 
 # SEPolicy
 BOARD_SEPOLICY_VERS := 33.0
@@ -45,12 +45,17 @@ TARGET_SCREEN_DENSITY := 320
 # A/B partitions
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
-   vendor_dlkm \
+    boot \
+    vendor_boot \ # <-- THIS IS CRITICAL
+    dtbo \        # <-- THIS IS WHY dtbo.img IS MISSING
     system \
-    product \
     system_ext \
     vendor \
-    odm
+    product \
+    odm \
+    vendor_dlkm \
+    vbmeta \
+    vbmeta_system
   
 
 # Vendor Boot configuration
@@ -69,12 +74,7 @@ BOARD_USES_VENDOR_BOOT_IMAGE := true
 BOARD_RAMDISK_USE_LZ4 := true
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD += $(BOOT_KERNEL_MODULES)
 
-# Kernel build
-TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
-TARGET_KERNEL_CONFIG := RE58C2_defconfig
-TARGET_KERNEL_CLANG_VERSION := r416183b
-BOARD_KERNEL_IMAGE_NAME := Image
-#BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 
 # Kernel arguments
@@ -94,9 +94,24 @@ BOARD_VENDOR_CMDLINE := console=ttyS1,115200n8
 TARGET_FORCE_PREBUILT_KERNEL := true
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilts/dtb.img
-#BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-BOARD_PREBUILT_DTBIMAGE := $(DEVICE_PATH)/prebuilts/dtb.img
 TARGET_PREBUILT_DTBO := $(DEVICE_PATH)/prebuilts/dtbo.img
+BOARD_PREBUILT_DTBIMAGE := $(TARGET_PREBUILT_DTB)
+BOARD_PREBUILT_DTBOIMAGE := $(TARGET_PREBUILT_DTBO)
+
+# Kernel build
+# For prebuilt kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+# Build from source
+TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
+TARGET_KERNEL_CONFIG := RE58C2_defconfig
+TARGET_KERNEL_CLANG_VERSION := r416183b
+else
+# Use prebuilt
+TARGET_FORCE_PREBUILT_KERNEL := true
+endif
+
+BOARD_KERNEL_IMAGE_NAME := Image
+
 
 
 # DTBO
