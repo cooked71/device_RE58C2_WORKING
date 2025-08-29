@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- For LineageOS 20 (Android 13) -->
-<compatibility-matrix version="5.0" type="device">
+<compatibility-matrix version="7" type="device">
     
     <!-- Add all vendor HALs from your manifest -->
     <hal format="hidl" optional="true">
