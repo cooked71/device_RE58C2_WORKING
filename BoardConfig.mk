@@ -54,8 +54,8 @@ AB_OTA_PARTITIONS += \
     vendor \
     product \
     odm \
-    vendor_dlkm \
-    vbmeta
+    vendor_dlkm 
+    
   
 
 # Vendor Boot configuration
