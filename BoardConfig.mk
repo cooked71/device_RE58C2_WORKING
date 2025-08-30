@@ -228,7 +228,7 @@ BOARD_AVB_VBMETA_PRODUCT := product
 BOARD_AVB_VBMETA_PRODUCT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_VBMETA_PRODUCT_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_VBMETA_PRODUCT_ROLLBACK_INDEX := 1
-BOARD_AVB_VBMETA_PRODUCT_ROLLBACK_INDEX_LOCATION := 7
+BOARD_AVB_VBMETA_PRODUCT_ROLLBACK_INDEX_LOCATION := 7.
 
 BOARD_AVB_VBMETA_ODM := odm
 BOARD_AVB_VBMETA_ODM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
@@ -242,13 +242,6 @@ BOARD_AVB_VBMETA_SYSTEM_EXT := system_ext
 BOARD_AVB_VBMETA_VENDOR := vendor
 BOARD_AVB_VBMETA_PRODUCT := product
 BOARD_AVB_VBMETA_ODM := odm
-
-# Ensure system knows to build vbmeta images
-INTERNAL_AVB_VBMETA_SYSTEM_IMAGE_ARGS += --include_descriptors_from_image system
-INTERNAL_AVB_VBMETA_SYSTEM_EXT_IMAGE_ARGS += --include_descriptors_from_image system_ext
-INTERNAL_AVB_VBMETA_VENDOR_IMAGE_ARGS += --include_descriptors_from_image vendor
-INTERNAL_AVB_VBMETA_PRODUCT_IMAGE_ARGS += --include_descriptors_from_image product
-INTERNAL_AVB_VBMETA_ODM_IMAGE_ARGS += --include_descriptors_from_image odm
 
 
 # Security patch level
