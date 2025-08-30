@@ -103,6 +103,15 @@ TARGET_KERNEL_CONFIG := RE58C2_defconfig
 TARGET_KERNEL_CLANG_VERSION := r416183b
 BOARD_KERNEL_IMAGE_NAME := Image
 
+# Kernel version (must match prebuilt)
+KERNEL_VERSION := 5.4.254-android12-9-gb10a25caafa5-ab1063
+
+# Clang Toolchain
+KERNEL_CLANG_PATH := prebuilts/clang/kernel/linux-x86/clang-r416183b
+TARGET_KERNEL_CLANG_VERSION := r416183b
+TARGET_KERNEL_CLANG_PATH := $(KERNEL_CLANG_PATH)
+
+
 
 
 BOARD_KERNEL_IMAGE_NAME := Image
