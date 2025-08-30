@@ -97,10 +97,24 @@ TARGET_PREBUILT_DTBO := $(DEVICE_PATH)/prebuilts/dtbo.img
 BOARD_PREBUILT_DTBIMAGE := $(TARGET_PREBUILT_DTB)
 BOARD_PREBUILT_DTBOIMAGE := $(TARGET_PREBUILT_DTBO)
 
+<<<<<<< HEAD
+# Kernel build
+# For prebuilt kernel
+#ifeq ($(TARGET_PREBUILT_KERNEL),)
+# Build from source
+TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
+TARGET_KERNEL_CONFIG := RE58C2_defconfig
+TARGET_KERNEL_CLANG_VERSION := r416183b
+#else
+# Use prebuilt
+#TARGET_FORCE_PREBUILT_KERNEL := true
+#endif
+=======
 TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
 TARGET_KERNEL_CONFIG := RE58C2_defconfig
 TARGET_KERNEL_CLANG_VERSION := r416183b
 BOARD_KERNEL_IMAGE_NAME := Image
+>>>>>>> 2e2e5097da80a63786ccc1cf1221411f1825559b
 
 # Kernel version (must match prebuilt)
 KERNEL_VERSION := 5.4.254-android12-9-gb10a25caafa5-ab1063
@@ -183,15 +197,6 @@ BOARD_AVB_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_ROLLBACK_INDEX := 1
 BOARD_AVB_ROLLBACK_INDEX_LOCATION := 1
-
-# Include all vbmeta partitions in the main vbmeta image
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --include_descriptors_from_image vbmeta_system
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --include_descriptors_from_image vbmeta_system_ext
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --include_descriptors_from_image vbmeta_vendor
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --include_descriptors_from_image vbmeta_product
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --include_descriptors_from_image vbmeta_odm
 
 # Boot signing
 BOARD_AVB_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
