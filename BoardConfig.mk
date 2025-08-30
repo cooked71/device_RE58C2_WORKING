@@ -56,7 +56,11 @@ AB_OTA_PARTITIONS += \
     odm \
     vendor_dlkm \
     vbmeta \
-    vbmeta_system
+    vbmeta_system \
+    vbmeta_system_ext \
+    vbmeta_vendor \
+    vbmeta_product \
+    vbmeta_odm
   
 
 # Vendor Boot configuration
@@ -176,14 +180,6 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # Verified Boot (AVB)
-#BOARD_AVB_ENABLE := true
-#BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
-#BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
-#BOARD_AVB_VENDOR_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-#BOARD_AVB_VENDOR_BOOT_ALGORITHM := SHA256_RSA4096
-#BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX := 1
-#BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 1
-
 # Enable AVB
 BOARD_AVB_ENABLE := true
 
@@ -193,11 +189,14 @@ BOARD_AVB_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_ROLLBACK_INDEX := 1
 BOARD_AVB_ROLLBACK_INDEX_LOCATION := 1
 
-# Vendor_boot signing
-BOARD_AVB_VENDOR_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_VENDOR_BOOT_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX := 1
-BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 3
+# Include all vbmeta partitions in the main vbmeta image
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --include_descriptors_from_image vbmeta_system
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --include_descriptors_from_image vbmeta_system_ext
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --include_descriptors_from_image vbmeta_vendor
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --include_descriptors_from_image vbmeta_product
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --include_descriptors_from_image vbmeta_odm
 
 # Boot signing
 BOARD_AVB_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
@@ -205,9 +204,43 @@ BOARD_AVB_BOOT_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_BOOT_ROLLBACK_INDEX := 1
 BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 2
 
-# Development only: disable hashtree verification to avoid dm-verity panic
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+# Vendor_boot signing
+BOARD_AVB_VENDOR_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VENDOR_BOOT_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX := 1
+BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 3
+
+# vbmeta_system signing
+BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := 1
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 4
+
+# vbmeta_system_ext signing
+BOARD_AVB_VBMETA_SYSTEM_EXT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VBMETA_SYSTEM_EXT_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_VBMETA_SYSTEM_EXT_ROLLBACK_INDEX := 1
+BOARD_AVB_VBMETA_SYSTEM_EXT_ROLLBACK_INDEX_LOCATION := 5
+
+# vbmeta_vendor signing
+BOARD_AVB_VBMETA_VENDOR_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VBMETA_VENDOR_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX := 1
+BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX_LOCATION := 6
+
+# vbmeta_product signing
+BOARD_AVB_VBMETA_PRODUCT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VBMETA_PRODUCT_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_VBMETA_PRODUCT_ROLLBACK_INDEX := 1
+BOARD_AVB_VBMETA_PRODUCT_ROLLBACK_INDEX_LOCATION := 7
+
+# vbmeta_odm signing
+BOARD_AVB_VBMETA_ODM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VBMETA_ODM_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_VBMETA_ODM_ROLLBACK_INDEX := 1
+BOARD_AVB_VBMETA_ODM_ROLLBACK_INDEX_LOCATION := 8
+
+
 
 # Security patch level
 VENDOR_SECURITY_PATCH := 2024-07-05
