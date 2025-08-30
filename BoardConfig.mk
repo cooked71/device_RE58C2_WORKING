@@ -55,12 +55,7 @@ AB_OTA_PARTITIONS += \
     product \
     odm \
     vendor_dlkm \
-    vbmeta \
-    vbmeta_system \
-    vbmeta_system_ext \
-    vbmeta_vendor \
-    vbmeta_product \
-    vbmeta_odm
+    vbmeta
   
 
 # Vendor Boot configuration
@@ -210,36 +205,50 @@ BOARD_AVB_VENDOR_BOOT_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX := 1
 BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 3
 
-# vbmeta_system signing
+# Force creation of vbmeta images with their respective partitions
+BOARD_AVB_VBMETA_SYSTEM := system
 BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := 1
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 4
 
-# vbmeta_system_ext signing
+BOARD_AVB_VBMETA_SYSTEM_EXT := system_ext
 BOARD_AVB_VBMETA_SYSTEM_EXT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_VBMETA_SYSTEM_EXT_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_VBMETA_SYSTEM_EXT_ROLLBACK_INDEX := 1
 BOARD_AVB_VBMETA_SYSTEM_EXT_ROLLBACK_INDEX_LOCATION := 5
 
-# vbmeta_vendor signing
+BOARD_AVB_VBMETA_VENDOR := vendor
 BOARD_AVB_VBMETA_VENDOR_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_VBMETA_VENDOR_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX := 1
 BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX_LOCATION := 6
 
-# vbmeta_product signing
+BOARD_AVB_VBMETA_PRODUCT := product
 BOARD_AVB_VBMETA_PRODUCT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_VBMETA_PRODUCT_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_VBMETA_PRODUCT_ROLLBACK_INDEX := 1
 BOARD_AVB_VBMETA_PRODUCT_ROLLBACK_INDEX_LOCATION := 7
 
-# vbmeta_odm signing
+BOARD_AVB_VBMETA_ODM := odm
 BOARD_AVB_VBMETA_ODM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_VBMETA_ODM_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_VBMETA_ODM_ROLLBACK_INDEX := 1
 BOARD_AVB_VBMETA_ODM_ROLLBACK_INDEX_LOCATION := 8
 
+# Force creation of all vbmeta images
+BOARD_AVB_VBMETA_SYSTEM := system
+BOARD_AVB_VBMETA_SYSTEM_EXT := system_ext
+BOARD_AVB_VBMETA_VENDOR := vendor
+BOARD_AVB_VBMETA_PRODUCT := product
+BOARD_AVB_VBMETA_ODM := odm
+
+# Ensure system knows to build vbmeta images
+INTERNAL_AVB_VBMETA_SYSTEM_IMAGE_ARGS += --include_descriptors_from_image system
+INTERNAL_AVB_VBMETA_SYSTEM_EXT_IMAGE_ARGS += --include_descriptors_from_image system_ext
+INTERNAL_AVB_VBMETA_VENDOR_IMAGE_ARGS += --include_descriptors_from_image vendor
+INTERNAL_AVB_VBMETA_PRODUCT_IMAGE_ARGS += --include_descriptors_from_image product
+INTERNAL_AVB_VBMETA_ODM_IMAGE_ARGS += --include_descriptors_from_image odm
 
 
 # Security patch level
