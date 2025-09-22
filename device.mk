@@ -338,6 +338,58 @@ PRODUCT_SOONG_NAMESPACES += \
 
 
 
+# =============================================
+# ESSENTIAL VENDOR RAMDISK FILES
+# =============================================
+
+# Ueventd rules - CRITICAL for hardware initialization
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/ueventd.ums9230_zebu.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_zebu.rc \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/ueventd.module.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.module.rc \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.RE58C2.rc \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/ueventd.ums9230_hulk.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_hulk.rc
+
+# First-stage ramdisk - CRITICAL for dynamic partitions
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/fstab.ums9230_hulk:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_hulk \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RE58C2 \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/fstab.module:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.module
+
+# First-stage binaries
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/system/bin/linker64:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/bin/linker64 \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/system/bin/snapuserd:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/bin/snapuserd \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/system/bin/fsck.f2fs:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/bin/fsck.f2fs
+
+# First-stage libraries
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/system/lib64/ld-android.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/lib64/ld-android.so \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/system/lib64/libbase.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/lib64/libbase.so \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/system/lib64/libc.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/lib64/libc.so \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/system/lib64/libdl.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/lib64/libdl.so \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/system/lib64/liblog.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/lib64/liblog.so \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/system/lib64/libm.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/lib64/libm.so \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/system/lib64/libz.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/lib64/libz.so
+
+# Kernel module metadata - CRITICAL for module loading
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/lib/modules/modules.alias:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.alias \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/lib/modules/modules.dep:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.dep \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/lib/modules/modules.load:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.load \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/lib/modules/modules.load.recovery:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.load.recovery
+
+# SELinux contexts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/plat_file_contexts:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/plat_file_contexts \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/vendor_file_contexts:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor_file_contexts \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/sepolicy:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/sepolicy
+
+# Property file
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/vendor_boot_ramdisk/prop.default:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/prop.default
+
+
+
 
 # Platform-specific configurations
 ifneq ($(TARGET_BOARD_PLATFORM),)
@@ -346,7 +398,8 @@ endif
 
 # Recovery modules
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/stuff/modules,$(TARGET_COPY_OUT_VENDOR_RECOVERY)/root/lib/modules)
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/stuff/modules,$(TARGET_COPY_OUT_VENDOR_RECOVERY)/root/lib/modules) \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor_boot_ramdisk/lib/modules/,$(TARGET_COPY_OUT_VENDOR_RECOVERY)/root/lib/modules)
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/realme/RE58C2/RE58C2-vendor.mk)
