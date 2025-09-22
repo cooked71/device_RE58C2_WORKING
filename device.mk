@@ -396,10 +396,9 @@ ifneq ($(TARGET_BOARD_PLATFORM),)
 PRODUCT_PLATFORM := ums9230
 endif
 
-# Recovery modules
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/stuff/modules,$(TARGET_COPY_OUT_VENDOR_RECOVERY)/root/lib/modules) \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor_boot_ramdisk/lib/modules/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules)
+    $(LOCAL_PATH)/vendor_boot_ramdisk/lib/modules/*.ko:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/
+
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/realme/RE58C2/RE58C2-vendor.mk)
