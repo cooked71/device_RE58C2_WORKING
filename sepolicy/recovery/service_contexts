@@ -1,0 +1,2 @@
+adbd        u:r:adbd:s0
+fastbootd   u:r:fastbootd:s0

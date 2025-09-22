@@ -1,0 +1,8 @@
+# Allow fastbootd to access block devices (for flashing)
+allow fastbootd block_device:blk_file { read write open ioctl getattr };
+
+# Required for fastboot operations
+allow fastbootd devblock_device:blk_file { write read open };
+
+# If mounting fails, this might be needed too
+allow fastbootd rootfs:dir search;

@@ -1,0 +1,7 @@
+/sbin/fastbootd                 u:object_r:fastbootd_exec:s0
+/sbin/adbd                      u:object_r:adbd_exec:s0
+?/init.recovery.*\.rc          u:object_r:recovery_file:s0
+/system/etc/recovery.fstab     u:object_r:recovery_fstab_file:s0
+/dev/block.*                   u:object_r:block_device:s0
+/dev/trusty.*                  u:object_r:device:s0
+

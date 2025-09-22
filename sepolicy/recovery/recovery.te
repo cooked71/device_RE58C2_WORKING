@@ -1,0 +1,2 @@
+# For Trusty device node access in recovery
+allow recovery device:chr_file { open read write ioctl };
