@@ -545,9 +545,6 @@ ifneq ($(TARGET_BOARD_PLATFORM),)
 PRODUCT_PLATFORM := ums9230
 endif
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/vendor_boot_ramdisk/lib/modules/*.ko:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/
-
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/realme/RE58C2/RE58C2-vendor.mk)
