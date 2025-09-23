@@ -193,11 +193,15 @@ BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 536870912   # 0.5 GB
 BOARD_ODMIMAGE_PARTITION_SIZE := 268435456          # 0.25 GB
 BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE := 67108864   # 0.06 GB
 
-
-
-# Also add this to ensure it's included in OTAs
+# =============================================
+# SUPER IMAGE CONFIGURATION
+# =============================================
+BOARD_BUILD_SUPER_IMAGE_BY_DEFAULT := true
 BOARD_SUPER_IMAGE_IN_UPDATE_PACKAGE := true
 TARGET_USES_SUPER_PARTITION := true
+BOARD_SUPER_PARTITION_GROUPS := realme_dynamic_partitions
+
+
 
 
 # Dynamic partitions filesystem
