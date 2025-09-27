@@ -293,6 +293,12 @@ prebuilt_etc {
     vendor: true,
 }
 
+prebuilt_etc {
+    name: "init.zramwb.rc",
+    src: "etc/init.logger.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
 
 
 
