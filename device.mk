@@ -294,6 +294,7 @@ INIT_RC_FILES := \
     init.ram.gms.rc \
     init.ram.native.rc \
     init.ram.rc \
+    init.logger.rc\
     init.storage.rc \
     init.ums9230_1h10.rc \
     init.ums9230_1h10.usb.rc \
