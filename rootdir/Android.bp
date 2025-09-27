@@ -293,6 +293,14 @@ prebuilt_etc {
     vendor: true,
 }
 
+
+prebuilt_etc {
+    name: "init.zramwb.rc",
+    src: "etc/logger.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
 // fstab
 prebuilt_etc {
     name: "fstab.ums9230_4h10",
