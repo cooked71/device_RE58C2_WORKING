@@ -4,10 +4,14 @@ import /vendor/etc/init/hw/init.storage.rc
 import /vendor/etc/init/hw/init.cali.rc
 import /vendor/etc/init/hw/init.logger.rc
 
-
 on init
     start watchdogd
     chmod 0660 /sys/power/wakeup_count
+    # Logger
+    start boot_log
+    start boot_log_crash
+    start boot_log_kernel
+
 
 on post-fs-data
     setprop vold.post_fs_data_done 1
@@ -24,6 +28,27 @@ on boot
 #UNISOC: Support aging test charging limit function
     chown system system /sys/class/power_supply/battery/charger.0/stop_charge
     chmod 0664 /sys/class/power_supply/battery/charger.0/stop_charge
+# Logger
+service boot_log /system/bin/logcat -b all -D -f /metadata/boot_log_full.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_log_crash /system/bin/logcat -b crash -D -f /metadata/boot_log_crash.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_log_kernel /system/bin/logcat -b kernel -D -f /metadata/boot_log_kernel.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
 
 # for devfreq mm
     chmod 660 /sys/class/devfreq/isp-dvfs/isp_governor/set_work_freq
@@ -38,6 +63,27 @@ on boot
     chown cameraserver system /sys/class/devfreq/isp-dvfs/isp_governor/set_hw_dvfs_en
     chmod 660 /sys/class/devfreq/fd-dvfs/fd_governor/set_work_index
     chown cameraserver system /sys/class/devfreq/fd-dvfs/fd_governor/set_work_index
+
+on early-boot
+    # Wait for insmod_sh to finish all modules
+    # comment out for bringup
+    # wait_for_prop vendor.all.modules.ready 1
+    # Logger
+    start boot_log
+    start boot_log_crash
+    start boot_log_kernel
+
+on late-init
+# Logger
+    start boot_log
+    start boot_log_crash
+    start boot_log_kernel
+
+on late-fs
+# Logger
+    start boot_log
+    start boot_log_crash
+    start boot_log_kernel
 
 on early-init
     # Bind mount vendor_dlkm modules to vendor/lib/modules  
@@ -55,9 +101,12 @@ service insmod-sh /vendor/bin/init.insmod.sh /vendor/lib/modules/init.insmod.cfg
     disabled
     oneshot
 
-
 on property:sys.boot_completed=1
     write /sys/bus/platform/drivers/sprd_serial/200a0000.serial/uart_gpio_ctrl 1
+    stop boot_log
+    stop boot_log_crash
+    stop boot_log_kernel
+
 
 on property:dev.bootcomplete=1
     start mmc_ffu
