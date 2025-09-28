@@ -28,6 +28,21 @@ on boot
 #UNISOC: Support aging test charging limit function
     chown system system /sys/class/power_supply/battery/charger.0/stop_charge
     chmod 0664 /sys/class/power_supply/battery/charger.0/stop_charge
+    
+    # for devfreq mm
+    chmod 660 /sys/class/devfreq/isp-dvfs/isp_governor/set_work_freq
+    chown cameraserver system /sys/class/devfreq/isp-dvfs/isp_governor/set_work_freq
+    chmod 660 /sys/class/devfreq/dcam-if-dvfs/dcam-if_governor/set_work_freq
+    chown cameraserver system /sys/class/devfreq/dcam-if-dvfs/dcam-if_governor/set_work_freq
+    chmod 660 /sys/class/devfreq/isp-dvfs/isp_governor/set_work_index
+    chown cameraserver system /sys/class/devfreq/isp-dvfs/isp_governor/set_work_index
+    chmod 660 /sys/class/devfreq/dcam-if-dvfs/dcam-if_governor/set_work_index
+    chown cameraserver system /sys/class/devfreq/dcam-if-dvfs/dcam-if_governor/set_work_index
+    chmod 660 /sys/class/devfreq/isp-dvfs/isp_governor/set_hw_dvfs_en
+    chown cameraserver system /sys/class/devfreq/isp-dvfs/isp_governor/set_hw_dvfs_en
+    chmod 660 /sys/class/devfreq/fd-dvfs/fd_governor/set_work_index
+    chown cameraserver system /sys/class/devfreq/fd-dvfs/fd_governor/set_work_index
+
 # Logger
 service boot_log /system/bin/logcat -b all -D -f /metadata/boot_log_full.txt
     class main
@@ -50,19 +65,6 @@ service boot_log_kernel /system/bin/logcat -b kernel -D -f /metadata/boot_log_ke
     disabled
     oneshot
 
-# for devfreq mm
-    chmod 660 /sys/class/devfreq/isp-dvfs/isp_governor/set_work_freq
-    chown cameraserver system /sys/class/devfreq/isp-dvfs/isp_governor/set_work_freq
-    chmod 660 /sys/class/devfreq/dcam-if-dvfs/dcam-if_governor/set_work_freq
-    chown cameraserver system /sys/class/devfreq/dcam-if-dvfs/dcam-if_governor/set_work_freq
-    chmod 660 /sys/class/devfreq/isp-dvfs/isp_governor/set_work_index
-    chown cameraserver system /sys/class/devfreq/isp-dvfs/isp_governor/set_work_index
-    chmod 660 /sys/class/devfreq/dcam-if-dvfs/dcam-if_governor/set_work_index
-    chown cameraserver system /sys/class/devfreq/dcam-if-dvfs/dcam-if_governor/set_work_index
-    chmod 660 /sys/class/devfreq/isp-dvfs/isp_governor/set_hw_dvfs_en
-    chown cameraserver system /sys/class/devfreq/isp-dvfs/isp_governor/set_hw_dvfs_en
-    chmod 660 /sys/class/devfreq/fd-dvfs/fd_governor/set_work_index
-    chown cameraserver system /sys/class/devfreq/fd-dvfs/fd_governor/set_work_index
 
 on early-boot
     # Wait for insmod_sh to finish all modules
