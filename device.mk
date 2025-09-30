@@ -368,13 +368,11 @@ PRODUCT_PACKAGES += \
     
 # Recovery init files for vendor ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.common.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.module.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.module.rc 
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.common.rc 
 
 # Recovery init files for recovery partition
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.module.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.module.rc 
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc 
 
 
 # Fstab files for all variants in vendor ramdisk
