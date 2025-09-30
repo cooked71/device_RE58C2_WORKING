@@ -4,7 +4,7 @@
 #
 
 DEVICE_PATH := device/realme/RE58C2
-KERNEL_PATH := prebuilts
+KERNEL_PATH := device/realme/RE58C2/prebuilts
 
 
 # Build system flags
@@ -136,23 +136,23 @@ LOCAL_KERNEL := prebuilts/kernel
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel
 
-BOARD_PREBUILT_DTBIMAGE_DIR := prebuilts
+BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilts/
 BOARD_MKBOOTIMG_ARGS += --dtb $(BOARD_PREBUILT_DTBIMAGE_DIR)/dtb.img
 
 ## vendor_boot modules
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat prebuilts/vendor_boot_modules/modules.load))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix prebuilts/modules_recovery_ramdisk/, $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/prebuilts/vendor_boot_modules/modules.load))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(DEVICE_PATH)/prebuilts/modules_recovery_ramdisk/, $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))
 
 ## recovery modules
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat prebuilts/vendor_boot_modules/modules.load.recovery))
-RECOVERY_MODULES := $(addprefix $(KERNEL_PATH)/vendor_ramdisk/, $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/prebuilts/vendor_boot_modules/modules.load.recovery))
+RECOVERY_MODULES := $(addprefix $(DEVICE_PATH)/prebuilts//vendor_ramdisk/, $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
 
 ## Prevent duplicated entries (to solve duplicated build rules problem)
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(sort $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES) $(RECOVERY_MODULES))
 
 ## vendor modules
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat prebuilts/vendor_dlkm_modules/modules.load))
-BOARD_VENDOR_KERNEL_MODULES := $(wildcard prebuilts/modules_vendor_dlkm/*.ko)
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/prebuilts/vendor_dlkm_modules/modules.load))
+BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/prebuilts/modules_vendor_dlkm/*.ko)
 
 #########################################
 
