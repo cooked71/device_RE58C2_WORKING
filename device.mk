@@ -91,7 +91,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # ===========================
 
 # recovery.fstab → recovery ramdisk (vendor_boot)
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/root/system/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/etc/recovery.fstab
 
 # init.recovery.mount.rc → root of recovery ramdisk
