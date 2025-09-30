@@ -304,7 +304,7 @@ prebuilt_etc {
 
 // fstab
 prebuilt_etc {
-    name: "fstab.ums9230_4h10",
-    src: "etc/fstab.ums9230_4h10",
+    name: "recovery.fstab",
+    src: "etc/recovery.fstab",
     vendor: true,
 }
