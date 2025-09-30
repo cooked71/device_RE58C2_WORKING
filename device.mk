@@ -367,7 +367,24 @@ PRODUCT_PACKAGES += \
     PRODUCT_PACKAGES += \
     recovery.fstab
     
-# fstab files for vendor ramdisk
+# Recovery init files for all variants in vendor ramdisk
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.common.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.module.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.module.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.RE58C2.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.RE58C2.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.RMX3624.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.RMX3624.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_1h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_1h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_1h10_go.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_1h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_4h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_4h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_4h10_go.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_4h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_6h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_6h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_7h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_7h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_haps.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_haps.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_hulk.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_hulk.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_nico.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_nico.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_zebu.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_zebu.rc
+
+# Fstab files for all variants in vendor ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.module:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.module \
     $(LOCAL_PATH)/rootdir/etc/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RE58C2 \
@@ -383,15 +400,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_nico:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_nico \
     $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_zebu:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_zebu
 
+# Recovery fstab
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/recovery.fstab:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/recovery.fstab
 
-# Recovery init files
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc \
-   
-# Recovery init files for vendor ramdisk
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.common.rc \
-  
+
 
 # Device tree blobs
 #PRODUCT_PREBUILT_DTBO_IMAGE := $(TARGET_PREBUILT_DTBO)
