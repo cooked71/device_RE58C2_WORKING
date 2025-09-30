@@ -283,18 +283,15 @@ PRODUCT_PACKAGES += $(ROOTDIR_SCRIPTS)
 PRODUCT_PACKAGES += $(NFC_PACKAGES)
 
 # Init scripts
-INIT_RC_FILES := \
+PRODUCT_PACKAGES += \
     init.RMX3624.rc \
     init.RMX3624.usb.rc \
-    init.RE58C2.rc \
-    init.RE58C2.usb.rc \
     init.cali.rc \
     init.module.rc \
     init.module.usb.rc \
     init.ram.gms.rc \
     init.ram.native.rc \
     init.ram.rc \
-    init.logger.rc\
     init.storage.rc \
     init.ums9230_1h10.rc \
     init.ums9230_1h10.usb.rc \
@@ -312,18 +309,114 @@ INIT_RC_FILES := \
     init.ums9230_haps.usb.rc \
     init.ums9230_hulk.rc \
     init.ums9230_hulk.usb.rc \
+    init.RE58C2.rc \
+    init.RE58C2.usb.rc \
     init.ums9230_nico.rc \
     init.ums9230_nico.usb.rc \
     init.ums9230_zebu.rc \
     init.ums9230_zebu.usb.rc \
-    init.zramwb.rc\
+    init.zramwb.rc \
+    init.logger.rc \
+    init.recovery.common.rc \
+    log_to_csv.sh \
+    loading.sh \
+    para.sh \
+    total.sh \
+    create_splloader_dual_slot_byname_path.sh \
+    engineer_vendor_shell.sh \
+    idlefast.sh \
+    init.insmod.sh \
+    swappiness.sh \
+    zramwb.sh
 
-PRODUCT_PACKAGES += $(INIT_RC_FILES)
 
+
+    PRODUCT_PACKAGES += \
+    fstab.module \
+    fstab.RE58C2 \
+    fstab.RMX3624 \
+    fstab.ums9230_1h10 \
+    fstab.ums9230_1h10_go \
+    fstab.ums9230_4h10 \
+    fstab.ums9230_4h10_go \
+    fstab.ums9230_6h10 \
+    fstab.ums9230_7h10 \
+    fstab.ums9230_haps \
+    fstab.ums9230_hulk \
+    fstab.ums9230_nico \
+    fstab.ums9230_zebu
+
+
+
+    PRODUCT_PACKAGES += \
+    ueventd.module.rc \
+    ueventd.RE58C2.rc \
+    ueventd.RMX3624.rc \
+    ueventd.ums9230_1h10_go.rc \
+    ueventd.ums9230_1h10.rc \
+    ueventd.ums9230_4h10_go.rc \
+    ueventd.ums9230_4h10.rc \
+    ueventd.ums9230_6h10.rc \
+    ueventd.ums9230_7h10.rc \
+    ueventd.ums9230_haps.rc \
+    ueventd.ums9230_hulk.rc \
+    ueventd.ums9230_nico.rc \
+    ueventd.ums9230_zebu.rc
+
+
+    PRODUCT_PACKAGES += \
+    recovery.fstab
+    
+# fstab files for vendor ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/recovery.fstab:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/recovery.fstab \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.mt6768.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6768.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.mt6768.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.mt6768.rc
+    $(LOCAL_PATH)/rootdir/etc/fstab.module:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.module \
+    $(LOCAL_PATH)/rootdir/etc/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RE58C2 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.RMX3624:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RMX3624 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_1h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10_go:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_1h10_go \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_4h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10_go:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_4h10_go \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_6h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_6h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_7h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_7h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_haps:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_haps \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_hulk:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_hulk \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_nico:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_nico \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_zebu:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_zebu
+
+
+# Recovery init files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.module.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.module.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.RE58C2.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.RMX3624.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.RMX3624.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_1h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_1h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_1h10_go.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_1h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_4h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_4h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_4h10_go.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_4h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_6h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_6h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_7h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_7h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_haps.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_haps.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_hulk.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_hulk.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_nico.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_nico.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_zebu.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_zebu.rc
+
+# Recovery init files for vendor ramdisk
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.common.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.module.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.module.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.RE58C2.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.RE58C2.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.RMX3624.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.RMX3624.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_1h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_1h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_1h10_go.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_1h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_4h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_4h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_4h10_go.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_4h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_6h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_6h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_7h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_7h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_haps.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_haps.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_hulk.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_hulk.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_nico.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_nico.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.ums9230_zebu.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.ums9230_zebu.rc
 
 
 # Device tree blobs
