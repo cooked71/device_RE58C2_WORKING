@@ -128,10 +128,10 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/product/etc/fstab.postinstall:$(TARGET_COPY_OUT_PRODUCT)/etc/fstab.postinstall \
-    $(LOCAL_PATH)/product/etc/fstab.postinstall:recovery/root/product/etc/fstab.postinstall
+    $(LOCAL_PATH)/product/etc/fstab.postinstall:$(TARGET_COPY_OUT_RECOVERY)//product/etc/fstab.postinstall
 
 PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/stuff/rcfiles/init.recovery.metadata.rc:recovery/root/init.recovery.metadata.rc
+     $(LOCAL_PATH)/stuff/rcfiles/init.recovery.metadata.rc:$(TARGET_COPY_OUT_RECOVERY)/init.recovery.metadata.rc
 
 PRODUCT_PACKAGES += \
     update_engine \
