@@ -373,7 +373,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vendor_boot_ramdisk/first_stage_ramdisk/system/lib64/libz.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/lib64/libz.so
 
 # Kernel module metadata - CRITICAL for module loading
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vendor_boot_ramdisk/lib/modules/modules.alias:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.alias \
     $(LOCAL_PATH)/vendor_boot_ramdisk/lib/modules/modules.dep:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.dep \
     $(LOCAL_PATH)/vendor_boot_ramdisk/lib/modules/modules.load:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.load \
@@ -391,7 +391,7 @@ PRODUCT_COPY_FILES += \
 
 
 # Kernel modules - ALL modules from prebuilts
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/lib/modules/aes-ce-ccm.ko:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/aes-ce-ccm.ko \
     $(LOCAL_PATH)/prebuilts/lib/modules/aes-neon-blk.ko:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/aes-neon-blk.ko \
     $(LOCAL_PATH)/prebuilts/lib/modules/agdsp_access.ko:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/agdsp_access.ko \
