@@ -128,10 +128,9 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/product/etc/fstab.postinstall:$(TARGET_COPY_OUT_PRODUCT)/etc/fstab.postinstall \
-    $(LOCAL_PATH)/product/etc/fstab.postinstall:$(TARGET_COPY_OUT_RECOVERY)//product/etc/fstab.postinstall
+    $(LOCAL_PATH)/product/etc/fstab.postinstall:$(TARGET_COPY_OUT_RECOVERY)/product/etc/fstab.postinstall
 
-PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/stuff/rcfiles/init.recovery.metadata.rc:$(TARGET_COPY_OUT_RECOVERY)/init.recovery.metadata.rc
+
 
 PRODUCT_PACKAGES += \
     update_engine \
@@ -374,6 +373,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc 
 
+PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/rootdir/etc/init.recovery.metadata.rc:$(TARGET_COPY_OUT_RECOVERY)/init.recovery.metadata.rc
 
 # Fstab files for all variants in vendor ramdisk
 PRODUCT_COPY_FILES += \

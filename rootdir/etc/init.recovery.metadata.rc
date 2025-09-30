@@ -1,0 +1,10 @@
+on early-init
+    mkdir /metadata 0755 root root
+    mount tmpfs tmpfs /metadata mode=0755,uid=0,gid=0
+    mkdir /metadata/ota 0755 root root
+
+on post-fs-data
+    exec -- /system/bin/sh -c 'if [ ! -d /metadata/ota ]; then \
+        mkdir -p /metadata/ota; \
+        chmod 0755 /metadata/ota; \
+    fi'
