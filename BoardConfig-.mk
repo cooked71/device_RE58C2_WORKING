@@ -126,6 +126,7 @@ BOARD_VENDOR_CMDLINE := console=ttyS1,115200n8
 BOARD_VENDOR_CMDLINE += androidboot.selinux=permissive
 
 # Kernel - prebuilt
+TARGET_NO_KERNEL := true  #added
 TARGET_FORCE_PREBUILT_KERNEL := true
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilts/dtb.img
