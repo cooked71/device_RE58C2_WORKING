@@ -443,7 +443,7 @@ PRODUCT_SOONG_NAMESPACES += \
 # =============================================
 
 # Ueventd rules - CRITICAL for hardware initialization
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vendor_boot_ramdisk/ueventd.ums9230_zebu.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_zebu.rc \
     $(LOCAL_PATH)/vendor_boot_ramdisk/ueventd.module.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.module.rc \
     $(LOCAL_PATH)/vendor_boot_ramdisk/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.RE58C2.rc \
