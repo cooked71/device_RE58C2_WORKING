@@ -151,7 +151,7 @@ RECOVERY_MODULES := $(addprefix $(KERNEL_PATH)/vendor_ramdisk/, $(BOARD_VENDOR_R
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(sort $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES) $(RECOVERY_MODULES))
 
 ## vendor modules
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(prebuilts/vendor_dlkm_modules/modules.load))
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat prebuilts/vendor_dlkm_modules/modules.load))
 BOARD_VENDOR_KERNEL_MODULES := $(wildcard prebuilts/modules_vendor_dlkm/*.ko)
 
 #########################################
