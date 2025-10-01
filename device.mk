@@ -394,19 +394,19 @@ PRODUCT_COPY_FILES += \
 
 # Fstab files for all variants in vendor ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.module:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.module \
-    $(LOCAL_PATH)/rootdir/etc/fstab.RE58C2:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.RE58C2 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.RMX3624:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.RMX3624 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.ums9230_1h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10_go:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.ums9230_1h10_go \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.ums9230_4h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10_go:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.ums9230_4h10_go \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_6h10:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.ums9230_6h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_7h10:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.ums9230_7h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_haps:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.ums9230_haps \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_hulk:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.ums9230_hulk \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_nico:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.ums9230_nico \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_zebu:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.ums9230_zebu
+    $(LOCAL_PATH)/rootdir/etc/fstab.module:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.module \
+    $(LOCAL_PATH)/rootdir/etc/fstab.RE58C2:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.RE58C2 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.RMX3624:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.RMX3624 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_1h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10_go:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_1h10_go \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_4h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10_go:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_4h10_go \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_6h10:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_6h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_7h10:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_7h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_haps:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_haps \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_hulk:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_hulk \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_nico:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_nico \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_zebu:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_zebu
 
 # Ueventd files for vendor ramdisk - root folder
 PRODUCT_COPY_FILES += \
@@ -426,23 +426,23 @@ PRODUCT_COPY_FILES += \
 
 # Ueventd files for recovery - root folder
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.module.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.module.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.RE58C2.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.RMX3624.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.RMX3624.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_1h10_go.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.ums9230_1h10_go.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_1h10.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.ums9230_1h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_4h10_go.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.ums9230_4h10_go.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_4h10.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.ums9230_4h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_6h10.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.ums9230_6h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_7h10.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.ums9230_7h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_haps.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.ums9230_haps.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_hulk.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.ums9230_hulk.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_nico.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.ums9230_nico.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_zebu.rc:$(TARGET_COPY_OUT_RECOVERY)/ueventd.ums9230_zebu.rc
+    $(LOCAL_PATH)/rootdir/etc/ueventd.module.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.module.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.RE58C2.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.RMX3624.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.RMX3624.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_1h10_go.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_1h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_1h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_1h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_4h10_go.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_4h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_4h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_4h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_6h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_6h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_7h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_7h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_haps.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_haps.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_hulk.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_hulk.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_nico.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_nico.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_zebu.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_zebu.rc
 
 # Recovery fstab
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/recovery.fstab:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/recovery.fstab \
+    $(LOCAL_PATH)/rootdir/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/recovery.fstab\
     $(LOCAL_PATH)/rootdir/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/recovery.fstab
 
 
