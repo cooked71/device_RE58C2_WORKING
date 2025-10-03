@@ -188,12 +188,19 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@7.1-impl \
     android.hardware.audio.effect@7.0-impl
 
-# RIL Libraries
+# RIL Init Script
 PRODUCT_PACKAGES += \
-    libril \
-    libreference-ril \
-    libsec-ril \
-    libsecril-client
+    unisoc.rild.rc
+
+
+# RIL Libraries (CORRECTED)
+PRODUCT_PACKAGES += \
+    urild \
+    libril-private \
+    libimpl-ril \
+    librilutils \
+    librilcore
+
 
 # HAL Implementations (from search results)
 PRODUCT_PACKAGES += \
