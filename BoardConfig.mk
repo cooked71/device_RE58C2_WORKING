@@ -300,7 +300,7 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/common
 
 # VINTF Configuration (ONLY in BoardConfig.mk)
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/vendor/etc/vintf/manifest.xml
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_boot.xml
+#DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_boot.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/vendor/etc/vintf/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/product/etc/vintf/compatibility_matrix.xml
 
