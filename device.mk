@@ -89,6 +89,23 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.memtrack-service \
     vendor.sprd.hardware.vibrator-service
 
+# Additional Vendor Services (from search results)
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.broadcastradio@2.0-service \
+    vendor.sprd.hardware.fingerprintmmi-service \
+    vendor.sprd.hardware.wcn@1.0-service \
+    vendor.sprd.hardware.soter-service \
+    vendor.sprd.hardware.cplog_svc-service \
+    vendor.sprd.hardware.tui-service \
+    vendor.sprd.hardware.oemlock-service \
+    vendor.sprd.hardware.log-service \
+    vendor.sprd.hardware.performance@1.0-service \
+    vendor.sprd.hardware.enhance-service \
+    vendor.sprd.hardware.connmgr@1.0-service \
+    vendor.sprd.hardware.trusty-service \
+    vendor.sprd.hardware.network-service \
+    vendor.sprd.hardware.hdcp-service
+
 # Shared Libraries (32/64-bit)
 PRODUCT_PACKAGES += \
     libois_algorithm_jni \
@@ -101,6 +118,31 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.sprd.hardware.commondcs@1.0 \
     vendor.oppo.engnative.engineer@1.0
+
+# Missing Vendor Interface Libraries (CRITICAL - FIX BUILD ERRORS)
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.gnss@1.0 \
+    vendor.sprd.hardware.thermal@2.0 \
+    vendor.sprd.hardware.face-V1-ndk
+
+# Additional Vendor Libraries (from search results)
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.boot@1.2 \
+    vendor.sprd.hardware.performance@1.0 \
+    vendor.sprd.hardware.connmgr@1.0 \
+    vendor.sprd.hardware.network@1.0 \
+    vendor.sprd.hardware.wcn@1.0 \
+    vendor.sprd.hardware.trusty@1.0 \
+    vendor.sprd.hardware.tui@1.0 \
+    vendor.sprd.hardware.cplog_svc@1.0 \
+    vendor.sprd.hardware.enhance-V1-ndk \
+    vendor.sprd.hardware.soter-V1-ndk \
+    vendor.sprd.hardware.trusty-V1-ndk \
+    vendor.sprd.hardware.tui-V1-ndk \
+    vendor.sprd.hardware.log-V1-ndk \
+    vendor.sprd.hardware.cplog_svc-V2-ndk \
+    vendor.sprd.hardware.hdcp-V1-ndk \
+    vendor.sprd.hardware.fingerprintmmi-V1-ndk
 
 # Security Libraries
 PRODUCT_PACKAGES += \
@@ -152,6 +194,16 @@ PRODUCT_PACKAGES += \
     libreference-ril \
     libsec-ril \
     libsecril-client
+
+# HAL Implementations (from search results)
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@2.1-impl \
+    vendor.sprd.hardware.gnss@1.0-impl \
+    vendor.sprd.hardware.thermal@2.0-impl \
+    vendor.sprd.hardware.network@1.0-impl \
+    vendor.sprd.hardware.wcn@1.0-impl \
+    vendor.sprd.hardware.trusty-impl \
+    vendor.sprd.hardware.connmgr@1.0-impl
 
 # Configuration Files
 PRODUCT_PACKAGES += \
