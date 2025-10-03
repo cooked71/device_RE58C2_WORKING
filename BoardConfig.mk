@@ -160,9 +160,12 @@ BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/prebuilts/modules_vendo
 KERNEL_VERSION := 5.4.254-android12-9-gb10a25caafa5-ab1063
 
 # Clang Toolchain
-KERNEL_CLANG_PATH := prebuilts/clang/host/linux-x86/clang-r416183b
 TARGET_KERNEL_CLANG_VERSION := r416183b
-TARGET_KERNEL_CLANG_PATH := $(KERNEL_CLANG_PATH)
+KERNEL_TOOLCHAIN := $(shell pwd)/prebuilts/clang/host/linux-x86/clang-$(TARGET_KERNEL_CLANG_VERSION)
+PATH_OVERRIDE_SOONG := $(shell pwd)/prebuilts/clang/host/linux-x86/clang-$(TARGET_KERNEL_CLANG_VERSION)/bin:$$PATH
+
+
+
 
 # Graphics - Mali G57
 TARGET_BOARD_GPU_OBJECT_SYSTEM_SUPPORT := true
@@ -297,7 +300,7 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/common
 
 # VINTF Configuration (ONLY in BoardConfig.mk)
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/vendor/etc/vintf/manifest.xml
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_boot.xml
+#DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_boot.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/vendor/etc/vintf/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/product/etc/vintf/compatibility_matrix.xml
 
