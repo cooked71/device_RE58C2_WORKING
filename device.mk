@@ -4,6 +4,15 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Dalvik VM Configuration
+$(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
+
+# Inherit virtual_ab_ota product
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+
+# Allow userspace reboots
+$(call inherit-product, $(SRC_TARGET_DIR)/product/userspace_reboot.mk)
+
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := false
 
@@ -218,25 +227,29 @@ PRODUCT_PACKAGES += \
 
 #=================================================
 
-# Update engine
+# A/B
 PRODUCT_PACKAGES += \
-    checkpoint_gc \
-    otapreopt_script \
     update_engine \
     update_engine_sideload \
-    update_verifier
+    update_verifier \
+    otapreopt_script \
+    checkpoint_gc
+
+PRODUCT_PACKAGES_DEBUG += \
+    update_engine_client
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=erofs \
+    FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=erofs \
+    FILESYSTEM_TYPE_vendor=ext4 \
     POSTINSTALL_OPTIONAL_vendor=true
+
 
 # Device libraries (install on Android device)
 PRODUCT_PACKAGES += \
@@ -376,23 +389,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/rootdir/etc/init.recovery.metadata.rc:$(TARGET_COPY_OUT_RECOVERY)/init.recovery.metadata.rc
 
-# Fstab files for all variants in vendor ramdisk
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.module:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.module \
-    $(LOCAL_PATH)/rootdir/etc/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RE58C2 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.RMX3624:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RMX3624 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_1h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10_go:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_1h10_go \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_4h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10_go:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_4h10_go \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_6h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_6h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_7h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_7h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_haps:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_haps \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_hulk:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_hulk \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_nico:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_nico \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_zebu:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_zebu
 
-# Fstab files for all variants in vendor ramdisk
+
+# Fstab files for all variants in recovery
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.module:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.module \
     $(LOCAL_PATH)/rootdir/etc/fstab.RE58C2:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.RE58C2 \
@@ -408,21 +407,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_nico:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_nico \
     $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_zebu:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_zebu
 
-# Ueventd files for vendor ramdisk - root folder
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.module.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.module.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.RE58C2.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.RMX3624.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.RMX3624.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_1h10_go.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_1h10_go.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_1h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_1h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_4h10_go.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_4h10_go.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_4h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_4h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_6h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_6h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_7h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_7h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_haps.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_haps.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_hulk.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_hulk.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_nico.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_nico.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_zebu.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_zebu.rc
 
 # Ueventd files for recovery - root folder
 PRODUCT_COPY_FILES += \
@@ -443,7 +427,6 @@ PRODUCT_COPY_FILES += \
 # Recovery fstab
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/recovery.fstab\
-    $(LOCAL_PATH)/rootdir/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/recovery.fstab
 
 
 
@@ -453,11 +436,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/dtb.img:$(TARGET_COPY_OUT)/dtb.img
 
-# PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/prebuilts/dtbo.img:dtbo.img
-
-#PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.ums9230_4h10
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -498,21 +476,3 @@ PRODUCT_PACKAGES += \
     TeleService \
     Updater
 
-# offending packages
-#PRODUCT_PACKAGES += \
-    Calculator \
-    Messaging \
-    Phone \
-    Terminal \
-    android.hardware.boot@1.2-impl \
-    android.hardware.boot@1.2-impl.recovery \
-    android.hardware.thermal@2.0-service \
-    bootctrl \
-    bootctrl.recovery \
-    bootctrl.ums9230 \
-    manifest_dualsim.xml \
-    manifest_media_c2_V1_1_unisoc.xml \
-    manifest_oplus_performance.xml \
-    vendor.sprd.hardware.boot@1.2-impl \
-    vendor.sprd.hardware.boot@1.2-impl.recovery \
-    vendor.sprd.hardware.thermal@2.0-service
