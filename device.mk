@@ -250,44 +250,55 @@ PRODUCT_PACKAGES += \
 # Hardware-specific manifests
 # ===========================
 
-HARDWARE_MANIFESTS := \
-    ai_engine-default \
-    android.hardware.biometrics.fingerprint@2.1-service \
-    android.hardware.cas@1.2-service \
-    android.hardware.drm-service.clearkey \
-    android.hardware.gatekeeper@1.0-service.trusty \
-    android.hardware.health-service.example \
-    android.hardware.security.keymint@2.0-unisoc.service.trusty \
-    android.hardware.sensors-multihal \
-    android.hardware.thermal@2.0-service \
-    android.hardware.usb-service.example \
-    android.hardware.wifi.hostapd \
-    android.hardware.wifi.supplicant \
-    android.hardware.wifi@1.0-service \
-    bluetooth_audio \
-    cplog_svc-default \
-    face-default \
-    hdcp-default \
-    lights \
-    memtrack \
-    network-default \
-    power.stats-default \
-    rebootescrow-default \
-    soter_default \
-    trusty-default \
-    tui-default \
-    vendor-fingerprintmmi-default \
-    vendor-log-default \
-    vendor-oemlock-default \
-    vendor-power-default \
-    vendor.sprd.hardware.boot@1.2 \
-    vendor.sprd.hardware.commondcs@1.0-service \
-    vendor.sprd.hardware.gnss@2.2-service \
-    vendor.sprd.hardware.thermal@2.0-service \
-    vibrator
+# ===========================
+# VINTF Manifest Configuration (STOCK STRUCTURE)
+# ===========================
 
-DEVICE_MANIFEST_FILES += $(foreach manifest,$(HARDWARE_MANIFESTS),\
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/$(manifest).xml)
+# Include all vendor manifest fragments as found in stock
+DEVICE_MANIFEST_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/ai_engine-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.drm-service.clearkey.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.health-service.example.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.security.keymint@2.0-unisoc.service.trusty.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.sensors-multihal.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.usb-service.example.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/bluetooth_audio.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/cplog_svc-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/enhance-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/face-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/hdcp-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/lights.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/manifest_android.hardware.drm-service.widevine.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/manifest_dualsim.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/manifest_media_c2_V1_1_unisoc.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/manifest_oplus_performance.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/memtrack.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/network-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/power.stats-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/rebootescrow-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/soter_default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/trusty-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/tui-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor-fingerprintmmi-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor-log-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor-oemlock-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor-power-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor.sprd.hardware.boot@1.2.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor.sprd.hardware.commondcs@1.0-service.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor.sprd.hardware.gnss@2.2-service.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor.sprd.hardware.thermal@2.0-service.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vibrator.xml
+
+# Also include compatibility matrix if it exists
+DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
+
 
 # ===========================
 # Boot HAL Configuration
