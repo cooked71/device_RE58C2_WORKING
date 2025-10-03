@@ -71,7 +71,6 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service \
     android.hardware.cas@1.2-service \
     android.hardware.sensors-service.multihal \
-    android.hardware.thermal@2.0-service \
     android.hardware.usb-service.example \
     android.hardware.audio.service \
     android.hardware.graphics.composer@2.4-service \
