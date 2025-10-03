@@ -83,7 +83,6 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.commondcs@1.0-service \
     vendor.oppo.engnative.engineer@1.0-service \
     vendor.sprd.hardware.gnss@2.2-service \
-    vendor.sprd.hardware.thermal@2.0-service \
     vendor.sprd.hardware.biometrics.face-service \
     vendor.sprd.hardware.lights-service \
     vendor.sprd.hardware.memtrack-service \
@@ -200,6 +199,11 @@ PRODUCT_PACKAGES += \
     libimpl-ril \
     librilutils \
     librilcore
+
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.thermal@2.0-service \
+    vendor.sprd.hardware.thermal@2.0-impl \
+    thermal.default
 
 
 # HAL Implementations (from search results)
