@@ -176,7 +176,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libGLES_mali \
     hwcomposer.unisoc \
-    gralloc.re58c2 \
+    gralloc.RE58C2 \
     libremotedisplay
 
 # Audio HAL Implementations
