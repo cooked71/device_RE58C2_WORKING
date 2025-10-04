@@ -284,7 +284,7 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.messaging-V1-ndk
 
 # Missing System Libraries (for CAS service)
-PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
     libstagefright_foundation \
     libmedia
 
