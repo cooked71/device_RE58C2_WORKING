@@ -188,7 +188,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     unisoc.rild.rc
 
-
 # RIL Libraries (CORRECTED)
 PRODUCT_PACKAGES += \
     urild \
@@ -201,7 +200,6 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.thermal@2.0-service \
     vendor.sprd.hardware.thermal@2.0-impl \
     thermal.default
-
 
 # HAL Implementations (from search results)
 PRODUCT_PACKAGES += \
@@ -242,6 +240,53 @@ PRODUCT_PACKAGES += \
     init.realme.rc \
     init_vendor_dlkm \
     vendor_dlkm_file_contexts
+
+# ===========================
+# MISSING PACKAGES - ADDED TO FIX BUILD ERRORS
+# ===========================
+
+# Missing Trusty Libraries
+PRODUCT_PACKAGES += \
+    libtrusty \
+    libtrustyHalHelper
+
+# Missing Broadcast Radio Libraries
+PRODUCT_PACKAGES += \
+    android.hardware.broadcastradio@2.0 \
+    android.hardware.broadcastradio@1.0
+
+# Missing CAS Libraries
+PRODUCT_PACKAGES += \
+    android.hardware.cas@1.2 \
+    android.hardware.cas@1.1 \
+    android.hardware.cas.native@1.0
+
+# Missing Unisoc Radio Libraries (CRITICAL - these are causing build failures)
+PRODUCT_PACKAGES += \
+    vendor.unisoc.hardware.radio-V1-ndk \
+    vendor.unisoc.hardware.radio.data-V1-ndk \
+    vendor.unisoc.hardware.radio.sim-V1-ndk \
+    vendor.unisoc.hardware.radio.network-V1-ndk \
+    vendor.unisoc.hardware.radio.voice-V1-ndk \
+    vendor.unisoc.hardware.radio.messaging-V1-ndk \
+    vendor.unisoc.hardware.radio.modem-V1-ndk \
+    vendor.unisoc.hardware.radio.ims-V1-ndk
+
+# Missing AOSP Radio NDK Libraries (needed by librilcore)
+PRODUCT_PACKAGES += \
+    android.hardware.radio-V1-ndk \
+    android.hardware.radio.modem-V1-ndk \
+    android.hardware.radio.config-V1-ndk \
+    android.hardware.radio.data-V1-ndk \
+    android.hardware.radio.sim-V1-ndk \
+    android.hardware.radio.network-V1-ndk \
+    android.hardware.radio.voice-V1-ndk \
+    android.hardware.radio.messaging-V1-ndk
+
+# Missing System Libraries (for CAS service)
+PRODUCT_PACKAGES += \
+    libstagefright_foundation \
+    libmedia
 
 # ===========================
 # Hardware-specific manifests
@@ -295,7 +340,6 @@ DEVICE_MANIFEST_FILES += \
 
 # Also include compatibility matrix if it exists
 DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
-
 
 # ===========================
 # Boot HAL Configuration
