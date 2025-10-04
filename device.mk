@@ -45,7 +45,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.hardware.egl=mali \
     ro.hardware.vulkan=mali \
     ro.hardware.gpu=mali \
-    ro.hardware.gralloc=re58c2 \
+    ro.hardware.gralloc=RE58C2 \  # Changed from 'default' to 'RE58C2'
     ro.hardware.hwcomposer=unisoc \
     persist.graphics.egl=libGLES_mali.so
 
