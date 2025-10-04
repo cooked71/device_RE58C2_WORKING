@@ -108,8 +108,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libois_algorithm_jni \
     libstagefright_bufferpool@2.0.1 \
-    libois_algorithm_jni_64 \
-    libstagefright_bufferpool@2.0.1_64 \
     libsprdaudiohalv7
 
 # Vendor Interface Libraries
