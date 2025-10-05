@@ -49,7 +49,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.hardware.hwcomposer=unisoc \
     persist.graphics.egl=libGLES_mali.so
 
-# ===========================
+## ===========================
 # Core Product Packages (MUST MATCH Android.bp)
 # ===========================
 
@@ -62,9 +62,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     androidx.camera.extensions.impl
 
+# FIXED: Removed malformed line
 PRODUCT_PACKAGES += \
-    libstagefright_hdcp 
-
+    libstagefright_hdcp
 
 # HAL Services
 PRODUCT_PACKAGES += \
@@ -91,7 +91,7 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.memtrack-service \
     vendor.sprd.hardware.vibrator-service
 
-# Additional Vendor Services (from search results)
+# Additional Vendor Services
 PRODUCT_PACKAGES += \
     vendor.sprd.hardware.broadcastradio@2.0-service \
     vendor.sprd.hardware.fingerprintmmi-service \
@@ -117,15 +117,12 @@ PRODUCT_PACKAGES += \
 # Vendor Interface Libraries
 PRODUCT_PACKAGES += \
     vendor.sprd.hardware.commondcs@1.0 \
-    vendor.oppo.engnative.engineer@1.0
-
-# Missing Vendor Interface Libraries (CRITICAL - FIX BUILD ERRORS)
-PRODUCT_PACKAGES += \
+    vendor.oppo.engnative.engineer@1.0 \
     vendor.sprd.hardware.gnss@1.0 \
     vendor.sprd.hardware.thermal@2.0 \
     vendor.sprd.hardware.face-V1-ndk
 
-# Additional Vendor Libraries (from search results)
+# Additional Vendor Libraries
 PRODUCT_PACKAGES += \
     vendor.sprd.hardware.boot@1.2 \
     vendor.sprd.hardware.performance@1.0 \
@@ -150,6 +147,11 @@ PRODUCT_PACKAGES += \
     librpmbclient \
     libteeproduction
 
+# Trusty Libraries
+PRODUCT_PACKAGES += \
+    libtrusty \
+    libtrustyHalHelper
+
 # NFC Libraries
 PRODUCT_PACKAGES += \
     vendor.nxp.nxpnfclegacy@1.0 \
@@ -159,7 +161,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl \
     bootctrl.default \
-    vendor.sprd.hardware.boot@1.2 \
     unisoc.bootctrl
 
 # Power HAL Libraries
@@ -173,8 +174,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libmemion \
     libmediahdrtosdrtransform \
-    libpowerhal_cli \
-    vendor.sprd.hardware.enhance-V1-ndk
+    libpowerhal_cli
 
 # Graphics Libraries
 PRODUCT_PACKAGES += \
@@ -188,32 +188,55 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@7.1-impl \
     android.hardware.audio.effect@7.0-impl
 
-# RIL Init Script
-PRODUCT_PACKAGES += \
-    unisoc.rild.rc
-
-# RIL Libraries (CORRECTED)
+# RIL Components
 PRODUCT_PACKAGES += \
     urild \
     libril-private \
     libimpl-ril \
     librilutils \
-    librilcore
+    librilcore \
+    unisoc.rild.rc
 
+# Thermal Services (FIXED: Only list once)
 PRODUCT_PACKAGES += \
     vendor.sprd.hardware.thermal@2.0-service \
-    vendor.sprd.hardware.thermal@2.0-impl \
-    thermal.default
+    vendor.sprd.hardware.thermal@2.0-impl
 
-# HAL Implementations (from search results)
+# HAL Implementations
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1-impl \
     vendor.sprd.hardware.gnss@1.0-impl \
-    vendor.sprd.hardware.thermal@2.0-impl \
     vendor.sprd.hardware.network@1.0-impl \
     vendor.sprd.hardware.wcn@1.0-impl \
     vendor.sprd.hardware.trusty-impl \
     vendor.sprd.hardware.connmgr@1.0-impl
+
+# ===========================
+# MISSING SYSTEM LIBRARIES (CRITICAL)
+# ===========================
+
+PRODUCT_PACKAGES += \
+    libtinyxml2 \
+    libsysutils \
+    libnetutils \
+    libhardware_legacy \
+    libhidlmemory \
+    libhwbinder \
+    libion \
+    libdrm \
+    libsync \
+    libgralloctypes \
+    libdmabufheap \
+    libnativewindow \
+    libui \
+    libgui \
+    libmedia \
+    libstagefright_foundation \
+    libbinder \
+    libxml2 \
+    libcrypto \
+    libdumpstateutil
+
 
 # Configuration Files
 PRODUCT_PACKAGES += \
