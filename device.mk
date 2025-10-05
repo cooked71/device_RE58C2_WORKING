@@ -62,6 +62,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     androidx.camera.extensions.impl
 
+PRODUCT_PACKAGES += \
+    libstagefright_hdcp \
+
+
 # HAL Services
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-service \
