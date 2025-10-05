@@ -63,7 +63,7 @@ PRODUCT_PACKAGES += \
     androidx.camera.extensions.impl
 
 PRODUCT_PACKAGES += \
-    libstagefright_hdcp \
+    libstagefright_hdcp 
 
 
 # HAL Services
