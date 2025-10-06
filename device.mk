@@ -656,8 +656,7 @@ PRODUCT_PACKAGES += \
     ueventd.ums9230_nico.rc \
     ueventd.ums9230_zebu.rc
 
-PRODUCT_PACKAGES += \
-    recovery.fstab
+
 
 # ===========================
 # Recovery Files
