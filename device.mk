@@ -87,7 +87,6 @@ PRODUCT_PACKAGES += \
     vendor.oppo.engnative.engineer@1.0-service \
     vendor.sprd.hardware.gnss@2.2-service \
     vendor.sprd.hardware.biometrics.face-service \
-    vendor.sprd.hardware.lights-service \
     vendor.sprd.hardware.memtrack-service \
     vendor.sprd.hardware.vibrator-service
 
