@@ -488,9 +488,3 @@ prebuilt_etc {
     vendor: true,
 }
 
-// recovery.fstab
-prebuilt_etc {
-    name: "recovery.fstab",
-    src: "etc/recovery.fstab",
-    vendor: true,
-}
