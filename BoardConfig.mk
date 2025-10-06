@@ -97,6 +97,17 @@ TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilts/dtb.img
 TARGET_PREBUILT_DTBO := $(DEVICE_PATH)/prebuilts/dtbo.img
 BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilts/
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
+BOARD_PREBUILT_DTBIMAGE := $(TARGET_PREBUILT_DTB)
+BOARD_PREBUILT_DTBOIMAGE := $(TARGET_PREBUILT_DTBO)
+
+
+###########################
+TARGET_NO_KERNEL_OVERRIDE := true
+TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
+
+LOCAL_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
+PRODUCT_COPY_FILES += \
+	$(LOCAL_KERNEL):kernel
 
 # Kernel modules - SEPARATE for ramdisk.cpio and recovery.cpio
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/recovery/ramdisk/lib/modules/modules.load))
