@@ -234,7 +234,7 @@ VENDOR_SECURITY_PATCH := 2024-07-05
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/common
 
 # VINTF Configuration
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/vendor/etc/vintf/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/vendor/etc/vintf/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/product/etc/vintf/compatibility_matrix.xml
 
