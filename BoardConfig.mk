@@ -97,6 +97,17 @@ TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilts/dtb.img
 TARGET_PREBUILT_DTBO := $(DEVICE_PATH)/prebuilts/dtbo.img
 BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilts/
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
+BOARD_PREBUILT_DTBIMAGE := $(TARGET_PREBUILT_DTB)
+BOARD_PREBUILT_DTBOIMAGE := $(TARGET_PREBUILT_DTBO)
+
+
+###########################
+TARGET_NO_KERNEL_OVERRIDE := true
+TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
+
+LOCAL_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
+PRODUCT_COPY_FILES += \
+	$(LOCAL_KERNEL):kernel
 
 # Vendor Boot Manifest
 BOARD_VENDOR_BOOT_MANIFEST_FILE := $(DEVICE_PATH)/manifest_vendor_boot.xml
@@ -232,7 +243,7 @@ VENDOR_SECURITY_PATCH := 2024-07-05
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/common
 
 # VINTF Configuration
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/vendor/etc/vintf/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/vendor/etc/vintf/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/product/etc/vintf/compatibility_matrix.xml
 
