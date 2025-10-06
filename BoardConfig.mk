@@ -48,21 +48,40 @@ AB_OTA_PARTITIONS += \
     vendor \
     odm
 
-# Graphics Configuration
-TARGET_USES_HWC2 := true
-TARGET_USES_GRALLOC1 := true
-TARGET_USES_VULKAN := true
-BOARD_USES_GRALLOC_HANDLE := true
-BOARD_USES_HWCOMPOSER := true
-TARGET_USES_GLES2 := true
-TARGET_USES_GLES3 := true
+# ==================================================
+# Graphics Configuration - USE VENDOR PREBUILTS ONLY
+# ==================================================
 
-# Mali GPU
-TARGET_USES_MALI := true
+# COMPLETELY disable AOSP graphics source building
+TARGET_NO_GRALLOC := true
+TARGET_NO_HWC := true
+TARGET_NO_GPU := true
+
+# Disable Mesa3D completely
+MESA3D_BUILD := false
+TARGET_USES_MESA3D := false
+BOARD_USES_MESA3D := false
+
+# Use prebuilt Mali GPU driver
+BOARD_GPU_DRIVERS := mali
+TARGET_USES_PREBUILT_GPU_DRIVER := true
 TARGET_GPU_PLATFORM := mali
 
 # EGL configuration
 BOARD_EGL_CFG := $(DEVICE_PATH)/stuff/egl.cfg
+
+# Force use of vendor prebuilts only
+TARGET_PROVIDES_GRALLOC_HAL := true
+TARGET_PROVIDES_HWC_HAL := true
+TARGET_PROVIDES_GPU_LIBRARIES := true
+
+# OpenGL ES support
+TARGET_USES_OPENGLES := true
+TARGET_USES_GLES2 := true
+TARGET_USES_GLES3 := true
+
+# Satisfy Mesa3D Android.mk namespace requirement
+PRODUCT_SOONG_NAMESPACES += external/mesa3d
 
 # Vendor Boot configuration for DUAL CPIO
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
