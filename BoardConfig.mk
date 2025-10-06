@@ -98,6 +98,15 @@ TARGET_PREBUILT_DTBO := $(DEVICE_PATH)/prebuilts/dtbo.img
 BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilts/
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
+# Vendor Boot Manifest
+BOARD_VENDOR_BOOT_MANIFEST_FILE := $(DEVICE_PATH)/manifest_vendor_boot.xml
+
+# Kernel modules for DUAL CPIO
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/recovery/ramdisk/lib/modules/*.ko)
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/recovery/recovery/lib/modules/*.ko)
+
+
+
 # Kernel modules - SEPARATE for ramdisk.cpio and recovery.cpio
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/recovery/ramdisk/lib/modules/modules.load))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(DEVICE_PATH)/recovery/ramdisk/lib/modules/, $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))

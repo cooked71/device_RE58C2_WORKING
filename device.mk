@@ -690,6 +690,53 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/recovery.fstab
 
+
+    # ===========================
+# DUAL CPIO - Vendor Specific Files
+# ===========================
+
+# Files for NORMAL boot (ramdisk.cpio)
+PRODUCT_COPY_FILES += \
+    # Vendor HALs for normal boot
+    $(LOCAL_PATH)/recovery/ramdisk/system/lib64/vendor.sprd.hardware.boot@1.2.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/lib64/vendor.sprd.hardware.boot@1.2.so \
+    $(LOCAL_PATH)/recovery/ramdisk/system/lib64/vendor.sprd.hardware.production@1.0.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/lib64/vendor.sprd.hardware.production@1.0.so \
+    $(LOCAL_PATH)/recovery/ramdisk/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so \
+    $(LOCAL_PATH)/recovery/ramdisk/system/lib64/hw/android.hardware.health@2.0-impl-default.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/lib64/hw/android.hardware.health@2.0-impl-default.so \
+
+    # Essential modules for normal boot
+    $(foreach file,$(wildcard $(LOCAL_PATH)/recovery/ramdisk/lib/modules/*.ko),\
+    $(file):$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/$(notdir $(file))) \
+    $(LOCAL_PATH)/recovery/ramdisk/lib/modules/modules.alias:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.alias \
+    $(LOCAL_PATH)/recovery/ramdisk/lib/modules/modules.dep:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.dep \
+    $(LOCAL_PATH)/recovery/ramdisk/lib/modules/modules.load:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.load \
+
+    # Vendor ueventd for normal boot
+    $(LOCAL_PATH)/recovery/ramdisk/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.rc \
+    $(LOCAL_PATH)/recovery/ramdisk/ueventd.module.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.module.rc \
+
+    # Vendor fstab for normal boot
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.RE58C2
+
+# Files for RECOVERY boot (recovery.cpio)
+PRODUCT_COPY_FILES += \
+    # Vendor HALs for recovery
+    $(LOCAL_PATH)/recovery/recovery/system/lib64/vendor.sprd.hardware.boot@1.2.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/vendor.sprd.hardware.boot@1.2.so \
+    $(LOCAL_PATH)/recovery/recovery/system/lib64/vendor.sprd.hardware.production@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/vendor.sprd.hardware.production@1.0.so \
+    $(LOCAL_PATH)/recovery/recovery/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so \
+    $(LOCAL_PATH)/recovery/recovery/system/lib64/hw/android.hardware.health@2.0-impl-default.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/hw/android.hardware.health@2.0-impl-default.so \
+
+    # ALL modules for recovery
+    $(foreach file,$(wildcard $(LOCAL_PATH)/recovery/recovery/lib/modules/*.ko),\
+    $(file):$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/$(notdir $(file))) \
+    $(LOCAL_PATH)/recovery/recovery/lib/modules/modules.alias:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.alias \
+    $(LOCAL_PATH)/recovery/recovery/lib/modules/modules.dep:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.dep \
+    $(LOCAL_PATH)/recovery/recovery/lib/modules/modules.load:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.load \
+    $(LOCAL_PATH)/recovery/recovery/lib/modules/modules.load.recovery:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.load.recovery \
+
+    # Vendor ueventd for recovery
+    $(LOCAL_PATH)/recovery/recovery/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.rc \
+    $(LOCAL_PATH)/recovery/recovery/ueventd.module.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.module.rc
+
 # ===========================
 # Device Tree Blobs
 # ===========================
