@@ -48,7 +48,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.hardware.gralloc=RE58C2 \
     ro.hardware.hwcomposer=unisoc \
     persist.graphics.egl=libGLES_mali.so
-    
+
 # ===========================
 # Recovery Configuration - MULTI-DEVICE DUAL CPIO
 # ===========================
@@ -85,19 +85,19 @@ PRODUCT_COPY_FILES += \
 
 # All fstab files for first stage ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.module:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.module \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.RE58C2 \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.RMX3624:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.RMX3624 \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.ums9230_1h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.ums9230_1h10 \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.ums9230_1h10_go:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.ums9230_1h10_go \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.ums9230_4h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.ums9230_4h10 \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.ums9230_4h10_go:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.ums9230_4h10_go \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.ums9230_6h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.ums9230_6h10 \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.ums9230_7h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.ums9230_7h10 \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.ums9230_haps:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.ums9230_haps \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.ums9230_hulk:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.ums9230_hulk \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.ums9230_nico:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.ums9230_nico \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.ums9230_zebu:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.ums9230_zebu
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.module:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.module \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RE58C2 \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.RMX3624:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RMX3624 \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.ums9230_1h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_1h10 \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.ums9230_1h10_go:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_1h10_go \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.ums9230_4h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_4h10 \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.ums9230_4h10_go:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_4h10_go \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.ums9230_6h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_6h10 \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.ums9230_7h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_7h10 \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.ums9230_haps:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_haps \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.ums9230_hulk:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_hulk \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.ums9230_nico:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_nico \
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.ums9230_zebu:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_zebu
 
 # ===========================
 # Files for RECOVERY boot (recovery.cpio)
@@ -737,7 +737,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/ramdisk/lib/modules/modules.load:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.load \
     $(LOCAL_PATH)/recovery/ramdisk/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.rc \
     $(LOCAL_PATH)/recovery/ramdisk/ueventd.module.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.module.rc \
-    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/system/etc/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.RE58C2
+    $(LOCAL_PATH)/recovery/ramdisk/first_stage_ramdisk/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RE58C2
 
 # ---------------------------------
 # Files for RECOVERY boot (recovery.cpio)
