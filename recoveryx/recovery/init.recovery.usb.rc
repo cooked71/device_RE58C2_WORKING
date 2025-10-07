@@ -1,30 +1,28 @@
 on early-init
-    # Create USB functionfs directories
+    # Prepare functionfs for ADB
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
 
-    # Set USB properties
+    # Set up USB controller and properties
     setprop sys.usb.controller ffs-umc
     setprop sys.usb.configfs 1
     setprop sys.usb.config adb
     setprop sys.usb.ffs.ready 1
 
-on boot
-    # Start ADB service
+on property:sys.usb.config=adb
+    # Reconfigure USB gadget for ADB
+    write /config/usb_gadget/g1/idVendor 0x18D1
+    write /config/usb_gadget/g1/idProduct 0x4EE0
+    mkdir /config/usb_gadget/g1/functions/ffs.adb
+    mkdir /config/usb_gadget/g1/configs/b.1
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state adb
     start adbd
 
-service adbd /sbin/adbd
+service adbd /sbin/adbd --root_seclabel=u:r:adbd:s0
     class core
     socket adbd stream 660 system system
     disabled
     seclabel u:r:adbd:s0
-
-on property:sys.usb.config=adb
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 18D1
-    write /sys/class/android_usb/android0/idProduct 4EE0
-    write /sys/class/android_usb/android0/functions adb
-    write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state adb
-    start adbd
