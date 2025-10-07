@@ -1,4 +1,6 @@
 import /init.recovery.common.rc
+import /init.recovery.usb.rc
+
 
 on early-init
     start ueventd

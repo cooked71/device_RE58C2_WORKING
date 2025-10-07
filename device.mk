@@ -48,20 +48,24 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.hardware.gralloc=RE58C2 \
     ro.hardware.hwcomposer=unisoc \
     persist.graphics.egl=libGLES_mali.so
-
+.
 # ===========================
 # Recovery Configuration - MULTI-DEVICE DUAL CPIO
 # ===========================
 
-PRODUCT_PACKAGES += \
-    adbd.recovery \
-    android.hardware.fastboot@1.0-impl-mock \
-    fastbootd \
-    linker.vendor_ramdisk \
-    resize2fs.vendor_ramdisk \
-    shell_and_utilities_vendor_ramdisk \
-    tune2fs.vendor_ramdisk 
+# ADB Configuration
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.sys.usb.config=adb \
+    ro.adb.secure=0 \
+    ro.debuggable=1 \
+    ro.secure=0
 
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.usb.config=adb
+
+# USB init file
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recoveryx/recovery/init.recovery.usb.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.usb.rc
 # ===========================
 # Files for NORMAL boot (ramdisk.cpio)
 # ===========================
