@@ -1,4 +1,4 @@
-sys.usb.config                 u:object_r:system_prop:s0
-sys.usb.ffs.ready              u:object_r:system_prop:s0
-sys.usb.controller             u:object_r:system_prop:s0
-persist.sys.usb.config         u:object_r:system_prop:s0
+vendor.sys.usb.config         u:object_r:vendor_system_prop:s0
+vendor.sys.usb.ffs.ready      u:object_r:vendor_system_prop:s0  
+vendor.sys.usb.controller     u:object_r:vendor_system_prop:s0
+vendor.persist.sys.usb.config u:object_r:vendor_persist_prop:s0

@@ -35,21 +35,13 @@ PRODUCT_SOONG_NAMESPACES += \
 # SELinux Policy
 # ===========================
 
-# Include vendor SEPolicy
-BOARD_SEPOLICY_DIRS += \
-    device/realme/RE58C2/sepolicy/common
 
-# Build the SEPolicy
-SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \
-    device/realme/RE58C2/sepolicy/common
 
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
-    device/realme/RE58C2/sepolicy/common
-
-# Include debug policies for recovery
-BOARD_SEPOLICY_DIRS += \
-    device/realme/RE58C2/sepolicy/debug
-
+PRODUCT_SYSTEM_PROPERTIES += \
+    vendor.sys.usb.config=adb \
+    vendor.sys.usb.controller=ffs-umc \
+    vendor.sys.usb.configfs=1 \
+    vendor.sys.usb.ffs.ready=1
 
 # ===========================
 # Graphics - Remove AOSP conflicts

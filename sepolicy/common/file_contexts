@@ -1,8 +1,3 @@
-# ADB and Fastboot
 /sbin/adbd                    u:object_r:adbd_exec:s0
 /system/bin/fastbootd         u:object_r:fastbootd_exec:s0
-
-# USB devices
 /dev/usb-ffs/adb.*            u:object_r:ffs_device:s0
-/sys/class/android_usb/android0.*   u:object_r:sysfs_usb_device:s0
-/config/usb_gadget/.*         u:object_r:configfs:s0

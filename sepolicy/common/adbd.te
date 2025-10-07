@@ -1,21 +1,5 @@
-# ADB Daemon in Recovery
-type adbd, domain;
-type adbd_exec, exec_type, file_type, vendor_file_type;
-
-init_daemon_domain(adbd)
-
-# ADB socket permissions
-allow adbd self:socket create_socket_perms;
-allow adbd adbd:capability { chown dac_override setgid setuid };
-allow adbd shell_data_file:dir search;
-allow adbd shell_data_file:file { read open getattr };
-
-# USB permissions
+# ONLY KEEP ALLOW RULES - REMOVE TYPE DECLARATIONS
 allow adbd configfs:file { read write open };
-allow adbd sysfs:file { read write open };
 allow adbd sysfs_usb_device:file { read write open };
 allow adbd functionfs:dir { search };
 allow adbd functionfs:file { read write open };
-
-# Property service
-allow adbd property_socket:sock_file write;
