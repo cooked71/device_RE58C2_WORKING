@@ -66,6 +66,11 @@ PRODUCT_PACKAGES += \
 # ADB & Fastboot Configuration
 # ===========================
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.adb.secure=0 \
+    ro.debuggable=1
+
+
 # ADB Properties
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.sys.usb.config=adb \
