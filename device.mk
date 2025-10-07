@@ -53,12 +53,19 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # Recovery Configuration - MULTI-DEVICE DUAL CPIO
 # ===========================
 
-# ADB Configuration
+# ===========================
+# ADB & Fastboot Configuration
+# ===========================
+
+# ADB Properties
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.sys.usb.config=adb \
     ro.adb.secure=0 \
     ro.debuggable=1 \
-    ro.secure=0
+    ro.secure=0 \
+    sys.usb.controller=ffs-umc \
+    sys.usb.configfs=1 \
+    sys.usb.ffs.ready=1
 
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.usb.config=adb
@@ -66,6 +73,10 @@ PRODUCT_VENDOR_PROPERTIES += \
 # USB init file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recoveryx/recovery/init.recovery.usb.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.usb.rc
+
+# FastbootD support
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.fastbootd.available=true
 # ===========================
 # Files for NORMAL boot (ramdisk.cpio)
 # ===========================

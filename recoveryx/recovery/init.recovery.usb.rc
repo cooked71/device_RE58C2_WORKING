@@ -1,21 +1,20 @@
-# Simplified USB ADB for Custom Recovery
 on early-init
-    # Set up basic USB for ADB
+    # Create USB functionfs directories
+    mkdir /dev/usb-ffs 0770 shell shell
+    mkdir /dev/usb-ffs/adb 0770 shell shell
+    mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
+
+    # Set USB properties
+    setprop sys.usb.controller ffs-umc
     setprop sys.usb.configfs 1
     setprop sys.usb.config adb
     setprop sys.usb.ffs.ready 1
-    setprop persist.sys.usb.config adb
 
 on boot
-    # Enable ADB
-    setprop sys.usb.config adb
+    # Start ADB service
     start adbd
 
-    # Basic USB permissions
-    chmod 0666 /sys/class/android_usb/android0/enable
-    chmod 0666 /sys/class/android_usb/android0/functions
-
-service adbd /sbin/adbd --root_seclabel=u:r:su:s0
+service adbd /sbin/adbd
     class core
     socket adbd stream 660 system system
     disabled
@@ -29,10 +28,3 @@ on property:sys.usb.config=adb
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state adb
     start adbd
-
-on property:sys.usb.config=none
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/functions
-    write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state none
-    stop adbd
