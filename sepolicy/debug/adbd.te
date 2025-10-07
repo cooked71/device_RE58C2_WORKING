@@ -1,0 +1,2 @@
+# Temporary permissive for ADB debugging
+permissive adbd;

@@ -30,6 +30,27 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/realme/RE58C2 \
     external/mesa3d
 
+
+# ===========================
+# SELinux Policy
+# ===========================
+
+# Include vendor SEPolicy
+BOARD_SEPOLICY_DIRS += \
+    device/realme/RE58C2/sepolicy/common
+
+# Build the SEPolicy
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \
+    device/realme/RE58C2/sepolicy/common
+
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
+    device/realme/RE58C2/sepolicy/common
+
+# Include debug policies for recovery
+BOARD_SEPOLICY_DIRS += \
+    device/realme/RE58C2/sepolicy/debug
+
+
 # ===========================
 # Graphics - Remove AOSP conflicts
 # ===========================

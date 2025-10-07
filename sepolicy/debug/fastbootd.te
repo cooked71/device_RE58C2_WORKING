@@ -1,0 +1,2 @@
+# Temporary permissive for FastbootD debugging  
+permissive fastbootd;
