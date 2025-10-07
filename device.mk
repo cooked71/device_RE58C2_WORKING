@@ -583,7 +583,7 @@ PRODUCT_PACKAGES += $(ROOTDIR_SCRIPTS)
 # Init Scripts
 # ===========================
 
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     init.RMX3624.usb.rc \
     init.cali.rc \
     init.module.rc \
@@ -622,7 +622,7 @@ PRODUCT_PACKAGES += \
 # Fstab Files
 # ===========================
 
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     fstab.module \
     fstab.RE58C2 \
     fstab.RMX3624 \
@@ -641,7 +641,7 @@ PRODUCT_PACKAGES += \
 # Ueventd Files
 # ===========================
 
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     ueventd.module.rc \
     ueventd.RE58C2.rc \
     ueventd.RMX3624.rc \
