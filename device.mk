@@ -53,6 +53,15 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # Recovery Configuration - MULTI-DEVICE DUAL CPIO
 # ===========================
 
+PRODUCT_PACKAGES += \
+    adbd.recovery \
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd \
+    linker.vendor_ramdisk \
+    resize2fs.vendor_ramdisk \
+    shell_and_utilities_vendor_ramdisk \
+    tune2fs.vendor_ramdisk
+
 # ===========================
 # ADB & Fastboot Configuration
 # ===========================
@@ -77,6 +86,7 @@ PRODUCT_COPY_FILES += \
 # FastbootD support
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.fastbootd.available=true
+
 # ===========================
 # Files for NORMAL boot (ramdisk.cpio)
 # ===========================
