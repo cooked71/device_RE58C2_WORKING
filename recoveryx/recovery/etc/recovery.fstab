@@ -1,12 +1,30 @@
-#<src>          <mnt_point>     <type>  <mnt_flags>                                 <fs_mgr_flags>
-/dev/block/by-name/system       /system         erofs   ro,barrier=1                                wait,slotselect,avb=vbmeta_system
-/dev/block/by-name/system_ext   /system_ext     erofs   ro,barrier=1                                wait,slotselect,avb=vbmeta_system_ext
-/dev/block/by-name/product      /product        erofs   ro,barrier=1                                wait,slotselect,avb=vbmeta_product
-/dev/block/by-name/vendor       /vendor         erofs   ro,barrier=1                                wait,slotselect,avb=vbmeta_vendor
-/dev/block/by-name/odm          /odm            erofs   ro,barrier=1                                wait,slotselect,avb=vbmeta_odm
-/dev/block/by-name/vendor_dlkm  /vendor_dlkm    erofs   ro,barrier=1                                wait,slotselect,avb=vbmeta_vendor_dlkm
-/dev/block/by-name/boot         /boot           emmc    defaults                                    defaults
-/dev/block/by-name/vendor_boot  /vendor_boot    emmc    defaults                                    defaults
-/dev/block/by-name/userdata     /data           f2fs    nosuid,nodev,noatime,discard               latemount,wait,check,formattable
-/dev/block/by-name/metadata     /metadata       emmc    nosuid,nodev,noatime                       wait,formattable
-/dev/block/by-name/cache        /cache          ext4    nosuid,nodev,noatime                       wait,check
+# Fixed Recovery Fstab for RE58C2
+#<src>                                          <mnt_point>         <type>    <mnt_flags>                                                          <fs_mgr_flags>
+
+# Essential partitions for recovery
+/dev/block/by-name/misc                         /misc               emmc      defaults                                                            defaults
+/dev/block/by-name/metadata                     /metadata           ext4      noatime,nosuid,nodev                                                wait,formattable,first_stage_mount
+/dev/block/by-name/persist                      /persist            ext4      noatime,nosuid,nodev                                                wait
+
+# System partitions (A/B) - SIMPLIFIED for recovery
+/dev/block/by-name/system_a                     /system             erofs     ro,barrier=1                                                        wait,logical,first_stage_mount
+/dev/block/by-name/system_b                     /system             erofs     ro,barrier=1                                                        wait,logical,first_stage_mount
+/dev/block/by-name/vendor_a                     /vendor             erofs     ro,barrier=1                                                        wait,logical,first_stage_mount  
+/dev/block/by-name/vendor_b                     /vendor             erofs     ro,barrier=1                                                        wait,logical,first_stage_mount
+/dev/block/by-name/product_a                    /product            erofs     ro,barrier=1                                                        wait,logical,first_stage_mount
+/dev/block/by-name/product_b                    /product            erofs     ro,barrier=1                                                        wait,logical,first_stage_mount
+/dev/block/by-name/system_ext_a                 /system_ext         erofs     ro,barrier=1                                                        wait,logical,first_stage_mount
+/dev/block/by-name/system_ext_b                 /system_ext         erofs     ro,barrier=1                                                        wait,logical,first_stage_mount
+
+# Data and cache
+/dev/block/by-name/userdata                     /data               f2fs      noatime,nosuid,nodev,discard,fsync_mode=nobarrier                    wait,check,formattable,resize
+/dev/block/by-name/cache                        /cache              ext4      noatime,nosuid,nodev                                                wait,check,formattable
+
+# External SD card
+/dev/block/mmcblk1p1                            /sdcard             vfat      defaults                                                            wait,voldmanaged=sdcard1:auto
+
+# Boot partitions
+/dev/block/by-name/boot_a                       /boot               emmc      defaults                                                            defaults
+/dev/block/by-name/boot_b                       /boot               emmc      defaults                                                            defaults
+/dev/block/by-name/vendor_boot_a                /vendor_boot        emmc      defaults                                                            defaults
+/dev/block/by-name/vendor_boot_b                /vendor_boot        emmc      defaults                                                            defaults
