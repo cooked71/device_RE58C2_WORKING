@@ -1,3 +1,0 @@
-/sbin/adbd                    u:object_r:adbd_exec:s0
-/system/bin/fastbootd         u:object_r:fastbootd_exec:s0
-/dev/usb-ffs/adb.*            u:object_r:ffs_device:s0

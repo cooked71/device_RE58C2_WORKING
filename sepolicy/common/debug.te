@@ -1,3 +1,0 @@
-# Temporary permissive for debugging
-permissive adbd;
-permissive fastbootd;

@@ -1,5 +1,0 @@
-# ONLY KEEP ALLOW RULES - REMOVE TYPE DECLARATIONS
-allow adbd configfs:file { read write open };
-allow adbd sysfs_usb_device:file { read write open };
-allow adbd functionfs:dir { search };
-allow adbd functionfs:file { read write open };

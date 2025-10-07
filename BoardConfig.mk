@@ -129,7 +129,7 @@ PRODUCT_COPY_FILES += \
 BOARD_VENDOR_BOOT_MANIFEST_FILE := $(DEVICE_PATH)/manifest_vendor_boot.xml
 
 # Kernel modules for DUAL CPIO
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/recoveryxx/ramdisk/lib/modules/*.ko)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/recoveryx/ramdisk/lib/modules/*.ko)
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/recoveryx/recovery/lib/modules/*.ko)
 
 
@@ -256,7 +256,7 @@ BOARD_AVB_ODM_ROLLBACK_INDEX_LOCATION := 8
 VENDOR_SECURITY_PATCH := 2024-07-05
 
 # SEPolicy
-BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/common
+# BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/common
 
 # VINTF Configuration
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/vendor/etc/vintf/manifest.xml

@@ -1,5 +1,0 @@
-# FunctionFS for USB ADB
-type ffs_device, dev_type;
-
-allow adbd ffs_device:chr_file { read write open ioctl };
-allow init ffs_device:chr_file { read write open };

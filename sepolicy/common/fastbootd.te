@@ -1,3 +1,0 @@
-# ONLY KEEP ALLOW RULES - REMOVE TYPE DECLARATIONS
-allow fastbootd block_device:blk_file { read write open ioctl };
-allow fastbootd vendor_file:file { read open getattr };
