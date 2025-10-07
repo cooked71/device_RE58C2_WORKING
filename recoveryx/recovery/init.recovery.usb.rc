@@ -1,17 +1,22 @@
+# -------------------------------------------------
+# USB FUNCTION-FS SETUP FOR ADB (Unisoc ffs-umc)
+# -------------------------------------------------
 on early-init
-    # Prepare functionfs for ADB
+    # Prepare USB FunctionFS directories
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
 
-    # Set up USB controller and properties
+    # Detect USB controller dynamically
+    write /sys/class/udc/$(ls /sys/class/udc | head -n 1)/device/../../UDC ""
     setprop sys.usb.controller ffs-umc
     setprop sys.usb.configfs 1
     setprop sys.usb.config adb
     setprop sys.usb.ffs.ready 1
 
 on property:sys.usb.config=adb
-    # Reconfigure USB gadget for ADB
+    # Configure gadget for ADB
+    mkdir /config/usb_gadget/g1 0755 shell shell
     write /config/usb_gadget/g1/idVendor 0x18D1
     write /config/usb_gadget/g1/idProduct 0x4EE0
     mkdir /config/usb_gadget/g1/functions/ffs.adb
@@ -19,10 +24,3 @@ on property:sys.usb.config=adb
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state adb
-    start adbd
-
-service adbd /sbin/adbd --root_seclabel=u:r:adbd:s0
-    class core
-    socket adbd stream 660 system system
-    disabled
-    seclabel u:r:adbd:s0

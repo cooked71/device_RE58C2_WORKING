@@ -1,32 +1,65 @@
 import /init.recovery.common.rc
 import /init.recovery.usb.rc
 
-on init
-    start adbd
-
-
+# -------------------------------------------------
+# EARLY INIT
+# -------------------------------------------------
 on early-init
     start ueventd
     mkdir /system
     mkdir /vendor
     mkdir /product
     mkdir /system_ext
-
-on init
-    symlink /system/bin /bin
-    symlink /system/etc /etc
     mkdir /sdcard 0775 system system
     mkdir /tmp 0770 system system
 
+    # Temporarily permissive for bring-up; remove once verified
+    setenforce 0
+
+# -------------------------------------------------
+# FILESYSTEMS
+# -------------------------------------------------
 on fs
     mount_all /etc/recovery.fstab
 
+# -------------------------------------------------
+# KERNEL MODULES
+# -------------------------------------------------
 on boot
     insmod /lib/modules/sprd-ion.ko
     insmod /lib/modules/sprd-dma.ko
     insmod /lib/modules/trusty.ko
     insmod /lib/modules/ufs-sprd_qogirl6.ko
 
+# -------------------------------------------------
+# ADB SERVICE (starts when USB config=adb)
+# -------------------------------------------------
+on property:sys.usb.config=adb
+    setprop sys.usb.state adb
+    start adbd
+
+service adbd /sbin/adbd.recovery --root_seclabel=u:r:adbd:s0 --device_banner=recovery
+    class core
+    socket adbd stream 660 system system
+    disabled
+    oneshot
+    seclabel u:r:adbd:s0
+
+# -------------------------------------------------
+# FASTBOOTD SERVICE (for "adb reboot fastboot")
+# -------------------------------------------------
+on property:sys.recovery.reboot_into_fastbootd=1
+    start fastbootd
+
+service fastbootd /system/bin/fastbootd
+    class main
+    disabled
+    oneshot
+    seclabel u:r:fastbootd:s0
+
+# -------------------------------------------------
+# MAIN RECOVERY PROCESS
+# -------------------------------------------------
 service recovery /system/bin/recovery
     class main
     user root

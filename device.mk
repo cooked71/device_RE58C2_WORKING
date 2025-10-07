@@ -43,6 +43,12 @@ PRODUCT_SYSTEM_PROPERTIES += \
     vendor.sys.usb.configfs=1 \
     vendor.sys.usb.ffs.ready=1
 
+ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.debuggable=1 \
+    persist.sys.usb.config=adb \
+    service.adb.root=1
+
+
 # ===========================
 # Graphics - Remove AOSP conflicts
 # ===========================
