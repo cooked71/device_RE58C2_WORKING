@@ -152,26 +152,6 @@ PRODUCT_COPY_FILES += \
 # ===========================
 
 
-
-# ===========================
-# Graphics - Remove AOSP conflicts
-# ===========================
-
-# Remove AOSP graphics packages that conflict with vendor prebuilts
-PRODUCT_PACKAGES := $(filter-out gralloc.default,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out libGLES_mesa,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out android.hardware.graphics.allocator@2.0-service,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out android.hardware.graphics.mapper@2.0-impl,$(PRODUCT_PACKAGES))
-
-# Set Mali as default GPU
-PRODUCT_SYSTEM_PROPERTIES += \
-    ro.hardware.egl=mali \
-    ro.hardware.vulkan=mali \
-    ro.hardware.gpu=mali \
-    ro.hardware.gralloc=RE58C2 \
-    ro.hardware.hwcomposer=unisoc \
-    persist.graphics.egl=libGLES_mali.so
-
 ## ===========================
 # Core Product Packages (MUST MATCH Android.bp)
 # ===========================
