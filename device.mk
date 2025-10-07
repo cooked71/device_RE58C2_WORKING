@@ -60,8 +60,7 @@ PRODUCT_PACKAGES += \
     linker.vendor_ramdisk \
     resize2fs.vendor_ramdisk \
     shell_and_utilities_vendor_ramdisk \
-    tune2fs.vendor_ramdisk \
-    init.recovery.RE58C2
+    tune2fs.vendor_ramdisk 
 
 # ===========================
 # Files for NORMAL boot (ramdisk.cpio)
