@@ -60,8 +60,7 @@ PRODUCT_PACKAGES += \
     linker.vendor_ramdisk \
     resize2fs.vendor_ramdisk \
     shell_and_utilities_vendor_ramdisk \
-    tune2fs.vendor_ramdisk \
-    init.recovery.RE58C2
+    tune2fs.vendor_ramdisk 
 
 # ===========================
 # Files for NORMAL boot (ramdisk.cpio)
@@ -583,7 +582,7 @@ PRODUCT_PACKAGES += $(ROOTDIR_SCRIPTS)
 # Init Scripts
 # ===========================
 
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     init.RMX3624.usb.rc \
     init.cali.rc \
     init.module.rc \
@@ -622,7 +621,7 @@ PRODUCT_PACKAGES += \
 # Fstab Files
 # ===========================
 
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     fstab.module \
     fstab.RE58C2 \
     fstab.RMX3624 \
@@ -641,7 +640,7 @@ PRODUCT_PACKAGES += \
 # Ueventd Files
 # ===========================
 
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     ueventd.module.rc \
     ueventd.RE58C2.rc \
     ueventd.RMX3624.rc \
@@ -656,8 +655,7 @@ PRODUCT_PACKAGES += \
     ueventd.ums9230_nico.rc \
     ueventd.ums9230_zebu.rc
 
-PRODUCT_PACKAGES += \
-    recovery.fstab
+
 
 # ===========================
 # Recovery Files
