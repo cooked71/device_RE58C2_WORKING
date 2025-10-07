@@ -48,7 +48,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.hardware.gralloc=RE58C2 \
     ro.hardware.hwcomposer=unisoc \
     persist.graphics.egl=libGLES_mali.so
-.
+
 # ===========================
 # Recovery Configuration - MULTI-DEVICE DUAL CPIO
 # ===========================
