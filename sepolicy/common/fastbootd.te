@@ -1,0 +1,18 @@
+# FastbootD in Recovery
+type fastbootd, domain;
+type fastbootd_exec, exec_type, file_type, vendor_file_type;
+
+init_daemon_domain(fastbootd)
+
+# Block device access
+allow fastbootd block_device:blk_file { read write open ioctl };
+allow fastbootd self:capability { sys_rawio };
+
+# Partition access
+allow fastbootd system_file:file { read open getattr };
+allow fastbootd vendor_file:file { read open getattr };
+allow fastbootd bootloader_block_device:blk_file { read write };
+
+# USB access for fastboot
+allow fastbootd configfs:file { read write };
+allow fastbootd sysfs_usb_device:file { read write };

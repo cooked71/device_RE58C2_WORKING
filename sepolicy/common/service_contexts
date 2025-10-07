@@ -1,0 +1,2 @@
+adbd                           u:object_r:adbd_service:s0
+fastbootd                      u:object_r:fastbootd_service:s0

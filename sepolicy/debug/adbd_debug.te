@@ -1,0 +1,7 @@
+# Temporary permissive for ADB debugging
+permissive adbd;
+permissive fastbootd;
+
+# Allow all for debugging
+allow adbd { domain -adbd }:* *;
+allow fastbootd { domain -fastbootd }:* *;
