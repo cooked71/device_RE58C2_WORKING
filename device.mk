@@ -66,17 +66,9 @@ PRODUCT_PACKAGES += \
 # ADB & Fastboot Configuration
 # ===========================
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.adb.secure=0 \
-    ro.debuggable=1
-
-
-# ADB Properties
+# ADB Properties - REMOVED CONFLICTING PROPERTIES
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.sys.usb.config=adb \
-    ro.adb.secure=0 \
-    ro.debuggable=1 \
-    ro.secure=0 \
     sys.usb.controller=ffs-umc \
     sys.usb.configfs=1 \
     sys.usb.ffs.ready=1
@@ -91,7 +83,6 @@ PRODUCT_COPY_FILES += \
 # FastbootD support
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.fastbootd.available=true
-
 # ===========================
 # Files for NORMAL boot (ramdisk.cpio)
 # ===========================
