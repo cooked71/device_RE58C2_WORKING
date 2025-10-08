@@ -13,9 +13,6 @@ on early-init
     mkdir /sdcard 0775 system system
     mkdir /tmp 0770 system system
 
-    # Temporarily permissive for bring-up; remove once verified
-    setenforce 0
-
 # -------------------------------------------------
 # FILESYSTEMS
 # -------------------------------------------------
@@ -32,7 +29,7 @@ on boot
     insmod /lib/modules/ufs-sprd_qogirl6.ko
 
 # -------------------------------------------------
-# ADB SERVICE (starts when USB config=adb)
+# ADB SERVICE
 # -------------------------------------------------
 on property:sys.usb.config=adb
     setprop sys.usb.state adb
@@ -46,7 +43,7 @@ service adbd /sbin/adbd.recovery --root_seclabel=u:r:adbd:s0 --device_banner=rec
     seclabel u:r:adbd:s0
 
 # -------------------------------------------------
-# FASTBOOTD SERVICE (for "adb reboot fastboot")
+# FASTBOOTD SERVICE
 # -------------------------------------------------
 on property:sys.recovery.reboot_into_fastbootd=1
     start fastbootd
