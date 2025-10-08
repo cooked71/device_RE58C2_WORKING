@@ -323,7 +323,7 @@ PRODUCT_PACKAGES += \
 
 # Thermal Services (FIXED: Remove duplicate impl)
 PRODUCT_PACKAGES += \
-    vendor.sprd.hardware.thermal@2.0-service \
+    vendor.sprd.hardware.thermal@2.0-service 
     # vendor.sprd.hardware.thermal@2.0-impl \  # REMOVED - already included via vendor blobs
 
 # Add missing thermal daemon
