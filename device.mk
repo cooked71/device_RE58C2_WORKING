@@ -330,7 +330,7 @@ PRODUCT_PACKAGES += \
     thermal.default \
     thermal.conf \
     thermald.rc \
-    android.hardware.thermal@2.0.xml \
+    android.hardware.thermal@2.0-service.xml \
     vendor.sprd.hardware.thermal@2.0-service \
     vendor.sprd.hardware.thermal@2.0 \
     vendor.sprd.hardware.thermal@2.0-impl
