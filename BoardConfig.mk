@@ -273,21 +273,21 @@ DEVICE_MANIFEST_FILE += \
     $(foreach f,$(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml),$(f))
 
 # Add manifest fragments if they exist
-ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml))
-  DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml
-endif
+#ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml))
+#  DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml
+# endif
 
-ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.health-service.example.xml))
-   DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.health-service.example.xml
-endif
+#ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.health-service.example.xml))
+#   DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.health-service.example.xml
+#endif
 
-ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/vendor-power-default.xml))
-    DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/vendor-power-default.xml
-endif
+#ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/vendor-power-default.xml))
+#    DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/vendor-power-default.xml
+#endif
 
-ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.thermal@2.0-service.xml))
-    DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.thermal@2.0-service.xml
-endif
+#ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.thermal@2.0-service.xml))
+#    DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.thermal@2.0-service.xml
+#endif
 
 # Enable VINTF enforcement
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
