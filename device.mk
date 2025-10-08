@@ -454,7 +454,7 @@ PRODUCT_PACKAGES += \
 # ===========================
 
 # Include all vendor manifest fragments as found in stock
-DEVICE_MANIFEST_FILES += \
+# DEVICE_MANIFEST_FILES += \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/ai_engine-default.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml \
@@ -496,7 +496,7 @@ DEVICE_MANIFEST_FILES += \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vibrator.xml
 
 # Also include compatibility matrix if it exists
-DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
+#DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
 
 # ===========================
 # Boot HAL Configuration
