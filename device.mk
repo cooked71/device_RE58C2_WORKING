@@ -124,11 +124,13 @@ PRODUCT_COPY_FILES += \
 # ===========================
 # Files for RECOVERY boot (recovery.cpio)
 # ===========================
-
+init.recovery.ums9230_hulk.rc
 # Recovery init script
 PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/recoveryx/recovery/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc \
-      $(LOCAL_PATH)/recoveryx/recovery/init.recovery.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.RE58C2.rc
+      $(LOCAL_PATH)/recoveryx/recovery/init.recovery.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.RE58C2.rc \
+      $(LOCAL_PATH)/recoveryx/recovery/init.recovery.ums9230_hulk.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_hulk.rc
+
 
 
 # All ueventd files for recovery.cpio
