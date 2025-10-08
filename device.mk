@@ -208,6 +208,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.allocator@4.0-service \
+    android.hardware.thermal@2.0-service \
     android.hardware.security.keymint@2.0-unisoc.service.trusty
 
 # Vendor Services
