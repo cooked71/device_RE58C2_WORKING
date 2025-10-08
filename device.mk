@@ -31,23 +31,6 @@ PRODUCT_SOONG_NAMESPACES += \
     external/mesa3d
 
 
-# ===========================
-# SELinux Policy
-# ===========================
-
-
-
-PRODUCT_SYSTEM_PROPERTIES += \
-    vendor.sys.usb.config=adb \
-    vendor.sys.usb.controller=ffs-umc \
-    vendor.sys.usb.configfs=1 \
-    vendor.sys.usb.ffs.ready=1
-
- PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.debuggable=1 \
-    persist.sys.usb.config=adb \
-    service.adb.root=1
-
 
 # ===========================
 # Graphics - Remove AOSP conflicts
