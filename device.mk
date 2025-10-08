@@ -373,9 +373,11 @@ PRODUCT_PACKAGES += \
     gralloc_configuration
 
 # VINTF Manifests
+# PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-service.trusty.manifest \
+    android.hardware.health-service.example.manifest 
+
 PRODUCT_PACKAGES += \
-    #android.hardware.gatekeeper@1.0-service.trusty.manifest \
-    #android.hardware.health-service.example.manifest \ #
     vendor-power-default.manifest
 
 # Vendor DLKM Modules
