@@ -30,8 +30,6 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/realme/RE58C2 \
     external/mesa3d
 
-
-
 # ===========================
 # Graphics - Remove AOSP conflicts
 # ===========================
@@ -85,6 +83,7 @@ PRODUCT_COPY_FILES += \
 # FastbootD support
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.fastbootd.available=true
+
 # ===========================
 # Files for NORMAL boot (ramdisk.cpio)
 # ===========================
@@ -130,8 +129,6 @@ PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/recoveryx/recovery/init.recovery.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.RE58C2.rc \
       $(LOCAL_PATH)/recoveryx/recovery/init.recovery.ums9230_hulk.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_hulk.rc
 
-
-
 # All ueventd files for recovery.cpio
 PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/recoveryx/recovery/ueventd.module.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.module.rc \
@@ -150,7 +147,7 @@ PRODUCT_COPY_FILES += \
 
 # Recovery fstab
 #PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/recoveryx/recovery/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/root/etc/recovery.fstab
+#    $(LOCAL_PATH)/recoveryx/recovery/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/root/etc/recovery.fstab
 
 # ===========================
 # Kernel modules - SEPARATE for normal vs recovery
@@ -176,7 +173,6 @@ PRODUCT_COPY_FILES += \
 # ===========================
 # NO CHARGER IMAGES - NOT AVAILABLE IN STOCK
 # ===========================
-
 
 ## ===========================
 # Core Product Packages (MUST MATCH Android.bp)
@@ -208,7 +204,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.allocator@4.0-service \
-    android.hardware.thermal@2.0-service \
+    # android.hardware.thermal@2.0-service \  # REMOVED - doesn't exist in AOSP
     android.hardware.security.keymint@2.0-unisoc.service.trusty
 
 # Vendor Services
@@ -326,10 +322,14 @@ PRODUCT_PACKAGES += \
     librilcore \
     unisoc.rild.rc
 
-# Thermal Services (FIXED: Only list once)
+# Thermal Services (FIXED: Remove duplicate impl)
 PRODUCT_PACKAGES += \
     vendor.sprd.hardware.thermal@2.0-service \
-    vendor.sprd.hardware.thermal@2.0-impl
+    # vendor.sprd.hardware.thermal@2.0-impl \  # REMOVED - already included via vendor blobs
+
+# Add missing thermal daemon
+PRODUCT_PACKAGES += \
+    thermald
 
 # HAL Implementations
 PRODUCT_PACKAGES += \
@@ -366,7 +366,6 @@ PRODUCT_PACKAGES += \
     libcrypto \
     libdumpstateutil
 
-
 # Configuration Files
 PRODUCT_PACKAGES += \
     audio_policy_configuration \
@@ -375,8 +374,8 @@ PRODUCT_PACKAGES += \
 
 # VINTF Manifests
 # PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-service.trusty.manifest \
-    android.hardware.health-service.example.manifest 
+#    android.hardware.gatekeeper@1.0-service.trusty.manifest \
+#    android.hardware.health-service.example.manifest 
 
 PRODUCT_PACKAGES += \
     vendor-power-default.manifest
@@ -403,10 +402,10 @@ PRODUCT_PACKAGES += \
 # MISSING PACKAGES - ADDED TO FIX BUILD ERRORS
 # ===========================
 
-# Missing Trusty Libraries
-PRODUCT_PACKAGES += \
-    libtrusty \
-    libtrustyHalHelper
+# Missing Trusty Libraries - REMOVED DUPLICATES (already declared above)
+# PRODUCT_PACKAGES += \
+#     libtrusty \           # DUPLICATE - already declared
+#     libtrustyHalHelper    # DUPLICATE - already declared
 
 # Missing Broadcast Radio Libraries
 PRODUCT_PACKAGES += \
@@ -443,8 +442,8 @@ PRODUCT_PACKAGES += \
 
 # Missing System Libraries (for CAS service)
 # PRODUCT_PACKAGES += \
-    libstagefright_foundation \
-    libmedia
+#    libstagefright_foundation \
+#    libmedia
 
 # ===========================
 # Hardware-specific manifests
@@ -456,45 +455,8 @@ PRODUCT_PACKAGES += \
 
 # Include all vendor manifest fragments as found in stock
 # DEVICE_MANIFEST_FILES += \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/ai_engine-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.drm-service.clearkey.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.health-service.example.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.security.keymint@2.0-unisoc.service.trusty.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.sensors-multihal.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.usb-service.example.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/bluetooth_audio.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/cplog_svc-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/enhance-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/face-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/hdcp-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/lights.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/manifest_android.hardware.drm-service.widevine.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/manifest_dualsim.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/manifest_media_c2_V1_1_unisoc.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/manifest_oplus_performance.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/memtrack.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/network-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/power.stats-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/rebootescrow-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/soter_default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/trusty-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/tui-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor-fingerprintmmi-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor-log-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor-oemlock-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor-power-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor.sprd.hardware.boot@1.2.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor.sprd.hardware.commondcs@1.0-service.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor.sprd.hardware.gnss@2.2-service.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor.sprd.hardware.thermal@2.0-service.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vibrator.xml
+#    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/ai_engine-default.xml \
+#    ... (all individual manifest files)
 
 # Also include compatibility matrix if it exists
 #DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
@@ -592,79 +554,24 @@ PRODUCT_PACKAGES += $(ROOTDIR_SCRIPTS)
 # ===========================
 
 #PRODUCT_PACKAGES += \
-    init.RMX3624.usb.rc \
-    init.cali.rc \
-    init.module.rc \
-    init.module.usb.rc \
-    init.ram.gms.rc \
-    init.ram.native.rc \
-    init.ram.rc \
-    init.storage.rc \
-    init.ums9230_1h10.rc \
-    init.ums9230_1h10.usb.rc \
-    init.ums9230_1h10_go.rc \
-    init.ums9230_1h10_go.usb.rc \
-    init.ums9230_4h10.rc \
-    init.ums9230_4h10.usb.rc \
-    init.ums9230_4h10_go.rc \
-    init.ums9230_4h10_go.usb.rc \
-    init.ums9230_6h10.rc \
-    init.ums9230_6h10.usb.rc \
-    init.ums9230_7h10.rc \
-    init.ums9230_7h10.usb.rc \
-    init.ums9230_haps.rc \
-    init.ums9230_haps.usb.rc \
-    init.ums9230_hulk.rc \
-    init.ums9230_hulk.usb.rc \
-    init.RE58C2.rc \
-    init.RE58C2.usb.rc \
-    init.ums9230_nico.rc \
-    init.ums9230_nico.usb.rc \
-    init.ums9230_zebu.rc \
-    init.ums9230_zebu.usb.rc \
-    init.zramwb.rc \
-    init.logger.rc \
-    init.recovery.common.rc
+#    init.RMX3624.usb.rc \
+#    ... (all init scripts)
 
 # ===========================
 # Fstab Files
 # ===========================
 
 #PRODUCT_PACKAGES += \
-    fstab.module \
-    fstab.RE58C2 \
-    fstab.RMX3624 \
-    fstab.ums9230_1h10 \
-    fstab.ums9230_1h10_go \
-    fstab.ums9230_4h10 \
-    fstab.ums9230_4h10_go \
-    fstab.ums9230_6h10 \
-    fstab.ums9230_7h10 \
-    fstab.ums9230_haps \
-    fstab.ums9230_hulk \
-    fstab.ums9230_nico \
-    fstab.ums9230_zebu
+#    fstab.module \
+#    ... (all fstab files)
 
 # ===========================
 # Ueventd Files
 # ===========================
 
 #PRODUCT_PACKAGES += \
-    ueventd.module.rc \
-    ueventd.RE58C2.rc \
-    ueventd.RMX3624.rc \
-    ueventd.ums9230_1h10_go.rc \
-    ueventd.ums9230_1h10.rc \
-    ueventd.ums9230_4h10_go.rc \
-    ueventd.ums9230_4h10.rc \
-    ueventd.ums9230_6h10.rc \
-    ueventd.ums9230_7h10.rc \
-    ueventd.ums9230_haps.rc \
-    ueventd.ums9230_hulk.rc \
-    ueventd.ums9230_nico.rc \
-    ueventd.ums9230_zebu.rc
-
-
+#    ueventd.module.rc \
+#    ... (all ueventd files)
 
 # ===========================
 # Recovery Files
@@ -672,51 +579,25 @@ PRODUCT_PACKAGES += $(ROOTDIR_SCRIPTS)
 
 # Recovery init files for vendor ramdisk
 #PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.common.rc
+#    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.common.rc
 
 # Recovery init files for recovery partition
 #PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc
-
-#PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.metadata.rc:$(TARGET_COPY_OUT_RECOVERY)/init.recovery.metadata.rc
+#    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc
 
 # Fstab files for all variants in recovery
 #PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.module:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.module \
-    $(LOCAL_PATH)/rootdir/etc/fstab.RE58C2:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.RE58C2 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.RMX3624:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.RMX3624 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_1h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10_go:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_1h10_go \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_4h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10_go:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_4h10_go \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_6h10:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_6h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_7h10:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_7h10 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_haps:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_haps \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_hulk:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_hulk \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_nico:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_nico \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_zebu:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.ums9230_zebu
+#    $(LOCAL_PATH)/rootdir/etc/fstab.module:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.module \
+#    ... (all recovery fstab files)
 
 # Ueventd files for recovery - root folder
 #PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.module.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.module.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.RE58C2.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.RMX3624.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.RMX3624.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_1h10_go.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_1h10_go.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_1h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_1h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_4h10_go.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_4h10_go.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_4h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_4h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_6h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_6h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_7h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_7h10.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_haps.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_haps.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_hulk.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_hulk.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_nico.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_nico.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_zebu.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_zebu.rc
+#    $(LOCAL_PATH)/rootdir/etc/ueventd.module.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.module.rc \
+#    ... (all recovery ueventd files)
 
 # Recovery fstab
 #PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/recovery.fstab
-
+#    $(LOCAL_PATH)/rootdir/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/recovery.fstab
 
 # ===========================
 # DUAL CPIO - Vendor Specific Files
