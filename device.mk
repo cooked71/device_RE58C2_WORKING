@@ -127,7 +127,7 @@ PRODUCT_COPY_FILES += \
 
 # Recovery init script
 PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/recoveryx/recovery/init.recovery.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.RE58C2.rc
+      $(LOCAL_PATH)/recoveryx/recovery/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc
 
 # All ueventd files for recovery.cpio
 PRODUCT_COPY_FILES += \
