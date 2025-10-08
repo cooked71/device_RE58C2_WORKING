@@ -2,6 +2,7 @@
 
 # Import common recovery functionality (TWRP-derived)
 import /init.recovery.common.rc
+import /init.recovery.usb.rc
 
 # Device-specific USB IDs
 on fs
