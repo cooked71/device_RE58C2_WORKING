@@ -322,13 +322,20 @@ PRODUCT_PACKAGES += \
     unisoc.rild.rc
 
 # Thermal Services (FIXED: Remove duplicate impl)
-PRODUCT_PACKAGES += \
-    vendor.sprd.hardware.thermal@2.0-service 
-    # vendor.sprd.hardware.thermal@2.0-impl \  # REMOVED - already included via vendor blobs
+    
 
-# Add missing thermal daemon
+# Complete thermal management stack
 PRODUCT_PACKAGES += \
-    thermald
+    thermald \
+    thermal.default \
+    thermal.conf \
+    thermald.rc \
+    android.hardware.thermal@2.0.xml \
+    vendor.sprd.hardware.thermal@2.0-service \
+    vendor.sprd.hardware.thermal@2.0 \
+    vendor.sprd.hardware.thermal@2.0-impl
+
+
 
 # HAL Implementations
 PRODUCT_PACKAGES += \
