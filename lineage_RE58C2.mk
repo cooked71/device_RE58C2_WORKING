@@ -8,21 +8,18 @@
 # INHERITANCE - FIXED ORDER (MOST GENERAL FIRST)
 # =============================================
 
-# 1. LineageOS configurations FIRST - provides base LineageOS apps/features
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
-
-# 2. AOSP core components
+# 1. AOSP core components
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# 3. APEX updates
+# 2. APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# 4. A/B partitioning
+# 3. A/B partitioning
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
-# 5. Device-specific configurations LAST - can override everything
+# 4. Device-specific configurations LAST - includes LineageOS inheritance
 $(call inherit-product, device/realme/RE58C2/device.mk)
 
 # =============================================
