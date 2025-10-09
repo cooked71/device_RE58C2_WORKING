@@ -3,9 +3,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# =============================================
-# STANDARD AOSP INHERITANCES
-# =============================================
 # Dalvik VM Configuration
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
@@ -14,6 +11,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 
 # Allow userspace reboots
 $(call inherit-product, $(SRC_TARGET_DIR)/product/userspace_reboot.mk)
+
 
 # =============================================
 # DEVICE-SPECIFIC CONFIGURATION
@@ -37,6 +35,8 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/realme/RE58C2 \
     external/mesa3d
 
+
+
 # ===========================
 # Graphics - Remove AOSP conflicts
 # ===========================
@@ -47,10 +47,7 @@ PRODUCT_PACKAGES := $(filter-out libGLES_mesa,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out android.hardware.graphics.allocator@2.0-service,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out android.hardware.graphics.mapper@2.0-impl,$(PRODUCT_PACKAGES))
 
-# =============================================
-# LINEAGEOS INHERITANCE (AFTER FILTERING)
-# =============================================
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
 
 
 # Set Mali as default GPU
