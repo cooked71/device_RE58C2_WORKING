@@ -5,22 +5,19 @@
 #
 
 # =============================================
-# INHERITANCE - FIXED ORDER (MOST GENERAL FIRST)
+# AOSP CORE INHERITANCE (WORKING PATTERN)
 # =============================================
-
-# 1. AOSP core components
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# 2. APEX updates
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+# =============================================
+# LINEAGEOS INHERITANCE
+# =============================================
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# 3. A/B partitioning
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
-
-# 4. Device-specific configurations LAST - includes LineageOS inheritance
-$(call inherit-product, device/realme/RE58C2/device.mk)
+# =============================================
+# DEVICE INHERITANCE
+# =============================================
 
 # =============================================
 # Super partition forcing
