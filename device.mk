@@ -3,6 +3,15 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# =============================================
+# CRITICAL: INHERIT LINEAGEOS FIRST
+# =============================================
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+# =============================================
+# Standard AOSP Inheritances
+# =============================================
+
 # Dalvik VM Configuration
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
