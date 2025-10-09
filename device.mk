@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
- =============================================
+# =============================================
 # AOSP CORE SYSTEM INHERITANCE
 # =============================================
 $(call inherit-product, build/make/target/product/handheld_system.mk)
