@@ -47,6 +47,12 @@ PRODUCT_PACKAGES := $(filter-out libGLES_mesa,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out android.hardware.graphics.allocator@2.0-service,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out android.hardware.graphics.mapper@2.0-impl,$(PRODUCT_PACKAGES))
 
+# =============================================
+# LINEAGEOS INHERITANCE (AFTER FILTERING)
+# =============================================
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+
 # Set Mali as default GPU
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.hardware.egl=mali \
