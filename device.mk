@@ -3,15 +3,15 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+ =============================================
+# AOSP CORE SYSTEM INHERITANCE
 # =============================================
-# CRITICAL: INHERIT LINEAGEOS FIRST
-# =============================================
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, build/make/target/product/handheld_system.mk)
+$(call inherit-product, build/make/target/product/handheld_system_ext.mk)
 
 # =============================================
-# Standard AOSP Inheritances
+# STANDARD AOSP INHERITANCES
 # =============================================
-
 # Dalvik VM Configuration
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
@@ -20,6 +20,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 
 # Allow userspace reboots
 $(call inherit-product, $(SRC_TARGET_DIR)/product/userspace_reboot.mk)
+
+# =============================================
+# LINEAGEOS INHERITANCE (AFTER AOSP)
+# =============================================
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := false
