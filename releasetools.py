@@ -19,11 +19,25 @@ import re
 
 def FullOTA_InstallEnd(info):
   OTA_InstallEnd(info)
+  SetErofsFilesystemTypes(info)
   return
 
 def IncrementalOTA_InstallEnd(info):
   OTA_InstallEnd(info)
+  SetErofsFilesystemTypes(info)
   return
+
+def SetErofsFilesystemTypes(info):
+  """Set EROFS filesystem type for all EROFS partitions in the OTA"""
+  info.script.Print("Setting EROFS filesystem types...")
+  
+  # Set filesystem type for all EROFS partitions
+  erofs_partitions = ["system", "vendor", "product", "system_ext", "odm", "vendor_dlkm"]
+  
+  for partition in erofs_partitions:
+      info.script.SetFilesystemType(partition, "erofs")
+  
+  info.script.Print("EROFS filesystem types configured")
 
 def AddImage(info, basename, dest):
   name = basename
