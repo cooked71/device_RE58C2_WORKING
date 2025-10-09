@@ -25,6 +25,9 @@
     # 5. Inherit common LineageOS configurations (LEAST specific)
     $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+    # 1. Inherit from device FIRST (most specific)
+    $(call inherit-product, device/realme/RE58C2/device.mk)
+
 
     # =============================================
     # Force super image generation despite LineageOS patch
