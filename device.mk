@@ -686,25 +686,7 @@ ifneq ($(TARGET_BOARD_PLATFORM),)
 PRODUCT_PLATFORM := ums9230
 endif
 
-# ===========================
-# Core AOSP/Lineage Apps
-# ===========================
 
-PRODUCT_PACKAGES += \
-    Browser2 \
-    Calendar \
-    Contacts \
-    DocumentsUI \
-    Gallery2 \
-    Launcher3QuickStep \
-    LatinIME \
-    Music \
-    MmsService \
-    Settings \
-    SettingsIntelligence \
-    SystemUI \
-    TeleService \
-    Updater
 
 # ===========================
 # Overrides
