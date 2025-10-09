@@ -296,7 +296,7 @@ ODM_MANIFEST_FILES += vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nf
 
 # EROFS OTA Configuration
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
-TARGET_POSTINSTALL_FSTAB := $(DEVICE_PATH)/product/etc/fstab.postinstall
+# TARGET_POSTINSTALL_FSTAB := $(DEVICE_PATH)/product/etc/fstab.postinstall
 BOARD_USES_EROFS_POSTINSTALL := true
 
 # Ensure the install plan picks up EROFS
