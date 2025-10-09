@@ -13,7 +13,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # =============================================
 # LINEAGEOS INHERITANCE
 # =============================================
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# MOVED TO DEVICE.MK $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # =============================================
 # DEVICE INHERITANCE
