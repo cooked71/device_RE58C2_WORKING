@@ -485,8 +485,8 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.bootctrl=android.hardware.boot@1.2-impl
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/product/etc/fstab.postinstall:$(TARGET_COPY_OUT_PRODUCT)/etc/fstab.postinstall \
-    $(LOCAL_PATH)/product/etc/fstab.postinstall:$(TARGET_COPY_OUT_RECOVERY)/product/etc/fstab.postinstall
+    $(LOCAL_PATH)/product/etc/fstab.postinstall:$(TARGET_COPY_OUT_PRODUCT)/etc/fstab.postinstall 
+#    $(LOCAL_PATH)/product/etc/fstab.postinstall:$(TARGET_COPY_OUT_RECOVERY)/product/etc/fstab.postinstall
 
 # ===========================
 # A/B OTA Configuration
