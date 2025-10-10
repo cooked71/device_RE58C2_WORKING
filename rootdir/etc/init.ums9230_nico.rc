@@ -2,21 +2,15 @@ import /vendor/etc/init/hw/init.${ro.hardware}.usb.rc
 import /vendor/etc/init/hw/init.ram.rc
 import /vendor/etc/init/hw/init.storage.rc
 import /vendor/etc/init/hw/init.cali.rc
-import /vendor/etc/init/hw/init.logger.rc
 
 on init
     start watchdogd
     chmod 0660 /sys/power/wakeup_count
-    # Logger
-    start boot_log
-    start boot_log_crash
-    start boot_log_kernel
-
 
 on post-fs-data
     setprop vold.post_fs_data_done 1
     # setprop debug.sf.latch_unsignaled 1
-    # insmod ${ro.vendor.ko.mount.point}/socko/akm4377.ko
+    insmod ${ro.vendor.ko.mount.point}/socko/akm4377.ko
 
 # Set watchdog timer to 30 seconds and pet it every 10 seconds to get a 20 second margin
 service watchdogd /system/bin/watchdogd 10 30
@@ -28,8 +22,8 @@ on boot
 #UNISOC: Support aging test charging limit function
     chown system system /sys/class/power_supply/battery/charger.0/stop_charge
     chmod 0664 /sys/class/power_supply/battery/charger.0/stop_charge
-    
-    # for devfreq mm
+
+# for devfreq mm
     chmod 660 /sys/class/devfreq/isp-dvfs/isp_governor/set_work_freq
     chown cameraserver system /sys/class/devfreq/isp-dvfs/isp_governor/set_work_freq
     chmod 660 /sys/class/devfreq/dcam-if-dvfs/dcam-if_governor/set_work_freq
@@ -43,55 +37,12 @@ on boot
     chmod 660 /sys/class/devfreq/fd-dvfs/fd_governor/set_work_index
     chown cameraserver system /sys/class/devfreq/fd-dvfs/fd_governor/set_work_index
 
-# Logger
-# Logger
-# Use /cache instead of /data (cache is usually unencrypted)
-service boot_log /system/bin/logcat -b all -D -f /cache/boot_log_full.txt
-    class main
-    user root
-    group root system
-    oneshot
-
-service boot_log_crash /system/bin/logcat -b crash -D -f /cache/boot_log_crash.txt  
-    class main
-    user root
-    group root system
-    oneshot
-
-service boot_log_kernel /system/bin/logcat -b kernel -D -f /cache/boot_log_kernel.txt
-    class main
-    user root
-    group root system
-    oneshot
-
 on early-boot
     # Wait for insmod_sh to finish all modules
     # comment out for bringup
     # wait_for_prop vendor.all.modules.ready 1
-    # Logger
-    start boot_log
-    start boot_log_crash
-    start boot_log_kernel
-
-on late-init
-# Logger
-    start boot_log
-    start boot_log_crash
-    start boot_log_kernel
-
-on late-fs
-# Logger
-    start boot_log
-    start boot_log_crash
-    start boot_log_kernel
 
 on early-init
-    # Bind mount vendor_dlkm modules to vendor/lib/modules  
-    mount -o bind /vendor_dlkm/lib/modules /vendor/lib/modules
-
-    # Bind mount system_dlkm modules to system/lib/modules
-    mount -o bind /system_dlkm/lib/modules /system/lib/modules
- 
     start insmod-sh
 
 service insmod-sh /vendor/bin/init.insmod.sh /vendor/lib/modules/init.insmod.cfg ${ro.bootmode}
@@ -103,10 +54,6 @@ service insmod-sh /vendor/bin/init.insmod.sh /vendor/lib/modules/init.insmod.cfg
 
 on property:sys.boot_completed=1
     write /sys/bus/platform/drivers/sprd_serial/200a0000.serial/uart_gpio_ctrl 1
-    stop boot_log
-    stop boot_log_crash
-    stop boot_log_kernel
-
 
 on property:dev.bootcomplete=1
     start mmc_ffu
