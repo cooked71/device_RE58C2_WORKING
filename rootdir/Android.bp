@@ -241,19 +241,6 @@ prebuilt_etc {
     vendor: true,
 }
 
-prebuilt_etc {
-    name: "init.RE58C2.rc",
-    src: "etc/init.RE58C2.rc",
-    sub_dir: "init/hw",
-    vendor: true,
-}
-
-prebuilt_etc {
-    name: "init.RE58C2.usb.rc",
-    src: "etc/init.RE58C2.usb.rc",
-    sub_dir: "init/hw",
-    vendor: true,
-}
 
 prebuilt_etc {
     name: "init.ums9230_nico.rc",
