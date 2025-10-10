@@ -87,7 +87,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.usb.config=adb
 
 # USB init file
-PRODUCT_COPY_FILES += \
+# PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recoveryx/recovery/init.recovery.usb.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.usb.rc
 
 # FastbootD support
