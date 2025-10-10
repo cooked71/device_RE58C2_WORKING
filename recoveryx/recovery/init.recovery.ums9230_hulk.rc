@@ -4,6 +4,19 @@
 import /init.recovery.common.rc
 import /init.recovery.usb.rc
 
+# Create metadata directories for A/B updates
+on early-init
+    # Ensure /metadata/ota structure exists
+    mkdir /metadata/ota 0755 system system
+    mkdir /metadata/ota/snapshots 0755 system system
+    chmod 0755 /metadata/ota
+    chmod 0755 /metadata/ota/snapshots
+
+on post-fs-data
+    # Double-check after metadata is mounted
+    exec u:r:init:s0 -- /system/bin/sh -c "if [ ! -d /metadata/ota ]; then mkdir -p /metadata/ota/snapshots && chmod 0755 /metadata/ota /metadata/ota/snapshots; fi"
+
+
 # Device-specific USB IDs
 on fs
     # Set vendor/product IDs for ADB and fastboot
