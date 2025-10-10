@@ -11,17 +11,17 @@ on early-init
     mkdir /metadata/ota/snapshots 0755 system system
     chmod 0755 /metadata/ota
     chmod 0755 /metadata/ota/snapshots
-    
-    # Set USB vendor/product IDs early to avoid conflicts
-    setprop ro.recovery.usb.vid 04E8
-    setprop ro.recovery.usb.adb.pid 6860
 
 on post-fs-data
     # Double-check after metadata is mounted
     exec u:r:init:s0 -- /system/bin/sh -c "if [ ! -d /metadata/ota ]; then mkdir -p /metadata/ota/snapshots && chmod 0755 /metadata/ota /metadata/ota/snapshots; fi"
 
-# REMOVED CONFLICTING SECTION - USB IDs are now set in early-init as properties
-# and will be used by init.recovery.usb.rc
+
+# Device-specific USB IDs
+on fs
+    # Set vendor/product IDs for ADB and fastboot
+    write /config/usb_gadget/g1/idVendor 0x${ro.recovery.usb.vid}
+    write /config/usb_gadget/g1/idProduct 0x${ro.recovery.usb.adb.pid}
 
 # Optional: set other device-specific strings
 on fs
