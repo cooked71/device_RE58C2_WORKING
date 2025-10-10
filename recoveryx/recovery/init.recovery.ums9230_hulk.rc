@@ -16,9 +16,19 @@ on post-fs-data
     # Double-check after metadata is mounted
     exec u:r:init:s0 -- /system/bin/sh -c "if [ ! -d /metadata/ota ]; then mkdir -p /metadata/ota/snapshots && chmod 0755 /metadata/ota /metadata/ota/snapshots; fi"
 
+# CRITICAL: Clean USB state before any USB configuration
+on property:sys.powerctl=*
+    # Clean up USB gadget before reboot to prevent hangs
+    write /config/usb_gadget/g1/UDC "none"
+    stop adbd
+    stop fastbootd
+    # Small delay to ensure cleanup completes
+    exec -- /system/bin/sleep 0.1
+
 # OVERRIDE the common USB configuration with our own
 on property:sys.usb.configfs=1 && property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb
     # Clean up any existing configuration first
+    write /config/usb_gadget/g1/UDC "none"
     rm /config/usb_gadget/g1/configs/b.1/f1
     rm /config/usb_gadget/g1/configs/b.1/f2
     rm /config/usb_gadget/g1/configs/b.1/f3
@@ -39,6 +49,7 @@ on property:sys.usb.configfs=1 && property:sys.usb.ffs.ready=1 && property:sys.u
 
 # Override MTP+ADB configuration
 on property:sys.usb.configfs=1 && property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,adb
+    write /config/usb_gadget/g1/UDC "none"
     rm /config/usb_gadget/g1/configs/b.1/f1
     rm /config/usb_gadget/g1/configs/b.1/f2
     rm /config/usb_gadget/g1/configs/b.1/f3
@@ -57,6 +68,7 @@ on property:sys.usb.configfs=1 && property:sys.usb.ffs.ready=1 && property:sys.u
 
 # Override fastboot configuration
 on property:sys.usb.configfs=1 && property:sys.usb.ffs.ready=1 && property:sys.usb.config=fastboot
+    write /config/usb_gadget/g1/UDC "none"
     rm /config/usb_gadget/g1/configs/b.1/f1
     rm /config/usb_gadget/g1/configs/b.1/f2
     rm /config/usb_gadget/g1/configs/b.1/f3
@@ -72,6 +84,18 @@ on property:sys.usb.configfs=1 && property:sys.usb.ffs.ready=1 && property:sys.u
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
 
+# Clean USB state when switching to none
+on property:sys.usb.config=none
+    write /config/usb_gadget/g1/UDC "none"
+    stop adbd
+    stop fastbootd
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    setprop sys.usb.state ${sys.usb.config}
+
 # Optional: set device-specific strings (these don't conflict)
 on fs
     write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
@@ -85,8 +109,3 @@ on property:sys.usb.config=adb
 # Start fastboot if USB is configured
 on property:sys.usb.config=fastboot
     start fastbootd
-
-# Stop both if USB is disconnected
-on property:sys.usb.config=none
-    stop adbd
-    stop fastbootd
