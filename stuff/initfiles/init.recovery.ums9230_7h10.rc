@@ -1,2 +1,0 @@
-on early-init
-    import /init.recovery.common.rc
