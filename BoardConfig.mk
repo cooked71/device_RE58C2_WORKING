@@ -68,7 +68,7 @@ TARGET_USES_PREBUILT_GPU_DRIVER := true
 TARGET_GPU_PLATFORM := mali
 
 # EGL configuration
-BOARD_EGL_CFG := $(DEVICE_PATH)/stuff/egl.cfg
+BOARD_EGL_CFG := $(DEVICE_PATH)/prebuilts/egl.cfg
 
 # Force use of vendor prebuilts only
 TARGET_PROVIDES_GRALLOC_HAL := true
@@ -255,13 +255,6 @@ BOARD_AVB_ODM_ROLLBACK_INDEX_LOCATION := 8
 # Security patch level
 VENDOR_SECURITY_PATCH := 2024-07-05
 
-# SEPolicy
-# BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/common
-
-# VINTF Configuration
-# DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/vendor/etc/vintf/manifest.xml
-# DEVICE_MATRIX_FILE := $(DEVICE_PATH)/vendor/etc/vintf/compatibility_matrix.xml
-# DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/product/etc/vintf/compatibility_matrix.xml
 
 # =============================================
 # VINTF Configuration
@@ -272,22 +265,6 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/realme/RE58C2/proprietary/p
 DEVICE_MANIFEST_FILE += \
     $(foreach f,$(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml),$(f))
 
-# Add manifest fragments if they exist
-#ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml))
-#  DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml
-# endif
-
-#ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.health-service.example.xml))
-#   DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.health-service.example.xml
-#endif
-
-#ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/vendor-power-default.xml))
-#    DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/vendor-power-default.xml
-#endif
-
-#ifneq (,$(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.thermal@2.0-service.xml))
-#    DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest/android.hardware.thermal@2.0-service.xml
-#endif
 
 # Enable VINTF enforcement
 PRODUCT_ENFORCE_VINTF_MANIFEST := true

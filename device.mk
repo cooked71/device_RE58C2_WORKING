@@ -387,10 +387,6 @@ PRODUCT_PACKAGES += \
     media_codecs \
     gralloc_configuration
 
-# VINTF Manifests
-# PRODUCT_PACKAGES += \
-#    android.hardware.gatekeeper@1.0-service.trusty.manifest \
-#    android.hardware.health-service.example.manifest 
 
 PRODUCT_PACKAGES += \
     vendor-power-default.manifest
@@ -417,10 +413,6 @@ PRODUCT_PACKAGES += \
 # MISSING PACKAGES - ADDED TO FIX BUILD ERRORS
 # ===========================
 
-# Missing Trusty Libraries - REMOVED DUPLICATES (already declared above)
-# PRODUCT_PACKAGES += \
-#     libtrusty \           # DUPLICATE - already declared
-#     libtrustyHalHelper    # DUPLICATE - already declared
 
 # Missing Broadcast Radio Libraries
 PRODUCT_PACKAGES += \
@@ -455,26 +447,6 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.voice-V1-ndk \
     android.hardware.radio.messaging-V1-ndk
 
-# Missing System Libraries (for CAS service)
-# PRODUCT_PACKAGES += \
-#    libstagefright_foundation \
-#    libmedia
-
-# ===========================
-# Hardware-specific manifests
-# ===========================
-
-# ===========================
-# VINTF Manifest Configuration (STOCK STRUCTURE)
-# ===========================
-
-# Include all vendor manifest fragments as found in stock
-# DEVICE_MANIFEST_FILES += \
-#    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/ai_engine-default.xml \
-#    ... (all individual manifest files)
-
-# Also include compatibility matrix if it exists
-#DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
 
 # ===========================
 # Boot HAL Configuration
@@ -513,19 +485,6 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_vendor=true
 
 
-
-
-# AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
-
-# AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_vendor=true \
-    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=ext4 \
-    POSTINSTALL_OPTIONAL_vendor=true
 
 # ===========================
 # Recovery Configuration
@@ -578,55 +537,6 @@ ROOTDIR_SCRIPTS := \
 
 PRODUCT_PACKAGES += $(ROOTDIR_SCRIPTS)
 
-# ===========================
-# Init Scripts
-# ===========================
-
-#PRODUCT_PACKAGES += \
-#    init.RMX3624.usb.rc \
-#    ... (all init scripts)
-
-# ===========================
-# Fstab Files
-# ===========================
-
-#PRODUCT_PACKAGES += \
-#    fstab.module \
-#    ... (all fstab files)
-
-# ===========================
-# Ueventd Files
-# ===========================
-
-#PRODUCT_PACKAGES += \
-#    ueventd.module.rc \
-#    ... (all ueventd files)
-
-# ===========================
-# Recovery Files
-# ===========================
-
-# Recovery init files for vendor ramdisk
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.common.rc
-
-# Recovery init files for recovery partition
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/rootdir/etc/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc
-
-# Fstab files for all variants in recovery
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/rootdir/etc/fstab.module:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.module \
-#    ... (all recovery fstab files)
-
-# Ueventd files for recovery - root folder
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/rootdir/etc/ueventd.module.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.module.rc \
-#    ... (all recovery ueventd files)
-
-# Recovery fstab
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/rootdir/etc/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/recovery.fstab
 
 # ===========================
 # DUAL CPIO - Vendor Specific Files
