@@ -2,7 +2,7 @@
 
 # Import common recovery functionality (TWRP-derived)
 import /init.recovery.common.rc
-import /init.recovery.usb.rc
+# DON'T import init.recovery.usb.rc here - we'll handle it differently
 
 # Create metadata directories for A/B updates
 on early-init
@@ -11,19 +11,68 @@ on early-init
     mkdir /metadata/ota/snapshots 0755 system system
     chmod 0755 /metadata/ota
     chmod 0755 /metadata/ota/snapshots
-    
-    # Set USB vendor/product IDs early to avoid conflicts
-    setprop ro.recovery.usb.vid 04E8
-    setprop ro.recovery.usb.adb.pid 6860
 
 on post-fs-data
     # Double-check after metadata is mounted
     exec u:r:init:s0 -- /system/bin/sh -c "if [ ! -d /metadata/ota ]; then mkdir -p /metadata/ota/snapshots && chmod 0755 /metadata/ota /metadata/ota/snapshots; fi"
 
-# REMOVED CONFLICTING SECTION - USB IDs are now set in early-init as properties
-# and will be used by init.recovery.usb.rc
+# OVERRIDE the common USB configuration with our own
+on property:sys.usb.configfs=1 && property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb
+    # Clean up any existing configuration first
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    
+    # Set our desired USB IDs (overriding common.rc's 0x1782/0x4d00)
+    write /config/usb_gadget/g1/idVendor 0x04E8
+    write /config/usb_gadget/g1/idProduct 0x6860
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
+    
+    # Create the ADB function symlink
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
+    
+    # Enable the USB controller
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
 
-# Optional: set other device-specific strings
+# Override MTP+ADB configuration
+on property:sys.usb.configfs=1 && property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,adb
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    
+    write /config/usb_gadget/g1/idVendor 0x04E8
+    write /config/usb_gadget/g1/idProduct 0x6860
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "mtp_adb"
+    
+    symlink /config/usb_gadget/g1/functions/ffs.mtp /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
+    
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+# Override fastboot configuration
+on property:sys.usb.configfs=1 && property:sys.usb.ffs.ready=1 && property:sys.usb.config=fastboot
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    
+    write /config/usb_gadget/g1/idVendor 0x04E8
+    write /config/usb_gadget/g1/idProduct 0x6860
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "fastboot"
+    
+    symlink /config/usb_gadget/g1/functions/ffs.fastboot /config/usb_gadget/g1/configs/b.1/f1
+    
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+# Optional: set device-specific strings (these don't conflict)
 on fs
     write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
     write /config/usb_gadget/g1/strings/0x409/manufacturer ${ro.product.manufacturer}
