@@ -625,6 +625,15 @@ PRODUCT_COPY_FILES += \
 
 
 
+PRODUCT_PACKAGES += \
+    tee_rpc \
+    libteec \
+    libteecPlatform \
+    lib_android_keymaster_keymint_utils \
+    libkeymaster_messages \
+    libkeymint
+
+
 
 # ===========================
 # Overrides
