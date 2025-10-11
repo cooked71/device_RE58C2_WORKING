@@ -20,7 +20,7 @@ on property:sys.boot_completed=1
     stop log_sync_service
 
 # Early kernel logging to cache (available immediately)
-service early_kernel_log /system/system/bin/sh /system/system/bin/early_kernel_log.sh
+service early_kernel_log /system/bin/sh /system/bin/early_kernel_log.sh
     class core
     user root
     group root system
@@ -28,7 +28,7 @@ service early_kernel_log /system/system/bin/sh /system/system/bin/early_kernel_l
     seclabel u:r:init:s0
 
 # Main system logs
-service boot_log /system/system/bin/logcat -b all -f /data/boot_logs/boot_full.txt -v threadtime -r 16384 -n 10
+service boot_log /system/bin/logcat -b all -f /data/boot_logs/boot_full.txt -v threadtime -r 16384 -n 10
     class main
     user root
     group root system
@@ -37,7 +37,7 @@ service boot_log /system/system/bin/logcat -b all -f /data/boot_logs/boot_full.t
     seclabel u:r:logcat:s0
 
 # Crash logs
-service boot_log_crash /system/system/bin/logcat -b crash -f /data/boot_logs/boot_crash.txt -v threadtime -r 8192 -n 5
+service boot_log_crash /system/bin/logcat -b crash -f /data/boot_logs/boot_crash.txt -v threadtime -r 8192 -n 5
     class main
     user root
     group root system
@@ -46,7 +46,7 @@ service boot_log_crash /system/system/bin/logcat -b crash -f /data/boot_logs/boo
     seclabel u:r:logcat:s0
 
 # Kernel logs via logcat
-service boot_log_kernel /system/system/bin/logcat -b kernel -f /data/boot_logs/boot_kernel.txt -v threadtime -r 16384 -n 10
+service boot_log_kernel /system/bin/logcat -b kernel -f /data/boot_logs/boot_kernel.txt -v threadtime -r 16384 -n 10
     class main
     user root
     group root system
@@ -55,7 +55,7 @@ service boot_log_kernel /system/system/bin/logcat -b kernel -f /data/boot_logs/b
     seclabel u:r:logcat:s0
 
 # Continuous kernel message capture
-service continuous_kernel_log /system/system/bin/sh /system/system/bin/continuous_kernel_log.sh
+service continuous_kernel_log /system/bin/sh /system/system/bin/continuous_kernel_log.sh
     class main
     user root
     group root system
