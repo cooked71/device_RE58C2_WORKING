@@ -634,13 +634,7 @@ PRODUCT_PACKAGES := $(filter-out android.hardware.security.keymint-service,$(PRO
 PRODUCT_PACKAGES := $(filter-out android.hardware.security.keymint-service.remote,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out android.hardware.gatekeeper@1.0-service,$(PRODUCT_PACKAGES))
 
-# =============================================
-# VINTF FRAGMENTS (MUST BE SEPARATE FROM COPY_FILES)
-# =============================================
-PRODUCT_VENDOR_VINTF_FRAGMENTS += \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.security.keymint@2.0-unisoc.service.trusty.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/trusty-default.xml
+
 
 # =============================================
 # COPY STOCK SYSTEM KEYSTORE2 STACK
@@ -700,10 +694,14 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libpuresoftkeymasterdevice.so
 
 # =============================================
-# ANDROID.BP VINTF MODULE (IF YOU ADDED IT)
+# VINTF MANIFESTS VIA PREBUILT_ETC
 # =============================================
 PRODUCT_PACKAGES += \
-    system_keystore2_vintf   # ← KEEP THIS IF YOU HAVE THE ANDROID.BP ENTRY!
+    android.hardware.security.keymint.unisoc.trusty.manifest \
+    android.hardware.gatekeeper.trusty.manifest \
+    trusty.default.manifest \
+    android.system.keystore2.manifest
+
 
 
 
