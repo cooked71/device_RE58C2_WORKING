@@ -696,7 +696,7 @@ PRODUCT_COPY_FILES += \
 # =============================================
 # VINTF MANIFESTS VIA PREBUILT_ETC
 # =============================================
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     android.hardware.security.keymint.unisoc.trusty.manifest \
     android.hardware.gatekeeper@1.0-service.trusty.manifest \
     trusty.default.manifest 
