@@ -635,6 +635,17 @@ PRODUCT_PACKAGES := $(filter-out android.hardware.security.keymint-service.remot
 PRODUCT_PACKAGES := $(filter-out android.hardware.gatekeeper@1.0-service,$(PRODUCT_PACKAGES))
 
 # =============================================
+# VINTF FRAGMENTS (MUST BE SEPARATE FROM COPY_FILES)
+# =============================================
+PRODUCT_VENDOR_VINTF_FRAGMENTS += \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.security.keymint@2.0-unisoc.service.trusty.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/trusty-default.xml
+
+# For system VINTF, we'll let the stock keystore2 handle it via its own mechanism
+# PRODUCT_PACKAGES will automatically include system VINTF
+
+# =============================================
 # COPY STOCK SYSTEM KEYSTORE2 STACK
 # =============================================
 PRODUCT_COPY_FILES += \
@@ -652,8 +663,7 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/lib64/android.system.keystore2-V1-cpp.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.system.keystore2-V1-cpp.so \
     vendor/realme/RE58C2/proprietary/system/lib64/android.security.legacykeystore-ndk.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.security.legacykeystore-ndk.so \
     vendor/realme/RE58C2/proprietary/system/lib64/android.system.wifi.keystore@1.0.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.system.wifi.keystore@1.0.so \
-    vendor/realme/RE58C2/proprietary/system/etc/init/keystore2.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/keystore2.rc \
-    vendor/realme/RE58C2/proprietary/system/etc/vintf/manifest/android.system.keystore2-service.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/vintf/manifest/android.system.keystore2-service.xml
+    vendor/realme/RE58C2/proprietary/system/etc/init/keystore2.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/keystore2.rc
 
 # =============================================
 # COPY STOCK VENDOR HARDWARE SECURITY SERVICES
@@ -661,10 +671,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/vendor/bin/hw/android.hardware.security.keymint@2.0-unisoc.service.trusty:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.security.keymint@2.0-unisoc.service.trusty \
     vendor/realme/RE58C2/proprietary/vendor/etc/init/android.hardware.security.keymint@2.0-unisoc.service.trusty.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.security.keymint@2.0-unisoc.service.trusty.rc \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.security.keymint@2.0-unisoc.service.trusty.xml:$(TARGET_COPY_OUT_VENDOR)/etc/vintf/manifest/android.hardware.security.keymint@2.0-unisoc.service.trusty.xml \
     vendor/realme/RE58C2/proprietary/vendor/bin/hw/android.hardware.gatekeeper@1.0-service.trusty:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.gatekeeper@1.0-service.trusty \
-    vendor/realme/RE58C2/proprietary/vendor/etc/init/android.hardware.gatekeeper@1.0-service.trusty.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.gatekeeper@1.0-service.trusty.rc \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml:$(TARGET_COPY_OUT_VENDOR)/etc/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/android.hardware.gatekeeper@1.0-service.trusty.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.gatekeeper@1.0-service.trusty.rc
 
 # =============================================
 # COPY TRUSTY TEE STACK
@@ -679,8 +687,7 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/vendor/lib64/libsoter_trusty.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libsoter_trusty.so \
     vendor/realme/RE58C2/proprietary/vendor/lib64/libkernelbootcp.trusty.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libkernelbootcp.trusty.so \
     vendor/realme/RE58C2/proprietary/vendor/etc/init/tee_rpc.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/tee_rpc.rc \
-    vendor/realme/RE58C2/proprietary/vendor/etc/init/trusty-default.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/trusty-default.rc \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/trusty-default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/vintf/manifest/trusty-default.xml
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/trusty-default.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/trusty-default.rc
 
 # =============================================
 # COPY KEYMINT/KEYMASTER LIBRARIES
@@ -695,6 +702,8 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/lib64/libkeymaster4_1support.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libkeymaster4_1support.so \
     vendor/realme/RE58C2/proprietary/system/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libpuresoftkeymasterdevice.so
 
+PRODUCT_PACKAGES += \
+    android.system.keystore2-service.vintf
 
 
 # ===========================
