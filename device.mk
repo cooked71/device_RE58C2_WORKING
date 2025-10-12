@@ -702,8 +702,10 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/lib64/libkeymaster4_1support.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libkeymaster4_1support.so \
     vendor/realme/RE58C2/proprietary/system/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libpuresoftkeymasterdevice.so
 
+# Add the Android.bp vintf module
 PRODUCT_PACKAGES += \
-    android.system.keystore2-service.vintf
+    system_keystore2_vintf
+
 
 
 # ===========================
