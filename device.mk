@@ -642,9 +642,6 @@ PRODUCT_VENDOR_VINTF_FRAGMENTS += \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/trusty-default.xml
 
-# For system VINTF, we'll let the stock keystore2 handle it via its own mechanism
-# PRODUCT_PACKAGES will automatically include system VINTF
-
 # =============================================
 # COPY STOCK SYSTEM KEYSTORE2 STACK
 # =============================================
@@ -702,9 +699,11 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/lib64/libkeymaster4_1support.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libkeymaster4_1support.so \
     vendor/realme/RE58C2/proprietary/system/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libpuresoftkeymasterdevice.so
 
-# Add the Android.bp vintf module
+# =============================================
+# ANDROID.BP VINTF MODULE (IF YOU ADDED IT)
+# =============================================
 PRODUCT_PACKAGES += \
-    system_keystore2_vintf
+    system_keystore2_vintf   # ← KEEP THIS IF YOU HAVE THE ANDROID.BP ENTRY!
 
 
 
