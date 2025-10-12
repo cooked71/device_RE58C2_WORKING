@@ -625,6 +625,7 @@ PRODUCT_COPY_FILES += \
 
 
 
+# Trusty RPC components
 PRODUCT_PACKAGES += \
     tee_rpc \
     libteec \
@@ -633,17 +634,18 @@ PRODUCT_PACKAGES += \
     libkeymaster_messages \
     libkeymint
 
-# Remove AOSP keystore2
+# Remove AOSP keystore2 (conflicts with vendor stack)
 PRODUCT_PACKAGES := $(filter-out keystore2,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out keystore_cli_v2,$(PRODUCT_PACKAGES))
 
-# Add stock keystore stack
+# Add stock keystore stack with compatibility layer
 PRODUCT_PACKAGES += \
     keystore2 \
     libkm_compat_service \
     libkeystore2_aaid \
     libkeystore2_apc_compat \
     libkeystore2_crypto
+
 
 
 # ===========================
