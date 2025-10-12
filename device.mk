@@ -625,26 +625,48 @@ PRODUCT_COPY_FILES += \
 
 
 
-# Trusty RPC components
-PRODUCT_PACKAGES += \
-    tee_rpc \
-    libteec \
-    libteecPlatform \
-    lib_android_keymaster_keymint_utils \
-    libkeymaster_messages \
-    libkeymint
+# =============================================
+# TRUSTY + KEYSTORE2 VENDOR OVERRIDE
+# =============================================
 
-# Remove AOSP keystore2 (conflicts with vendor stack)
+# Remove AOSP/LineageOS security stack (KEEP THIS PART)
 PRODUCT_PACKAGES := $(filter-out keystore2,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out keystore_cli_v2,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out android.hardware.security.keymint-service,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out android.hardware.security.keymint-service.remote,$(PRODUCT_PACKAGES))
 
-# Add stock keystore stack with compatibility layer
-PRODUCT_PACKAGES += \
-    keystore2 \
-    libkm_compat_service \
-    libkeystore2_aaid \
-    libkeystore2_apc_compat \
-    libkeystore2_crypto
+# REMOVE THESE LINES - they reference Android.bp modules:
+# PRODUCT_PACKAGES += \
+#     tee_rpc \
+#     libteec \
+#     libteecPlatform \
+#     lib_android_keymaster_keymint_utils \
+#     libkeymaster_messages \
+#     libkeymint
+#
+# PRODUCT_PACKAGES += \
+#     keystore2 \
+#     libkm_compat_service \
+#     libkeystore2_aaid \
+#     libkeystore2_apc_compat \
+#     libkeystore2_crypto
+
+# INSTEAD ADD VENDOR FILE COPIES (NEW APPROACH)
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/bin/tee_rpc:$(TARGET_COPY_OUT_VENDOR)/bin/tee_rpc \
+    vendor/realme/RE58C2/proprietary/vendor/bin/keystore2:$(TARGET_COPY_OUT_VENDOR)/bin/keystore2 \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/libteec.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libteec.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/libteecPlatform.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libteecPlatform.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/lib_android_keymaster_keymint_utils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/lib_android_keymaster_keymint_utils.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/libkeymaster_messages.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libkeymaster_messages.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/libkeymint.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libkeymint.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/libkm_compat_service.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libkm_compat_service.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/libkeystore2_aaid.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libkeystore2_aaid.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/libkeystore2_apc_compat.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libkeystore2_apc_compat.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/libkeystore2_crypto.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libkeystore2_crypto.so \
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/tee_rpc.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/tee_rpc.rc \
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/trusty-default.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/trusty-default.rc \
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/keystore2.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/keystore2.rc
 
 
 
