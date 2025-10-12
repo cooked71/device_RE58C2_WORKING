@@ -633,6 +633,17 @@ PRODUCT_PACKAGES += \
     libkeymaster_messages \
     libkeymint
 
+# Remove AOSP keystore2
+PRODUCT_PACKAGES := $(filter-out keystore2,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out keystore_cli_v2,$(PRODUCT_PACKAGES))
+
+# Add stock keystore stack
+PRODUCT_PACKAGES += \
+    keystore2 \
+    libkm_compat_service \
+    libkeystore2_aaid \
+    libkeystore2_apc_compat \
+    libkeystore2_crypto
 
 
 # ===========================
