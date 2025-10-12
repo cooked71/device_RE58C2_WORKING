@@ -699,8 +699,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.security.keymint.unisoc.trusty.manifest \
     android.hardware.gatekeeper@1.0-service.trusty.manifest \
-    trusty.default.manifest \
-    android.system.keystore2.manifest
+    trusty.default.manifest 
+  #  android.system.keystore2.manifest
 
 
 
