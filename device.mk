@@ -59,6 +59,11 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.hardware.hwcomposer=unisoc \
     persist.graphics.egl=libGLES_mali.so
 
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.boot.selinux=permissive \
+    ro.build.selinux=0
+
+
 # ===========================
 # Recovery Configuration - MULTI-DEVICE DUAL CPIO
 # ===========================
