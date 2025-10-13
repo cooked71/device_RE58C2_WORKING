@@ -696,7 +696,8 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/lib64/libkeymaster_portable.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libkeymaster_portable.so \
     vendor/realme/RE58C2/proprietary/system/lib64/libkeymaster4support.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libkeymaster4support.so \
     vendor/realme/RE58C2/proprietary/system/lib64/libkeymaster4_1support.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libkeymaster4_1support.so \
-    vendor/realme/RE58C2/proprietary/system/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libpuresoftkeymasterdevice.so
+    vendor/realme/RE58C2/proprietary/system/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libpuresoftkeymasterdevice.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libsqlite.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libsqlite.so
 
 # =============================================
 # VINTF MANIFESTS VIA PREBUILT_ETC

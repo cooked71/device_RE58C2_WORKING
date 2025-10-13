@@ -99,7 +99,19 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 # Kernel arguments
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_CMDLINE := console=ttyS1,115200n8 buildvariant=user
+# In device/realme/RE58C2/BoardConfig.mk or device.mk
+BOARD_KERNEL_CMDLINE := \
+    console=ttyS1,115200n8 \
+    earlycon \
+    androidboot.hardware=ums9230_hulk \
+    androidboot.selinux=permissive \
+    androidboot.verifiedbootstate=orange \
+    androidboot.dtbo_idx=7 \
+    loop.max_part=7 \
+    swiotlb=1 \
+    loglevel=7 \
+    initcall_debug=1
+    
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_RAMDISK_OFFSET := 0x05400000
