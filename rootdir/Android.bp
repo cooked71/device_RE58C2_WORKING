@@ -277,12 +277,6 @@ prebuilt_etc {
     vendor: true,
 }
 
-prebuilt_etc {
-    name: "init.logger.rc",
-    src: "etc/init.logger.rc",
-    sub_dir: "init/hw",
-    vendor: true,
-}
 
 prebuilt_etc {
     name: "init.recovery.common.rc",
