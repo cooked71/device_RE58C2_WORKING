@@ -627,6 +627,13 @@ PRODUCT_PACKAGES := $(filter-out odsign,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out android.hardware.health-service.default,$(PRODUCT_PACKAGES))
 
 # =============================================
+# ADD THESE: Remove AOSP boot-critical binaries
+# =============================================
+PRODUCT_PACKAGES := $(filter-out surfaceflinger,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out bootanimation,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out servicemanager,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out hwservicemanager,$(PRODUCT_PACKAGES))
+# =============================================
 # COPY STOCK SECURITY BINARIES (CRITICAL MISSING FILES)
 # =============================================
 
@@ -663,6 +670,18 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/etc/init/surfaceflinger.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/surfaceflinger.rc \
     vendor/realme/RE58C2/proprietary/system/etc/init/bootanim.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/bootanim.rc
+
+    
+# =============================================
+# BOOT DEBUGGING PROPERTIES
+# =============================================
+
+# Add to your existing PRODUCT_SYSTEM_PROPERTIES
+PRODUCT_SYSTEM_PROPERTIES += \
+    debug.sf.nobootanimation=0 \
+    ro.surface_flinger.max_frame_buffer_acquired_buffers=3 \
+    ro.surface_flinger.running_without_sync_framework=true
+
 
 
 # =============================================
