@@ -644,6 +644,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/bin/odsign:$(TARGET_COPY_OUT_SYSTEM)/bin/odsign \
+    vendor/realme/RE58C2/proprietary/system/bin/init.oplus.cota.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/init.oplus.cota.sh \
     vendor/realme/RE58C2/proprietary/system/etc/init/odsign.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/odsign.rc \
     vendor/realme/RE58C2/proprietary/system/bin/gatekeeperd:$(TARGET_COPY_OUT_SYSTEM)/bin/gatekeeperd \
     vendor/realme/RE58C2/proprietary/system/etc/init/gatekeeperd.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/gatekeeperd.rc \
