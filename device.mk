@@ -671,8 +671,7 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/bin/servicemanager:$(TARGET_COPY_OUT_SYSTEM)/bin/servicemanager \
     vendor/realme/RE58C2/proprietary/system/bin/hwservicemanager:$(TARGET_COPY_OUT_SYSTEM)/bin/hwservicemanager \
     vendor/realme/RE58C2/proprietary/system/bin/surfaceflinger:$(TARGET_COPY_OUT_SYSTEM)/bin/surfaceflinger \
-    vendor/realme/RE58C2/proprietary/system/bin/bootanimation:$(TARGET_COPY_OUT_SYSTEM)/bin/bootanimation \
-    vendor/realme/RE58C2/proprietary/system/bin/system_server:$(TARGET_COPY_OUT_SYSTEM)/bin/system_server
+    vendor/realme/RE58C2/proprietary/system/bin/bootanimation:$(TARGET_COPY_OUT_SYSTEM)/bin/bootanimation 
 
 # Stock framework (MOST IMPORTANT - FIXES 74s TIMEOUT)
 PRODUCT_COPY_FILES += \
