@@ -665,6 +665,25 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/lib64/libgatekeeper.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libgatekeeper.so \
     vendor/realme/RE58C2/proprietary/system/lib64/libgatekeeper_aidl.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libgatekeeper_aidl.so
 
+
+# Stock system binaries for boot (ADD THESE)
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/bin/servicemanager:$(TARGET_COPY_OUT_SYSTEM)/bin/servicemanager \
+    vendor/realme/RE58C2/proprietary/system/bin/hwservicemanager:$(TARGET_COPY_OUT_SYSTEM)/bin/hwservicemanager \
+    vendor/realme/RE58C2/proprietary/system/bin/surfaceflinger:$(TARGET_COPY_OUT_SYSTEM)/bin/surfaceflinger \
+    vendor/realme/RE58C2/proprietary/system/bin/bootanimation:$(TARGET_COPY_OUT_SYSTEM)/bin/bootanimation \
+    vendor/realme/RE58C2/proprietary/system/bin/system_server:$(TARGET_COPY_OUT_SYSTEM)/bin/system_server
+
+# Stock framework (MOST IMPORTANT - FIXES 74s TIMEOUT)
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/framework/services.jar:$(TARGET_COPY_OUT_SYSTEM)/framework/services.jar
+
+# Stock init scripts (FIX SERVICE DEPENDENCIES)
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/etc/init/surfaceflinger.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/surfaceflinger.rc \
+    vendor/realme/RE58C2/proprietary/system/etc/init/bootanim.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/bootanim.rc
+
+
 # =============================================
 # DISABLE VERIFICATION FOR INITIAL BOOT
 # =============================================
