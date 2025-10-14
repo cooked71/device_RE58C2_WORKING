@@ -775,7 +775,6 @@ PRODUCT_COPY_FILES += \
 # Stock init.hw files
 PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/etc/init/hw/init.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.rc \
-    vendor/realme/RE58C2/proprietary/system/etc/init/hw/init.ums9230.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.ums9230.rc \
     vendor/realme/RE58C2/proprietary/system/etc/init/hw/init.zygote64_32.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.zygote64_32.rc \
     vendor/realme/RE58C2/proprietary/system/etc/init/hw/init.usb.configfs.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.usb.configfs.rc \
     vendor/realme/RE58C2/proprietary/system/etc/init/hw/init.usb.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.usb.rc
