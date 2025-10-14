@@ -767,6 +767,35 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libpuresoftkeymasterdevice.so \
     vendor/realme/RE58C2/proprietary/system/lib64/libsqlite.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libsqlite.so
 
+
+# =============================================
+# COMPLETE STOCK INIT STACK
+# =============================================
+
+# Stock init.hw files
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/etc/init/hw/init.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.rc \
+    vendor/realme/RE58C2/proprietary/system/etc/init/hw/init.ums9230.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.ums9230.rc \
+    vendor/realme/RE58C2/proprietary/system/etc/init/hw/init.zygote64_32.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.zygote64_32.rc \
+    vendor/realme/RE58C2/proprietary/system/etc/init/hw/init.usb.configfs.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.usb.configfs.rc \
+    vendor/realme/RE58C2/proprietary/system/etc/init/hw/init.usb.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.usb.rc
+
+# Stock service init files
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/etc/init/surfaceflinger.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/surfaceflinger.rc \
+    vendor/realme/RE58C2/proprietary/system/etc/init/bootanim.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/bootanim.rc \
+    vendor/realme/RE58C2/proprietary/system/etc/init/servicemanager.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/servicemanager.rc \
+    vendor/realme/RE58C2/proprietary/system/etc/init/keystore2.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/keystore2.rc \
+    vendor/realme/RE58C2/proprietary/system/etc/init/gatekeeperd.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/gatekeeperd.rc \
+    vendor/realme/RE58C2/proprietary/system/etc/init/audioserver.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/audioserver.rc
+
+# Copy all other init files
+PRODUCT_COPY_FILES += \
+    $(foreach file,$(wildcard vendor/realme/RE58C2/proprietary/system/etc/init/*.rc),\
+    $(file):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $(file)))
+
+
+
 # =============================================
 # VINTF MANIFESTS VIA PREBUILT_ETC
 # =============================================
