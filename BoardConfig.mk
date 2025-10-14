@@ -307,7 +307,10 @@ TARGET_OTA_ASSERT_DEVICE := RE58C2
 TARGET_FLATTEN_APEX := false
 
 # Disable AVB if still having issues
-BOARD_AVB_ENABLE := false
+#BOARD_AVB_ENABLE := false
+
+BOARD_VENDOR_SEPOLICY_DIRS += device/your_vendor/your_device/sepolicy/vendor
+
 
 
 
