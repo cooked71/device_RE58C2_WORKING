@@ -631,14 +631,63 @@ PRODUCT_COPY_FILES += \
 
 
 # =============================================
-# REMOVE LINEAGEOS SECURITY STACK (PREVENT CONFLICTS)
+# DISABLE LINEAGEOS SECURITY STACK
 # =============================================
+
+# Remove ALL LineageOS security components
 PRODUCT_PACKAGES := $(filter-out keystore2,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out keystore_cli_v2,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out android.hardware.security.keymint-service,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out android.hardware.security.keymint-service.remote,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out android.hardware.gatekeeper@1.0-service,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out gatekeeperd,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out odsign,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out android.hardware.health-service.default,$(PRODUCT_PACKAGES))
 
+# =============================================
+# COPY STOCK SECURITY BINARIES (CRITICAL MISSING FILES)
+# =============================================
+
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/bin/odsign:$(TARGET_COPY_OUT_SYSTEM)/bin/odsign \
+    vendor/realme/RE58C2/proprietary/system/etc/init/odsign.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/odsign.rc \
+    vendor/realme/RE58C2/proprietary/system/bin/gatekeeperd:$(TARGET_COPY_OUT_SYSTEM)/bin/gatekeeperd \
+    vendor/realme/RE58C2/proprietary/system/etc/init/gatekeeperd.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/gatekeeperd.rc \
+    vendor/realme/RE58C2/proprietary/system/lib64/libfsverity.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libfsverity.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libcrypto_utils.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libcrypto_utils.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/liblogwrap.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/liblogwrap.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libprotobuf-cpp-lite.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libkeyutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libkeyutils.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/android.hardware.security.secureclock-V1-ndk.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.hardware.security.secureclock-V1-ndk.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/android.hardware.security.sharedsecret-V1-ndk.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.hardware.security.sharedsecret-V1-ndk.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libbinder.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libbinder.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libbinder_ndk.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libbinder_ndk.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libgatekeeper.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libgatekeeper.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libgatekeeper_aidl.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libgatekeeper_aidl.so
+
+# =============================================
+# DISABLE VERIFICATION FOR INITIAL BOOT
+# =============================================
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    # Disable odsign verification temporarily
+    odsign.verification.disabled=true \
+    ro.odsign.disabled=true \
+    
+    # Disable APEX verification  
+    ro.apex.updatable.testkey=true \
+    
+    # Use stock security stack
+    ro.hardware.keystore=unisoc \
+    ro.hardware.gatekeeper=trusty \
+    ro.hardware.keymint=unisoc.trusty
+
+# =============================================
+# KEEP APEX UNFLATTENED FOR ODSIGN
+# =============================================
+
+# Ensure this is in BoardConfig.mk
+# TARGET_FLATTEN_APEX := false
 
 
 # =============================================
