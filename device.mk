@@ -638,6 +638,11 @@ PRODUCT_PACKAGES := $(filter-out hwservicemanager,$(PRODUCT_PACKAGES))
 # =============================================
 
 PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/bin/init:$(TARGET_COPY_OUT_SYSTEM)/bin/init
+
+
+
+PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/bin/odsign:$(TARGET_COPY_OUT_SYSTEM)/bin/odsign \
     vendor/realme/RE58C2/proprietary/system/etc/init/odsign.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/odsign.rc \
     vendor/realme/RE58C2/proprietary/system/bin/gatekeeperd:$(TARGET_COPY_OUT_SYSTEM)/bin/gatekeeperd \
