@@ -633,6 +633,9 @@ PRODUCT_PACKAGES := $(filter-out surfaceflinger,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out bootanimation,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out servicemanager,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out hwservicemanager,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out vold,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out netd,$(PRODUCT_PACKAGES))
+
 # =============================================
 # COPY STOCK SECURITY BINARIES (CRITICAL MISSING FILES)
 # =============================================
@@ -640,7 +643,38 @@ PRODUCT_PACKAGES := $(filter-out hwservicemanager,$(PRODUCT_PACKAGES))
 PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/bin/init:$(TARGET_COPY_OUT_SYSTEM)/bin/init
 
+# =============================================
+# CRITICAL MISSING VOLD/NETD STACK
+# =============================================
 
+# Core system binaries
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/bin/vold:$(TARGET_COPY_OUT_SYSTEM)/bin/vold \
+    vendor/realme/RE58C2/proprietary/system/bin/netd:$(TARGET_COPY_OUT_SYSTEM)/bin/netd \
+    vendor/realme/RE58C2/proprietary/system/bin/vold_prepare_subdirs:$(TARGET_COPY_OUT_SYSTEM)/bin/vold_prepare_subdirs
+
+# Init scripts
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/etc/init/vold.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/vold.rc \
+    vendor/realme/RE58C2/proprietary/system/etc/init/netd.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/netd.rc
+
+# Netd libraries
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/lib64/android.system.net.netd@1.0.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.system.net.netd@1.0.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/android.system.net.netd@1.1.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.system.net.netd@1.1.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libnetdutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libnetdutils.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libnetd_client.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libnetd_client.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/netd_event_listener_interface-V1-cpp.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/netd_event_listener_interface-V1-cpp.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/oemnetd_aidl_interface-cpp.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/oemnetd_aidl_interface-cpp.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/netd_aidl_interface-V10-cpp.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/netd_aidl_interface-V10-cpp.so
+
+# Vold library
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system_ext/lib64/libunisocvold.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib64/libunisocvold.so
+
+# =============================================
+# CONTINUE WITH EXISTING SECURITY STACK
+# =============================================
 
 PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/bin/odsign:$(TARGET_COPY_OUT_SYSTEM)/bin/odsign \
@@ -659,7 +693,6 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/lib64/libbinder_ndk.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libbinder_ndk.so \
     vendor/realme/RE58C2/proprietary/system/lib64/libgatekeeper.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libgatekeeper.so \
     vendor/realme/RE58C2/proprietary/system/lib64/libgatekeeper_aidl.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libgatekeeper_aidl.so
-
 
 # Stock system binaries for boot (ADD THESE)
 PRODUCT_COPY_FILES += \
@@ -688,8 +721,6 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3 \
     ro.surface_flinger.running_without_sync_framework=true
 
-
-
 # =============================================
 # DISABLE VERIFICATION FOR INITIAL BOOT
 # =============================================
@@ -713,7 +744,6 @@ PRODUCT_SYSTEM_PROPERTIES += \
 
 # Ensure this is in BoardConfig.mk
 # TARGET_FLATTEN_APEX := false
-
 
 # =============================================
 # COPY STOCK SYSTEM KEYSTORE2 STACK
@@ -772,7 +802,6 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system/lib64/libkeymaster4_1support.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libkeymaster4_1support.so \
     vendor/realme/RE58C2/proprietary/system/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libpuresoftkeymasterdevice.so \
     vendor/realme/RE58C2/proprietary/system/lib64/libsqlite.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libsqlite.so
-
 
 # =============================================
 # COMPLETE STOCK INIT STACK
