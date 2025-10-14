@@ -610,24 +610,6 @@ ifneq ($(TARGET_BOARD_PLATFORM),)
 PRODUCT_PLATFORM := ums9230
 endif
 
-# ===========================
-# Loggers test
-# ===========================
-
-# Boot logging scripts
-PRODUCT_COPY_FILES += \
-    device/realme/RE58C2/scripts/early_kernel_log.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/early_kernel_log.sh \
-    device/realme/RE58C2/scripts/boot_progress_log.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/boot_progress_log.sh \
-    device/realme/RE58C2/scripts/migrate_early_logs.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/migrate_early_logs.sh \
-    device/realme/RE58C2/scripts/continuous_kernel_log.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/continuous_kernel_log.sh
-
-# Set executable permissions (append :755 for each)
-PRODUCT_COPY_FILES += \
-    device/realme/RE58C2/scripts/early_kernel_log.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/early_kernel_log.sh:755 \
-    device/realme/RE58C2/scripts/boot_progress_log.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/boot_progress_log.sh:755 \
-    device/realme/RE58C2/scripts/migrate_early_logs.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/migrate_early_logs.sh:755 \
-    device/realme/RE58C2/scripts/continuous_kernel_log.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/continuous_kernel_log.sh:755
-
 
 
 # =============================================
