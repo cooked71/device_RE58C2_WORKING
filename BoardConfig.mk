@@ -292,5 +292,58 @@ TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
 TARGET_VENDOR_DLKM_PROP += $(DEVICE_PATH)/vendor_dlkm.prop
 TARGET_ODM_DLKM_PROP += $(DEVICE_PATH)/odm_dlkm.prop
 
+
+# Add these Unisoc-specific flags to your BoardConfig.mk:
+
+# ==================================================
+# UNISOC-SPECIFIC CONFIGURATION
+# ==================================================
+
+# Unisoc graphics stack (CRITICAL)
+BOARD_USES_UNISOC_GRAPHICS := true
+TARGET_USES_UNISOC_GRAPHICS := true
+
+# Unisoc hardware composer
+TARGET_USES_UNISOC_HWC := true
+BOARD_USES_UNISOC_HWC := true
+
+# Unisoc specific flags
+BOARD_USES_SPRD_HARDWARE := true
+TARGET_USES_SPRD_HARDWARE := true
+
+# Unisoc graphics implementation
+TARGET_USES_SPRD_GRALLOC := true
+TARGET_USES_SPRD_HWC := true
+TARGET_USES_SPRD_DITHER := true
+
+# Unisoc display configuration
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+
+# Unisoc camera hal
+TARGET_USES_SPRD_CAMERA := true
+
+# Unisoc RIL flags
+TARGET_USES_SPRD_RIL := true
+BOARD_USES_SPRD_RIL := true
+ENABLE_VENDOR_RIL_SERVICE := true
+
+# RIL class
+BOARD_PROVIDES_RILD := true
+
+# Unisoc power management
+TARGET_USES_SPRD_POWER := true
+TARGET_POWERHAL_VARIANT := sprd
+
+# Unisoc audio
+TARGET_USES_SPRD_AUDIO := true
+
+# Unisoc sensors
+TARGET_USES_SPRD_SENSORS := true
+
+# Unisoc WiFi
+TARGET_USES_SPRD_WCN := true
+BOARD_WLAN_DEVICE := sprd
+
 # Inherit vendor blobs
 include vendor/realme/RE58C2/BoardConfigVendor.mk
