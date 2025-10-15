@@ -14,6 +14,7 @@ ALLOW_MISSING_DEPENDENCIES := false
 BUILD_BROKEN_MISSING_KERNEL_HEADERS := true
 BUILD_BROKEN_INITRC_CHECKS := true
 
+
 # SEPolicy
 BOARD_SEPOLICY_VERS := 33.0
 
@@ -50,30 +51,39 @@ AB_OTA_PARTITIONS += \
     odm
 
 # ==================================================
-# FIXED Graphics Configuration - ENABLE AOSP GRAPHICS
+# Graphics Configuration - USE VENDOR PREBUILTS ONLY
 # ==================================================
 
-# REMOVE these broken lines - they disable graphics completely!
-# TARGET_NO_GRALLOC := true
-# TARGET_NO_HWC := true
-# TARGET_NO_GPU := true
+# COMPLETELY disable AOSP graphics source building
+TARGET_NO_GRALLOC := true
+TARGET_NO_HWC := true
+TARGET_NO_GPU := true
 
-# Enable AOSP graphics stack
-TARGET_USES_HWC2 := true
-TARGET_USES_GRALLOC1 := true
-TARGET_USES_GRALLOC4 := true
+# Disable Mesa3D completely
+MESA3D_BUILD := false
+TARGET_USES_MESA3D := false
+BOARD_USES_MESA3D := false
 
-# Use Mali GPU
+# Use prebuilt Mali GPU driver
 BOARD_GPU_DRIVERS := mali
+TARGET_USES_PREBUILT_GPU_DRIVER := true
 TARGET_GPU_PLATFORM := mali
+
+# EGL configuration
+BOARD_EGL_CFG := $(DEVICE_PATH)/prebuilts/egl.cfg
+
+# Force use of vendor prebuilts only
+TARGET_PROVIDES_GRALLOC_HAL := true
+TARGET_PROVIDES_HWC_HAL := true
+TARGET_PROVIDES_GPU_LIBRARIES := true
 
 # OpenGL ES support
 TARGET_USES_OPENGLES := true
 TARGET_USES_GLES2 := true
 TARGET_USES_GLES3 := true
 
-# EGL configuration (if you have custom egl.cfg)
-# BOARD_EGL_CFG := $(DEVICE_PATH)/prebuilts/egl.cfg
+# Satisfy Mesa3D Android.mk namespace requirement
+PRODUCT_SOONG_NAMESPACES += external/mesa3d
 
 # Vendor Boot configuration for DUAL CPIO
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
@@ -91,7 +101,7 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 # Kernel arguments
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
-
+# In device/realme/RE58C2/BoardConfig.mk or device.mk
 BOARD_KERNEL_CMDLINE := \
     console=ttyS1,115200n8 \
     earlycon \
@@ -113,10 +123,6 @@ BOARD_DTB_OFFSET := 0x01f00000
 BOARD_HEADER_SIZE := 2128
 BOARD_VENDOR_CMDLINE := console=ttyS1,115200n8
 
-# ==================================================
-# KERNEL CONFIGURATION - KEEPING YOUR SETUP
-# ==================================================
-
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
@@ -125,7 +131,8 @@ TARGET_PREBUILT_DTBO := $(DEVICE_PATH)/prebuilts/dtbo.img
 BOARD_PREBUILT_DTBIMAGE := $(TARGET_PREBUILT_DTB)
 BOARD_PREBUILT_DTBOIMAGE := $(TARGET_PREBUILT_DTBO)
 
-# Kernel source (for headers only)
+###########################
+TARGET_NO_KERNEL_OVERRIDE := true
 TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
 
 LOCAL_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
@@ -136,6 +143,22 @@ PRODUCT_COPY_FILES += \
 BOARD_VENDOR_BOOT_MANIFEST_FILE := $(DEVICE_PATH)/manifest_vendor_boot.xml
 
 # Kernel modules for DUAL CPIO
+#BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/recoveryx/ramdisk/lib/modules/*.ko)
+#BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/recoveryx/recovery/lib/modules/*.ko)
+
+
+
+# Kernel modules - SEPARATE for ramdisk.cpio and recovery.cpio
+#BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/recoveryx/ramdisk/lib/modules/modules.load))
+#BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(DEVICE_PATH)/recoveryx/ramdisk/lib/modules/, $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))
+
+#BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/recoveryx/recovery/lib/modules/modules.load.recovery))
+#RECOVERY_MODULES := $(addprefix $(DEVICE_PATH)/recoveryx/recovery/lib/modules/, $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
+
+
+
+# Kernel modules for DUAL CPIO
+
 # Ramdisk modules
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/recoveryx/ramdisk/lib/modules/modules.load))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(DEVICE_PATH)/recoveryx/ramdisk/lib/modules/, $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))
@@ -258,6 +281,7 @@ BOARD_AVB_ODM_ROLLBACK_INDEX_LOCATION := 8
 # Security patch level
 VENDOR_SECURITY_PATCH := 2024-07-05
 
+
 # =============================================
 # VINTF Configuration
 # =============================================
@@ -267,6 +291,7 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/realme/RE58C2/proprietary/p
 DEVICE_MANIFEST_FILE += \
     $(foreach f,$(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml),$(f))
 
+
 # Enable VINTF enforcement
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
@@ -274,6 +299,7 @@ ODM_MANIFEST_FILES += vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nf
 
 # EROFS OTA Configuration
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
+# TARGET_POSTINSTALL_FSTAB := $(DEVICE_PATH)/product/etc/fstab.postinstall
 BOARD_USES_EROFS_POSTINSTALL := true
 
 # Ensure the install plan picks up EROFS
@@ -281,6 +307,14 @@ TARGET_OTA_ASSERT_DEVICE := RE58C2
 
 # Critical for odsign to work
 TARGET_FLATTEN_APEX := false
+
+# Disable AVB if still having issues
+#BOARD_AVB_ENABLE := false
+
+BOARD_VENDOR_SEPOLICY_DIRS += device/your_vendor/your_device/sepolicy/vendor
+
+
+
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
