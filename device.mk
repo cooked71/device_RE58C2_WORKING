@@ -160,47 +160,10 @@ PRODUCT_SYSTEM_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.usb.config=adb
 
-# USB init file
-# PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recoveryx/recovery/init.recovery.usb.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.usb.rc
 
 # FastbootD support
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.fastbootd.available=true
-
-
-
-# ===========================
-# DUAL CPIO - Vendor Specific Files
-# ===========================
-
-# ---------------------------------
-# Files for NORMAL boot (ramdisk.cpio)
-# ---------------------------------
-
-
-# ---------------------------------
-# Files for RECOVERY boot (recovery.cpio)
-# ---------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # ===========================
