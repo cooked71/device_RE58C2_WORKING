@@ -462,21 +462,16 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, vendor/realme/RE58C2/RE58C2-vendor.mk)
 
 # =============================================
-# UNISOC Framework Packages
-# =============================================
-
-PRODUCT_PACKAGES += \
-    unisoc-framework \
-    unipnp-framework \
-    unisoc_overlay_frameworks_res
-
-# =============================================
-# System Ext specific packages
+# UNISOC Framework Packages (System Ext)
 # =============================================
 
 PRODUCT_SYSTEM_EXT_PACKAGES += \
     unisoc-framework \
     unipnp-framework
+
+# Vendor overlay goes in vendor packages
+PRODUCT_PACKAGES += \
+    unisoc_overlay_frameworks_res
 
 # ===========================
 # OVERRIDES
