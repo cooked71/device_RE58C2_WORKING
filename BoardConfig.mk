@@ -265,8 +265,7 @@ VENDOR_SECURITY_PATCH := 2024-07-05
 # =============================================
 DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest.xml \
     vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest.xml \
-    vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml \
-    vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest/manifest_kernel.xml
+    vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml 
 
 
 DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vintf/compatibility_matrix.xml
