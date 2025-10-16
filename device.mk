@@ -467,8 +467,8 @@ PRODUCT_COPY_FILES += \
 
 # Vendor init scripts
 PRODUCT_COPY_FILES += \
-    vendor/realme/RE58C2/proprietary/vendor/etc/init/init.ums9230_hulk.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.ums9230_hulk.rc \
-    vendor/realme/RE58C2/proprietary/vendor/etc/init/init.ums9230_hulk.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.ums9230_hulk.usb.rc \
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/hw/init.ums9230_hulk.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.ums9230_hulk.rc \
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/hw/init.ums9230_hulk.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.ums9230_hulk.usb.rc \
     vendor/realme/RE58C2/proprietary/vendor/etc/init/android.hardware.graphics.composer@2.4-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.graphics.composer@2.4-service.rc
 
 # ===========================
