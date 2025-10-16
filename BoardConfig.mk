@@ -50,27 +50,23 @@ AB_OTA_PARTITIONS += \
     odm
 
 # ==================================================
-# FIXED Graphics Configuration - ENABLE AOSP GRAPHICS
+# CORRECT GPU CONFIGURATION FOR UNISOC MALI
 # ==================================================
 
-# REMOVE these broken lines - they disable graphics completely!
-# TARGET_NO_GRALLOC := true
-# TARGET_NO_HWC := true
-# TARGET_NO_GPU := true
+# Use proprietary Mali drivers (not open-source panfrost)
+BOARD_GPU_DRIVERS := 
+TARGET_GPU_PLATFORM := mali
 
-# Enable AOSP graphics stack
+# Unisoc graphics stack
+BOARD_USES_UNISOC_GRAPHICS := true
+TARGET_USES_UNISOC_GRAPHICS := true
+TARGET_USES_UNISOC_HWC := true
+
+# Enable AOSP graphics with proprietary drivers
 TARGET_USES_HWC2 := true
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_GRALLOC4 := true
-
-# Use Mali GPU
-BOARD_GPU_DRIVERS := mali
-TARGET_GPU_PLATFORM := mali
-
-# OpenGL ES support
 TARGET_USES_OPENGLES := true
-TARGET_USES_GLES2 := true
-TARGET_USES_GLES3 := true
 
 # EGL configuration (if you have custom egl.cfg)
 # BOARD_EGL_CFG := $(DEVICE_PATH)/prebuilts/egl.cfg
