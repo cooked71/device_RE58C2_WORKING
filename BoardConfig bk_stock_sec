@@ -140,7 +140,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel
 
 # Vendor Boot Manifest
-BOARD_VENDOR_BOOT_MANIFEST_FILE := $(DEVICE_PATH)/manifest_vendor_boot.xml
+#BOARD_VENDOR_BOOT_MANIFEST_FILE := $(DEVICE_PATH)/manifest_vendor_boot.xml
 
 # Kernel modules for DUAL CPIO
 #BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/recoveryx/ramdisk/lib/modules/*.ko)
