@@ -28,9 +28,7 @@ SOONG_CONFIG_realme_RE58C2_use_vendor_bp := true
 
 PRODUCT_SOONG_NAMESPACES += \
     device/realme/RE58C2 \
-    vendor/realme/RE58C2 \
-    external/mesa3d
-
+    vendor/realme/RE58C2
 
 # ===========================
 # BOOT PROPERTIES
@@ -97,6 +95,42 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.security.keymint@2.0-unisoc.service.trusty \
     android.hardware.gatekeeper@1.0-service.trusty
+
+# ===========================
+# POWER & THERMAL SERVICES
+# ===========================
+
+# Power services
+PRODUCT_PACKAGES += \
+    vendor.unisoc.hardware.power-service \
+    android.hardware.power.stats-service.example
+
+# Thermal services
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.thermal@2.0-service \
+    thermald
+
+# Power HAL implementation
+PRODUCT_PACKAGES += \
+    power.default \
+    power.sprd \
+    vendor.unisoc.hardware.power-V1-ndk
+
+# Thermal HAL implementation
+PRODUCT_PACKAGES += \
+    thermal.default \
+    vendor.sprd.hardware.thermal@2.0 \
+    vendor.sprd.hardware.thermal@2.0-impl
+
+# ===========================
+# VINTF MANIFEST FRAGMENTS
+# ===========================
+
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.thermal@2.0-service.xml \
+    vendor-power-default.xml \
+    power.stats-default.xml \
+    android.hardware.thermal@2.0-service.xml
 
 # ===========================
 # RECOVERY CONFIGURATION
