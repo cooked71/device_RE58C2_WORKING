@@ -464,7 +464,6 @@ $(call inherit-product, vendor/realme/RE58C2/RE58C2-vendor.mk)
 PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/system_ext/framework/unisoc-framework.jar:$(TARGET_COPY_OUT_SYSTEM_EXT)/framework/unisoc-framework.jar \
     vendor/realme/RE58C2/proprietary/system_ext/framework/unipnp-framework.jar:$(TARGET_COPY_OUT_SYSTEM_EXT)/framework/unipnp-framework.jar \
-    vendor/realme/RE58C2/proprietary/vendor/overlay/unisoc_overlay_frameworks_res.apk:$(TARGET_COPY_OUT_VENDOR)/overlay/unisoc_overlay_frameworks_res.apk
 
 PRODUCT_PACKAGES += \
     unisoc_overlay_frameworks_res
