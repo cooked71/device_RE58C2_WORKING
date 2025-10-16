@@ -170,6 +170,19 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # Files for NORMAL boot (ramdisk.cpio)
 # ===========================
 
+# ===========================
+# VENDOR RAMDISK - COMPLETE SETUP
+# ===========================
+
+# Copy entire system folder with all files
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/realme/RE58C2/recoveryx/ramdisk/system,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system)
+
+# Create root symlinks package (from ramdisk folder)
+PRODUCT_PACKAGES += \
+    vendor_ramdisk_root_symlinks
+
+
 # Vendor HALs for normal boot
 PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/recoveryx/ramdisk/system/lib64/vendor.sprd.hardware.boot@1.2.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/lib64/vendor.sprd.hardware.boot@1.2.so \
