@@ -214,6 +214,110 @@ ifneq ($(TARGET_BOARD_PLATFORM),)
 PRODUCT_PLATFORM := ums9230
 endif
 
+
+# ===========================
+# CRITICAL FIRMWARE FILES
+# ===========================
+
+# GPU/Display Firmware (MOST CRITICAL)
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/firmware/libGLES_mali.so:$(TARGET_COPY_OUT_VENDOR)/firmware/libGLES_mali.so
+
+# WiFi/BT Regulatory Database
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/firmware/regulatory.db:$(TARGET_COPY_OUT_VENDOR)/firmware/regulatory.db \
+    vendor/realme/RE58C2/proprietary/vendor/firmware/regulatory.db.p7s:$(TARGET_COPY_OUT_VENDOR)/firmware/regulatory.db.p7s
+
+# Baseband/Modem Firmware
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/firmware/sipa.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/sipa.bin
+
+# TrustZone/Security Firmware
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/firmware/faceid.elf:$(TARGET_COPY_OUT_VENDOR)/firmware/faceid.elf \
+    vendor/realme/RE58C2/proprietary/vendor/firmware/soter.elf:$(TARGET_COPY_OUT_VENDOR)/firmware/soter.elf \
+    vendor/realme/RE58C2/proprietary/vendor/firmware/hdcp.elf:$(TARGET_COPY_OUT_VENDOR)/firmware/hdcp.elf
+
+# Touchscreen Firmware
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/firmware/chipone_firmware.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/chipone_firmware.bin \
+    vendor/realme/RE58C2/proprietary/vendor/firmware/focaltech_ts_fw_.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/focaltech_ts_fw_.bin
+
+# Essential Camera Firmware (at least config files)
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/firmware/ov50d40_shine/cfg.xml:$(TARGET_COPY_OUT_VENDOR)/firmware/ov50d40_shine/cfg.xml \
+    vendor/realme/RE58C2/proprietary/vendor/firmware/ov8856_front_ly/cfg.xml:$(TARGET_COPY_OUT_VENDOR)/firmware/ov8856_front_ly/cfg.xml
+
+# ===========================
+# GPU LIBRARIES (CRITICAL)
+# ===========================
+
+# Mali GPU Libraries
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/lib/egl/libGLES_mali.so:$(TARGET_COPY_OUT_VENDOR)/lib/egl/libGLES_mali.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/egl/libGLES_mali.so:$(TARGET_COPY_OUT_VENDOR)/lib64/egl/libGLES_mali.so
+
+# OpenCL/Vulkan
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/lib/libOpenCL.so:$(TARGET_COPY_OUT_VENDOR)/lib/libOpenCL.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/libOpenCL.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libOpenCL.so
+
+# ===========================
+# MISSING VENDOR SERVICES
+# ===========================
+
+# Additional critical services
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.connmgr@1.0-service \
+    vendor.sprd.hardware.wcn@1.0-service \
+    vendor.sprd.hardware.trusty-service \
+    android.hardware.bluetooth@1.1-service.unisoc \
+    android.hardware.wifi@1.0-service \
+    hostapd \
+    wpa_supplicant
+
+# Sensor services
+PRODUCT_PACKAGES += \
+    sensors.unisoc \
+    android.hardware.sensors-service.multihal
+
+# ===========================
+# VENDOR CONFIGURATION FILES
+# ===========================
+
+# Audio configuration
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/etc/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
+
+# Media codecs
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/etc/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
+
+# SELinux policies
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_sepolicy.cil:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_sepolicy.cil \
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_file_contexts:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_file_contexts
+
+# ===========================
+# INIT SCRIPTS
+# ===========================
+
+# Vendor init scripts
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/init.ums9230_hulk.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.ums9230_hulk.rc \
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/init.ums9230_hulk.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.ums9230_hulk.usb.rc \
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/android.hardware.graphics.composer@2.4-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.graphics.composer@2.4-service.rc
+
+# ===========================
+# PERMISSIONS
+# ===========================
+
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/etc/permissions/android.hardware.vulkan.version-1_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_3.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/permissions/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml
+
 # ===========================
 # INHERIT VENDOR FILES
 # ===========================
