@@ -381,7 +381,7 @@ endif
 # ===========================
 
 # GPU/Display Firmware (MOST CRITICAL)
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/vendor/firmware/libGLES_mali.so:$(TARGET_COPY_OUT_VENDOR)/firmware/libGLES_mali.so
 
 # WiFi/BT Regulatory Database
