@@ -135,12 +135,12 @@ PRODUCT_COPY_FILES += \
 
 # Kernel modules for DUAL CPIO
 # Ramdisk modules
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/recoveryx/ramdisk/lib/modules/modules.load))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(DEVICE_PATH)/recoveryx/ramdisk/lib/modules/, $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))
+#BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/recoveryx/ramdisk/lib/modules/modules.load))
+#BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(DEVICE_PATH)/recoveryx/ramdisk/lib/modules/, $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))
 
 # Recovery modules  
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/recoveryx/recovery/lib/modules/modules.load.recovery))
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES := $(addprefix $(DEVICE_PATH)/recoveryx/recovery/lib/modules/, $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
+#BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/recoveryx/recovery/lib/modules/modules.load.recovery))
+#BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES := $(addprefix $(DEVICE_PATH)/recoveryx/recovery/lib/modules/, $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
 
 # Kernel version
 KERNEL_VERSION := 5.4.254-android12-9-gb10a25caafa5-ab1063
