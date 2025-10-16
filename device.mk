@@ -28,12 +28,10 @@ SOONG_CONFIG_realme_RE58C2_use_vendor_bp := true
 
 PRODUCT_SOONG_NAMESPACES += \
     device/realme/RE58C2 \
-    vendor/realme/RE58C2 \
-    external/mesa3d
-
+    vendor/realme/RE58C2
 
 # ===========================
-# MINIMAL BOOT PROPERTIES (FIXED)
+# BOOT PROPERTIES
 # ===========================
 
 PRODUCT_SYSTEM_PROPERTIES += \
@@ -41,12 +39,15 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.boot.selinux=permissive \
     ro.debuggable=1 \
     
-    # Graphics
+    # Use vendor graphics stack
     ro.hardware.egl=mali \
     ro.hardware.vulkan=mali \
     ro.hardware.gpu=mali \
-    ro.hardware.gralloc=RE58C2 \
     ro.hardware.hwcomposer=unisoc \
+    ro.hardware.gralloc=RE58C2 \
+    
+    # Use vendor boot stack
+    ro.hardware.bootctrl=default \
     
     # Disable verification for initial boot
     ro.odsign.disabled=true \
@@ -58,29 +59,45 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.fastbootd.available=true
 
 # ===========================
-# CRITICAL BOOT PACKAGES ONLY
+# ESSENTIAL VENDOR PACKAGES
 # ===========================
 
-# Boot HAL (essential)
+# Boot services
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-service \
-    android.hardware.boot@1.2-impl \
-    bootctrl.default
+    vendor.sprd.hardware.boot@1.2-service
 
-# Graphics (essential)
+# Graphics services
 PRODUCT_PACKAGES += \
-    libGLES_mali \
+    android.hardware.graphics.composer@2.4-service \
+    android.hardware.graphics.allocator@4.0-service \
     hwcomposer.unisoc \
     gralloc.RE58C2
 
-# Core HAL Services
+# Audio services
+PRODUCT_PACKAGES += \
+    android.hardware.audio.service
+
+# RIL services
+PRODUCT_PACKAGES += \
+    urild
+
+# Core HAL services
 PRODUCT_PACKAGES += \
     android.hardware.health-service.example \
-    android.hardware.graphics.allocator@4.0-service \
-    android.hardware.graphics.composer@2.4-service
+    android.hardware.sensors-service.multihal \
+    android.hardware.usb-service.example
+
+# Power management
+PRODUCT_PACKAGES += \
+    vendor.unisoc.hardware.power-service
+
+# Security services
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint@2.0-unisoc.service.trusty \
+    android.hardware.gatekeeper@1.0-service.trusty
 
 # ===========================
-# RECOVERY CONFIGURATION (KEPT AS-IS)
+# RECOVERY CONFIGURATION
 # ===========================
 
 PRODUCT_PACKAGES += \
@@ -93,77 +110,35 @@ PRODUCT_PACKAGES += \
     tune2fs.vendor_ramdisk
 
 # ===========================
-# DUAL CPIO - NORMAL BOOT (ramdisk.cpio) - KEPT AS-IS
-# ===========================
-
-# All ueventd files for ramdisk.cpio
-PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/recoveryx/ramdisk/ueventd.module.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.module.rc \
-      $(LOCAL_PATH)/recoveryx/ramdisk/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.RE58C2.rc \
-      $(LOCAL_PATH)/recoveryx/ramdisk/ueventd.ums9230_hulk.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_hulk.rc
-
-# All fstab files for first stage ramdisk
-PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.module:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.module \
-      $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RE58C2 \
-      $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.ums9230_hulk:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_hulk
-
-# ===========================
-# DUAL CPIO - RECOVERY BOOT (recovery.cpio) - KEPT AS-IS
-# ===========================
-
-# Recovery init script
-PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/recoveryx/recovery/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc \
-      $(LOCAL_PATH)/recoveryx/recovery/init.recovery.ums9230_hulk.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_hulk.rc
-
-# All ueventd files for recovery.cpio
-PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/recoveryx/recovery/ueventd.module.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.module.rc \
-      $(LOCAL_PATH)/recoveryx/recovery/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.RE58C2.rc \
-      $(LOCAL_PATH)/recoveryx/recovery/ueventd.ums9230_hulk.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_hulk.rc
-
-# ===========================
-# KERNEL MODULES - SEPARATE FOR NORMAL VS RECOVERY (KEPT AS-IS)
-# ===========================
-
-# Modules for NORMAL boot (ramdisk.cpio)
-PRODUCT_COPY_FILES += \
-    $(foreach file,$(wildcard $(LOCAL_PATH)/recoveryx/ramdisk/lib/modules/*.ko),\
-    $(file):$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/$(notdir $(file))) \
-      $(LOCAL_PATH)/recoveryx/ramdisk/lib/modules/modules.alias:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.alias \
-      $(LOCAL_PATH)/recoveryx/ramdisk/lib/modules/modules.dep:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.dep \
-      $(LOCAL_PATH)/recoveryx/ramdisk/lib/modules/modules.load:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.load
-
-# Modules for RECOVERY boot (recovery.cpio)
-PRODUCT_COPY_FILES += \
-    $(foreach file,$(wildcard $(LOCAL_PATH)/recoveryx/recovery/lib/modules/*.ko),\
-    $(file):$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/$(notdir $(file))) \
-      $(LOCAL_PATH)/recoveryx/recovery/lib/modules/modules.alias:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.alias \
-      $(LOCAL_PATH)/recoveryx/recovery/lib/modules/modules.dep:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.dep \
-      $(LOCAL_PATH)/recoveryx/recovery/lib/modules/modules.load:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.load \
-      $(LOCAL_PATH)/recoveryx/recovery/lib/modules/modules.load.recovery:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.load.recovery
-
-# ===========================
-# ESSENTIAL VENDOR HAL LIBRARIES FOR DUAL CPIO
-# ===========================
-
-# Vendor HALs for normal boot
-PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/recoveryx/ramdisk/system/lib64/vendor.sprd.hardware.boot@1.2.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/lib64/vendor.sprd.hardware.boot@1.2.so \
-      $(LOCAL_PATH)/recoveryx/ramdisk/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so
-
-# Vendor HALs for recovery
-PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/vendor.sprd.hardware.boot@1.2.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/vendor.sprd.hardware.boot@1.2.so \
-      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so
-
-# ===========================
-# DEVICE TREE BLOBS
+# DUAL CPIO - NORMAL BOOT (ramdisk.cpio)
 # ===========================
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/dtb.img:$(TARGET_COPY_OUT)/dtb.img
+    $(LOCAL_PATH)/recoveryx/ramdisk/ueventd.module.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.module.rc \
+    $(LOCAL_PATH)/recoveryx/ramdisk/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.RE58C2.rc \
+    $(LOCAL_PATH)/recoveryx/ramdisk/ueventd.ums9230_hulk.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_hulk.rc \
+    $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.module:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.module \
+    $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RE58C2 \
+    $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.ums9230_hulk:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_hulk
+
+# ===========================
+# DUAL CPIO - RECOVERY BOOT (recovery.cpio)
+# ===========================
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recoveryx/recovery/init.recovery.common.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.common.rc \
+    $(LOCAL_PATH)/recoveryx/recovery/init.recovery.ums9230_hulk.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ums9230_hulk.rc \
+    $(LOCAL_PATH)/recoveryx/recovery/ueventd.module.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.module.rc \
+    $(LOCAL_PATH)/recoveryx/recovery/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.RE58C2.rc \
+    $(LOCAL_PATH)/recoveryx/recovery/ueventd.ums9230_hulk.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_hulk.rc
+
+# ===========================
+# KERNEL MODULES
+# ===========================
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recoveryx/ramdisk/lib/modules/modules.load:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.load \
+    $(LOCAL_PATH)/recoveryx/recovery/lib/modules/modules.load:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.load
 
 # ===========================
 # A/B OTA CONFIGURATION
@@ -187,14 +162,11 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_vendor=true
 
 # ===========================
-# BOOT HAL CONFIGURATION
+# DEVICE TREE BLOBS
 # ===========================
 
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.hardware.bootctrl=android.hardware.boot@1.2-impl
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/product/etc/fstab.postinstall:$(TARGET_COPY_OUT_PRODUCT)/etc/fstab.postinstall
+    $(LOCAL_PATH)/prebuilts/dtb.img:$(TARGET_COPY_OUT)/dtb.img
 
 # ===========================
 # PLATFORM CONFIGURATION
@@ -203,24 +175,6 @@ PRODUCT_COPY_FILES += \
 ifneq ($(TARGET_BOARD_PLATFORM),)
 PRODUCT_PLATFORM := ums9230
 endif
-
-# ===========================
-# MINIMAL SELINUX POLICY
-# ===========================
-
-PRODUCT_PACKAGES += \
-    plat_sepolicy_vers.txt.vendor \
-    vendor_file_contexts.vendor \
-    vendor_property_contexts.vendor
-
-# ===========================
-# ROOTDIR SCRIPTS
-# ===========================
-
-ROOTDIR_SCRIPTS := \
-    init.insmod.sh
-
-PRODUCT_PACKAGES += $(ROOTDIR_SCRIPTS)
 
 # ===========================
 # INHERIT VENDOR FILES
