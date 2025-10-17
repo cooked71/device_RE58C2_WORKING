@@ -12,6 +12,17 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 # Allow userspace reboots
 $(call inherit-product, $(SRC_TARGET_DIR)/product/userspace_reboot.mk)
 
+
+# =============================================
+# filters
+# =============================================
+
+# FIRST: Filter out LineageOS packages we're replacing
+PRODUCT_PACKAGES := $(filter-out vold, $(PRODUCT_PACKAGES))
+
+
+
+
 # =============================================
 # DEVICE-SPECIFIC CONFIGURATION
 # =============================================
@@ -460,8 +471,6 @@ $(call inherit-product, vendor/realme/RE58C2/RE58C2-vendor.mk)
 # ===========================
 # VOLD STOCK AND DEPS
 # ===========================
-# FIRST: Filter out LineageOS packages we're replacing
-PRODUCT_PACKAGES := $(filter-out vold, $(PRODUCT_PACKAGES))
 
 
 PRODUCT_PACKAGES += \
