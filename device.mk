@@ -57,7 +57,6 @@ PRODUCT_SYSTEM_PROPERTIES += \
 PRODUCT_PACKAGES += \
     keystore2 \
     odsign \
-    odrefresh \
     installd \
     wificond \
     ylog
