@@ -460,6 +460,10 @@ $(call inherit-product, vendor/realme/RE58C2/RE58C2-vendor.mk)
 # ===========================
 # VOLD STOCK AND DEPS
 # ===========================
+# FIRST: Filter out LineageOS packages we're replacing
+PRODUCT_PACKAGES := $(filter-out vold, $(PRODUCT_PACKAGES))
+
+
 PRODUCT_PACKAGES += \
     vold \
     vold_prepare_subdirs \
