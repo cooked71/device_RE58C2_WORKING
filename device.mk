@@ -482,16 +482,16 @@ $(call inherit-product, vendor/realme/RE58C2/RE58C2-vendor.mk)
 
 # Skip all BP complexity, just copy files directly
 PRODUCT_COPY_FILES += \
-    vendor/realme/proprietary/bin/vold:system/bin/vold \
-    vendor/realme/proprietary/etc/init/vold.rc:system/etc/init/vold.rc \
-    vendor/realme/proprietary/bin/vold_prepare_subdirs:system/bin/vold_prepare_subdirs \
-    vendor/realme/proprietary/system_ext/lib64/libunisocvold.so:system/system_ext/lib64/libunisocvold.so \
-    vendor/realme/proprietary/system_ext/lib64/libphoenix_native.so:system/system_ext/lib64/libphoenix_native.so \
-    vendor/realme/proprietary/system_ext/lib/libphoenix_native.so:system/system_ext/lib/libphoenix_native.so
+    vendor/realme/RE58C2/proprietary/bin/vold:system/bin/vold \
+    vendor/realme/RE58C2/proprietary/etc/init/vold.rc:system/etc/init/vold.rc \
+    vendor/realme/RE58C2/proprietary/bin/vold_prepare_subdirs:system/bin/vold_prepare_subdirs \
+    vendor/realme/RE58C2/proprietary/system_ext/lib64/libunisocvold.so:system/system_ext/lib64/libunisocvold.so \
+    vendor/realme/RE58C2/proprietary/system_ext/lib64/libphoenix_native.so:system/system_ext/lib64/libphoenix_native.so \
+    vendor/realme/RE58C2/proprietary/system_ext/lib/libphoenix_native.so:system/system_ext/lib/libphoenix_native.so
 
 PRODUCT_COPY_FILES += \
-    vendor/realme/proprietary/system/lib64/android.hardware.health.storage@1.0.so:system/lib64/android.hardware.health.storage@1.0.so \
-    vendor/realme/proprietary/system/lib64/android.hardware.health.storage-V1-ndk.so:system/lib64/android.hardware.health.storage-V1-ndk.so 
+    vendor/realme/RE58C2/proprietary/system/lib64/android.hardware.health.storage@1.0.so:system/lib64/android.hardware.health.storage@1.0.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/android.hardware.health.storage-V1-ndk.so:system/lib64/android.hardware.health.storage-V1-ndk.so 
 
 
 # Make sure AOSP doesn't build vold
