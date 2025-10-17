@@ -98,8 +98,13 @@ BOARD_KERNEL_CMDLINE := \
     loop.max_part=7 \
     swiotlb=1 \
     loglevel=7 \
-    initcall_debug=1
-    
+    initcall_debug=1 \
+    androidboot.bootservice=0 \
+    androidboot.surfaceflinger.disabled=1 \
+    androidboot.zygote=disabled \
+    system_server.disabled=1 \
+    printk.devkmsg=on
+        
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_RAMDISK_OFFSET := 0x05400000
