@@ -18,7 +18,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/userspace_reboot.mk)
 # =============================================
 
 # FIRST: Filter out LineageOS packages we're replacing
-PRODUCT_PACKAGES := $(filter-out vold, $(PRODUCT_PACKAGES))
 
 
 
@@ -473,7 +472,7 @@ $(call inherit-product, vendor/realme/RE58C2/RE58C2-vendor.mk)
 # ===========================
 
 
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     vold \
     vold_prepare_subdirs \
     libunisocvold \
@@ -481,6 +480,22 @@ PRODUCT_PACKAGES += \
     android.hardware.health.storage@1.0 \
     android.hardware.health.storage-V1-ndk
 
+# Skip all BP complexity, just copy files directly
+PRODUCT_COPY_FILES += \
+    vendor/realme/proprietary/bin/vold:system/bin/vold \
+    vendor/realme/proprietary/etc/init/vold.rc:system/etc/init/vold.rc \
+    vendor/realme/proprietary/bin/vold_prepare_subdirs:system/bin/vold_prepare_subdirs \
+    vendor/realme/proprietary/system_ext/lib64/libunisocvold.so:system/system_ext/lib64/libunisocvold.so \
+    vendor/realme/proprietary/system_ext/lib64/libphoenix_native.so:system/system_ext/lib64/libphoenix_native.so \
+    vendor/realme/proprietary/system_ext/lib/libphoenix_native.so:system/system_ext/lib/libphoenix_native.so
+
+PRODUCT_COPY_FILES += \
+    vendor/realme/proprietary/system/lib64/android.hardware.health.storage@1.0.so:system/lib64/android.hardware.health.storage@1.0.so \
+    vendor/realme/proprietary/system/lib64/android.hardware.health.storage-V1-ndk.so:system/lib64/android.hardware.health.storage-V1-ndk.so 
+
+
+# Make sure AOSP doesn't build vold
+PRODUCT_PACKAGES := $(filter-out vold vold_prepare_subdirs libvold, $(PRODUCT_PACKAGES))
 
 
 
