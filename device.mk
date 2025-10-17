@@ -457,6 +457,21 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, vendor/realme/RE58C2/RE58C2-vendor.mk)
 
+# ===========================
+# VOLD STOCK AND DEPS
+# ===========================
+PRODUCT_PACKAGES += \
+    vold \
+    vold_prepare_subdirs \
+    libunisocvold \
+    libphoenix_native \
+    android.hardware.health.storage@1.0 \
+    android.hardware.health.storage-V1-ndk
+
+
+
+
+
 # =============================================
 # UNISOC Framework Files - Direct copy (no signing needed)
 # =============================================
