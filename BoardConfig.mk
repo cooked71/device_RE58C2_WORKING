@@ -305,6 +305,8 @@ TARGET_ODM_DLKM_PROP += $(DEVICE_PATH)/odm_dlkm.prop
 # ==================================================
 # UNISOC-SPECIFIC CONFIGURATION
 # ==================================================
+TARGET_PROVIDES_VOLD := true
+
 
 # Unisoc graphics stack (CRITICAL)
 BOARD_USES_UNISOC_GRAPHICS := true
