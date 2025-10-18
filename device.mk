@@ -74,8 +74,9 @@ PRODUCT_PACKAGES += \
 
 # UNCOMMENT: These should be active
 PRODUCT_PACKAGES += \
-    vendor.sprd.hardware.lights-service \
-    android.hardware.cas@1.2-service
+    android.hardware.cas@1.2-service 
+   # vendor.sprd.hardware.lights-service 
+
 
 # ===========================
 # EXISTING SERVICES (KEEP THESE) v
@@ -185,18 +186,27 @@ PRODUCT_SYSTEM_PROPERTIES += \
 
 
 
+
 # ===========================
 # VNDK CONFIGURATION
 # ===========================
 
-# Acknowledge VNDK variant differences
-PRODUCT_SYSTEM_PROPERTIES += \
-    ro.vndk.version=33
-
-# Add light HAL to VNDK exception list
+# Acknowledge VNDK variant differences for light HAL
 PRODUCT_PACKAGES += \
     android.hardware.light-V2-ndk.vendor
 
+# VNDK properties
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.vndk.version=33 \
+    ro.vndk.lite=false
+
+# Disable VNDK enforcement for light HAL (temporary workaround)
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.vndk.version=33
+
+# Add to VNDK exception list via product variables
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.vndk.version=33
 
 
 # ===========================
