@@ -278,6 +278,22 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/realme/RE58C2/proprietary/p
 DEVICE_MANIFEST_FILE += \
     $(foreach f,$(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml),$(f))
 
+# ===========================
+# SYSTEM SERVICES FROM STOCK
+# ===========================
+
+# Use stock system binaries (NOT vendor)
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/bin/credstore:$(TARGET_COPY_OUT_SYSTEM)/bin/credstore \
+    vendor/realme/RE58C2/proprietary/system/bin/keystore2:$(TARGET_COPY_OUT_SYSTEM)/bin/keystore2 \
+    vendor/realme/RE58C2/proprietary/system/bin/installd:$(TARGET_COPY_OUT_SYSTEM)/bin/installd \
+    vendor/realme/RE58C2/proprietary/system/bin/odsign:$(TARGET_COPY_OUT_SYSTEM)/bin/odsign \
+    vendor/realme/RE58C2/proprietary/system/bin/wificond:$(TARGET_COPY_OUT_SYSTEM)/bin/wificond
+
+# Remove from PRODUCT_PACKAGES to avoid conflicts
+PRODUCT_PACKAGES := $(filter-out credstore keystore2 installd odsign wificond,$(PRODUCT_PACKAGES))
+
+
 # Enable VINTF enforcement
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
