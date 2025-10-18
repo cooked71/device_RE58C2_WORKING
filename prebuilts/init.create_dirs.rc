@@ -1,1 +1,9 @@
-
+on early-init
+    # Create missing credential store directories
+    mkdir /data/misc/credstore 0770 system system
+    mkdir /data/misc/keystore 0770 keystore keystore
+    mkdir /data/misc/apexdata 0770 system system
+    
+    # Set proper permissions
+    chown system system /data/misc/credstore
+    chown keystore keystore /data/misc/keystore
