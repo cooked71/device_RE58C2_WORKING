@@ -1,1 +1,7 @@
+/vendor/bin/hw/android\.hardware\.security\.keymint.*   u:object_r:hal_keymint_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.boot.*          u:object_r:hal_bootctl_exec:s0  
+/vendor/bin/hw/android\.hardware\.bluetooth.*          u:object_r:hal_bluetooth_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.trusty.*        u:object_r:hal_trusty_exec:s0
+/vendor/bin/hw/android\.hardware\.audio.*              u:object_r:hal_audio_exec:s0
+/vendor/bin/hw/android\.hardware\.graphics.*           u:object_r:hal_graphics_composer_exec:s0
 
