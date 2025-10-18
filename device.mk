@@ -341,10 +341,11 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.wcn@1.0-service \
     vendor.sprd.hardware.trusty-service \
     android.hardware.bluetooth@1.1-service.unisoc \
-    android.hardware.wifi@1.0-service \
     hostapd \
     wpa_supplicant \
-    sensors.unisoc
+    sensors.unisoc  
+    #android.hardware.wifi@1.0-service \
+
 
 # ===========================
 # A/B OTA CONFIGURATION (KEEP EXISTING)
