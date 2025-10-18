@@ -99,11 +99,15 @@ BOARD_KERNEL_CMDLINE := \
     swiotlb=1 \
     loglevel=7 \
     initcall_debug=1 \
-    androidboot.bootservice=0 \
-    androidboot.surfaceflinger.disabled=1 \
-    androidboot.zygote=disabled \
-    system_server.disabled=1 \
-    printk.devkmsg=on
+    printk.devkmsg=on \
+    # ENABLE display console:
+    console=tty0 \
+    androidboot.console=tty0 \
+    debug.sf.nobootanimation=1
+    # REMOVED: androidboot.bootservice=0
+    # REMOVED: androidboot.surfaceflinger.disabled=1  
+    # REMOVED: androidboot.zygote=disabled
+    # REMOVED: system_server.disabled=1
         
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_KERNEL_OFFSET := 0x00008000
