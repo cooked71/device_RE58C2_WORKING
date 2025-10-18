@@ -62,7 +62,7 @@ PRODUCT_PACKAGES += \
     ylog
 
 # CRITICAL: Missing libraries for boot services
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     libkeystore2_aaid \
     libkeystore2_apc_compat \
     libkeystore2_crypto \
@@ -119,14 +119,11 @@ PRODUCT_PACKAGES += \
 # REMOVE AOSP DUPLICATES - ADD THESE FILTERS
 # ===========================
 
-PRODUCT_PACKAGES := $(filter-out vold,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out netd,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out surfaceflinger,$(PRODUCT_PACKAGES))
+# Remove AOSP duplicates
 PRODUCT_PACKAGES := $(filter-out keystore2,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out installd,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out wificond,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out odsign,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out odrefresh,$(PRODUCT_PACKAGES))
 
 # ===========================
 # POWER & THERMAL SERVICES (KEEP EXISTING)
