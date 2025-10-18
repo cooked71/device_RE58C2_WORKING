@@ -145,7 +145,7 @@ PRODUCT_PACKAGES += \
 # VINTF MANIFEST FRAGMENTS (KEEP EXISTING) v
 # ===========================
 
-PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
     vendor.sprd.hardware.thermal@2.0-service.xml \
     vendor-power-default.xml \
     power.stats-default.xml 
