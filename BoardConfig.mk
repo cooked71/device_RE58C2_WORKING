@@ -278,20 +278,6 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/realme/RE58C2/proprietary/p
 DEVICE_MANIFEST_FILE += \
     $(foreach f,$(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml),$(f))
 
-# ===========================
-# SYSTEM SERVICES FROM STOCK
-# ===========================
-
-# Use stock system binaries (NOT vendor)
-PRODUCT_COPY_FILES += \
-    vendor/realme/RE58C2/proprietary/system/bin/credstore:$(TARGET_COPY_OUT_SYSTEM)/bin/credstore \
-    vendor/realme/RE58C2/proprietary/system/bin/keystore2:$(TARGET_COPY_OUT_SYSTEM)/bin/keystore2 \
-    vendor/realme/RE58C2/proprietary/system/bin/installd:$(TARGET_COPY_OUT_SYSTEM)/bin/installd \
-    vendor/realme/RE58C2/proprietary/system/bin/odsign:$(TARGET_COPY_OUT_SYSTEM)/bin/odsign \
-    vendor/realme/RE58C2/proprietary/system/bin/wificond:$(TARGET_COPY_OUT_SYSTEM)/bin/wificond
-
-# Remove from PRODUCT_PACKAGES to avoid conflicts
-PRODUCT_PACKAGES := $(filter-out credstore keystore2 installd odsign wificond,$(PRODUCT_PACKAGES))
 
 
 # Enable VINTF enforcement
@@ -319,8 +305,6 @@ TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
 TARGET_VENDOR_DLKM_PROP += $(DEVICE_PATH)/vendor_dlkm.prop
 TARGET_ODM_DLKM_PROP += $(DEVICE_PATH)/odm_dlkm.prop
 
-
-# Add these Unisoc-specific flags to your BoardConfig.mk:
 
 # ==================================================
 # UNISOC-SPECIFIC CONFIGURATION
@@ -373,6 +357,63 @@ TARGET_USES_SPRD_SENSORS := true
 # Unisoc WiFi
 TARGET_USES_SPRD_WCN := true
 BOARD_WLAN_DEVICE := sprd
+
+
+# ==================================================
+# UNISOC-SPECIFIC CONFIGURATION
+# ==================================================
+# ===========================
+# SYSTEM SERVICES FROM STOCK
+# ===========================
+
+# Use stock system binaries (NOT vendor)
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/bin/credstore:$(TARGET_COPY_OUT_SYSTEM)/bin/credstore \
+    vendor/realme/RE58C2/proprietary/system/bin/keystore2:$(TARGET_COPY_OUT_SYSTEM)/bin/keystore2 \
+    vendor/realme/RE58C2/proprietary/system/bin/installd:$(TARGET_COPY_OUT_SYSTEM)/bin/installd \
+    vendor/realme/RE58C2/proprietary/system/bin/odsign:$(TARGET_COPY_OUT_SYSTEM)/bin/odsign \
+    vendor/realme/RE58C2/proprietary/system/bin/wificond:$(TARGET_COPY_OUT_SYSTEM)/bin/wificond
+
+# Remove from PRODUCT_PACKAGES to avoid conflicts
+PRODUCT_PACKAGES := $(filter-out credstore keystore2 installd odsign wificond,$(PRODUCT_PACKAGES))
+
+# Add to your BOOT PROPERTIES section:
+PRODUCT_SYSTEM_PROPERTIES += \
+    # Graphics fixes
+    ro.hardware.egl=mali \
+    ro.board.platform=ums9230 \
+    # Service timeouts
+    init.svc.surfaceflinger.timeout=60000 \
+    # Temporary workarounds
+    config.disable_keymint=true
+
+    # ===========================
+# CRITICAL FIXES FOR UNISOC BOOT
+# ===========================
+
+# SELinux contexts for vendor services
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/sepolicy/vendor_service_contexts:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_service_contexts
+
+# Create missing directories
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.create_dirs.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.create_dirs.rc
+
+# Stock system services
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/bin/credstore:$(TARGET_COPY_OUT_SYSTEM)/bin/credstore \
+    vendor/realme/RE58C2/proprietary/system/bin/keystore2:$(TARGET_COPY_OUT_SYSTEM)/bin/keystore2
+
+
+
+
+
+
+
+
+
+
+
 
 # Inherit vendor blobs
 include vendor/realme/RE58C2/BoardConfigVendor.mk
