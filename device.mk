@@ -113,8 +113,8 @@ PRODUCT_PACKAGES += \
 
 # Security services
 PRODUCT_PACKAGES += \
-    android.hardware.security.keymint@2.0-unisoc.service.trusty \
-    android.hardware.gatekeeper@1.0-service.trusty
+    android.hardware.security.keymint@2.0-unisoc.service.trusty 
+    #android.hardware.gatekeeper@1.0-service.trusty
 
 # ===========================
 # REMOVE AOSP DUPLICATES - ADD THESE FILTERS
