@@ -184,6 +184,21 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.fastbootd.available=true
 
 
+
+# ===========================
+# VNDK CONFIGURATION
+# ===========================
+
+# Acknowledge VNDK variant differences
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.vndk.version=33
+
+# Add light HAL to VNDK exception list
+PRODUCT_PACKAGES += \
+    android.hardware.light-V2-ndk.vendor
+
+
+
 # ===========================
 # Files for NORMAL boot (ramdisk.cpio)
 # ===========================
