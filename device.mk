@@ -149,7 +149,8 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.thermal@2.0-service.xml \
     vendor-power-default.xml \
     power.stats-default.xml 
-  #  android.hardware.thermal@2.0-service.xml
+ #  vendor.sprd.hardware.thermal@2.0-service.xml \
+ #  android.hardware.thermal@2.0-service.xml
 
 # ===========================
 # RECOVERY CONFIGURATION (KEEP EXISTING) v
