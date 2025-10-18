@@ -73,7 +73,7 @@ PRODUCT_PACKAGES += \
     libwifi-hal
 
 # UNCOMMENT: These should be active
-PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
     android.hardware.cas@1.2-service 
    # vendor.sprd.hardware.lights-service 
 
