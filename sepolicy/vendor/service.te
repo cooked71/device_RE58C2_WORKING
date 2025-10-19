@@ -1,8 +1,3 @@
 # Service types for vendor services
-type hal_keymint_service, service_manager_type;
 type hal_trusty_service, service_manager_type;
-type hal_audio_service, service_manager_type;
-type hal_graphics_composer_service, service_manager_type;
-type hal_bluetooth_service, service_manager_type;
-type hal_ril_service, service_manager_type;
 type vendor_hal_service, service_manager_type;
