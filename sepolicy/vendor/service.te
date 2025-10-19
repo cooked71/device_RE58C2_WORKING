@@ -1,3 +1,0 @@
-# Service types for vendor services
-type hal_trusty_service, service_manager_type;
-type vendor_hal_service, service_manager_type;
