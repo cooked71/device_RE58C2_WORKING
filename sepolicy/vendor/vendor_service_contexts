@@ -1,0 +1,25 @@
+# KeyMint services
+android.hardware.security.keymint@2.0-unisoc.service.trusty    u:object_r:hal_keymint_service:s0
+
+# Sprd services  
+vendor.sprd.hardware.boot@1.2-service                          u:object_r:hal_bootctl_service:s0
+vendor.sprd.hardware.trusty-service                            u:object_r:hal_trusty_service:s0
+
+# Audio services
+android.hardware.audio.service                                 u:object_r:hal_audio_service:s0
+
+# Graphics services
+android.hardware.graphics.composer@2.4-service                 u:object_r:hal_graphics_composer_service:s0
+android.hardware.graphics.allocator@4.0-service                u:object_r:hal_graphics_allocator_service:s0
+
+# Bluetooth services
+android.hardware.bluetooth@1.1-service.unisoc                  u:object_r:hal_bluetooth_service:s0
+
+# RIL services  
+unisoc.rild                                                     u:object_r:hal_ril_service:s0
+
+# TEE service
+vendor.tee_rpc                                                 u:object_r:tee_service:s0
+
+# All other vendor services
+vendor.sprd.hardware.*                                         u:object_r:vendor_hal_service:s0
