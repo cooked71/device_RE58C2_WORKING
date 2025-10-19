@@ -31,6 +31,14 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/realme/RE58C2
 
 # ===========================
+# SELINUX POLICIES
+# ===========================
+
+# Include vendor sepolicy
+BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
+
+
+# ===========================
 # BOOT PROPERTIES v
 # ===========================
 
@@ -43,6 +51,9 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.hardware.hwcomposer=unisoc \
     ro.hardware.gralloc=RE58C2 \
     ro.hardware.bootctrl=default \
+    ro.hardware.keystore=trusty \
+    ro.hardware.gatekeeper=trusty \
+    ro.hardware.keymaster=trusty \
     ro.odsign.disabled=true \
     odsign.verification.disabled=true \
     ro.apex.updatable=false \
@@ -111,9 +122,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.unisoc.hardware.power-service
 
+
 # Security services
 PRODUCT_PACKAGES += \
-    android.hardware.security.keymint@2.0-unisoc.service.trusty 
+    android.hardware.security.keymint@2.0-unisoc.service.trusty \
+    tee_rpc
     #android.hardware.gatekeeper@1.0-service.trusty
 
 # ===========================
@@ -497,12 +510,12 @@ PRODUCT_SYSTEM_PROPERTIES += \
     # Temporary workarounds
     config.disable_keymint=true
 
-    # ===========================
+# ===========================
 # CRITICAL FIXES FOR UNISOC BOOT
 # ===========================
 
 # SELinux contexts for vendor services
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sepolicy/vendor_service_contexts:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_service_contexts
 
 # Create missing directories
