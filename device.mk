@@ -35,8 +35,12 @@ PRODUCT_SOONG_NAMESPACES += \
 # ===========================
 
 # Include vendor sepolicy
-BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
+# SELinux policy
+BOARD_VENDOR_SEPOLICY_DIRS += \
+    device/your_vendor/your_device/sepolicy/vendor
 
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
+    device/your_vendor/your_device/sepolicy/private
 
 # ===========================
 # BOOT PROPERTIES v
