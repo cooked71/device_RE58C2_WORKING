@@ -216,8 +216,12 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.fastbootd.available=true
 
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.mapper@4.0-impl-arm
-
+    android.hardware.graphics.mapper@4.0-impl-arm \
+    libhwc2on1adapter \
+    libhwc2onfbadapter \
+    libmemion
+    # Remove these if AOSP provides them:
+    # libgralloctypes
 
 
 # ===========================
