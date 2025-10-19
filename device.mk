@@ -463,3 +463,54 @@ PRODUCT_COPY_FILES += \
 # ===========================
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
+
+# ==================================================
+# UNISOC-SPECIFIC CONFIGURATION nuovo
+#  ==================================================
+# ===========================
+# SYSTEM SERVICES FROM STOCK
+# ===========================
+
+# Use LineageOS libkeystore2, stock credstore
+PRODUCT_PACKAGES += \
+    credstore
+
+
+# Use stock system binaries (NOT vendor)
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/bin/credstore:$(TARGET_COPY_OUT_SYSTEM)/bin/credstore \
+    vendor/realme/RE58C2/proprietary/system/bin/keystore2:$(TARGET_COPY_OUT_SYSTEM)/bin/keystore2 \
+    vendor/realme/RE58C2/proprietary/system/bin/installd:$(TARGET_COPY_OUT_SYSTEM)/bin/installd \
+    vendor/realme/RE58C2/proprietary/system/bin/odsign:$(TARGET_COPY_OUT_SYSTEM)/bin/odsign \
+    vendor/realme/RE58C2/proprietary/system/bin/wificond:$(TARGET_COPY_OUT_SYSTEM)/bin/wificond
+
+# Remove from PRODUCT_PACKAGES to avoid conflicts
+PRODUCT_PACKAGES := $(filter-out credstore keystore2 installd odsign wificond,$(PRODUCT_PACKAGES))
+
+# Add to your BOOT PROPERTIES section:
+PRODUCT_SYSTEM_PROPERTIES += \
+    # Graphics fixes
+    ro.hardware.egl=mali \
+    ro.board.platform=ums9230 \
+    # Service timeouts
+    init.svc.surfaceflinger.timeout=60000 \
+    # Temporary workarounds
+    config.disable_keymint=true
+
+    # ===========================
+# CRITICAL FIXES FOR UNISOC BOOT
+# ===========================
+
+# SELinux contexts for vendor services
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/sepolicy/vendor_service_contexts:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_service_contexts
+
+# Create missing directories
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/init.create_dirs.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.create_dirs.rc
+
+# Stock system services
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/bin/credstore:$(TARGET_COPY_OUT_SYSTEM)/bin/credstore \
+    vendor/realme/RE58C2/proprietary/system/bin/keystore2:$(TARGET_COPY_OUT_SYSTEM)/bin/keystore2
+
