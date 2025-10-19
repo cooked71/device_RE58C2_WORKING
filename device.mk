@@ -37,10 +37,10 @@ PRODUCT_SOONG_NAMESPACES += \
 # Include vendor sepolicy
 # SELinux policy
 BOARD_VENDOR_SEPOLICY_DIRS += \
-    device/your_vendor/your_device/sepolicy/vendor
+    $(LOCAL_PATH)/sepolicy/vendor
 
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
-    device/your_vendor/your_device/sepolicy/private
+   $(LOCAL_PATH)/sepolicy/private
 
 # ===========================
 # BOOT PROPERTIES v
