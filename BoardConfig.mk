@@ -306,6 +306,9 @@ TARGET_VENDOR_DLKM_PROP += $(DEVICE_PATH)/vendor_dlkm.prop
 TARGET_ODM_DLKM_PROP += $(DEVICE_PATH)/odm_dlkm.prop
 
 
+
+BOARD_SEPOLICY_REPLACE += tee_service
+
 # ==================================================
 # UNISOC-SPECIFIC CONFIGURATION
 # ==================================================

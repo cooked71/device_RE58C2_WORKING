@@ -1,5 +1,5 @@
 # Service types for vendor services
-type tee_service, service_manager_type;
+#type tee_service, service_manager_type;
 type hal_keymint_service, service_manager_type;
 type hal_trusty_service, service_manager_type;
 type hal_audio_service, service_manager_type;
