@@ -1,0 +1,9 @@
+# TEE hardware service
+vendor.tee::ITee                                            u:object_r:tee_hwservice:s0
+
+# KeyMint hardware service
+android.hardware.security.keymint::IKeyMintDevice          u:object_r:hal_keymint_default_hwservice:s0
+
+# Sprd hardware services
+vendor.sprd.hardware.boot::IBootControl                    u:object_r:hal_bootctl_default_hwservice:s0
+vendor.sprd.hardware.trusty::ITrustyService                u:object_r:hal_trusty_default_hwservice:s0
