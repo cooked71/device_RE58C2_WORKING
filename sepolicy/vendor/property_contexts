@@ -1,11 +1,6 @@
-# TEE properties
 vendor.tee. u:object_r:vendor_default_prop:s0
 persist.vendor.tee. u:object_r:vendor_default_prop:s0
-
-# KeyMint properties
 vendor.keymint. u:object_r:vendor_default_prop:s0
 persist.vendor.keymint. u:object_r:vendor_default_prop:s0
-
-# Sprd properties  
 vendor.sprd. u:object_r:vendor_default_prop:s0
 persist.vendor.sprd. u:object_r:vendor_default_prop:s0
