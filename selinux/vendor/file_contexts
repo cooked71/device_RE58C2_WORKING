@@ -1,0 +1,5 @@
+# Basic file contexts for critical services
+/vendor/bin/tee_rpc u:object_r:tee_exec:s0
+/vendor/bin/hw/android\.hardware\.security\.keymint@2\.0-unisoc\.service\.trusty u:object_r:hal_keymint_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.trusty-service u:object_r:hal_trusty_exec:s0 ;
+

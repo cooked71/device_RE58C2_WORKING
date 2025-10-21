@@ -16,6 +16,8 @@ BUILD_BROKEN_INITRC_CHECKS := true
 
 # SEPolicy
 BOARD_SEPOLICY_VERS := 33.0
+BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
+
 
 # Architecture
 TARGET_ARCH := arm64

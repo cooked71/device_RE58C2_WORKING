@@ -34,16 +34,14 @@ PRODUCT_SOONG_NAMESPACES += \
 # SELINUX POLICIES - MINIMAL WORKING VERSION
 # ===========================
 
-# Use only basic sepolicy directory (points to empty directory)
-BOARD_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy
+# Use vendor sepolicy directory (where we created our .te files)
+BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
 
-# Disable APEX temporarily to fix build
-TARGET_FLATTEN_APEX := true
+# Enable APEX for LineageOS 20 (we fixed the policies!)
+TARGET_FLATTEN_APEX := false
 
 # Include SELinux APEX (keep this)
 PRODUCT_PACKAGES += com.android.sepolicy
-
-
 
 
 # ===========================
