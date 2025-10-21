@@ -1,5 +1,5 @@
 type hal_tee_exec, exec_type, vendor_file_type, file_type;
 type tee_service, domain, vendor_service, hal_server_domain;
 
-hal_server_domain(tee_service, hal_tee_exec;
+hal_server_domain(tee_service, hal_tee_exec);
 
