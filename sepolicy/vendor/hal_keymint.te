@@ -1,5 +1,6 @@
-# KeyMint service
 type hal_keymint_exec, exec_type, vendor_file_type, file_type;
 type hal_keymint_default, domain;
+type hal_keymint_default_service, service_manager_type;
+
 init_daemon_domain(hal_keymint_default);
 
