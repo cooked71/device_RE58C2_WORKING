@@ -31,26 +31,20 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/realme/RE58C2
 
 # ===========================
-# SELINUX POLICIES
+# SELINUX POLICIES - MINIMAL WORKING VERSION
 # ===========================
 
-# Include vendor sepolicy
-# SELinux policy
+# Use only basic sepolicy directory (points to empty directory)
+BOARD_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy
 
-BOARD_VENDOR_SEPOLICY_DIRS += \
-    device/realme/RE58C2/sepolicy/vendor
+# Disable APEX temporarily to fix build
+TARGET_FLATTEN_APEX := true
 
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
-   device/realme/RE58C2/sepolicy/private
-
-BOARD_SEPOLICY_DIRS := \
-    system/sepolicy \
-    device/realme/RE58C2/sepolicy/device \
-    $(BOARD_VENDOR_SEPOLICY_DIRS) \
-    $(SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS)
-
-# Include SELinux APEX
+# Include SELinux APEX (keep this)
 PRODUCT_PACKAGES += com.android.sepolicy
+
+
+
 
 # ===========================
 # BOOT PROPERTIES v
