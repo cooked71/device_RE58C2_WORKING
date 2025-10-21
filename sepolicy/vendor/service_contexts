@@ -1,15 +1,10 @@
-# TEE service - USE AOSP TYPE
 vendor.tee_rpc                                    u:object_r:vendor_service:s0
 
-# KeyMint service - USE AOSP TYPE
 android.hardware.security.keymint.IKeyMintDevice/default    u:object_r:hal_keymint_default_service:s0
 
-# Sprd services - USE AOSP TYPES
 vendor.sprd.hardware.boot@1.2::IBootControl/default         u:object_r:vendor_service:s0
 vendor.sprd.hardware.trusty::ITrustyService/default         u:object_r:vendor_service:s0
 
-# Audio service - USE AOSP TYPE
 android.hardware.audio@7.1::IDevicesFactory/default         u:object_r:hal_audio_default_service:s0
 
-# Other HAL services use generic vendor context
 vendor.sprd.hardware.*                                      u:object_r:vendor_service:s0
