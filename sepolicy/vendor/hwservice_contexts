@@ -1,0 +1,2 @@
+vendor.tee::ITee u:object_r:hal_keymint_hwservice:s0
+android.hardware.security.keymint::IKeyMintDevice u:object_r:hal_keymint_hwservice:s0
