@@ -1,0 +1,11 @@
+type hal_bluetooth_default, domain;
+type hal_bluetooth_default_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_bluetooth_default);
+
+# Bluetooth permissions
+allow hal_bluetooth_default bluetooth_device:dir search;
+allow hal_bluetooth_default bluetooth_device:chr_file { read write open };
+
+# Bluetooth service permissions
+allow hal_bluetooth_default hwservicemanager:binder { call transfer };
+allow hal_bluetooth_default bluetooth_service:service_manager find;

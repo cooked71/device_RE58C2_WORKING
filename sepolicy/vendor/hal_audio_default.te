@@ -1,0 +1,12 @@
+type hal_audio_default, domain;
+type hal_audio_default_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_audio_default);
+
+# Audio HAL permissions
+allow hal_audio_default audio_device:dir search;
+allow hal_audio_default audio_device:chr_file { read write open };
+allow hal_audio_default hal_audio_default:process { setexec };
+
+# Audio service permissions
+allow hal_audio_default hwservicemanager:binder { call transfer };
+allow hal_audio_default audioserver_service:service_manager find;
