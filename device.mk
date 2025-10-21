@@ -34,8 +34,6 @@ PRODUCT_SOONG_NAMESPACES += \
 # SELINUX POLICIES - MINIMAL WORKING VERSION
 # ===========================
 
-# Use vendor sepolicy directory (where we created our .te files)
-BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
 
 # Enable APEX for LineageOS 20 (we fixed the policies!)
 TARGET_FLATTEN_APEX := false
