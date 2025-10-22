@@ -13,8 +13,9 @@ allow hal_trusty_default tee:fd use;
 allow hal_trusty_default self:process { fork sigchld };
 allow hal_trusty_default ashmem_device:chr_file { read write open map };
 allow hal_trusty_default binder_device:chr_file { read write ioctl open };
-allow hal_trusty_default trusty_device:chr_file { read write ioctl open };
 
 # Service registration
 allow hal_trusty_default hal_trusty_default_service:service_manager add;
 allow hal_trusty_default hal_trusty_default_hwservice:hwservice_manager add;
+# Trusty device types
+type trusty_device, dev_type;

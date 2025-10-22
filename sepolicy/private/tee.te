@@ -14,7 +14,6 @@ allow tee binder_device:chr_file { read write ioctl open };
 
 # Allow TEE to communicate with kernel Trusty drivers
 allow tee trusty_device:chr_file { read write ioctl open };
-allow tee trusty_log_device:chr_file { read write ioctl open };
 
 # Allow TEE to access vendor files
 allow tee vendor_file:dir { search };
