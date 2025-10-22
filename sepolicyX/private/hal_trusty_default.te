@@ -1,0 +1,8 @@
+# Trusty service domain - NO execute permissions
+type hal_trusty_default, domain;
+
+# Use platform types only - NO exec_type
+typeattribute hal_trusty_default coredomain;
+
+# Basic permissions only - NO file execute/open
+allow hal_trusty_default self:process sigchld;

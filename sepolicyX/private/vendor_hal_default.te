@@ -1,0 +1,12 @@
+# Generic vendor HAL domain - NO execute permissions  
+type vendor_hal_default, domain;
+
+# Use platform types only - NO exec_type
+typeattribute vendor_hal_default coredomain;
+
+# Basic permissions only - NO file execute/open
+allow vendor_hal_default self:process sigchld;
+
+# Property types (use vendor_ prefix)
+type vendor_tee_prop, property_type;
+type vendor_keymint_prop, property_type;
