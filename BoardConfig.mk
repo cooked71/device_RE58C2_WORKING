@@ -17,6 +17,9 @@ BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
 
 # SEPolicy
 BOARD_SEPOLICY_VERS := 33.0
+BOARD_SEPOLICY_DIRS += \
+    device/realme/RE58C2/sepolicy/vendor
+
 
 # Architecture
 TARGET_ARCH := arm64
