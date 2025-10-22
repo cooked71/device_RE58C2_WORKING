@@ -1,8 +1,0 @@
-type hal_keymint_unisoc_exec, exec_type, vendor_file_type, file_type;
-type hal_keymint_unisoc, domain;
-init_daemon_domain(hal_keymint_unisoc);
-
-# KeyMint permissions
-allow hal_keymint_unisoc hwservicemanager:binder { call transfer };
-allow hal_keymint_unisoc keystore:dir search;
-allow hal_keymint_unisoc keystore:file { read write open };

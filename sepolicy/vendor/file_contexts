@@ -1,23 +1,13 @@
-# KeyMint service
-/vendor/bin/hw/android\.hardware\.security\.keymint@2\.0-unisoc\.service\.trusty u:object_r:hal_keymint_unisoc_exec:s0
+# TEE and Security services
+/vendor/bin/tee_rpc                                                              u:object_r:hal_tee_exec:s0
+/vendor/bin/hw/android\.hardware\.security\.keymint@2\.0-unisoc\.service\.trusty u:object_r:hal_keymint_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.trusty-service                            u:object_r:hal_trusty_exec:s0
 
-# TEE service
-/vendor/bin/tee_rpc u:object_r:tee_rpc_exec:s0
+# Other HAL services
+/vendor/bin/hw/vendor\.sprd\.hardware\.boot@1\.2-service                          u:object_r:hal_bootctl_exec:s0
+/vendor/bin/hw/android\.hardware\.audio\.service                                 u:object_r:hal_audio_exec:s0
+/vendor/bin/hw/android\.hardware\.bluetooth@1\.1-service\.unisoc                  u:object_r:hal_bluetooth_exec:s0
+/vendor/bin/hw/unisoc\.rild                                                     u:object_r:hal_ril_exec:s0
 
-# SPRD vendor services
-/vendor/bin/hw/vendor\.sprd\.hardware\.* u:object_r:hal_sprd_default_exec:s0
-
-# Audio service
-/vendor/bin/hw/android\.hardware\.audio\.service u:object_r:hal_audio_default_exec:s0
-
-# Graphics service
-/vendor/bin/hw/android\.hardware\.graphics\.composer@2\.4-service u:object_r:hal_graphics_composer_default_exec:s0
-
-# Bluetooth service
-/vendor/bin/hw/android\.hardware\.bluetooth@1\.1-service\.unisoc u:object_r:hal_bluetooth_default_exec:s0
-
-# RIL daemon
-/vendor/bin/hw/urild u:object_r:hal_sprd_default_exec:s0
-
-# Shared libraries
-/vendor/lib64/libhwbinder\.so u:object_r:same_process_hal_file:s0
+# Generic for other Sprd services
+/vendor/bin/hw/vendor\.sprd\.hardware\.*                                         u:object_r:hal_default_exec:s0
