@@ -3,7 +3,7 @@
 
 # Sprd services  
 /vendor/bin/hw/vendor\.sprd\.hardware\.boot@1\.2-service                          u:object_r:hal_bootctl_default_exec:s0
-/vendor/bin/hw/vendor\.sprd\.hardware\.trusty-service                            u:object_r:hal_trusty_default_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.trusty-service                            u:object_r:vendor_file_type:s0
 
 # TEE service
 /vendor/bin/tee_rpc                                                              u:object_r:vendor_exec:s0
@@ -22,4 +22,4 @@
 /vendor/bin/hw/unisoc\.rild                                                     u:object_r:hal_ril_default_exec:s0
 
 # All other vendor services (catch-all)
-/vendor/bin/hw/vendor\.sprd\.hardware\.*                                         u:object_r:vendor_hal_default_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.*                                         u:object_r:vendor_file_type:s0

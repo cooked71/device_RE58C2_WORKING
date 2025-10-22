@@ -1,10 +1,10 @@
-# Vendor properties
+# Vendor properties - use proper vendor_ prefix for contexts
 vendor\.sprd\.                                    u:object_r:vendor_prop:s0
 ro\.vendor\.sprd\.                                u:object_r:vendor_prop:s0
 persist\.vendor\.sprd\.                           u:object_r:vendor_prop:s0
 
-# TEE properties - use vendor_tee_prop
-vendor\.tee\.                                     u:object_r:vendor_tee_prop:s0
+# TEE properties - use vendor_ prefix
+vendor\.tee\.                                     u:object_r:vendor_prop:s0
 
-# KeyMint properties - use vendor_keymint_prop  
-vendor\.keymint\.                                 u:object_r:vendor_keymint_prop:s0
+# KeyMint properties - use vendor_ prefix  
+vendor\.keymint\.                                 u:object_r:vendor_prop:s0

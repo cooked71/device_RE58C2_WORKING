@@ -1,10 +1,8 @@
-# Trusty service domain - minimal permissions
+# Trusty service domain - NO execute permissions
 type hal_trusty_default, domain;
-type hal_trusty_default_exec, system_file_type, vendor_file_type;
 
-init_daemon_domain(hal_trusty_default)
+# Use platform types only - NO exec_type
+typeattribute hal_trusty_default coredomain;
 
-# Basic permissions only
-allow hal_trusty_default self:process { sigchld };
-allow hal_trusty_default ashmem_device:chr_file { read write map };
-allow hal_trusty_default binder_device:chr_file { read ioctl };
+# Basic permissions only - NO file execute/open
+allow hal_trusty_default self:process sigchld;
