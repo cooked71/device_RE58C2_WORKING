@@ -16,8 +16,6 @@ BUILD_BROKEN_INITRC_CHECKS := true
 
 # SEPolicy
 BOARD_SEPOLICY_VERS := 33.0
-BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
-
 
 # Architecture
 TARGET_ARCH := arm64
@@ -294,6 +292,8 @@ BOARD_USES_EROFS_POSTINSTALL := true
 # Ensure the install plan picks up EROFS
 TARGET_OTA_ASSERT_DEVICE := RE58C2
 
+# Critical for odsign to work
+TARGET_FLATTEN_APEX := false
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
