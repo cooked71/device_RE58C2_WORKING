@@ -8,7 +8,6 @@ init_daemon_domain(hal_trusty_default)
 
 # Trusty service needs TEE access
 allow hal_trusty_default tee:fd use;
-allow hal_trusty_default tee_service:service_manager find;
 
 # Basic permissions
 allow hal_trusty_default self:process { fork sigchld };

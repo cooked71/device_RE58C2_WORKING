@@ -16,3 +16,6 @@ allow vendor_hal_default vendor_hal_service:service_manager add;
 # Access vendor files
 allow vendor_hal_default vendor_file:dir { search };
 allow vendor_hal_default vendor_file:file { read open getattr execute };
+# Property types
+type vendor_tee_prop, property_type;
+type vendor_keymint_prop, property_type;
