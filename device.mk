@@ -37,46 +37,33 @@ PRODUCT_SOONG_NAMESPACES += \
 # Include vendor sepolicy
 # SELinux policy
 BOARD_VENDOR_SEPOLICY_DIRS += \
-    device/realme/RE58C2/sepolicy/vendor
+    device/your_vendor/your_device/sepolicy/vendor
 
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
-   device/realme/RE58C2/sepolicy/private
+    device/your_vendor/your_device/sepolicy/private
 
 # ===========================
 # BOOT PROPERTIES v
 # ===========================
 
 PRODUCT_SYSTEM_PROPERTIES += \
-    # SELinux & Debug
     ro.boot.selinux=permissive \
     ro.debuggable=1 \
-    
-    # Graphics - Mali GPU (Spreadtrum)
     ro.hardware.egl=mali \
     ro.hardware.vulkan=mali \
     ro.hardware.gpu=mali \
     ro.hardware.hwcomposer=unisoc \
     ro.hardware.gralloc=RE58C2 \
-    ro.board.platform=ums9230 \
-    
-    # Security - Trusty TEE
     ro.hardware.bootctrl=default \
     ro.hardware.keystore=trusty \
     ro.hardware.gatekeeper=trusty \
     ro.hardware.keymaster=trusty \
-    
-    # Graphics Debug & Performance
-    debug.sf.enable_gl_backpressure=1 \
-    debug.sf.enable_hwc_vds=1 \
-    debug.sf.hwc.canUseABC=0 \
-    init.svc.surfaceflinger.timeout=60000 \
-    
-    # System Workarounds
     ro.odsign.disabled=true \
     odsign.verification.disabled=true \
     ro.apex.updatable=false \
     persist.sys.usb.config=adb \
     ro.fastbootd.available=true
+
 # ===========================
 # MISSING BOOT STACK SERVICES - ADD THESE
 # ===========================
@@ -215,13 +202,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.fastbootd.available=true
 
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.mapper@4.0-impl-arm \
-    libhwc2on1adapter \
-    libhwc2onfbadapter \
-    libmemion
-    # Remove these if AOSP provides them:
-    # libgralloctypes
+
 
 
 # ===========================
@@ -523,6 +504,15 @@ PRODUCT_COPY_FILES += \
 # Remove from PRODUCT_PACKAGES to avoid conflicts
 PRODUCT_PACKAGES := $(filter-out credstore keystore2 installd odsign wificond,$(PRODUCT_PACKAGES))
 
+# Add to your BOOT PROPERTIES section:
+PRODUCT_SYSTEM_PROPERTIES += \
+    # Graphics fixes
+    ro.hardware.egl=mali \
+    ro.board.platform=ums9230 \
+    # Service timeouts
+    init.svc.surfaceflinger.timeout=60000 \
+    # Temporary workarounds
+    #config.disable_keymint=true
 
 # ===========================
 # CRITICAL FIXES FOR UNISOC BOOT
