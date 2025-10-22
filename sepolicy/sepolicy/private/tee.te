@@ -1,0 +1,33 @@
+# TEE domain
+type tee_rpc_rpc, domain;
+type tee_rpc_exec, exec_type, system_file_type, vendor_file_type;
+type tee_rpc_service, service_manager_type;
+type tee_rpc_hwservice, hwservice_manager_type;
+type tee_rpc_prop, property_type;
+
+# Domain transition from init
+init_daemon_domain(tee_rpc)
+
+# Allow tee_rpc to use its own executable
+allow tee_rpc tee_rpc_exec:file { entrypoint execute read map getattr open };
+
+# Basic permissions for TEE operation
+allow tee_rpc self:process { fork sigchld };
+allow tee_rpc self:capability { sys_admin sys_ptrace };
+allow tee_rpc ashmem_device:chr_file { read write open map };
+allow tee_rpc binder_device:chr_file { read write ioctl open };
+
+# Allow TEE to communicate with kernel Trusty drivers
+allow tee_rpc trusty_device:chr_file { read write ioctl open };
+allow tee_rpc trusty_log_device:chr_file { read write ioctl open };
+
+# Allow TEE to access vendor files
+allow tee_rpc vendor_file:dir { search };
+allow tee_rpc vendor_file:file { read open getattr };
+
+# Allow service registration
+allow tee_rpc tee_rpc_service:service_manager add;
+allow tee_rpc tee_rpc_hwservice:hwservice_manager { add find };
+
+# Property access
+allow tee_rpc tee_rpc_prop:property_service set;
