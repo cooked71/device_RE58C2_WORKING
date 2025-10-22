@@ -19,10 +19,3 @@ allow tee trusty_log_device:chr_file { read write ioctl open };
 # Allow TEE to access vendor files
 allow tee vendor_file:dir { search };
 allow tee vendor_file:file { read open getattr };
-
-# Allow service registration
-allow tee tee_service:service_manager add;
-allow tee tee_hwservice:hwservice_manager { add find };
-
-# Property access
-allow tee tee_prop:property_service set;
