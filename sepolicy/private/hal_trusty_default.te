@@ -1,14 +1,10 @@
-# Trusty service domain
+# Trusty service domain - minimal permissions
 type hal_trusty_default, domain;
-type hal_trusty_default_exec, exec_type, system_file_type, vendor_file_type;
+type hal_trusty_default_exec, system_file_type, vendor_file_type;
 
 init_daemon_domain(hal_trusty_default)
 
-# Trusty service needs TEE access
-allow hal_trusty_default tee:fd use;
-
-# Basic permissions
-allow hal_trusty_default self:process { fork sigchld };
+# Basic permissions only
+allow hal_trusty_default self:process { sigchld };
 allow hal_trusty_default ashmem_device:chr_file { read write map };
-allow hal_trusty_default binder_device:chr_file { read write ioctl open };
-
+allow hal_trusty_default binder_device:chr_file { read ioctl };

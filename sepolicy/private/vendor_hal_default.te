@@ -1,16 +1,14 @@
-# Generic vendor HAL domain for Sprd services
+# Generic vendor HAL domain - minimal permissions
 type vendor_hal_default, domain;
-type vendor_hal_default_exec, exec_type, vendor_file_type;
+type vendor_hal_default_exec, vendor_file_type;
 
 init_daemon_domain(vendor_hal_default)
 
-# Basic permissions for vendor HALs
-allow vendor_hal_default self:process { fork sigchld };
+# Basic permissions only
+allow vendor_hal_default self:process { sigchld };
 allow vendor_hal_default ashmem_device:chr_file { read write map };
-allow vendor_hal_default binder_device:chr_file { read write ioctl open };
-# Access vendor files
-allow vendor_hal_default vendor_file:dir { search };
-allow vendor_hal_default vendor_file:file { read open getattr };
-# Property types
+allow vendor_hal_default binder_device:chr_file { read ioctl };
+
+# Property types (for property_contexts)
 type vendor_tee_prop, property_type;
 type vendor_keymint_prop, property_type;
