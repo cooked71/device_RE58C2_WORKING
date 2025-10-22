@@ -1,0 +1,18 @@
+# Generic vendor HAL domain for Sprd services
+type vendor_hal_default, domain;
+type vendor_hal_default_exec, exec_type, vendor_file_type;
+type vendor_hal_service, service_manager_type;
+
+init_daemon_domain(vendor_hal_default)
+
+# Basic permissions for vendor HALs
+allow vendor_hal_default self:process { fork sigchld };
+allow vendor_hal_default ashmem_device:chr_file { read write open map };
+allow vendor_hal_default binder_device:chr_file { read write ioctl open };
+
+# Service registration
+allow vendor_hal_default vendor_hal_service:service_manager add;
+
+# Access vendor files
+allow vendor_hal_default vendor_file:dir { search };
+allow vendor_hal_default vendor_file:file { read open getattr execute };
