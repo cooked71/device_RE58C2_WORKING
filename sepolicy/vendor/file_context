@@ -6,7 +6,7 @@
 /vendor/bin/hw/vendor\.sprd\.hardware\.trusty-service                            u:object_r:hal_trusty_default_exec:s0
 
 # TEE service
-/vendor/bin/tee_rpc                                                              u:object_r:tee_exec:s0
+/vendor/bin/tee_rpc                                                              u:object_r:vendor_exec:s0
 
 # Audio services
 /vendor/bin/hw/android\.hardware\.audio\.service                                 u:object_r:hal_audio_default_exec:s0
