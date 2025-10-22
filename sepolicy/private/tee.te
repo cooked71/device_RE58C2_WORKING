@@ -1,5 +1,8 @@
 # TEE domain - types already defined in platform
 
+# TEE executable type
+type tee_exec, exec_type, vendor_file_type, system_file_type;
+
 # Domain transition from init
 init_daemon_domain(tee)
 
@@ -11,9 +14,6 @@ allow tee self:process { fork sigchld };
 allow tee self:capability { sys_admin sys_ptrace };
 allow tee ashmem_device:chr_file { read write open map };
 allow tee binder_device:chr_file { read write ioctl open };
-
-# Allow TEE to communicate with kernel Trusty drivers
-allow tee trusty_device:chr_file { read write ioctl open };
 
 # Allow TEE to access vendor files
 allow tee vendor_file:dir { search };
