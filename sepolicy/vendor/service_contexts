@@ -1,4 +1,0 @@
-# LineageOS vendor service contexts
-# Using generic vendor context for now
-
-vendor.sprd.hardware.* u:object_r:vendor_hal_service:s0
