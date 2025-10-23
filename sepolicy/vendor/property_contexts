@@ -1,12 +1,27 @@
-# Vendor properties
-vendor.sprd.                                      u:object_r:vendor_prop:s0
-ro.vendor.sprd.                                   u:object_r:vendor_prop:s0
-persist.vendor.sprd.                              u:object_r:vendor_prop:s0
+# Minimal property contexts using ONLY standard AOSP types
 
-# TEE properties
-ro.tee_rpc.                                           u:object_r:tee_rpc_prop:s0
-persist.tee_rpc.                                      u:object_r:tee_rpc_prop:s0
+# TEE/KeyMint properties
+vendor\.tee\.                                    u:object_r:vendor_default_prop:s0
+persist\.vendor\.tee\.                           u:object_r:vendor_default_prop:s0
+vendor\.keymint\.                                u:object_r:vendor_default_prop:s0
+persist\.vendor\.keymint\.                       u:object_r:vendor_default_prop:s0
 
-# KeyMint properties
-ro.vendor.keymint.                                u:object_r:hal_keymint_default_prop:s0
-persist.vendor.keymint.                           u:object_r:hal_keymint_default_prop:s0
+# Audio properties  
+vendor\.audio\.                                  u:object_r:vendor_default_prop:s0
+persist\.vendor\.audio\.                         u:object_r:vendor_default_prop:s0
+
+# Graphics properties
+vendor\.graphics\.                               u:object_r:vendor_default_prop:s0
+persist\.vendor\.graphics\.                      u:object_r:vendor_default_prop:s0
+
+# Bluetooth properties
+vendor\.bluetooth\.                              u:object_r:vendor_default_prop:s0
+persist\.vendor\.bluetooth\.                     u:object_r:vendor_default_prop:s0
+
+# Sprd properties
+vendor\.sprd\.                                   u:object_r:vendor_default_prop:s0
+persist\.vendor\.sprd\.                          u:object_r:vendor_default_prop:s0
+
+# Generic vendor properties (catch-all)
+vendor\.                                         u:object_r:vendor_default_prop:s0
+persist\.vendor\.                                u:object_r:vendor_default_prop:s0

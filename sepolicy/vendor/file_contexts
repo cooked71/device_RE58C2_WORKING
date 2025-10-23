@@ -1,0 +1,21 @@
+# Minimal file contexts using ONLY standard AOSP domains
+
+# TEE/Trusty services
+/vendor/bin/tee_rpc                                                              u:object_r:hal_exec:s0
+/vendor/bin/hw/android\.hardware\.security\.keymint@2\.0-unisoc\.service\.trusty u:object_r:hal_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.trusty-service                            u:object_r:hal_exec:s0
+
+# Generic HAL services
+/vendor/bin/hw/android\.hardware\.audio@7\.1-service\.unisoc                     u:object_r:hal_exec:s0
+/vendor/bin/hw/android\.hardware\.bluetooth@1\.1-service\.unisoc                 u:object_r:hal_exec:s0
+/vendor/bin/hw/android\.hardware\.graphics\.composer@2\.4-service\.unisoc        u:object_r:hal_exec:s0
+/vendor/bin/hw/android\.hardware\.graphics\.allocator@4\.0-service\.unisoc       u:object_r:hal_exec:s0
+
+# Sprd services
+/vendor/bin/hw/vendor\.sprd\.hardware\.boot@1\.2-service                         u:object_r:hal_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.connmgr@1\.0-service                      u:object_r:hal_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.wcn@1\.0-service                          u:object_r:hal_exec:s0
+/vendor/bin/hw/urild                                                             u:object_r:hal_exec:s0
+
+# Catch-all for other vendor services
+/vendor/bin/hw/vendor\.sprd\.hardware\.*                                         u:object_r:hal_exec:s0

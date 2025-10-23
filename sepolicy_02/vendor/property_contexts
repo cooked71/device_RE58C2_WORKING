@@ -1,0 +1,12 @@
+# Vendor properties
+vendor.sprd.                                      u:object_r:vendor_prop:s0
+ro.vendor.sprd.                                   u:object_r:vendor_prop:s0
+persist.vendor.sprd.                              u:object_r:vendor_prop:s0
+
+# TEE properties
+ro.tee_rpc.                                           u:object_r:tee_rpc_prop:s0
+persist.tee_rpc.                                      u:object_r:tee_rpc_prop:s0
+
+# KeyMint properties
+ro.vendor.keymint.                                u:object_r:hal_keymint_default_prop:s0
+persist.vendor.keymint.                           u:object_r:hal_keymint_default_prop:s0
