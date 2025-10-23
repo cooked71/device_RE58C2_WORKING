@@ -1,4 +1,13 @@
-/vendor/bin/tee_rpc                                                              u:object_r:hal_exec:s0
-/vendor/bin/hw/android\.hardware\.security\.keymint@2\.0-unisoc\.service\.trusty u:object_r:hal_exec:s0
-/vendor/bin/hw/vendor\.sprd\.hardware\.trusty-service                            u:object_r:hal_exec:s0
-/vendor/bin/hw/vendor\.sprd\.hardware\.*                                         u:object_r:hal_exec:s0
+# TEE and Security services
+/vendor/bin/tee_rpc                                                              u:object_r:hal_tee_exec:s0
+/vendor/bin/hw/android\.hardware\.security\.keymint@2\.0-unisoc\.service\.trusty u:object_r:hal_keymint_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.trusty-service                            u:object_r:hal_trusty_exec:s0
+
+# Other HAL services
+/vendor/bin/hw/vendor\.sprd\.hardware\.boot@1\.2-service                          u:object_r:hal_bootctl_exec:s0
+/vendor/bin/hw/android\.hardware\.audio\.service                                 u:object_r:hal_audio_exec:s0
+/vendor/bin/hw/android\.hardware\.bluetooth@1\.1-service\.unisoc                  u:object_r:hal_bluetooth_exec:s0
+/vendor/bin/hw/unisoc\.rild                                                     u:object_r:hal_ril_exec:s0
+
+# Generic for other Sprd services
+/vendor/bin/hw/vendor\.sprd\.hardware\.*                                         u:object_r:hal_default_exec:s0
