@@ -1,0 +1,13 @@
+# Allow init to transition to our CUSTOM HAL domains (not Android's built-in ones)
+allow init hal_tee_exec:file { getattr open read execute execute_no_trans };
+allow init hal_trusty_exec:file { getattr open read execute execute_no_trans };
+allow init hal_keymint_exec:file { getattr open read execute execute_no_trans };
+allow init hal_bootctl_exec:file { getattr open read execute execute_no_trans };
+allow init hal_default_exec:file { getattr open read execute execute_no_trans };
+
+# Domain transitions for our CUSTOM domains only
+domain_auto_trans(init, hal_tee_exec, hal_tee)
+domain_auto_trans(init, hal_trusty_exec, hal_trusty)
+domain_auto_trans(init, hal_keymint_exec, hal_keymint)
+domain_auto_trans(init, hal_bootctl_exec, hal_bootctl)
+domain_auto_trans(init, hal_default_exec, hal_default)
