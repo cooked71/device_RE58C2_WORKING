@@ -39,7 +39,7 @@ PRODUCT_SOONG_NAMESPACES += \
 BOARD_VENDOR_SEPOLICY_DIRS += \
     device/realme/RE58C2/sepolicy/vendor
 
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
+#SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
     device/realme/RE58C2/sepolicy/private
 
 # ===========================
