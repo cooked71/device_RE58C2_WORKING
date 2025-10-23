@@ -1,13 +1,23 @@
-# Allow init to transition to our CUSTOM HAL domains (not Android's built-in ones)
+# Allow init to transition to our HAL domains
+allow init hal_audio_exec:file { getattr open read execute execute_no_trans };
+allow init hal_bluetooth_exec:file { getattr open read execute execute_no_trans };
+allow init hal_thermald_exec:file { getattr open read execute execute_no_trans };
+allow init hal_power_exec:file { getattr open read execute execute_no_trans };
+allow init hal_default_exec:file { getattr open read execute execute_no_trans };
+allow init hal_ril_exec:file { getattr open read execute execute_no_trans };
 allow init hal_tee_exec:file { getattr open read execute execute_no_trans };
 allow init hal_trusty_exec:file { getattr open read execute execute_no_trans };
 allow init hal_keymint_exec:file { getattr open read execute execute_no_trans };
 allow init hal_bootctl_exec:file { getattr open read execute execute_no_trans };
-allow init hal_default_exec:file { getattr open read execute execute_no_trans };
 
-# Domain transitions for our CUSTOM domains only
+# Domain transitions
+domain_auto_trans(init, hal_audio_exec, hal_audio)
+domain_auto_trans(init, hal_bluetooth_exec, hal_bluetooth)
+domain_auto_trans(init, hal_thermald_exec, hal_thermald)
+domain_auto_trans(init, hal_power_exec, hal_power)
+domain_auto_trans(init, hal_default_exec, hal_default)
+domain_auto_trans(init, hal_ril_exec, hal_ril)
 domain_auto_trans(init, hal_tee_exec, hal_tee)
 domain_auto_trans(init, hal_trusty_exec, hal_trusty)
 domain_auto_trans(init, hal_keymint_exec, hal_keymint)
 domain_auto_trans(init, hal_bootctl_exec, hal_bootctl)
-domain_auto_trans(init, hal_default_exec, hal_default)

@@ -1,0 +1,5 @@
+type hwservice_manager_type, domain;
+type tee_hwservice, hwservice_manager_type;
+type hal_keymint_default_hwservice, hwservice_manager_type;
+type hal_bootctl_default_hwservice, hwservice_manager_type;
+type hal_trusty_default_hwservice, hwservice_manager_type;

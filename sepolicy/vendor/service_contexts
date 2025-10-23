@@ -8,10 +8,10 @@ android.hardware.security.keymint.IKeyMintDevice/default    u:object_r:hal_keymi
 vendor.sprd.hardware.boot@1.2::IBootControl/default         u:object_r:hal_bootctl_default_service:s0
 vendor.sprd.hardware.trusty::ITrustyService/default         u:object_r:hal_trusty_default_service:s0
 
-# Use Android's default service contexts for common services
-android.hardware.audio@7.1::IDevicesFactory/default         u:object_r:default_android_hwservice:s0
+# Audio service
+android.hardware.audio@7.1::IDevicesFactory/default         u:object_r:hal_audio_default_service:s0
 
-# Use vendor_hal_service for problematic services
+# Specific service contexts for problematic services
 vendor.sprd.hardware.thermal@2.0::IThermal/default          u:object_r:vendor_hal_service:s0
 vendor.sprd.hardware.power::IPower/default                  u:object_r:vendor_hal_service:s0
 vendor.sprd.hardware.connmgr@1.0::IConnMgr/default          u:object_r:vendor_hal_service:s0

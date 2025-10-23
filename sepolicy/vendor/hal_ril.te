@@ -10,5 +10,9 @@ binder_service(hal_ril)
 allow hal_ril self:process { execmem execstack };
 allow hal_ril hal_ril_exec:file { execute execute_no_trans entrypoint read open getattr map };
 
+# RIL permissions
+allow hal_ril radio_device:chr_file rw_file_perms;
+allow hal_ril radio_prop:property_service set;
+
 allow hal_ril vendor_file:dir { search };
 allow hal_ril vendor_file:file { read open getattr };
