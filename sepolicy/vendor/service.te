@@ -1,7 +1,0 @@
-type service_manager_type, domain;
-type tee_service, service_manager_type;
-type hal_audio_default_service, service_manager_type;
-type hal_keymint_default_service, service_manager_type;
-type hal_bootctl_default_service, service_manager_type;
-type hal_trusty_default_service, service_manager_type;
-type vendor_hal_service, service_manager_type;

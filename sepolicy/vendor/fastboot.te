@@ -3,4 +3,3 @@ userdebug_or_eng(`
 permissive fastbootd;
 ')
 ')
-

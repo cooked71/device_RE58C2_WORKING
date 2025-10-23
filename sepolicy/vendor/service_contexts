@@ -1,21 +1,13 @@
-# TEE service
-vendor.tee_rpc                                    u:object_r:tee_service:s0
+# Use Android's default service contexts
+android.hardware.audio@7.1::IDevicesFactory/default         u:object_r:default_android_hwservice:s0
 
-# KeyMint service
-android.hardware.security.keymint.IKeyMintDevice/default    u:object_r:hal_keymint_default_service:s0
-
-# Sprd services
-vendor.sprd.hardware.boot@1.2::IBootControl/default         u:object_r:hal_bootctl_default_service:s0
-vendor.sprd.hardware.trusty::ITrustyService/default         u:object_r:hal_trusty_default_service:s0
-
-# Audio service
-android.hardware.audio@7.1::IDevicesFactory/default         u:object_r:hal_audio_default_service:s0
-
-# Specific service contexts for problematic services
+# Use generic vendor context for Sprd services
 vendor.sprd.hardware.thermal@2.0::IThermal/default          u:object_r:vendor_hal_service:s0
 vendor.sprd.hardware.power::IPower/default                  u:object_r:vendor_hal_service:s0
 vendor.sprd.hardware.connmgr@1.0::IConnMgr/default          u:object_r:vendor_hal_service:s0
 vendor.sprd.hardware.wcn@1.0::IWcn/default                  u:object_r:vendor_hal_service:s0
+vendor.sprd.hardware.boot@1.2::IBootControl/default         u:object_r:vendor_hal_service:s0
+vendor.sprd.hardware.trusty::ITrustyService/default         u:object_r:vendor_hal_service:s0
 
 # Generic fallback
 vendor.sprd.hardware.*                                      u:object_r:vendor_hal_service:s0

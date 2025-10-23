@@ -1,7 +1,5 @@
 type hal_tee, domain;
 type hal_tee_exec, exec_type, vendor_file_type, file_type;
-type tee_service, service_manager_type;
-type tee_hwservice, hwservice_manager_type;
 
 init_daemon_domain(hal_tee)
 
@@ -14,7 +12,3 @@ allow hal_tee hal_tee_exec:file { execute execute_no_trans entrypoint read open 
 
 allow hal_tee vendor_file:dir { search };
 allow hal_tee vendor_file:file { read open getattr };
-
-# Service permissions
-allow hal_tee tee_service:service_manager find;
-allow hal_tee tee_hwservice:hwservice_manager find;

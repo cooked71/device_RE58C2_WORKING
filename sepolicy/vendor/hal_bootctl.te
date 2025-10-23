@@ -1,7 +1,5 @@
 type hal_bootctl, domain;
 type hal_bootctl_exec, exec_type, vendor_file_type, file_type;
-type hal_bootctl_default_service, service_manager_type;
-type hal_bootctl_default_hwservice, hwservice_manager_type;
 
 init_daemon_domain(hal_bootctl)
 
@@ -14,11 +12,3 @@ allow hal_bootctl hal_bootctl_exec:file { execute execute_no_trans entrypoint re
 
 allow hal_bootctl vendor_file:dir { search };
 allow hal_bootctl vendor_file:file { read open getattr };
-
-# Service permissions
-allow hal_bootctl hal_bootctl_default_service:service_manager find;
-allow hal_bootctl hal_bootctl_default_hwservice:hwservice_manager find;
-
-# Boot control permissions
-allow hal_bootctl block_device:dir { search };
-allow hal_bootctl bootconfig_file:file { read open getattr };
