@@ -1,13 +1,9 @@
-# Use Android's default service contexts for everything
+# Use default for all services
 android.hardware.audio@7.1::IDevicesFactory/default         u:object_r:default_android_hwservice:s0
-
-# Use default contexts for all vendor services
 vendor.sprd.hardware.thermal@2.0::IThermal/default          u:object_r:default_android_hwservice:s0
 vendor.sprd.hardware.power::IPower/default                  u:object_r:default_android_hwservice:s0
 vendor.sprd.hardware.connmgr@1.0::IConnMgr/default          u:object_r:default_android_hwservice:s0
 vendor.sprd.hardware.wcn@1.0::IWcn/default                  u:object_r:default_android_hwservice:s0
 vendor.sprd.hardware.boot@1.2::IBootControl/default         u:object_r:default_android_hwservice:s0
 vendor.sprd.hardware.trusty::ITrustyService/default         u:object_r:default_android_hwservice:s0
-
-# Generic fallback - use Android's default
 vendor.sprd.hardware.*                                      u:object_r:default_android_hwservice:s0

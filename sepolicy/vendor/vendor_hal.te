@@ -1,0 +1,12 @@
+# Minimal vendor HAL domain - generic for all vendor services
+type vendor_hal, domain;
+type vendor_hal_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(vendor_hal)
+
+# Basic permissions
+binder_use(vendor_hal)
+allow vendor_hal self:process { execmem };
+allow vendor_hal vendor_hal_exec:file { execute read open };
+allow vendor_hal vendor_file:dir { search };
+allow vendor_hal vendor_file:file { read open getattr };
