@@ -1,0 +1,25 @@
+type hal_audio, domain;
+type hal_audio_exec, exec_type, vendor_file_type, file_type;
+type hal_audio_default_service, service_manager_type;
+
+init_daemon_domain(hal_audio)
+
+# Allow binder communication
+binder_use(hal_audio)
+binder_call(hal_audio, servicemanager)
+binder_service(hal_audio)
+
+# Basic permissions
+allow hal_audio self:process { execmem execstack };
+allow hal_audio hal_audio_exec:file { execute execute_no_trans entrypoint read open getattr map };
+
+# Allow access to audio devices
+allow hal_audio audio_device:chr_file rw_file_perms;
+allow hal_audio asound_device:chr_file rw_file_perms;
+
+# Allow necessary directories
+allow hal_audio vendor_file:dir { search };
+allow hal_audio vendor_file:file { read open getattr };
+
+# HIDL permissions
+allow hal_audio hal_audio_default_service:service_manager find;

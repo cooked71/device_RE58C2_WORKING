@@ -1,0 +1,9 @@
+# Vendor properties
+type vendor_default_prop, property_type;
+
+# Vendor files
+type vendor_file, file_type, system_file_type;
+type vendor_configs_file, file_type, system_file_type;
+
+# Vendor directories  
+type vendor_file, dir_type, system_dir_type;

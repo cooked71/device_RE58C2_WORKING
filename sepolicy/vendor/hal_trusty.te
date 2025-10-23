@@ -1,0 +1,20 @@
+type hal_trusty, domain;
+type hal_trusty_exec, exec_type, vendor_file_type, file_type;
+type hal_trusty_default_service, service_manager_type;
+type hal_trusty_default_hwservice, hwservice_manager_type;
+
+init_daemon_domain(hal_trusty)
+
+binder_use(hal_trusty)
+binder_call(hal_trusty, servicemanager)
+binder_service(hal_trusty)
+
+allow hal_trusty self:process { execmem execstack };
+allow hal_trusty hal_trusty_exec:file { execute execute_no_trans entrypoint read open getattr map };
+
+allow hal_trusty vendor_file:dir { search };
+allow hal_trusty vendor_file:file { read open getattr };
+
+# Service permissions
+allow hal_trusty hal_trusty_default_service:service_manager find;
+allow hal_trusty hal_trusty_default_hwservice:hwservice_manager find;

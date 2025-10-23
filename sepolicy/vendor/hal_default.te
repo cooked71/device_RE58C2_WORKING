@@ -1,0 +1,19 @@
+type hal_default, domain;
+type hal_default_exec, exec_type, vendor_file_type, file_type;
+type vendor_hal_service, service_manager_type;
+
+init_daemon_domain(hal_default)
+
+binder_use(hal_default)
+binder_call(hal_default, servicemanager)
+binder_service(hal_default)
+
+allow hal_default self:process { execmem execstack };
+allow hal_default hal_default_exec:file { execute execute_no_trans entrypoint read open getattr map };
+
+# Allow access to common vendor resources
+allow hal_default vendor_file:dir { search };
+allow hal_default vendor_file:file { read open getattr };
+
+# Service permissions
+allow hal_default vendor_hal_service:service_manager find;

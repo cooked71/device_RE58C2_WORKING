@@ -1,0 +1,24 @@
+# Audio
+type audio_device, dev_type;
+type asound_device, dev_type;
+
+# Bluetooth
+type bluetooth_device, dev_type;
+
+# Thermal
+type thermal_device, dev_type;
+
+# Power
+type power_device, dev_type;
+
+# Radio
+type radio_device, dev_type;
+
+# System
+type bootconfig_file, file_type;
+type sysfs_thermal, fs_type, sysfs_type;
+type sysfs_power, fs_type, sysfs_type;
+type sysfs_bluetooth_writable, fs_type, sysfs_type;
+
+# Keystore
+type keystore_data_file, file_type;
