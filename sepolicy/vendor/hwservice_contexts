@@ -1,2 +1,4 @@
-# Minimal hwservice contexts - using generic vendor context
+# LineageOS vendor hwservice contexts  
+# Using generic vendor context for now
+
 vendor.sprd.hardware.* u:object_r:vendor_hwservice:s0

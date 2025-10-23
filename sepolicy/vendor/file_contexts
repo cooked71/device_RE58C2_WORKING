@@ -1,4 +1,4 @@
-# Minimal file contexts using ONLY standard AOSP domains
+# LineageOS vendor file contexts
 
 # TEE/Trusty services
 /vendor/bin/tee_rpc                                                              u:object_r:hal_exec:s0

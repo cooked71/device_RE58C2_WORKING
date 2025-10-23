@@ -1,27 +1,34 @@
-# Minimal property contexts using ONLY standard AOSP types
+# LineageOS vendor property contexts
+# Following strict namespace requirements
 
-# TEE/KeyMint properties
-vendor\.tee\.                                    u:object_r:vendor_default_prop:s0
-persist\.vendor\.tee\.                           u:object_r:vendor_default_prop:s0
-vendor\.keymint\.                                u:object_r:vendor_default_prop:s0
-persist\.vendor\.keymint\.                       u:object_r:vendor_default_prop:s0
+# Control properties
+ctl\.odm\..*                                      u:object_r:vendor_default_prop:s0
+ctl\.vendor\..*                                   u:object_r:vendor_default_prop:s0
+ctl\.start\$odm\..*                               u:object_r:vendor_default_prop:s0
+ctl\.start\$vendor\..*                            u:object_r:vendor_default_prop:s0
+ctl\.stop\$odm\..*                                u:object_r:vendor_default_prop:s0
+ctl\.stop\$vendor\..*                             u:object_r:vendor_default_prop:s0
 
-# Audio properties  
-vendor\.audio\.                                  u:object_r:vendor_default_prop:s0
-persist\.vendor\.audio\.                         u:object_r:vendor_default_prop:s0
+# Service properties
+init\.svc\.odm\..*                                u:object_r:vendor_default_prop:s0
+init\.svc\.vendor\..*                             u:object_r:vendor_default_prop:s0
 
-# Graphics properties
-vendor\.graphics\.                               u:object_r:vendor_default_prop:s0
-persist\.vendor\.graphics\.                      u:object_r:vendor_default_prop:s0
+# Read-only properties
+ro\.boot\..*                                      u:object_r:vendor_default_prop:s0
+ro\.hardware\..*                                  u:object_r:vendor_default_prop:s0
+ro\.odm\..*                                       u:object_r:vendor_default_prop:s0
+ro\.vendor\..*                                    u:object_r:vendor_default_prop:s0
 
-# Bluetooth properties
-vendor\.bluetooth\.                              u:object_r:vendor_default_prop:s0
-persist\.vendor\.bluetooth\.                     u:object_r:vendor_default_prop:s0
+# Persistent properties
+persist\.odm\..*                                  u:object_r:vendor_default_prop:s0
+persist\.vendor\..*                               u:object_r:vendor_default_prop:s0
 
-# Sprd properties
-vendor\.sprd\.                                   u:object_r:vendor_default_prop:s0
-persist\.vendor\.sprd\.                          u:object_r:vendor_default_prop:s0
-
-# Generic vendor properties (catch-all)
-vendor\.                                         u:object_r:vendor_default_prop:s0
-persist\.vendor\.                                u:object_r:vendor_default_prop:s0
+# Vendor properties (must be last, most specific first)
+vendor\.tee\..*                                   u:object_r:vendor_default_prop:s0
+vendor\.keymint\..*                               u:object_r:vendor_default_prop:s0
+vendor\.audio\..*                                 u:object_r:vendor_default_prop:s0
+vendor\.graphics\..*                              u:object_r:vendor_default_prop:s0
+vendor\.bluetooth\..*                             u:object_r:vendor_default_prop:s0
+vendor\.sprd\..*                                  u:object_r:vendor_default_prop:s0
+vendor\..*                                        u:object_r:vendor_default_prop:s0
+odm\..*                                           u:object_r:vendor_default_prop:s0
