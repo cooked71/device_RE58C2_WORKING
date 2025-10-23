@@ -1,18 +1,6 @@
 type hal_thermald, domain;
 type hal_thermald_exec, exec_type, vendor_file_type, file_type;
-
 init_daemon_domain(hal_thermald)
-
 binder_use(hal_thermald)
-binder_call(hal_thermald, servicemanager)
-binder_service(hal_thermald)
-
-allow hal_thermald self:process { execmem execstack };
-allow hal_thermald hal_thermald_exec:file { execute execute_no_trans entrypoint read open getattr map };
-
-# Thermal permissions
-allow hal_thermald thermal_device:chr_file rw_file_perms;
-allow hal_thermald sysfs_thermal:file rw_file_perms;
-
-allow hal_thermald vendor_file:dir { search };
-allow hal_thermald vendor_file:file { read open getattr };
+allow hal_thermald self:process { execmem };
+allow hal_thermald hal_thermald_exec:file { execute read open };
