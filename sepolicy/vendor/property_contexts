@@ -5,9 +5,3 @@ persist.vendor.tee.                          u:object_r:vendor_default_prop:s0
 # KeyMint properties  
 vendor.keymint.                              u:object_r:vendor_default_prop:s0
 persist.vendor.keymint.                      u:object_r:vendor_default_prop:s0
-
-# Critical boot properties (NEW)
-sys.usb.mode                    u:object_r:system_prop:s0
-init.svc.keystore2              u:object_r:init_service_status_prop:s0
-vold.sdcard0.state              u:object_r:vold_prop:s0
-persist.ro.adb.secure           u:object_r:default_prop:s0

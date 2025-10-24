@@ -1,2 +1,0 @@
-# Allow storaged to read MMC debug info
-allow storaged debugfs_mmc:file { read open };
