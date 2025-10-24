@@ -36,10 +36,10 @@ PRODUCT_SOONG_NAMESPACES += \
 # ===========================
 
 # Use stock vendor SELinux policy
-BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
+#BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
 
 # Use precompiled vendor policy
-BOARD_VENDOR_SEPOLICY_CIL := device/realme/RE58C2/sepolicy/vendor/vendor_sepolicy.cil
+#BOARD_VENDOR_SEPOLICY_CIL := device/realme/RE58C2/sepolicy/vendor/vendor_sepolicy.cil
 
 # Use stock file contexts
 BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
