@@ -1,0 +1,4 @@
+# Allow surfaceflinger to access graphics
+allow surfaceflinger gpu_device:chr_file { read write open ioctl };
+allow surfaceflinger graphics_device:dir search;
+allow surfaceflinger graphics_device:chr_file { read write open ioctl };

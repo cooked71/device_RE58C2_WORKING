@@ -1,0 +1,4 @@
+# Allow KeyMint to access trusty services
+allow hal_keymint_default tee_device:chr_file { read write open ioctl };
+allow hal_keymint_default vendor_tee_prop:property_service set;
+allow hal_keymint_default hal_keymint_default_service:service_manager find;

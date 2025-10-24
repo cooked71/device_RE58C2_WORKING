@@ -5,3 +5,5 @@ persist.vendor.tee.                          u:object_r:vendor_default_prop:s0
 # KeyMint properties  
 vendor.keymint.                              u:object_r:vendor_default_prop:s0
 persist.vendor.keymint.                      u:object_r:vendor_default_prop:s0
+ro.hardware.egl                        u:object_r:default_prop:s0
+ro.board.platform                      u:object_r:default_prop:s0

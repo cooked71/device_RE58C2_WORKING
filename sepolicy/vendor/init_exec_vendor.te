@@ -1,0 +1,2 @@
+# Allow init to execute vendor binaries (temporary fix)
+allow init vendor_file:file { execute execute_no_trans };
