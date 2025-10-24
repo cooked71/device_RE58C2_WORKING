@@ -1,0 +1,14 @@
+total 1148
+drwxr-xr-x. 2 root 2000    403 Jan  1  2009 .
+drwxr-xr-x. 7 root 2000    706 Jan  1  2009 ..
+-rw-r--r--. 1 root root 989600 Jan  1  2009 plat_pub_versioned.cil
+-rw-r--r--. 1 root root      5 Jan  1  2009 plat_sepolicy_vers.txt
+-rw-r--r--. 1 root root      0 Jan  1  2009 selinux_denial_metadata
+-rw-r--r--. 1 root root  15151 Jan  1  2009 vendor_file_contexts
+-rw-r--r--. 1 root root   2860 Jan  1  2009 vendor_hwservice_contexts
+-rw-r--r--. 1 root root   2549 Jan  1  2009 vendor_mac_permissions.xml
+-rw-r--r--. 1 root root   1204 Jan  1  2009 vendor_property_contexts
+-rw-r--r--. 1 root root      0 Jan  1  2009 vendor_seapp_contexts
+-rw-r--r--. 1 root root 134494 Jan  1  2009 vendor_sepolicy.cil
+-rw-r--r--. 1 root root   1062 Jan  1  2009 vendor_service_contexts
+-rw-r--r--. 1 root root    183 Jan  1  2009 vndservice_contexts

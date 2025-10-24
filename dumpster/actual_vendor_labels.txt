@@ -1,0 +1,5 @@
+u:object_r:vendor_file:s0 /home/lucoz/vendor/bin/hw/android.hardware.bluetooth@1.1-service.unisoc
+u:object_r:vendor_file:s0 /home/lucoz/vendor/bin/hw/vendor.sprd.hardware.connmgr@1.0-service
+u:object_r:vendor_file:s0 /home/lucoz/vendor/bin/tee_rpc
+u:object_r:vendor_file:s0 /home/lucoz/vendor/bin/hw/urild
+u:object_r:vendor_file:s0 /home/lucoz/vendor/bin/hw/vendor.sprd.hardware.thermal@2.0-service
