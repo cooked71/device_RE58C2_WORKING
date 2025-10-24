@@ -43,7 +43,6 @@ BOARD_VENDOR_SEPOLICY_CIL := device/realme/RE58C2/sepolicy/vendor/vendor_sepolic
 
 # Use stock file contexts
 BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
-EOF
 
 
 # Include vendor sepolicy
