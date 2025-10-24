@@ -104,7 +104,7 @@ BOARD_KERNEL_CMDLINE := \
     # ENABLE display console:
     console=tty0 \
     androidboot.console=tty0 \
-    debug.sf.nobootanimation=1
+    #debug.sf.nobootanimation=1
     # REMOVED: androidboot.bootservice=0
     # REMOVED: androidboot.surfaceflinger.disabled=1  
     # REMOVED: androidboot.zygote=disabled
