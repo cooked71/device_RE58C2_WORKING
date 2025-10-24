@@ -1,0 +1,2 @@
+# Allow init to read MMC debug info
+allow init debugfs_mmc:file { read open };

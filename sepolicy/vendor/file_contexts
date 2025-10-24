@@ -1,0 +1,7 @@
+# MINIMAL file_contexts - only critical services
+/vendor/bin/charged                                                    u:object_r:charged_exec:s0
+/vendor/bin/hw/android\.hardware\.bluetooth@1\.1-service\.unisoc       u:object_r:hal_bluetooth_default_exec:s0
+/vendor/bin/hw/android\.hardware\.security\.keymint@2\.0-unisoc\.service\.trusty u:object_r:hal_keymint_default_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.boot@1\.2-service               u:object_r:hal_bootctl_default_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.thermal@2\.0-service            u:object_r:hal_thermal_default_exec:s0
+/vendor/bin/hw/vendor\.sprd\.hardware\.trusty-service                  u:object_r:hal_trusty_default_exec:s0
