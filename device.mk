@@ -48,10 +48,10 @@ BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
 # Include vendor sepolicy
 # SELinux policy orig
 # BOARD_VENDOR_SEPOLICY_DIRS += \ 
-    device/realme/RE58C2/sepolicy/vendor
+#    device/realme/RE58C2/sepolicy/vendor
 
 # SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
-   device/realme/RE58C2/sepolicy/private
+#   device/realme/RE58C2/sepolicy/private
 
 # ===========================
 # BOOT PROPERTIES v
