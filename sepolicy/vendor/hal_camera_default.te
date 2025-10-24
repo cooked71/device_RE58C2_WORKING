@@ -1,0 +1,2 @@
+# Allow camera HAL to access vndbinder
+allow hal_camera_default vndbinder_device:chr_file { read write open ioctl map };

@@ -1,0 +1,10 @@
+# Allow vendor_init to read critical properties
+allow vendor_init system_prop:file read;
+allow vendor_init init_service_status_private_prop:file read;
+allow vendor_init vndbinder_device:chr_file { read write open ioctl map };
+allow vendor_init vold_prop:file read;
+allow vendor_init default_prop:file read;
+
+# Allow vendor_init to create tmpfs directories
+allow vendor_init tmpfs:dir { write add_name };
+allow vendor_init tmpfs:lnk_file create;
