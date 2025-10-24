@@ -1,3 +1,2 @@
-# Allow crash_dump to function properly
+# Allow crash_dump to read SELinux status
 allow crash_dump selinuxfs:file { read open getattr };
-allow crash_dump init:process ptrace;
