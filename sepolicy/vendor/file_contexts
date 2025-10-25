@@ -1,20 +1,2 @@
-# Vendor HAL executables
-/vendor/bin/hw/vendor\.sprd\.hardware\..*-service   u:object_r:vendor_sprd_hal_exec:s0
-/vendor/bin/hw/vendor\.unisoc\.hardware\..*-service u:object_r:vendor_unisoc_hal_exec:s0
-/vendor/bin/hw/vendor\.oppo\..*-service             u:object_r:vendor_oppo_hal_exec:s0
-
-# Trusty services
-/vendor/bin/hw/android\.hardware\.security\.keymint@2\.0-unisoc\.service\.trusty u:object_r:vendor_keymint_exec:s0
-/vendor/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.trusty                 u:object_r:vendor_gatekeeper_exec:s0
-/vendor/bin/tee_rpc                                                              u:object_r:vendor_tee_rpc_exec:s0
-
-# WiFi service
-/vendor/bin/hw/android\.hardware\.wifi@1\.0-service                               u:object_r:vendor_sprd_hal_exec:s0
-
-# Other vendor binaries
-/vendor/bin/refnotify                              u:object_r:vendor_sprd_hal_exec:s0
-/vendor/bin/phasecheckserver                       u:object_r:vendor_sprd_hal_exec:s0
-/vendor/bin/uniber                                 u:object_r:vendor_sprd_hal_exec:s0
-/vendor/bin/charged                                u:object_r:vendor_sprd_hal_exec:s0
-/vendor/bin/srtd                                   u:object_r:vendor_sprd_hal_exec:s0
-/vendor/bin/thermald                               u:object_r:vendor_sprd_hal_exec:s0
+# Use types from vendor CIL - minimal file contexts only
+/vendor/bin/hw/android\.hardware\.wifi@1\.0-service u:object_r:hal_gatekeeper_default:s0

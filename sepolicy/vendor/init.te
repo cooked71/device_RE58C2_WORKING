@@ -1,11 +1,2 @@
 # Allow init to execute vendor binaries
 allow init vendor_file:file { execute execute_no_trans };
-
-# Domain transitions for all vendor services
-domain_auto_trans(init, vendor_sprd_hal_exec, vendor_sprd_hal_service);
-domain_auto_trans(init, vendor_oppo_hal_exec, vendor_oppo_hal_service);
-domain_auto_trans(init, vendor_trusty_exec, vendor_trusty_service);
-domain_auto_trans(init, vendor_keymint_exec, vendor_keymint_service);
-domain_auto_trans(init, vendor_gatekeeper_exec, vendor_gatekeeper_service);
-domain_auto_trans(init, vendor_tee_rpc_exec, vendor_tee_rpc_service);
-domain_auto_trans(init, vendor_unisoc_hal_exec, vendor_unisoc_hal_service);
