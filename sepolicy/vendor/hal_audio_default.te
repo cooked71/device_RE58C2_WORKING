@@ -1,3 +1,2 @@
-# Allow audio HAL to function properly
+# Allow audio HAL to access audio device
 allow hal_audio_default audio_device:chr_file { read write open ioctl };
-allow hal_audio_default audio_prop:property_service set;

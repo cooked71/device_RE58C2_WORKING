@@ -1,3 +1,2 @@
-# Allow zygote to create cache directories for both architectures
-allow zygote system_data_file:dir { create search write add_name };
-allow zygote system_data_file:file { create write };
+# Zygote permissions (limited due to neverallow)
+# Note: zygote can't write to system_data_file in vendor policy
