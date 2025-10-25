@@ -1,0 +1,23 @@
+# SPRD HAL services
+type vendor_sprd_hal_service, domain;
+
+# Basic permissions
+allow vendor_sprd_hal_service self:process { execmem };
+allow vendor_sprd_hal_service vendor_file:file { read execute open getattr map };
+allow vendor_sprd_hal_service system_file:file { read open getattr };
+
+# Binder access
+allow vendor_sprd_hal_service hwservicemanager:binder { call transfer };
+allow vendor_sprd_hal_service hal_keymaster_default:binder { call };
+allow vendor_sprd_hal_service hal_gatekeeper_default:binder { call };
+
+# File system access
+allow vendor_sprd_hal_service proc:file { read write open getattr };
+allow vendor_sprd_hal_service sysfs:file { read open getattr };
+allow vendor_sprd_hal_service debugfs:file { read open getattr };
+
+# Thermal access
+allow vendor_sprd_hal_service sysfs_thermal:file { read open getattr };
+
+# Allow kmsg access
+allow vendor_sprd_hal_service kmsg_device:chr_file { ioctl };

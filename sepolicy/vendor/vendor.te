@@ -1,0 +1,25 @@
+# Base vendor HAL domains
+type vendor_hal_service, domain;
+type vendor_hal_exec, exec_type, vendor_file_type, file_type;
+
+# SPRD specific services
+type vendor_sprd_hal_service, domain;
+type vendor_sprd_hal_exec, exec_type, vendor_file_type, file_type;
+
+# Trusty services
+type vendor_trusty_service, domain;
+type vendor_trusty_exec, exec_type, vendor_file_type, file_type;
+type vendor_keymint_service, domain;
+type vendor_keymint_exec, exec_type, vendor_file_type, file_type;
+type vendor_gatekeeper_service, domain;
+type vendor_gatekeeper_exec, exec_type, vendor_file_type, file_type;
+type vendor_tee_rpc_service, domain;
+type vendor_tee_rpc_exec, exec_type, vendor_file_type, file_type;
+
+# OPPO services
+type vendor_oppo_hal_service, domain;
+type vendor_oppo_hal_exec, exec_type, vendor_file_type, file_type;
+
+# Unisoc services
+type vendor_unisoc_hal_service, domain;
+type vendor_unisoc_hal_exec, exec_type, vendor_file_type, file_type;

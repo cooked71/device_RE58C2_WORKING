@@ -364,34 +364,3 @@ BOARD_WLAN_DEVICE := sprd
 
 # Inherit vendor blobs
 include vendor/realme/RE58C2/BoardConfigVendor.mk
-
-# =============================================
-# SELINUX CONFIGURATION - STOCK A13 BLOBS
-# =============================================
-
-# SELinux policy version (Android 13)
-BOARD_SEPOLICY_VERS := 33.0
-
-# Use stock vendor SELinux CIL files
-BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
-
-# Include stock A13 vendor CIL files
-BOARD_VENDOR_SEPOLICY_CIL_FILES += \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_sepolicy.cil \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_file_contexts.cil \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_hwservice_contexts.cil \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_property_contexts.cil \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_service_contexts.cil
-
-# Policy compatibility
-BOARD_SEPOLICY_M4DEFS += \
-    -D mls_num_sens=1 \
-    -D mls_num_cats=1024 \
-    -D target_build_variant=user \
-    -D target_arch=arm64
-
-# Unisoc uses Trusty for KeyMint/Gatekeeper
-TARGET_USES_TRUSTY := true
-BOARD_USES_TRUSTY := true
-BOARD_USES_KEYMASTER_4 := true
-TARGET_KEYMINT_VERSION := 2.0
