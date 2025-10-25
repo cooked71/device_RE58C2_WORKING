@@ -93,11 +93,11 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # ===========================
 
 PRODUCT_PACKAGES += \
-    keystore2 \
-    odsign \
-    installd \
-    wificond \
-    ylog
+    keystore2_stock \
+    odsign_stock \
+    installd_stock \
+    wificond_stock \
+    ylog_stock
 
 #PRODUCT_PACKAGES += \
     libkeystore2_aaid \
@@ -152,10 +152,10 @@ PRODUCT_PACKAGES += \
 # ===========================
 
 # Remove AOSP duplicates
-# PRODUCT_PACKAGES := $(filter-out keystore2,$(PRODUCT_PACKAGES))
-# PRODUCT_PACKAGES := $(filter-out installd,$(PRODUCT_PACKAGES))
-# PRODUCT_PACKAGES := $(filter-out wificond,$(PRODUCT_PACKAGES))
-# PRODUCT_PACKAGES := $(filter-out odsign,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out keystore2,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out installd,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out wificond,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out odsign,$(PRODUCT_PACKAGES))
 
 # ===========================
 # POWER & THERMAL SERVICES (KEEP EXISTING) v 
