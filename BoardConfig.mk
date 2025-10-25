@@ -378,10 +378,10 @@ BOARD_SEPOLICY_VERS := 33.0
 # CORRECT VERSION:
 BOARD_VENDOR_SEPOLICY_CIL_FILES += \
     vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_sepolicy.cil \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_file_contexts \      # ← NO .cil
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_hwservice_contexts \ # ← NO .cil
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_property_contexts \  # ← NO .cil
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_service_contexts     # ← NO .cil
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_file_contexts \      
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_hwservice_contexts \ 
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_property_contexts \  
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_service_contexts    
 
 # Policy compatibility
 BOARD_SEPOLICY_M4DEFS += \
