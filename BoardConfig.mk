@@ -277,7 +277,7 @@ DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest.xml \
 
 DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vintf/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
-#DEVICE_MANIFEST_FILE += \
+DEVICE_MANIFEST_FILE += \
     $(foreach f,$(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml),$(f))
 
 
