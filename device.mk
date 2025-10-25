@@ -510,7 +510,6 @@ PRODUCT_PACKAGES += \
 
 
 # Use stock system binaries (NOT vendor)
-PRODUCT_COPY_FILES += \
 
 # Remove from PRODUCT_PACKAGES to avoid conflicts
 
@@ -519,7 +518,6 @@ PRODUCT_COPY_FILES += \
 # CRITICAL FIXES FOR UNISOC BOOT
 # ===========================
 
-#PRODUCT_COPY_FILES += \
 
 # Create missing directories
 PRODUCT_COPY_FILES += \
