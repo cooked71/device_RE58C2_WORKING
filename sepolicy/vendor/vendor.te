@@ -1,2 +1,1 @@
-# Vendor file types only - no domain types (they come from vendor CIL)
-type vendor_hal_exec, exec_type, vendor_file_type, file_type;
+# Empty - all types come from vendor CIL files

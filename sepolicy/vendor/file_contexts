@@ -1,2 +1,1 @@
-# Use types from vendor CIL - minimal file contexts only
-/vendor/bin/hw/android\.hardware\.wifi@1\.0-service u:object_r:hal_gatekeeper_default:s0
+# Empty - file contexts come from vendor CIL
