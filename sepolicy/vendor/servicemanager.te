@@ -1,4 +1,2 @@
 # Allow servicemanager to access binder
 allow servicemanager binder_device:chr_file { read write open ioctl };
-allow servicemanager servicemanager_service:service_manager { add find };
-allow servicemanager default_android_service:service_manager { add find };
