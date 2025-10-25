@@ -374,7 +374,6 @@ include vendor/realme/RE58C2/BoardConfigVendor.mk
 BOARD_SEPOLICY_VERS := 33.0
 
 # Use stock vendor SELinux CIL files
-BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
 
 # Include stock A13 vendor CIL files
 BOARD_VENDOR_SEPOLICY_CIL_FILES += \
