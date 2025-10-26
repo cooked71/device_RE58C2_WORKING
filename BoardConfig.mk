@@ -376,12 +376,13 @@ BOARD_SEPOLICY_VERS := 33.0
 # Use stock vendor SELinux CIL files
 
 # CORRECT VERSION:
+# FIXED: Only the actual .cil file
 BOARD_VENDOR_SEPOLICY_CIL_FILES += \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_sepolicy.cil \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_file_contexts \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_hwservice_contexts \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_property_contexts \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_service_contexts
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_sepolicy.cil
+
+# ADD: Point to vendor selinux directory for context files
+BOARD_SEPOLICY_DIRS += vendor/realme/RE58C2/proprietary/vendor/etc/selinux
+
 
 # Policy compatibility
 BOARD_SEPOLICY_M4DEFS += \
