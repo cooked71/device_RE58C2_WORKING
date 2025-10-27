@@ -413,8 +413,8 @@ PRODUCT_PACKAGES += \
     android.hardware.health.storage-V1-ndk_stock \
     android.system.keystore2-V2-ndk_stock \
     libkeymint_support_stock \
-    android.hardware.boot@1.0  \
-    android.hardware.boot@1.0-impl_stock
+    android.hardware.boot@1.0-1.2-impl_stock \
+    android.hardware.boot@1.0  
 
 # Remove AOSP vold to prevent conflicts
 PRODUCT_PACKAGES := $(filter-out vold, $(PRODUCT_PACKAGES))
