@@ -545,3 +545,28 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.vibrator-service \
     android.hardware.wifi@1.0-service \
     android.hardware.gatekeeper@1.0-service.trusty
+
+
+# CRITICAL - These are failing in your boot log
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.boot@1.2-service \
+    android.hardware.security.keymint@2.0-unisoc.service.trusty \
+    android.hardware.gatekeeper@1.0-service.trusty
+
+# IMPORTANT - Thermal and power management
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.thermal@2.0-service \
+    vendor.unisoc.hardware.power-service
+
+# BASIC HAL SERVICES
+PRODUCT_PACKAGES += \
+    android.hardware.health-service.example \
+    android.hardware.sensors-service.multihal \
+    android.hardware.audio.service
+
+# Only add these if prebuilt_etc isn't working
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint.trusty.manifest \
+    vendor.sprd.hardware.boot.manifest \
+    android.hardware.gatekeeper.trusty.manifest \
+    trusty.default.manifest
