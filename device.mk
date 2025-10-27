@@ -119,7 +119,7 @@ PRODUCT_PACKAGES += \
 # ===========================
 
 PRODUCT_PACKAGES += \
-    vendor.sprd.hardware.boot@1.2-service
+    vendor.sprd.hardware.boot@1.2-service_stock
 
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service_stock \
@@ -430,35 +430,28 @@ endif
 
 
 # ===========================
-# VOLD STOCK AND DEPS
+# VOLD - COMPLETE BP MODULES
 # ===========================
 
+PRODUCT_PACKAGES += \
+    vold_stock \
+    vold_prepare_subdirs_stock \
+    libunisocvold_stock \
+    libphoenix_native_stock \
+    android.hardware.health.storage@1.0_stock \
+    android.hardware.health.storage-V1-ndk_stock \
+    android.system.keystore2-V2-ndk_stock \
+    libkeymint_support_stock \
+    android.hardware.boot@1.0_stock \
+    android.hardware.boot@1.0-impl-1.2_stock
 
-#PRODUCT_PACKAGES += \
-    vold \
-    vold_prepare_subdirs \
-    libunisocvold \
-    libphoenix_native \
-    android.hardware.health.storage@1.0 \
-    android.hardware.health.storage-V1-ndk
+# Remove AOSP vold to prevent conflicts
+PRODUCT_PACKAGES := $(filter-out vold, $(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out vold_prepare_subdirs, $(PRODUCT_PACKAGES))
 
-# Skip all BP complexity, just copy files directly
-PRODUCT_COPY_FILES += \
-    vendor/realme/RE58C2/proprietary/bin/vold:system/bin/vold \
-    vendor/realme/RE58C2/proprietary/etc/init/vold.rc:system/etc/init/vold.rc \
-    vendor/realme/RE58C2/proprietary/bin/vold_prepare_subdirs:system/bin/vold_prepare_subdirs \
-    vendor/realme/RE58C2/proprietary/system_ext/lib64/libunisocvold.so:system_ext/lib64/libunisocvold.so \
-    vendor/realme/RE58C2/proprietary/system_ext/lib64/libphoenix_native.so:system_ext/lib64/libphoenix_native.so \
-    vendor/realme/RE58C2/proprietary/system_ext/lib/libphoenix_native.so:system_ext/lib/libphoenix_native.so
-
-PRODUCT_COPY_FILES += \
-    vendor/realme/RE58C2/proprietary/system/lib64/android.hardware.health.storage@1.0.so:system/lib64/android.hardware.health.storage@1.0.so \
-    vendor/realme/RE58C2/proprietary/system/lib64/android.hardware.health.storage-V1-ndk.so:system/lib64/android.hardware.health.storage-V1-ndk.so 
-
-
-# Make sure AOSP doesn't build vold
-PRODUCT_PACKAGES := $(filter-out vold vold_prepare_subdirs libvold, $(PRODUCT_PACKAGES))
-
+# Keep the boot service but use stock implementation
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.boot@1.2-service
 
 
 
