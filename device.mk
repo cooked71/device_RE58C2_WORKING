@@ -35,23 +35,10 @@ PRODUCT_SOONG_NAMESPACES += \
 # SELINUX POLICIES
 # ===========================
 
-# Use stock vendor SELinux policy
-#BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
-
-# Use precompiled vendor policy
-#BOARD_VENDOR_SEPOLICY_CIL := device/realme/RE58C2/sepolicy/vendor/vendor_sepolicy.cil
-
 # Use stock file contexts
 BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
 
 
-# Include vendor sepolicy
-# SELinux policy orig
-# BOARD_VENDOR_SEPOLICY_DIRS += \ 
-#    device/realme/RE58C2/sepolicy/vendor
-
-# SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
-#   device/realme/RE58C2/sepolicy/private
 
 # ===========================
 # BOOT PROPERTIES v
@@ -164,13 +151,6 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.thermal@2.0 \
     vendor.sprd.hardware.thermal@2.0-impl
 
-# ===========================
-# VINTF MANIFEST FRAGMENTS (KEEP EXISTING) v
-# ===========================
-
-#PRODUCT_PACKAGES += \
-    vendor-power-default.xml \
-    power.stats-default.xml \
 
 # ===========================
 # RECOVERY CONFIGURATION (KEEP EXISTING) v
@@ -484,7 +464,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # ==================================================
 # UNISOC-SPECIFIC CONFIGURATION nuovo
-#  ==================================================
+# ==================================================
 # ===========================
 # SYSTEM SERVICES FROM STOCK
 # ===========================
