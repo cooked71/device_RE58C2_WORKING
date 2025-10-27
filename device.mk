@@ -345,7 +345,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vendor.sprd.hardware.connmgr@1.0-service \
     vendor.sprd.hardware.wcn@1.0-service \
-    vendor.sprd.hardware.trusty-service \
     android.hardware.bluetooth@1.1-service.unisoc \
     hostapd \
     wpa_supplicant \
@@ -414,16 +413,13 @@ PRODUCT_PACKAGES += \
     android.hardware.health.storage-V1-ndk_stock \
     android.system.keystore2-V2-ndk_stock \
     libkeymint_support_stock \
-    android.hardware.boot@1.0_stock \
+    android.hardware.boot@1.0  \
     android.hardware.boot@1.0-impl-1.2_stock
 
 # Remove AOSP vold to prevent conflicts
 PRODUCT_PACKAGES := $(filter-out vold, $(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out vold_prepare_subdirs, $(PRODUCT_PACKAGES))
 
-# Keep the boot service but use stock implementation
-PRODUCT_PACKAGES += \
-    vendor.sprd.hardware.boot@1.2-service
 
 
 
