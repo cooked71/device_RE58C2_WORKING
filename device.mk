@@ -122,21 +122,21 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.boot@1.2-service
 
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.4-service \
-    android.hardware.graphics.allocator@4.0-service \
+    android.hardware.graphics.composer@2.4-service_stock \
+    android.hardware.graphics.allocator@4.0-service_stock \
     hwcomposer.unisoc \
     gralloc.RE58C2
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio.service
+    android.hardware.audio.service_stock
 
 PRODUCT_PACKAGES += \
-    urild
+    urild_stock
 
 PRODUCT_PACKAGES += \
-    android.hardware.health-service.example \
-    android.hardware.sensors-service.multihal \
-    android.hardware.usb-service.example
+    android.hardware.health-service.example_stock \
+    android.hardware.sensors-service.multihal_stock \
+    android.hardware.usb-service.example_stock
 
 # Power management
 PRODUCT_PACKAGES += \
@@ -144,8 +144,8 @@ PRODUCT_PACKAGES += \
 
 
 PRODUCT_PACKAGES += \
-    android.hardware.security.keymint@2.0-unisoc.service.trusty \
-    tee_rpc
+    android.hardware.security.keymint@2.0-unisoc.service.trusty_stock \
+    tee_rpc_stock
 
 # ===========================
 # REMOVE AOSP DUPLICATES - ADD THESE FILTERS
