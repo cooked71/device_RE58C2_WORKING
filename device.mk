@@ -547,8 +547,6 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service.trusty
 
 
-
-
 # Only add these if prebuilt_etc isn't working
 PRODUCT_PACKAGES += \
     android.hardware.security.keymint.trusty.manifest \
