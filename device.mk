@@ -555,4 +555,3 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.boot.manifest \
     android.hardware.gatekeeper.trusty.manifest \
     trusty.default.manifest
-    android.hardware.gatekeeper@1.0-service.trusty
