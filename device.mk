@@ -551,5 +551,5 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.security.keymint.trusty.manifest \
     vendor.sprd.hardware.boot.manifest \
-    android.hardware.gatekeeper.trusty.manifest \
+    android.hardware.gatekeeper@1.0-service.trusty.manifest \
     trusty.default.manifest
