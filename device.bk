@@ -92,15 +92,13 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # MISSING BOOT STACK SERVICES - ADD THESE
 # ===========================
 
-# CRITICAL: Boot services from stock boot log
 PRODUCT_PACKAGES += \
-    keystore2 \
-    odsign \
-    installd \
-    wificond \
-    ylog
+    keystore2_stock \
+    odsign_stock \
+    installd_stock \
+    wificond_stock \
+    ylog_stock
 
-# CRITICAL: Missing libraries for boot services
 #PRODUCT_PACKAGES += \
     libkeystore2_aaid \
     libkeystore2_apc_compat \
@@ -114,33 +112,27 @@ PRODUCT_PACKAGES += \
 # UNCOMMENT: These should be active
 # PRODUCT_PACKAGES += \
     android.hardware.cas@1.2-service 
-   # vendor.sprd.hardware.lights-service 
 
 
 # ===========================
 # EXISTING SERVICES (KEEP THESE) v
 # ===========================
 
-# Boot services
 PRODUCT_PACKAGES += \
     vendor.sprd.hardware.boot@1.2-service
 
-# Graphics services
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.allocator@4.0-service \
     hwcomposer.unisoc \
     gralloc.RE58C2
 
-# Audio services
 PRODUCT_PACKAGES += \
     android.hardware.audio.service
 
-# RIL services
 PRODUCT_PACKAGES += \
     urild
 
-# Core HAL services
 PRODUCT_PACKAGES += \
     android.hardware.health-service.example \
     android.hardware.sensors-service.multihal \
@@ -151,11 +143,9 @@ PRODUCT_PACKAGES += \
     vendor.unisoc.hardware.power-service
 
 
-# Security services
 PRODUCT_PACKAGES += \
     android.hardware.security.keymint@2.0-unisoc.service.trusty \
     tee_rpc
-    #android.hardware.gatekeeper@1.0-service.trusty
 
 # ===========================
 # REMOVE AOSP DUPLICATES - ADD THESE FILTERS
@@ -187,11 +177,8 @@ PRODUCT_PACKAGES += \
 # ===========================
 
 #PRODUCT_PACKAGES += \
-    vendor.sprd.hardware.thermal@2.0-service.xml \
     vendor-power-default.xml \
     power.stats-default.xml \
-    vendor.sprd.hardware.thermal@2.0-service.xml \
-    android.hardware.thermal@2.0-service.xml
 
 # ===========================
 # RECOVERY CONFIGURATION (KEEP EXISTING) v
@@ -391,7 +378,6 @@ PRODUCT_PACKAGES += \
     hostapd \
     wpa_supplicant \
     sensors.unisoc  
-    #android.hardware.wifi@1.0-service \
 
 
 # ===========================
@@ -524,30 +510,49 @@ PRODUCT_PACKAGES += \
 
 
 # Use stock system binaries (NOT vendor)
-PRODUCT_COPY_FILES += \
-    vendor/realme/RE58C2/proprietary/system/bin/credstore:$(TARGET_COPY_OUT_SYSTEM)/bin/credstore \
-    vendor/realme/RE58C2/proprietary/system/bin/keystore2:$(TARGET_COPY_OUT_SYSTEM)/bin/keystore2 \
-    vendor/realme/RE58C2/proprietary/system/bin/installd:$(TARGET_COPY_OUT_SYSTEM)/bin/installd \
-    vendor/realme/RE58C2/proprietary/system/bin/odsign:$(TARGET_COPY_OUT_SYSTEM)/bin/odsign \
-    vendor/realme/RE58C2/proprietary/system/bin/wificond:$(TARGET_COPY_OUT_SYSTEM)/bin/wificond
 
 # Remove from PRODUCT_PACKAGES to avoid conflicts
-PRODUCT_PACKAGES := $(filter-out credstore keystore2 installd odsign wificond,$(PRODUCT_PACKAGES))
 
 
 # ===========================
 # CRITICAL FIXES FOR UNISOC BOOT
 # ===========================
 
-# SELinux contexts for vendor services
-#PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sepolicy/vendor_service_contexts:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_service_contexts
 
 # Create missing directories
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/init.create_dirs.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.create_dirs.rc
 
-# Stock system services
 PRODUCT_COPY_FILES += \
-    vendor/realme/RE58C2/proprietary/system/bin/credstore:$(TARGET_COPY_OUT_SYSTEM)/bin/credstore \
-    vendor/realme/RE58C2/proprietary/system/bin/keystore2:$(TARGET_COPY_OUT_SYSTEM)/bin/keystore2
+
+# ===========================
+# MISSING SPRD SERVICES
+# ===========================
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.lights-service \
+    vendor.sprd.hardware.gnss@2.2-service \
+    vendor.sprd.hardware.cplog_svc-service \
+    vendor.sprd.hardware.enhance-service \
+    vendor.sprd.hardware.hdcp-service \
+    vendor.sprd.hardware.memtrack-service \
+    vendor.sprd.hardware.network-service \
+    vendor.sprd.hardware.oemlock-service \
+    vendor.sprd.hardware.log-service \
+    vendor.sprd.hardware.broadcastradio@2.0-service \
+    vendor.sprd.hardware.commondcs@1.0-service \
+    vendor.sprd.hardware.network@1.0-service \
+    vendor.sprd.hardware.performance@1.0-service \
+    vendor.sprd.hardware.vibrator-service \
+    android.hardware.wifi@1.0-service \
+    android.hardware.gatekeeper@1.0-service.trusty
+
+
+
+
+# Only add these if prebuilt_etc isn't working
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint.trusty.manifest \
+    vendor.sprd.hardware.boot.manifest \
+    android.hardware.gatekeeper.trusty.manifest \
+    trusty.default.manifest
+    android.hardware.gatekeeper@1.0-service.trusty
