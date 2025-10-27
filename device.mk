@@ -554,3 +554,11 @@ PRODUCT_PACKAGES += \
     trusty.default.manifest
     
     #android.hardware.gatekeeper@1.0-service.trusty.manifest \
+
+
+
+BASE_PATH := vendor/realme/RE58C2/proprietary/vendor/firmware
+FIRMWARE_FILES := $(shell find $(BASE_PATH) -type f)
+PRODUCT_COPY_FILES += $(foreach f, $(FIRMWARE_FILES), \
+    $(f):$(TARGET_COPY_OUT_VENDOR)/firmware/$(subst $(BASE_PATH)/,,$(f)))
+
