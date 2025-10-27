@@ -70,11 +70,9 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.hardware.gralloc=RE58C2 \
     ro.board.platform=ums9230 \
     
-    # Security - Trusty TEE
+    # Security - REMOVED Trusty TEE properties
     ro.hardware.bootctrl=default \
-    ro.hardware.keystore=trusty \
-    ro.hardware.gatekeeper=trusty \
-    ro.hardware.keymaster=trusty \
+    # REMOVED conflicting Trusty properties
     
     # Graphics Debug & Performance
     debug.sf.enable_gl_backpressure=1 \
@@ -82,12 +80,13 @@ PRODUCT_SYSTEM_PROPERTIES += \
     debug.sf.hwc.canUseABC=0 \
     init.svc.surfaceflinger.timeout=60000 \
     
-    # System Workarounds
+    # System Workarounds - KEEP THESE
     ro.odsign.disabled=true \
     odsign.verification.disabled=true \
     ro.apex.updatable=false \
     persist.sys.usb.config=adb \
     ro.fastbootd.available=true
+    
 # ===========================
 # MISSING BOOT STACK SERVICES - ADD THESE
 # ===========================
