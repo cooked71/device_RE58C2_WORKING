@@ -99,19 +99,12 @@ PRODUCT_PACKAGES += \
     wificond_stock \
     ylog_stock
 
-#PRODUCT_PACKAGES += \
-    libkeystore2_aaid \
-    libkeystore2_apc_compat \
-    libkeystore2_crypto \
-    libkm_compat_service \
-    lib_android_keymaster_keymint_utils \
-    libcppbor_external \
-    libwifi-system-iface \
-    libwifi-hal
-
-# UNCOMMENT: These should be active
-# PRODUCT_PACKAGES += \
-    android.hardware.cas@1.2-service 
+# Add Trusty service to packages (only if libraries exist)
+PRODUCT_PACKAGES += \
+    vendor.sprd.hardware.trusty-service_stock \
+    vendor.sprd.hardware.trusty-V1-ndk_stock \
+    vendor.sprd.hardware.trusty-impl_stock \
+    libtrusty_stock
 
 
 # ===========================
