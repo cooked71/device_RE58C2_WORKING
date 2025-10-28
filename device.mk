@@ -510,11 +510,18 @@ PRODUCT_PACKAGES += \
 
 # Only add these if prebuilt_etc isn't working
 PRODUCT_PACKAGES += \
-    android.hardware.security.keymint.trusty.manifest \
-    vendor.sprd.hardware.boot.manifest \
-    trusty.default.manifest
-    
-    #android.hardware.gatekeeper@1.0-service.trusty.manifest \
+    vendor.sprd.hardware.boot@1.2.manifest \
+    android.hardware.gatekeeper@1.0-service.trusty.manifest \
+    gralloc.manifest \
+    android.hardware.health-service.example.manifest \
+    media_codecs.manifest \
+    vendor-power-default.manifest \
+    power.stats-default.manifest \
+    vendor.sprd.hardware.thermal@2.0-service.manifest \
+    android.hardware.thermal@2.0-service.manifest \
+    trusty.default.manifest \
+    android.hardware.security.keymint.trusty.manifest
+
 
 
 
