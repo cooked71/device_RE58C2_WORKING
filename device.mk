@@ -413,7 +413,7 @@ PRODUCT_PACKAGES += \
     android.system.keystore2-V2-ndk  \
     libkeymint_support  \
     android.hardware.boot@1.0-1.2-impl  \
-    android.hardware.boot@1.0 \  
+    android.hardware.boot@1.0 \
     android.hardware.health.storage-V1-ndk  
 
 
