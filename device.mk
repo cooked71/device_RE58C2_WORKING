@@ -79,18 +79,18 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # ===========================
 
 PRODUCT_PACKAGES += \
-    keystore2_stock \
-    odsign_stock \
-    installd_stock \
-    wificond_stock \
-    ylog_stock
+    keystore2  \
+    odsign  \
+    installd  \
+    wificond  \
+    ylog 
 
 # Add Trusty service to packages (only if libraries exist)
 PRODUCT_PACKAGES += \
-    vendor.sprd.hardware.trusty-service_stock \
-    vendor.sprd.hardware.trusty-V1-ndk_stock \
-    vendor.sprd.hardware.trusty-impl_stock \
-    libtrusty_stock
+    vendor.sprd.hardware.trusty-service  \
+    vendor.sprd.hardware.trusty-V1-ndk  \
+    vendor.sprd.hardware.trusty-impl  \
+    libtrusty 
 
 
 # ===========================
@@ -98,24 +98,24 @@ PRODUCT_PACKAGES += \
 # ===========================
 
 PRODUCT_PACKAGES += \
-    vendor.sprd.hardware.boot@1.2-service_stock
+    vendor.sprd.hardware.boot@1.2-service 
 
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.4-service_stock \
-    android.hardware.graphics.allocator@4.0-service_stock \
+    android.hardware.graphics.composer@2.4-service  \
+    android.hardware.graphics.allocator@4.0-service  \
     hwcomposer.unisoc \
     gralloc.RE58C2
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio.service_stock
+    android.hardware.audio.service 
 
 PRODUCT_PACKAGES += \
-    urild_stock
+    urild 
 
 PRODUCT_PACKAGES += \
-    android.hardware.health-service.example_stock \
-    android.hardware.sensors-service.multihal_stock \
-    android.hardware.usb-service.example_stock
+    android.hardware.health-service.example  \
+    android.hardware.sensors-service.multihal  \
+    android.hardware.usb-service.example 
 
 # Power management
 PRODUCT_PACKAGES += \
@@ -123,8 +123,8 @@ PRODUCT_PACKAGES += \
 
 
 PRODUCT_PACKAGES += \
-    android.hardware.security.keymint@2.0-unisoc.service.trusty_stock \
-    tee_rpc_stock
+    android.hardware.security.keymint@2.0-unisoc.service.trusty  \
+    tee_rpc 
 
 # ===========================
 # REMOVE AOSP DUPLICATES - ADD THESE FILTERS
@@ -405,15 +405,15 @@ endif
 # ===========================
 
 PRODUCT_PACKAGES += \
-    vold_stock \
-    vold_prepare_subdirs_stock \
-    libunisocvold_stock \
-    libphoenix_native_stock \
-    android.hardware.health.storage@1.0_stock \
-    android.hardware.health.storage-V1-ndk_stock \
-    android.system.keystore2-V2-ndk_stock \
-    libkeymint_support_stock \
-    android.hardware.boot@1.0-1.2-impl_stock \
+    vold  \
+    vold_prepare_subdirs  \
+    libunisocvold  \
+    libphoenix_native  \
+    android.hardware.health.storage@1.0  \
+    android.hardware.health.storage-V1-ndk  \
+    android.system.keystore2-V2-ndk  \
+    libkeymint_support  \
+    android.hardware.boot@1.0-1.2-impl  \
     android.hardware.boot@1.0  
 
 # Remove AOSP vold to prevent conflicts
@@ -510,17 +510,17 @@ PRODUCT_PACKAGES += \
 
 # Only add these if prebuilt_etc isn't working
 PRODUCT_PACKAGES += \
-    vendor.sprd.hardware.boot@1.2.manifest \
-    android.hardware.gatekeeper@1.0-service.trusty.manifest \
-    gralloc.manifest \
-    android.hardware.health-service.example.manifest \
-    media_codecs.manifest \
-    vendor-power-default.manifest \
-    power.stats-default.manifest \
-    vendor.sprd.hardware.thermal@2.0-service.manifest \
-    android.hardware.thermal@2.0-service.manifest \
-    trusty.default.manifest \
-    android.hardware.security.keymint.trusty.manifest
+    vendor.sprd.hardware.boot@1.2.xml \
+    android.hardware.gatekeeper@1.0-service.trusty.xml \
+    gralloc.xml \
+    android.hardware.health-service.example.xml \
+    media_codecs.xml \
+    vendor-power-default.xml \
+    power.stats-default.xml \
+    vendor.sprd.hardware.thermal@2.0-service.xml \
+    android.hardware.thermal@2.0-service.xml \
+    trusty.default.xml \
+    android.hardware.security.keymint.trusty.xml
 
 
 
