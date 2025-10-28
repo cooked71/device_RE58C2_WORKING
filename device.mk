@@ -520,8 +520,8 @@ PRODUCT_PACKAGES += \
     power.stats-default.xml \
     vendor.sprd.hardware.thermal@2.0-service.xml \
     android.hardware.thermal@2.0-service.xml \
-    trusty.default.xml \
-    android.hardware.security.keymint.trusty.xml
+    trusty-default.xml \
+    android.hardware.security.keymint@2.0-unisoc.service.trusty.xml
 
 
 
