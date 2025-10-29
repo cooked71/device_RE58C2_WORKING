@@ -78,7 +78,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # MISSING BOOT STACK SERVICES - ADD THESE
 # ===========================
 
-PRODUCT_PACKAGES_OVERRIDES := \
+PRODUCT_PACKAGES += \
     keystore2  \
     odsign  \
     installd  \
@@ -405,7 +405,7 @@ endif
 # VOLD - COMPLETE BP MODULES
 # ===========================
 
-PRODUCT_PACKAGES_OVERRIDES += \
+PRODUCT_PACKAGES += \
     vold  \
     vold_prepare_subdirs  \
     libunisocvold  \
