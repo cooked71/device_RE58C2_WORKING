@@ -105,8 +105,33 @@ PRODUCT_PACKAGES += \
     hwcomposer.unisoc \
     gralloc.RE58C2
 
+# ===========================
+# FIX AUDIO SERVICES - USE CORRECT NAMES
+# ===========================
+
 PRODUCT_PACKAGES += \
-    android.hardware.audio.service 
+    android.hardware.audio.service \
+    android.hardware.audio@7.1-impl \
+    android.hardware.audio.effect@7.0-impl
+
+# Copy audio service and init script
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/bin/hw/android.hardware.audio.service:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.audio.service \
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/android.hardware.audio.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.audio.service.rc
+
+# Copy audio HALs
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,vendor/proprietary/vendor/lib/hw/audio.*,$(TARGET_COPY_OUT_VENDOR)/lib/hw) \
+    $(call find-copy-subdir-files,*,vendor/proprietary/vendor/lib64/hw/audio.*,$(TARGET_COPY_OUT_VENDOR)/lib64/hw)
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    # Use whale audio HAL (you have audio.primary.whale.so)
+    ro.hardware.audio.primary=whale \
+    ro.hardware.audio=whale \
+    # Sprd audio configuration
+    ro.audio.sprd=1 \
+    vendor.audio.use.sw.aps=1
+
 
 PRODUCT_PACKAGES += \
     urild 
