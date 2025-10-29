@@ -525,6 +525,9 @@ PRODUCT_PACKAGES += \
     trusty-default.xml 
    # android.hardware.security.keymint@2.0-unisoc.service.trusty.xml
 
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint-service
+
 
 
 
