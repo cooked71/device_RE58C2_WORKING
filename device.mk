@@ -87,7 +87,6 @@ PRODUCT_PACKAGES_OVERRIDES := \
 
 # Add Trusty service to packages (only if libraries exist)
 PRODUCT_PACKAGES += \
-    _  \
     vendor.sprd.hardware.trusty-V1-ndk  \
     vendor.sprd.hardware.trusty-impl  \
     libtrusty 
