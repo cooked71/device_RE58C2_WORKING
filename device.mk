@@ -82,8 +82,8 @@ PRODUCT_PACKAGES += \
     keystore2  \
     odsign  \
     installd  \
-    wificond  \
-    ylog 
+    wificond  
+    # ylog 
 
 # Add Trusty service to packages (only if libraries exist)
 PRODUCT_PACKAGES += \
@@ -408,14 +408,16 @@ endif
 PRODUCT_PACKAGES += \
     vold  \
     vold_prepare_subdirs  \
-    libunisocvold  \
-    libphoenix_native  \
     android.hardware.health.storage@1.0  \
     libkeymint_support  \
-    android.hardware.boot@1.0-1.2-impl  \
+    android.hardware.boot@1.0-impl-1.2  \
     android.hardware.boot@1.0 
     #android.hardware.health.storage-V1-ndk  
     #android.system.keystore2-V2-ndk
+    #    libphoenix_native  \
+    #    libunisocvold  \
+
+
 
 
 # Remove AOSP vold to prevent conflicts
