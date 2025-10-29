@@ -41,7 +41,7 @@ BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
 
 
 # ===========================
-# BOOT PROPERTIES v
+# BOOT PROPERTIES v - FIXED
 # ===========================
 
 PRODUCT_SYSTEM_PROPERTIES += \
@@ -49,17 +49,16 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.boot.selinux=permissive \
     ro.debuggable=1 \
     
-    # Graphics - Mali GPU (Spreadtrum)
+    # Graphics - Mali GPU (Spreadtrum) - FIXED
     ro.hardware.egl=mali \
     ro.hardware.vulkan=mali \
     ro.hardware.gpu=mali \
     ro.hardware.hwcomposer=unisoc \
-    ro.hardware.gralloc=RE58C2 \
+    ro.hardware.gralloc=default \
     ro.board.platform=ums9230 \
     
     # Security - REMOVED Trusty TEE properties
     ro.hardware.bootctrl=default \
-    # REMOVED conflicting Trusty properties
     
     # Graphics Debug & Performance
     debug.sf.enable_gl_backpressure=1 \
@@ -93,7 +92,7 @@ PRODUCT_PACKAGES += \
 
 
 # ===========================
-# EXISTING SERVICES (KEEP THESE) v
+# EXISTING SERVICES (KEEP THESE) v - FIXED
 # ===========================
 
 PRODUCT_PACKAGES += \
@@ -103,7 +102,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service  \
     android.hardware.graphics.allocator@4.0-service  \
     hwcomposer.unisoc \
-    gralloc.RE58C2
+    gralloc.default
 
 # ===========================
 # FIX AUDIO SERVICES - USE CORRECT NAMES
