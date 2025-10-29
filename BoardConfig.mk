@@ -104,12 +104,9 @@ BOARD_KERNEL_CMDLINE := \
     printk.devkmsg=on \
     # ENABLE display console:
     console=tty0 \
-    androidboot.console=tty0 \
-    #debug.sf.nobootanimation=1
-    # REMOVED: androidboot.bootservice=0
-    # REMOVED: androidboot.surfaceflinger.disabled=1  
-    # REMOVED: androidboot.zygote=disabled
-    # REMOVED: system_server.disabled=1
+    androidboot.console=tty0
+    # REMOVED ALL TIMEOUT OVERRIDES
+
         
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_KERNEL_OFFSET := 0x00008000
