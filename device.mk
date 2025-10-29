@@ -38,7 +38,27 @@ PRODUCT_SOONG_NAMESPACES += \
 # Use stock file contexts
 BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
 
+# ===========================
+# SURFACEFLINGER COMPATIBILITY FIXES - START WITH THIS
+# ===========================
 
+PRODUCT_SYSTEM_PROPERTIES += \
+    # SurfaceFlinger compatibility with vendor graphics
+    ro.surface_flinger.has_HDR_display=false \
+    ro.surface_flinger.has_wide_color_display=false \
+    ro.surface_flinger.use_color_management=false \
+    ro.surface_flinger.protected_contents=false \
+    ro.surface_flinger.supports_background_blur=false \
+    
+    # Disable advanced features for compatibility
+    ro.surface_flinger.set_idle_timer_ms=1000 \
+    ro.surface_flinger.set_touch_timer_ms=200 \
+    ro.surface_flinger.set_display_power_timer_ms=1000 \
+    
+    # Workarounds for vendor HWC
+    debug.sf.disable_client_composition_cache=1 \
+    debug.sf.enable_gl_backpressure=0 \
+    debug.sf.predict_hwc_composition_strategy=0
 
 # ===========================
 # BOOT PROPERTIES v - FIXED
