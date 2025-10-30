@@ -56,19 +56,22 @@ AB_OTA_PARTITIONS += \
 # ==================================================
 
 # Use proprietary Mali drivers (not open-source panfrost)
-BOARD_GPU_DRIVERS := 
-TARGET_GPU_PLATFORM := mali
+# Use proprietary Mali drivers
+BOARD_GPU_DRIVERS := proprietary
+TARGET_GPU_PLATFORM := mali-g52
+TARGET_GPU_VARIANT := mali-g52
 
-# Unisoc graphics stack
+
+# Unisoc graphics stack - USE ONLY UNISOC FLAGS
 BOARD_USES_UNISOC_GRAPHICS := true
 TARGET_USES_UNISOC_GRAPHICS := true
 TARGET_USES_UNISOC_HWC := true
 
-# Enable AOSP graphics with proprietary drivers
-TARGET_USES_HWC2 := true
-TARGET_USES_GRALLOC1 := true
-TARGET_USES_GRALLOC4 := true
-TARGET_USES_OPENGLES := true
+# DISABLE conflicting AOSP graphics flags
+TARGET_USES_HWC2 := false
+TARGET_USES_GRALLOC1 := false
+TARGET_USES_GRALLOC4 := false
+TARGET_USES_OPENGLES := true  # Keep this one
 
 # EGL configuration (if you have custom egl.cfg)
 # BOARD_EGL_CFG := $(DEVICE_PATH)/prebuilts/egl.cfg
@@ -311,6 +314,18 @@ TARGET_ODM_DLKM_PROP += $(DEVICE_PATH)/odm_dlkm.prop
 # ==================================================
 TARGET_PROVIDES_VOLD := true
 
+# Display configuration
+TARGET_SCREEN_DENSITY := 320
+TARGET_SCREEN_WIDTH := 1080
+TARGET_SCREEN_HEIGHT := 2400
+
+# Display buffers
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
+
+# VSync configuration
+VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
+SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 
 # Unisoc graphics stack (CRITICAL)
 BOARD_USES_UNISOC_GRAPHICS := true
@@ -324,10 +339,11 @@ BOARD_USES_UNISOC_HWC := true
 BOARD_USES_SPRD_HARDWARE := true
 TARGET_USES_SPRD_HARDWARE := true
 
-# Unisoc graphics implementation
-TARGET_USES_SPRD_GRALLOC := true
-TARGET_USES_SPRD_HWC := true
-TARGET_USES_SPRD_DITHER := true
+# Unisoc graphics implementation - USE CONSISTENT NAMING
+TARGET_USES_UNISOC_GRALLOC := true
+TARGET_USES_UNISOC_HWC := true
+TARGET_USES_UNISOC_DITHER := true
+
 
 # Unisoc display configuration
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
