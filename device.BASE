@@ -40,28 +40,26 @@ PRODUCT_SOONG_NAMESPACES += \
 BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
 
 # ===========================
-# EMERGENCY GRAPHICS FIXES - ADD THESE
+# SURFACEFLINGER COMPATIBILITY FIXES - START WITH THIS
 # ===========================
 
 PRODUCT_SYSTEM_PROPERTIES += \
-    # Force software rendering to bypass crashing vendor graphics
-    debug.sf.disable_hwc=1 \
-    debug.sf.force_gpu=1 \
-    debug.sf.no_hw_vsync=1 \
-    debug.egl.force_software=1 \
-    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
-    
-    # Increase boot timeout
-    ro.boottime.init=180 \
-    ro.boottime.zygote=180 \
-    ro.boottime.surfaceflinger=180 \
-    
-    # Disable advanced graphics features
+    # SurfaceFlinger compatibility with vendor graphics
     ro.surface_flinger.has_HDR_display=false \
     ro.surface_flinger.has_wide_color_display=false \
     ro.surface_flinger.use_color_management=false \
     ro.surface_flinger.protected_contents=false \
-    ro.surface_flinger.supports_background_blur=false
+    ro.surface_flinger.supports_background_blur=false \
+    
+    # Disable advanced features for compatibility
+    ro.surface_flinger.set_idle_timer_ms=1000 \
+    ro.surface_flinger.set_touch_timer_ms=200 \
+    ro.surface_flinger.set_display_power_timer_ms=1000 \
+    
+    # Workarounds for vendor HWC
+    debug.sf.disable_client_composition_cache=1 \
+    debug.sf.enable_gl_backpressure=0 \
+    debug.sf.predict_hwc_composition_strategy=0
 
 # ===========================
 # BOOT PROPERTIES v - FIXED
@@ -85,7 +83,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
     
     # Graphics Debug & Performance
     debug.sf.enable_gl_backpressure=1 \
-    debug.sf.enable_hwc_vds=0 \  # DISABLED - can cause crashes
+    debug.sf.enable_hwc_vds=1 \
     debug.sf.hwc.canUseABC=0 \
     init.svc.surfaceflinger.timeout=60000 \
     
@@ -113,6 +111,7 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.trusty-impl  \
     libtrusty 
 
+
 # ===========================
 # EXISTING SERVICES (KEEP THESE) v - FIXED
 # ===========================
@@ -124,15 +123,14 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service  \
     android.hardware.graphics.allocator@4.0-service  \
     hwcomposer.unisoc 
-    # gralloc.default - REMOVED (using PRODUCT_COPY_FILES instead)
+   # gralloc.default
 
 # ===========================
-# GRAPHICS FILES - USE COPY FILES INSTEAD
+# REMOVE DUPLICATE GRALLOC
 # ===========================
 
-PRODUCT_COPY_FILES += \
-    vendor/realme/RE58C2/proprietary/vendor/lib/hw/gralloc.default.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/gralloc.default.so \
-    vendor/realme/RE58C2/proprietary/vendor/lib64/hw/gralloc.default.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/gralloc.default.so
+# Remove gralloc.default from all package lists to avoid AOSP conflict
+PRODUCT_PACKAGES := $(filter-out gralloc.default,$(PRODUCT_PACKAGES))
 
 # ===========================
 # FIX AUDIO SERVICES - USE CORRECT NAMES
@@ -148,6 +146,7 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/vendor/bin/hw/android.hardware.audio.service:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.audio.service \
     vendor/realme/RE58C2/proprietary/vendor/etc/init/android.hardware.audio.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.audio.service.rc
 
+
 PRODUCT_SYSTEM_PROPERTIES += \
     # Use whale audio HAL (you have audio.primary.whale.so)
     ro.hardware.audio.primary=whale \
@@ -155,6 +154,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
     # Sprd audio configuration
     ro.audio.sprd=1 \
     vendor.audio.use.sw.aps=1
+
 
 PRODUCT_PACKAGES += \
     urild 
@@ -168,8 +168,22 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.unisoc.hardware.power-service
 
+
 PRODUCT_PACKAGES += \
     tee_rpc 
+
+#android.hardware.security.keymint@2.0-unisoc.service.trusty  
+
+
+# ===========================
+# REMOVE AOSP DUPLICATES - ADD THESE FILTERS
+# ===========================
+
+# Remove AOSP duplicates
+#PRODUCT_PACKAGES := $(filter-out keystore2,$(PRODUCT_PACKAGES))
+#PRODUCT_PACKAGES := $(filter-out installd,$(PRODUCT_PACKAGES))
+#PRODUCT_PACKAGES := $(filter-out wificond,$(PRODUCT_PACKAGES))
+#PRODUCT_PACKAGES := $(filter-out odsign,$(PRODUCT_PACKAGES))
 
 # ===========================
 # POWER & THERMAL SERVICES (KEEP EXISTING) v 
@@ -186,6 +200,7 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.thermal@2.0 \
     vendor.sprd.hardware.thermal@2.0-impl
 
+
 # ===========================
 # RECOVERY CONFIGURATION (KEEP EXISTING) v
 # ===========================
@@ -198,6 +213,7 @@ PRODUCT_PACKAGES += \
     resize2fs.vendor_ramdisk \
     shell_and_utilities_vendor_ramdisk \
     tune2fs.vendor_ramdisk
+
 
 # ===========================
 # ADB & Fastboot Configuration v
@@ -213,6 +229,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.usb.config=adb
 
+
 # FastbootD support
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.fastbootd.available=true
@@ -222,6 +239,9 @@ PRODUCT_PACKAGES += \
     libhwc2on1adapter \
     libhwc2onfbadapter \
     libmemion
+    # Remove these if AOSP provides them:
+    # libgralloctypes
+
 
 # ===========================
 # VNDK CONFIGURATION
@@ -236,14 +256,18 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.vndk.version=33 \
     ro.vndk.lite=false
 
+# Disable VNDK enforcement for light HAL (temporary workaround)
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.vndk.version=33
+
 # Add to VNDK exception list via product variables
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.vndk.version=33
 
+
 # ===========================
 # Files for NORMAL boot (ramdisk.cpio)
 # ===========================
-
 
 # ===========================
 # VENDOR RAMDISK - COMPLETE SETUP
