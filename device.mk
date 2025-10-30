@@ -122,8 +122,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service  \
     android.hardware.graphics.allocator@4.0-service  \
-    hwcomposer.unisoc \
-    gralloc.default
+    hwcomposer.unisoc 
 
 # ===========================
 # FIX AUDIO SERVICES - USE CORRECT NAMES
@@ -139,10 +138,6 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/vendor/bin/hw/android.hardware.audio.service:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.audio.service \
     vendor/realme/RE58C2/proprietary/vendor/etc/init/android.hardware.audio.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.audio.service.rc
 
-# Copy audio HALs
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,vendor/proprietary/vendor/lib/hw*,$(TARGET_COPY_OUT_VENDOR)/lib/hw) \
-    $(call find-copy-subdir-files,*,vendor/proprietary/vendor/lib64/hw*,$(TARGET_COPY_OUT_VENDOR)/lib64/hw)
 
 PRODUCT_SYSTEM_PROPERTIES += \
     # Use whale audio HAL (you have audio.primary.whale.so)
