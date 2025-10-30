@@ -72,6 +72,9 @@ TARGET_USES_HWC2 := false
 TARGET_USES_GRALLOC1 := false
 TARGET_USES_GRALLOC4 := false
 TARGET_USES_OPENGLES := true  # Keep this one
+TARGET_USES_AOSP_GRALLOC := false  # ← ADD THIS
+BOARD_USES_AOSP_GRALLOC := false   # ← ADD THIS
+
 
 # EGL configuration (if you have custom egl.cfg)
 # BOARD_EGL_CFG := $(DEVICE_PATH)/prebuilts/egl.cfg
