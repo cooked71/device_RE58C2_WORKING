@@ -126,6 +126,13 @@ PRODUCT_PACKAGES += \
    # gralloc.default
 
 # ===========================
+# REMOVE DUPLICATE GRALLOC
+# ===========================
+
+# Remove gralloc.default from all package lists to avoid AOSP conflict
+PRODUCT_PACKAGES := $(filter-out gralloc.default,$(PRODUCT_PACKAGES))
+
+# ===========================
 # FIX AUDIO SERVICES - USE CORRECT NAMES
 # ===========================
 
