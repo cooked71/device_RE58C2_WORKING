@@ -273,15 +273,6 @@ VENDOR_SECURITY_PATCH := 2024-07-05
 # =============================================
 # VINTF Configuration
 # =============================================
-DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vintf/manifest.xml \
-    vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest.xml \
-    vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml 
-
-
-DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vintf/compatibility_matrix.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
-DEVICE_MANIFEST_FILE += $(wildcard vendor/realme/RE58C2/proprietary/vintf/manifest/*.xml)
-
 
 # Enable VINTF enforcement
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
