@@ -520,7 +520,7 @@ PRODUCT_PACKAGES += \
 
 
 # Only add these if prebuilt_etc isn't working
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     vendor.sprd.hardware.boot@1.2.xml \
     android.hardware.gatekeeper@1.0-service.trusty.xml \
     gralloc.xml \
