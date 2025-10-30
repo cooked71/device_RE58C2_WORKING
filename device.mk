@@ -123,6 +123,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service  \
     android.hardware.graphics.allocator@4.0-service  \
     hwcomposer.unisoc 
+   # gralloc.default
 
 # ===========================
 # FIX AUDIO SERVICES - USE CORRECT NAMES
