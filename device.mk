@@ -41,8 +41,7 @@ DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manife
 DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
-VINTF_FRAGMENTS := $(filter-out %android.hardware.wifi@1.0-service.xml, \
-    $(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml))
+DEVICE_MANIFEST_FRAGMENTS +=  $(wildcard vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/*.xml))
 
 # ===========================
 # SELINUX POLICIES
