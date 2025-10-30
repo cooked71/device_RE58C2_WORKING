@@ -141,8 +141,8 @@ PRODUCT_COPY_FILES += \
 
 # Copy audio HALs
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,vendor/proprietary/vendor/lib/hw/audio.*,$(TARGET_COPY_OUT_VENDOR)/lib/hw) \
-    $(call find-copy-subdir-files,*,vendor/proprietary/vendor/lib64/hw/audio.*,$(TARGET_COPY_OUT_VENDOR)/lib64/hw)
+    $(call find-copy-subdir-files,*,vendor/proprietary/vendor/lib/hw*,$(TARGET_COPY_OUT_VENDOR)/lib/hw) \
+    $(call find-copy-subdir-files,*,vendor/proprietary/vendor/lib64/hw*,$(TARGET_COPY_OUT_VENDOR)/lib64/hw)
 
 PRODUCT_SYSTEM_PROPERTIES += \
     # Use whale audio HAL (you have audio.primary.whale.so)
