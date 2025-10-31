@@ -380,9 +380,6 @@ BOARD_SEPOLICY_VERS := 33.0
 
 # Use stock vendor SELinux CIL files
 
-BOARD_VENDOR_SEPOLICY_CIL_FILES += \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_sepolicy.cil
-
 # ADD: Point to vendor selinux directory for context files
 BOARD_SEPOLICY_DIRS += vendor/realme/RE58C2/proprietary/vendor/etc/selinux
 
