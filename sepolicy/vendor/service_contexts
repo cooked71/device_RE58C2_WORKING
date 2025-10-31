@@ -1,0 +1,31 @@
+# Using stock service contexts
+
+# Bluetooth
+vendor.bluetooth-1-1 u:object_r:hal_bluetooth_default_service:s0
+
+# Media
+media.unisoc.codec2 u:object_r:hal_media_c2_default_service:s0
+
+# Graphics
+vendor.gralloc-4-0 u:object_r:hal_graphics_allocator_default_service:s0
+vendor.hwcomposer-2-4 u:object_r:hal_graphics_composer_default_service:s0
+
+# Power
+vendor.power-default u:object_r:hal_power_default_service:s0
+
+# SPRD services  
+vendor.cplog_svc-default u:object_r:hal_cplog_svcaidl_service:s0
+vendor.sprd.hardware.connmgr@1.0-service u:object_r:hal_connmgr_default_service:s0
+vendor.sprd.hardware.network@1.0-service u:object_r:hal_network_default_service:s0
+vendor.sprd.hardware.wcn@1.0-service u:object_r:hal_wcn_default_service:s0
+vendor.thermal-default u:object_r:hal_thermal_ext_service:s0
+
+# Security
+vendor.trusty-default u:object_r:hal_keymint_default_service:s0
+
+# Other services
+vendor.charged u:object_r:charged_service:s0
+vendor.thermald u:object_r:thermald_service:s0
+vendor.srtd u:object_r:srtd_service:s0
+vendor.ril-daemon u:object_r:rild_service:s0
+vendor.tee_rpc u:object_r:tee_service:s0
