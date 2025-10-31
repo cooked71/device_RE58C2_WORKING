@@ -588,22 +588,21 @@ FIRMWARE_FILES := $(shell find $(BASE_PATH) -type f)
 PRODUCT_COPY_FILES += $(foreach f, $(FIRMWARE_FILES), \
     $(f):$(TARGET_COPY_OUT_VENDOR)/firmware/$(subst $(BASE_PATH)/,,$(f)))
 
-# SELinux - Force include vendor policies
+# SELinux - Force device-specific vendor policies
 PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_file_contexts:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_file_contexts \
     vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_sepolicy.cil:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_sepolicy.cil \
     vendor/realme/RE58C2/proprietary/vendor/etc/selinux/plat_pub_versioned.cil:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/plat_pub_versioned.cil
 
-# Ensure vendor SELinux is included in build
+# Include in SEPolicy build
 BOARD_SEPOLICY_UNION += \
     vendor_file_contexts \
-    vendor_sepolicy.cil \
-    vendor_hwservice_contexts \
-    vendor_property_contexts \
-    vendor_service_contexts
+    vendor_sepolicy.cil
 
-# Temporary - set SELinux permissive to boot first
+# Temporary - set SELinux permissive for first boot
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 PRODUCT_PROPERTY_OVERRIDES += ro.boot.selinux=permissive
+
+
 
 
