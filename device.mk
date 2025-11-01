@@ -33,6 +33,7 @@ PRODUCT_SOONG_NAMESPACES += \
 # ===========================
 DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
 DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix_exp.xml
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 # KEEP ONLY WORKING MANIFESTS - REMOVE FAILING ONES
@@ -42,7 +43,16 @@ DEVICE_MANIFEST_FILE += \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/lights.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vibrator.xml
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vibrator.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml\
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.health-service.example.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor-power-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.xml \
+
+
+
+
+
 
 # ===========================
 # SELINUX POLICIES
