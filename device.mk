@@ -33,7 +33,7 @@ PRODUCT_SOONG_NAMESPACES += \
 # ===========================
 DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
 DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix_exp.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 # KEEP ONLY WORKING MANIFESTS - REMOVE FAILING ONES
