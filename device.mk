@@ -38,7 +38,6 @@ PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 # KEEP ONLY WORKING MANIFESTS - REMOVE FAILING ONES
 DEVICE_MANIFEST_FILE += \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.drm-service.clearkey.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml \
@@ -47,11 +46,8 @@ DEVICE_MANIFEST_FILE += \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml\
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.health-service.example.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor-power-default.xml \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.xml \
-
-
-
-
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.xml 
+  #  vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml \
 
 
 # ===========================
@@ -95,45 +91,35 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.fastbootd.available=true
 
 # ===========================
-# ABSOLUTELY ESSENTIAL SERVICES ONLY
-# ===========================
-PRODUCT_PACKAGES += \
-    surfaceflinger \
-    zygote \
-    audioserver \
-    cameraserver \
-    netd \
-    media \
-    installd \
-    keystore2 \
-    wificond \
-    vold
-
-# ===========================
-# ESSENTIAL VENDOR SERVICES
+# DEVICE-SPECIFIC PACKAGES ONLY (NO AOSP CORE COMPONENTS)
 # ===========================
 PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.allocator@4.0-service \
-    vendor.sprd.hardware.boot@1.2-service
+    android.hardware.biometrics.fingerprint@2.1-service \
+    vendor.sprd.hardware.boot@1.2-service \
+    vendor.sprd.hardware.lights-service \
+    vendor.sprd.hardware.vibrator-service \
+    SoterService \
+    ims
 
 # ===========================
 # GRAPHICS FILES
 # ===========================
 PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/lib/egl/libGLES_mali.so:$(TARGET_COPY_OUT_VENDOR)/lib/egl/libGLES_mali.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/egl/libGLES_mali.so:$(TARGET_COPY_OUT_VENDOR)/lib64/egl/libGLES_mali.so \
     vendor/realme/RE58C2/proprietary/vendor/lib/hw/gralloc.default.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/gralloc.default.so \
     vendor/realme/RE58C2/proprietary/vendor/lib64/hw/gralloc.default.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/gralloc.default.so
 
 # ===========================
-# AUDIO SERVICES
+# AUDIO CONFIGURATION
 # ===========================
-PRODUCT_PACKAGES += \
-    android.hardware.audio.service
-
 PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/vendor/bin/hw/android.hardware.audio.service:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.audio.service \
-    vendor/realme/RE58C2/proprietary/vendor/etc/init/android.hardware.audio.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.audio.service.rc
+    vendor/realme/RE58C2/proprietary/vendor/etc/init/android.hardware.audio.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.audio.service.rc \
+    vendor/realme/RE58C2/proprietary/odm/etc/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_ODM)/etc/audio/audio_policy_configuration.xml
 
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.hardware.audio.primary=whale \
@@ -226,6 +212,25 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 PRODUCT_PROPERTY_OVERRIDES += ro.boot.selinux=permissive
 
 # ===========================
-# OVERRIDES
+# CORE LIBRARIES
 # ===========================
-PRODUCT_ENFORCE_RRO_TARGETS := *
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/system/lib/libhardware_legacy.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libhardware_legacy.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libhardware_legacy.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libhardware_legacy.so \
+    vendor/realme/RE58C2/proprietary/system/lib/libnetutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libnetutils.so \
+    vendor/realme/RE58C2/proprietary/system/lib64/libnetutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libnetutils.so
+
+# ===========================
+# MEDIA CONFIGURATION
+# ===========================
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/etc/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml
+
+# ===========================
+# BOOT CONTROL LIBRARIES
+# ===========================
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/lib/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/android.hardware.boot@1.0-impl-1.2.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/android.hardware.boot@1.0-impl-1.2.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib/hw/bootctrl.default.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/bootctrl.default.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/hw/bootctrl.default.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/bootctrl.default.so
