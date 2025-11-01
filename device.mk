@@ -37,12 +37,13 @@ PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 # KEEP ONLY WORKING MANIFESTS - REMOVE FAILING ONES
 DEVICE_MANIFEST_FILE += \
-    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.drm-service.clearkey.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/lights.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vibrator.xml
+  #  vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml \
+
 
 # ===========================
 # SELINUX POLICIES
