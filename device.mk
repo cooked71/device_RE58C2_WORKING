@@ -46,9 +46,10 @@ DEVICE_MANIFEST_FILE += \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.gatekeeper@1.0-service.trusty.xml\
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.health-service.example.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/vendor-power-default.xml \
+    vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.security.keymint@2.0-unisoc.service.trusty.xml \
     vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.xml 
-  #  vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml \
 
+  #  vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml \
 
 # ===========================
 # SELINUX POLICIES
@@ -98,6 +99,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.allocator@4.0-service \
     android.hardware.biometrics.fingerprint@2.1-service \
+    android.hardware.security.keymint@2.0-unisoc.service.trusty \
     vendor.sprd.hardware.boot@1.2-service \
     vendor.sprd.hardware.lights-service \
     vendor.sprd.hardware.vibrator-service \
