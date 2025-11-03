@@ -409,7 +409,6 @@ BOARD_SEPOLICY_UNION += \
     odm_sepolicy.cil \
     odm_file_contexts \
     system_ext_sepolicy.cil \
-    device_hal_transitions.te
 
 # Policy compatibility
 BOARD_SEPOLICY_M4DEFS += \
