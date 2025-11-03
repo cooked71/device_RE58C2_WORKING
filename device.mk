@@ -198,16 +198,6 @@ ifneq ($(TARGET_BOARD_PLATFORM),)
 PRODUCT_PLATFORM := ums9230
 endif
 
-# ===========================
-# SELINUX FILES
-# ===========================
-PRODUCT_COPY_FILES += \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_file_contexts:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_file_contexts \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_sepolicy.cil:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_sepolicy.cil
-
-BOARD_SEPOLICY_UNION += \
-    vendor_file_contexts \
-    vendor_sepolicy.cil
 
 # ===========================
 # TEMPORARY SELINUX PERMISSIVE
