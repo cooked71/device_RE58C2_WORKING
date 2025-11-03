@@ -399,7 +399,7 @@ BOARD_SEPOLICY_DIRS += \
 
 # Include all policy files + our transitions
 BOARD_SEPOLICY_UNION += \
-    vendor_file_contexts
+    vendor_file_contexts \
     vendor_sepolicy.cil \
     vendor_file_contexts \
     vendor_service_contexts \
@@ -409,7 +409,7 @@ BOARD_SEPOLICY_UNION += \
     vendor_mac_permissions.xml \
     odm_sepolicy.cil \
     odm_file_contexts \
-    system_ext_sepolicy.cil \
+    system_ext_sepolicy.cil 
 
 # Policy compatibility
 BOARD_SEPOLICY_M4DEFS += \
