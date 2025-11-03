@@ -389,11 +389,27 @@ include vendor/realme/RE58C2/BoardConfigVendor.mk
 # SELinux policy version (Android 13)
 BOARD_SEPOLICY_VERS := 33.0
 
-# Use stock vendor SELinux CIL files
 
-# ADD: Point to vendor selinux directory for context files
-BOARD_SEPOLICY_DIRS += vendor/realme/RE58C2/proprietary/vendor/etc/selinux
+# Include all policy directories
+BOARD_SEPOLICY_DIRS += \
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux \
+    vendor/realme/RE58C2/proprietary/odm/etc/selinux \
+    vendor/realme/RE58C2/proprietary/system_ext/etc/selinux \
+    device/realme/RE58C2/sepolicy/vendor
 
+# Include all policy files + our transitions
+BOARD_SEPOLICY_UNION += \
+    vendor_sepolicy.cil \
+    vendor_file_contexts \
+    vendor_service_contexts \
+    vendor_hwservice_contexts \
+    vendor_property_contexts \
+    vendor_seapp_contexts \
+    vendor_mac_permissions.xml \
+    odm_sepolicy.cil \
+    odm_file_contexts \
+    system_ext_sepolicy.cil \
+    device_hal_transitions.te
 
 # Policy compatibility
 BOARD_SEPOLICY_M4DEFS += \
