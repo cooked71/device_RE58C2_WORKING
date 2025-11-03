@@ -1,0 +1,7 @@
+# Domain transitions missing from vendor CIL files
+# These transitions exist in stock precompiled_sepolicy but not in CIL sources
+
+domain_auto_trans(init, hal_keymint_unisoc_exec, hal_keymint_unisoc)
+domain_auto_trans(init, hal_bootctrl_default_exec, hal_bootctrl_default)
+domain_auto_trans(init, hal_gatekeeper_default_exec, hal_gatekeeper_default)
+domain_auto_trans(init, hal_codec2_unisoc_exec, hal_codec2_unisoc)

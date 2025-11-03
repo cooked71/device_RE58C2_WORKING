@@ -1,2 +1,0 @@
-# Allow audio HAL to access audio device
-allow hal_audio_default audio_device:chr_file { read write open ioctl };

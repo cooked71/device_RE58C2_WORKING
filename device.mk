@@ -56,7 +56,6 @@ DEVICE_MANIFEST_FILE += \
 # ===========================
 # SELINUX POLICIES
 # ===========================
-BOARD_VENDOR_SEPOLICY_DIRS += device/realme/RE58C2/sepolicy/vendor
 
 # ===========================
 # EMERGENCY GRAPHICS FIXES

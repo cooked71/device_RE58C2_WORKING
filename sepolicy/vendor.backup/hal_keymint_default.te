@@ -1,2 +1,0 @@
-# Allow KeyMint to access trusty services
-allow hal_keymint_default tee_device:chr_file { read write open ioctl };

@@ -1,2 +1,0 @@
-# Zygote permissions (limited due to neverallow)
-# Note: zygote can't write to system_data_file in vendor policy

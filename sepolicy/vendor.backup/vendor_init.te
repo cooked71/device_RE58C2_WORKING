@@ -1,6 +1,0 @@
-# Allow vendor_init to access vndbinder
-allow vendor_init vndbinder_device:chr_file { read write open ioctl map };
-
-# Allow vendor_init to create tmpfs directories
-allow vendor_init tmpfs:dir { write add_name };
-allow vendor_init tmpfs:lnk_file create;

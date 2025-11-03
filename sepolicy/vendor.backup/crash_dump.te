@@ -1,2 +1,0 @@
-# Allow crash_dump to read SELinux status
-allow crash_dump selinuxfs:file { read open getattr };

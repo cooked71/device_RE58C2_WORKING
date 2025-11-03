@@ -1,2 +1,0 @@
-# Allow servicemanager to access binder
-allow servicemanager binder_device:chr_file { read write open ioctl };
