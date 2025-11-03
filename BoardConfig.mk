@@ -399,6 +399,7 @@ BOARD_SEPOLICY_DIRS += \
 
 # Include all policy files + our transitions
 BOARD_SEPOLICY_UNION += \
+    vendor_file_contexts
     vendor_sepolicy.cil \
     vendor_file_contexts \
     vendor_service_contexts \
