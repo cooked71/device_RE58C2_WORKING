@@ -383,20 +383,11 @@ BOARD_WLAN_DEVICE := sprd
 include vendor/realme/RE58C2/BoardConfigVendor.mk
 
 # =============================================
-# SELINUX CONFIGURATION
+# SELINUX CONFIGURATION - USING STOCK POLICIES
 # =============================================
 
 # SELinux policy version (Android 13)
 BOARD_SEPOLICY_VERS := 33.0
-
-# =============================================
-# SELINUX CONFIGURATION - USING PRECOMPILED POLICY
-# =============================================
-
-# SELinux policy version (Android 13)
-BOARD_SEPOLICY_VERS := 33.0
-
-SELINUX_IGNORE_NEVERALLOWS := true
 
 # Policy compatibility
 BOARD_SEPOLICY_M4DEFS += \
@@ -410,3 +401,6 @@ TARGET_USES_TRUSTY := true
 BOARD_USES_TRUSTY := true
 BOARD_USES_KEYMASTER_4 := true
 TARGET_KEYMINT_VERSION := 2.0
+
+# Ignore neverallows during development
+SELINUX_IGNORE_NEVERALLOWS := true
