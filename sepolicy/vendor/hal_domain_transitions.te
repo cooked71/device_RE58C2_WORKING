@@ -10,15 +10,6 @@ type hal_bootctrl_sprd_exec, exec_type, vendor_file_type, file_type;
 type hal_bootctrl_sprd, domain;
 init_daemon_domain(hal_bootctrl_sprd)
 
-# Property types needed by vendor
-type adaptive_haptics_prop, property_type;
-type device_config_vendor_system_native_boot_prop, property_type;
-type vendor_persist_camera_prop, property_type;
-
-# Allow init to set these properties
-allow init adaptive_haptics_prop:property_service set;
-allow init device_config_vendor_system_native_boot_prop:property_service set;
-allow init vendor_persist_camera_prop:property_service set;
 
 # Basic permissions for our HAL domains
 allow { hal_keymint_unisoc hal_bootctrl_sprd } self:process execmem;
