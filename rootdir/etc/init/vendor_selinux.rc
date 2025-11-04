@@ -1,0 +1,13 @@
+# Vendor SELinux policy loading
+on early-init
+    # Load vendor SELinux policy
+    load_policy /vendor/etc/selinux/vendor_sepolicy.cil
+
+on post-fs-data
+    # Restore vendor file contexts
+    restorecon_recursive /vendor
+    restorecon_recursive /vendor/bin/hw
+
+on property:sys.boot_completed=1
+    # Final vendor context restoration
+    restorecon_recursive /vendor
