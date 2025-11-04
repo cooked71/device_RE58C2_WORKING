@@ -1,33 +1,56 @@
-# Domain transitions for HAL services
+# HAL domain transitions for all vendor services
 
-# Allow init to execute HAL binaries
-allow init hal_bootctrl_default_exec:file { execute execute_no_trans };
-allow init hal_keymint_unisoc_exec2:file { execute execute_no_trans };
+# Boot Control HAL
+type hal_bootctrl_default_exec, exec_type, vendor_file_type, file_type;
+type hal_bootctrl_default, domain;
+init_daemon_domain(hal_bootctrl_default)
 
-# Domain transition from init to HAL domains
-type_transition init hal_bootctrl_default_exec:process hal_bootctrl_default;
-type_transition init hal_keymint_unisoc_exec2:process hal_keymint_unisoc;
+# KeyMint HAL
+type hal_keymint_unisoc_exec, exec_type, vendor_file_type, file_type;
+type hal_keymint_unisoc, domain;
+init_daemon_domain(hal_keymint_unisoc)
 
-# Additional permissions needed for domain transition
-allow init hal_bootctrl_default:process transition;
-allow init hal_keymint_unisoc:process transition;
+# Gatekeeper HAL
+type hal_gatekeeper_default_exec, exec_type, vendor_file_type, file_type;
+type hal_gatekeeper_default, domain;
+init_daemon_domain(hal_gatekeeper_default)
 
-allow hal_bootctrl_default init:process sigchld;
-allow hal_keymint_unisoc init:process sigchld;
+# Graphics HALs
+type hal_graphics_composer_default_exec, exec_type, vendor_file_type, file_type;
+type hal_graphics_composer_default, domain;
+init_daemon_domain(hal_graphics_composer_default)
 
-allow hal_bootctrl_default self:process execmem;
-allow hal_keymint_unisoc self:process execmem;
+type hal_graphics_allocator_default_exec, exec_type, vendor_file_type, file_type;
+type hal_graphics_allocator_default, domain;
+init_daemon_domain(hal_graphics_allocator_default)
 
-allow hal_bootctrl_default init:fifo_file write;
-allow hal_keymint_unisoc init:fifo_file write;
+# Audio HAL
+type hal_audio_default_exec, exec_type, vendor_file_type, file_type;
+type hal_audio_default, domain;
+init_daemon_domain(hal_audio_default)
 
-# Additional HAL services
-allow init hal_gatekeeper_default_exec:file { execute execute_no_trans };
-type_transition init hal_gatekeeper_default_exec:process hal_gatekeeper_default;
-allow init hal_gatekeeper_default:process transition;
-allow hal_gatekeeper_default init:process sigchld;
+# Biometrics HAL
+type hal_fingerprint_default_exec, exec_type, vendor_file_type, file_type;
+type hal_fingerprint_default, domain;
+init_daemon_domain(hal_fingerprint_default)
 
-allow init hal_codec2_unisoc_exec:file { execute execute_no_trans };
-type_transition init hal_codec2_unisoc_exec:process hal_codec2_unisoc;
-allow init hal_codec2_unisoc:process transition;
-allow hal_codec2_unisoc init:process sigchld;
+# SPRD vendor HALs
+type hal_light_default_exec, exec_type, vendor_file_type, file_type;
+type hal_light_default, domain;
+init_daemon_domain(hal_light_default)
+
+type hal_vibrator_default_exec, exec_type, vendor_file_type, file_type;
+type hal_vibrator_default, domain;
+init_daemon_domain(hal_vibrator_default)
+
+# Other services
+type hal_soter_default_exec, exec_type, vendor_file_type, file_type;
+type hal_soter_default, domain;
+init_daemon_domain(hal_soter_default)
+
+type hal_ims_default_exec, exec_type, vendor_file_type, file_type;
+type hal_ims_default, domain;
+init_daemon_domain(hal_ims_default)
+
+# Basic permissions for all HAL domains
+allow { hal_bootctrl_default hal_keymint_unisoc hal_gatekeeper_default hal_graphics_composer_default hal_graphics_allocator_default hal_audio_default hal_fingerprint_default hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } self:process execmem;

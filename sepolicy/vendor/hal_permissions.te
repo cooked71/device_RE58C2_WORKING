@@ -1,32 +1,14 @@
 # Basic permissions for HAL services
 
-# Boot control HAL
-allow hal_bootctrl_default vendor_file:file { read getattr open };
-allow hal_bootctrl_default system_file:file { read getattr open };
-allow hal_bootctrl_default system_prop:property_service set;
+# All HALs need basic file access
+allow { hal_bootctrl_default hal_keymint_unisoc hal_gatekeeper_default hal_graphics_composer_default hal_graphics_allocator_default hal_audio_default hal_fingerprint_default hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } vendor_file:file { read getattr open };
+allow { hal_bootctrl_default hal_keymint_unisoc hal_gatekeeper_default hal_graphics_composer_default hal_graphics_allocator_default hal_audio_default hal_fingerprint_default hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } system_file:file { read getattr open };
 
-# KeyMint HAL  
-allow hal_keymint_unisoc vendor_file:file { read getattr open };
-allow hal_keymint_unisoc system_file:file { read getattr open };
+# All HALs need binder communication
+allow { hal_bootctrl_default hal_keymint_unisoc hal_gatekeeper_default hal_graphics_composer_default hal_graphics_allocator_default hal_audio_default hal_fingerprint_default hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } servicemanager:binder { call transfer };
+allow { hal_bootctrl_default hal_keymint_unisoc hal_gatekeeper_default hal_graphics_composer_default hal_graphics_allocator_default hal_audio_default hal_fingerprint_default hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } hwservicemanager:binder { call transfer };
+
+# Specific permissions
 allow hal_keymint_unisoc tee_device:chr_file { read write open };
-allow hal_keymint_unisoc teetz_device:chr_file { read write open };
-
-# Gatekeeper HAL
-allow hal_gatekeeper_default vendor_file:file { read getattr open };
-allow hal_gatekeeper_default system_file:file { read getattr open };
 allow hal_gatekeeper_default tee_device:chr_file { read write open };
-
-# Codec2 HAL
-allow hal_codec2_unisoc vendor_file:file { read getattr open };
-allow hal_codec2_unisoc system_file:file { read getattr open };
-
-# Binder communication for HAL services
-allow hal_bootctrl_default servicemanager:binder { call transfer };
-allow hal_keymint_unisoc servicemanager:binder { call transfer };
-allow hal_gatekeeper_default servicemanager:binder { call transfer };
-allow hal_codec2_unisoc servicemanager:binder { call transfer };
-
-allow hal_bootctrl_default hwservicemanager:binder { call transfer };
-allow hal_keymint_unisoc hwservicemanager:binder { call transfer };
-allow hal_gatekeeper_default hwservicemanager:binder { call transfer };
-allow hal_codec2_unisoc hwservicemanager:binder { call transfer };
+allow hal_bootctrl_default system_prop:property_service set;
