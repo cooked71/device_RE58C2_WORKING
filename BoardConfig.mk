@@ -396,6 +396,8 @@ BOARD_SEPOLICY_VERS := 33.0
 # SELinux policy version (Android 13)
 BOARD_SEPOLICY_VERS := 33.0
 
+SELINUX_IGNORE_NEVERALLOWS := true
+
 # Policy compatibility
 BOARD_SEPOLICY_M4DEFS += \
     -D mls_num_sens=1 \
