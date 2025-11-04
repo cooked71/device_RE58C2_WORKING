@@ -1,40 +1,16 @@
-# HAL domain transitions for all vendor services
+# HAL domain transitions - ONLY define types that don't exist yet
 
-# Boot Control HAL
+# Boot Control HAL - likely unique to our device
 type hal_bootctrl_default_exec, exec_type, vendor_file_type, file_type;
 type hal_bootctrl_default, domain;
 init_daemon_domain(hal_bootctrl_default)
 
-# KeyMint HAL
+# KeyMint HAL (Unisoc specific) - likely unique
 type hal_keymint_unisoc_exec, exec_type, vendor_file_type, file_type;
 type hal_keymint_unisoc, domain;
 init_daemon_domain(hal_keymint_unisoc)
 
-# Gatekeeper HAL
-type hal_gatekeeper_default_exec, exec_type, vendor_file_type, file_type;
-type hal_gatekeeper_default, domain;
-init_daemon_domain(hal_gatekeeper_default)
-
-# Graphics HALs
-type hal_graphics_composer_default_exec, exec_type, vendor_file_type, file_type;
-type hal_graphics_composer_default, domain;
-init_daemon_domain(hal_graphics_composer_default)
-
-type hal_graphics_allocator_default_exec, exec_type, vendor_file_type, file_type;
-type hal_graphics_allocator_default, domain;
-init_daemon_domain(hal_graphics_allocator_default)
-
-# Audio HAL
-type hal_audio_default_exec, exec_type, vendor_file_type, file_type;
-type hal_audio_default, domain;
-init_daemon_domain(hal_audio_default)
-
-# Biometrics HAL
-type hal_fingerprint_default_exec, exec_type, vendor_file_type, file_type;
-type hal_fingerprint_default, domain;
-init_daemon_domain(hal_fingerprint_default)
-
-# SPRD vendor HALs
+# SPRD vendor HALs - likely unique
 type hal_light_default_exec, exec_type, vendor_file_type, file_type;
 type hal_light_default, domain;
 init_daemon_domain(hal_light_default)
@@ -43,7 +19,7 @@ type hal_vibrator_default_exec, exec_type, vendor_file_type, file_type;
 type hal_vibrator_default, domain;
 init_daemon_domain(hal_vibrator_default)
 
-# Other services
+# Other services - likely unique
 type hal_soter_default_exec, exec_type, vendor_file_type, file_type;
 type hal_soter_default, domain;
 init_daemon_domain(hal_soter_default)
@@ -52,5 +28,23 @@ type hal_ims_default_exec, exec_type, vendor_file_type, file_type;
 type hal_ims_default, domain;
 init_daemon_domain(hal_ims_default)
 
+# Property types needed by vendor
+type adaptive_haptics_prop, property_type;
+type device_config_vendor_system_native_boot_prop, property_type;
+type vendor_persist_camera_prop, property_type;
+type traced_oome_heap_session_count_prop, property_type;
+type xtra_control_prop, property_type;
+type userdebug_or_eng_prop, property_type;
+type recovery_update_prop, property_type;
+
+# Allow init to set these properties
+allow init adaptive_haptics_prop:property_service set;
+allow init device_config_vendor_system_native_boot_prop:property_service set;
+allow init vendor_persist_camera_prop:property_service set;
+allow init traced_oome_heap_session_count_prop:property_service set;
+allow init xtra_control_prop:property_service set;
+allow init userdebug_or_eng_prop:property_service set;
+allow init recovery_update_prop:property_service set;
+
 # Basic permissions for all HAL domains
-allow { hal_bootctrl_default hal_keymint_unisoc hal_gatekeeper_default hal_graphics_composer_default hal_graphics_allocator_default hal_audio_default hal_fingerprint_default hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } self:process execmem;
+allow { hal_bootctrl_default hal_keymint_unisoc hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } self:process execmem;

@@ -1,26 +1,10 @@
-# File contexts for vendor HAL services
+# File contexts for vendor HAL services - using only our defined types
 
 # Boot Control HAL
 /(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.boot@1\.2-service u:object_r:hal_bootctrl_default_exec:s0
 
 # KeyMint HAL (Unisoc specific)
 /(vendor|system/vendor)/bin/hw/android\.hardware\.security\.keymint@2\.0-unisoc\.service\.trusty u:object_r:hal_keymint_unisoc_exec:s0
-
-# Generic KeyMint (override any generic entries)
-/(vendor|system/vendor)/bin/hw/android\.hardware\.security\.keymint-service u:object_r:hal_keymint_unisoc_exec:s0
-
-# Gatekeeper HAL
-/(vendor|system/vendor)/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.trusty u:object_r:hal_gatekeeper_default_exec:s0
-
-# Graphics
-/(vendor|system/vendor)/bin/hw/android\.hardware\.graphics\.composer@2\.4-service u:object_r:hal_graphics_composer_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.graphics\.allocator@4\.0-service u:object_r:hal_graphics_allocator_default_exec:s0
-
-# Audio
-/(vendor|system/vendor)/bin/hw/android\.hardware\.audio\.service u:object_r:hal_audio_default_exec:s0
-
-# Biometrics
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service u:object_r:hal_fingerprint_default_exec:s0
 
 # SPRD vendor services
 /(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.lights-service u:object_r:hal_light_default_exec:s0
@@ -29,3 +13,6 @@
 # Other services
 /(vendor|system/vendor)/bin/hw/SoterService u:object_r:hal_soter_default_exec:s0
 /(vendor|system/vendor)/bin/hw/ims u:object_r:hal_ims_default_exec:s0
+
+# Generic KeyMint override (use our specific type)
+/(vendor|system/vendor)/bin/hw/android\.hardware\.security\.keymint-service u:object_r:hal_keymint_unisoc_exec:s0

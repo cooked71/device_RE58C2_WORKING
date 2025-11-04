@@ -1,14 +1,13 @@
 # Basic permissions for HAL services
 
 # All HALs need basic file access
-allow { hal_bootctrl_default hal_keymint_unisoc hal_gatekeeper_default hal_graphics_composer_default hal_graphics_allocator_default hal_audio_default hal_fingerprint_default hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } vendor_file:file { read getattr open };
-allow { hal_bootctrl_default hal_keymint_unisoc hal_gatekeeper_default hal_graphics_composer_default hal_graphics_allocator_default hal_audio_default hal_fingerprint_default hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } system_file:file { read getattr open };
+allow { hal_bootctrl_default hal_keymint_unisoc hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } vendor_file:file { read getattr open };
+allow { hal_bootctrl_default hal_keymint_unisoc hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } system_file:file { read getattr open };
 
 # All HALs need binder communication
-allow { hal_bootctrl_default hal_keymint_unisoc hal_gatekeeper_default hal_graphics_composer_default hal_graphics_allocator_default hal_audio_default hal_fingerprint_default hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } servicemanager:binder { call transfer };
-allow { hal_bootctrl_default hal_keymint_unisoc hal_gatekeeper_default hal_graphics_composer_default hal_graphics_allocator_default hal_audio_default hal_fingerprint_default hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } hwservicemanager:binder { call transfer };
+allow { hal_bootctrl_default hal_keymint_unisoc hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } servicemanager:binder { call transfer };
+allow { hal_bootctrl_default hal_keymint_unisoc hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } hwservicemanager:binder { call transfer };
 
 # Specific permissions
 allow hal_keymint_unisoc tee_device:chr_file { read write open };
-allow hal_gatekeeper_default tee_device:chr_file { read write open };
 allow hal_bootctrl_default system_prop:property_service set;
