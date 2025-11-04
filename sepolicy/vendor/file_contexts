@@ -6,5 +6,3 @@
 # Boot Control HAL (SPRD specific)
 /(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.boot@1\.2-service u:object_r:hal_bootctrl_sprd_exec:s0
 
-# Override generic keymint to use our specific type
-/(vendor|system/vendor)/bin/hw/android\.hardware\.security\.keymint-service u:object_r:hal_keymint_unisoc_exec:s0
