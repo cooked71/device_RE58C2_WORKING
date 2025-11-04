@@ -1,13 +1,13 @@
-# Basic permissions for HAL services
+# MINIMAL permissions for our HAL services
 
-# All HALs need basic file access
-allow { hal_bootctrl_default hal_keymint_unisoc hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } vendor_file:file { read getattr open };
-allow { hal_bootctrl_default hal_keymint_unisoc hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } system_file:file { read getattr open };
+# Basic file access
+allow { hal_keymint_unisoc hal_bootctrl_sprd } vendor_file:file { read getattr open };
+allow { hal_keymint_unisoc hal_bootctrl_sprd } system_file:file { read getattr open };
 
-# All HALs need binder communication
-allow { hal_bootctrl_default hal_keymint_unisoc hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } servicemanager:binder { call transfer };
-allow { hal_bootctrl_default hal_keymint_unisoc hal_light_default hal_vibrator_default hal_soter_default hal_ims_default } hwservicemanager:binder { call transfer };
+# Binder communication
+allow { hal_keymint_unisoc hal_bootctrl_sprd } servicemanager:binder { call transfer };
+allow { hal_keymint_unisoc hal_bootctrl_sprd } hwservicemanager:binder { call transfer };
 
 # Specific permissions
 allow hal_keymint_unisoc tee_device:chr_file { read write open };
-allow hal_bootctrl_default system_prop:property_service set;
+allow hal_bootctrl_sprd system_prop:property_service set;
