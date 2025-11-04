@@ -234,7 +234,7 @@ PRODUCT_COPY_FILES += \
 
 # Precompiled SELinux policy from stock
 PRODUCT_COPY_FILES += \
-    device/realme/RE58C2/odm/etc/selinux/precompiled_sepolicy:$(TARGET_COPY_OUT_ODM)/etc/selinux/precompiled_sepolicy
+    vendor/realme/RE58C2/proprietary/odm/etc/selinux/precompiled_sepolicy:$(TARGET_COPY_OUT_ODM)/etc/selinux/precompiled_sepolicy
 
 # Vendor SELinux policy loading
 PRODUCT_COPY_FILES += \
