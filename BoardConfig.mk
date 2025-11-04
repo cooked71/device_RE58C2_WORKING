@@ -414,6 +414,5 @@ TARGET_KEYMINT_VERSION := 2.0
 
 # Ignore neverallows during development
 SELINUX_IGNORE_NEVERALLOWS := true
-EOF
 
 
