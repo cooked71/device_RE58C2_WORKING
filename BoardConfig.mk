@@ -395,6 +395,7 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
 
 # Only compile the policy files we actually have
 BOARD_SEPOLICY_UNION += \
+    file_contexts \
     vendor_file_contexts \
     hal_domain_transitions.te \
     hal_permissions.te
