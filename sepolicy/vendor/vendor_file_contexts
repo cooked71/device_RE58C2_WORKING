@@ -1,7 +1,0 @@
-# File contexts matching precompiled_sepolicy exactly
-/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.boot@1\.2-service u:object_r:hal_bootctrl_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.security\.keymint@2\.0-unisoc\.service\.trusty u:object_r:hal_keymint_unisoc_exec2:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.trusty u:object_r:hal_gatekeeper_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.media\.c2@1\.1-unisoc-service u:object_r:hal_codec2_unisoc_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.broadcastradio@2\.0-service u:object_r:hal_broadcastradio_ext_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.commondcs@1\.0-service u:object_r:sprd_hal_commondcs_exec:s0
