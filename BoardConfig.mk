@@ -383,11 +383,21 @@ BOARD_WLAN_DEVICE := sprd
 include vendor/realme/RE58C2/BoardConfigVendor.mk
 
 # =============================================
-# SELINUX CONFIGURATION - USING STOCK POLICIES
+# SELINUX CONFIGURATION
 # =============================================
 
 # SELinux policy version (Android 13)
 BOARD_SEPOLICY_VERS := 33.0
+
+# Vendor policy directory
+BOARD_VENDOR_SEPOLICY_DIRS += \
+    device/realme/RE58C2/sepolicy/vendor
+
+# Only compile the policy files we actually have
+BOARD_SEPOLICY_UNION += \
+    vendor_file_contexts \
+    hal_domain_transitions.te \
+    hal_permissions.te
 
 # Policy compatibility
 BOARD_SEPOLICY_M4DEFS += \
@@ -404,3 +414,6 @@ TARGET_KEYMINT_VERSION := 2.0
 
 # Ignore neverallows during development
 SELINUX_IGNORE_NEVERALLOWS := true
+EOF
+
+

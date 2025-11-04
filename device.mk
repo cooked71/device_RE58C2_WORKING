@@ -234,6 +234,6 @@ PRODUCT_COPY_FILES += \
 
 
 # Vendor SELinux policy loading
-PRODUCT_COPY_FILES += \
+# PRODUCT_COPY_FILES += \
     device/realme/RE58C2/rootdir/etc/init/vendor_selinux.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/vendor_selinux.rc
 
