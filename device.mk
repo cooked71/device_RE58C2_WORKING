@@ -227,3 +227,22 @@ PRODUCT_COPY_FILES += \
     vendor/realme/RE58C2/proprietary/vendor/lib64/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/android.hardware.boot@1.0-impl-1.2.so \
     vendor/realme/RE58C2/proprietary/vendor/lib/hw/bootctrl.default.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/bootctrl.default.so \
     vendor/realme/RE58C2/proprietary/vendor/lib64/hw/bootctrl.default.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/bootctrl.default.so
+
+# ===========================
+# SELINUX POLICIES
+# ===========================
+
+# Precompiled SELinux policy from stock
+PRODUCT_COPY_FILES += \
+    device/realme/RE58C2/odm/etc/selinux/precompiled_sepolicy:$(TARGET_COPY_OUT_ODM)/etc/selinux/precompiled_sepolicy
+
+# Vendor SELinux policy loading
+PRODUCT_COPY_FILES += \
+    device/realme/RE58C2/rootdir/etc/init/vendor_selinux.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/vendor_selinux.rc
+
+# Vendor SELinux policies
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_sepolicy.cil:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_sepolicy.cil \
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_file_contexts:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_file_contexts \
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_property_contexts:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_property_contexts \
+    vendor/realme/RE58C2/proprietary/vendor/etc/selinux/vendor_service_contexts:$(TARGET_COPY_OUT_VENDOR)/etc/selinux/vendor_service_contexts

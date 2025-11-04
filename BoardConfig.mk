@@ -383,33 +383,30 @@ BOARD_WLAN_DEVICE := sprd
 include vendor/realme/RE58C2/BoardConfigVendor.mk
 
 # =============================================
-# SELINUX CONFIGURATION - STOCK A13 BLOBS
+# SELINUX CONFIGURATION
 # =============================================
 
 # SELinux policy version (Android 13)
 BOARD_SEPOLICY_VERS := 33.0
 
-
-# Include all policy directories
-BOARD_SEPOLICY_DIRS += \
-    vendor/realme/RE58C2/proprietary/vendor/etc/selinux \
-    vendor/realme/RE58C2/proprietary/odm/etc/selinux \
-    vendor/realme/RE58C2/proprietary/system_ext/etc/selinux \
+# Vendor SEPolicy directories
+BOARD_VENDOR_SEPOLICY_DIRS += \
     device/realme/RE58C2/sepolicy/vendor
 
-# Include all policy files + our transitions
+# Policy files to include
 BOARD_SEPOLICY_UNION += \
+    file_contexts \
+    property_contexts \
+    service_contexts \
+    hwservice_contexts \
+    vndservice_contexts \
     vendor_file_contexts \
-    vendor_sepolicy.cil \
-    vendor_file_contexts \
+    vendor_property_contexts \
     vendor_service_contexts \
     vendor_hwservice_contexts \
-    vendor_property_contexts \
-    vendor_seapp_contexts \
-    vendor_mac_permissions.xml \
-    odm_sepolicy.cil \
-    odm_file_contexts \
-    system_ext_sepolicy.cil 
+    hal_domain_transitions.te \
+    hal_permissions.te \
+    device_hal_transitions.te
 
 # Policy compatibility
 BOARD_SEPOLICY_M4DEFS += \
