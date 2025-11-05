@@ -1,2 +1,0 @@
-# HAL boot control hwservice
-type hal_bootctl_hwservice, hwservice_manager_type;

@@ -13,11 +13,17 @@ allow hal_keymint_unisoc tee_device:chr_file { read write open };
 allow hal_bootctrl_sprd system_prop:property_service set;
 
 # Boot control hwservice access
-allow hal_bootctrl_sprd hal_bootctl_hwservice:hwservice_manager { find };
-allow hal_bootctrl_sprd hal_bootctl_hwservice:hwservice_manager { add };
 
 # Additional boot control permissions
 allow hal_bootctrl_sprd sysfs:file { read open getattr };
 allow hal_bootctrl_sprd sysfs_bootconfig:file { read write open getattr };
 allow hal_bootctrl_sprd block_device:blk_file { read write open getattr };
 allow hal_bootctrl_sprd system_prop:property_service { set };
+
+# KeyMint missing permissions (from boot log denials)
+allow hal_keymint_unisoc device:chr_file { read write open ioctl };
+allow hal_keymint_unisoc vendor_security_patch_level_prop:file { read open getattr map };
+
+# Boot control standard hwservice access
+allow hal_bootctrl_sprd hwservice_manager:hwservice_manager { find };
+allow hal_bootctrl_sprd hwservice_manager:hwservice_manager { add };
