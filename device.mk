@@ -96,7 +96,6 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # DEVICE-SPECIFIC PACKAGES ONLY (NO AOSP CORE COMPONENTS)
 # ===========================
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-service \
     android.hardware.audio.service \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.allocator@4.0-service \
@@ -107,6 +106,12 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.vibrator-service \
     SoterService \
     ims
+
+# Remove all automatic boot HAL packages
+PRODUCT_PACKAGES := $(filter-out android.hardware.boot%, $(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out %boot-control%, $(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out %bootctrl%, $(PRODUCT_PACKAGES))
+
 
 # ===========================
 # GRAPHICS FILES
