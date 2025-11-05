@@ -96,6 +96,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # DEVICE-SPECIFIC PACKAGES ONLY (NO AOSP CORE COMPONENTS)
 # ===========================
 PRODUCT_PACKAGES += \
+    android.hardware.boot@1.2-service \
     android.hardware.audio.service \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.allocator@4.0-service \
