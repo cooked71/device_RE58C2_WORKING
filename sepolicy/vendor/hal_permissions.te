@@ -16,7 +16,6 @@ allow hal_bootctrl_sprd system_prop:property_service set;
 
 # Additional boot control permissions
 allow hal_bootctrl_sprd sysfs:file { read open getattr };
-allow hal_bootctrl_sprd sysfs_bootconfig:file { read write open getattr };
 allow hal_bootctrl_sprd block_device:blk_file { read write open getattr };
 allow hal_bootctrl_sprd system_prop:property_service { set };
 
