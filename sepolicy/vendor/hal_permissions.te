@@ -26,3 +26,6 @@ allow hal_keymint_unisoc vendor_security_patch_level_prop:file { read open getat
 # Boot control standard hwservice access
 allow hal_bootctrl_sprd hwservice_manager:hwservice_manager { find };
 allow hal_bootctrl_sprd hwservice_manager:hwservice_manager { add };
+
+# Allow keystore to call KeyMint binder (from boot log denial)
+allow keystore hal_keymint_unisoc:binder { call };
