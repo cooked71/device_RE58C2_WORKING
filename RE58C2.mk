@@ -1,0 +1,1 @@
+PRODUCT_PACKAGES += lib_android_keymaster_keymint_utils
