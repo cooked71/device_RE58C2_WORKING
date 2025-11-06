@@ -210,14 +210,6 @@ endif
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 PRODUCT_PROPERTY_OVERRIDES += ro.boot.selinux=permissive
 
-# ===========================
-# CORE LIBRARIES
-# ===========================
-PRODUCT_COPY_FILES += \
-    vendor/realme/RE58C2/proprietary/system/lib/libhardware_legacy.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libhardware_legacy.so \
-    vendor/realme/RE58C2/proprietary/system/lib64/libhardware_legacy.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libhardware_legacy.so \
-    vendor/realme/RE58C2/proprietary/system/lib/libnetutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libnetutils.so \
-    vendor/realme/RE58C2/proprietary/system/lib64/libnetutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libnetutils.so
 
 # ===========================
 # MEDIA CONFIGURATION
@@ -239,7 +231,6 @@ PRODUCT_COPY_FILES += \
 # ===========================
 
 
-# Vendor SELinux policy loading
-# PRODUCT_COPY_FILES += \
-    device/realme/RE58C2/rootdir/etc/init/vendor_selinux.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/vendor_selinux.rc
-
+# load custom init.rc
+PRODUCT_COPY_FILES += \
+device/realme/RE58C2/rootdir/system/etc/init/hw/init.rc:system/etc/init/hw/init.rc
