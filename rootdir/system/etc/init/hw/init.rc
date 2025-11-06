@@ -473,6 +473,8 @@ on init
 
     # Start essential services.
     start servicemanager
+    start hwservicemanager
+    start vndservicemanager
 
 # Run boringssl self test for each ABI.  Any failures trigger reboot to firmware.
 on init && property:ro.product.cpu.abilist32=*
