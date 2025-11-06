@@ -233,4 +233,4 @@ PRODUCT_COPY_FILES += \
 
 # load custom init.rc
 PRODUCT_COPY_FILES += \
-device/realme/RE58C2/rootdir/system/etc/init/hw/init.rc:system/etc/init/hw/init.rc
+    device/realme/RE58C2/rootdir/system/etc/init/hw/init.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.rc
