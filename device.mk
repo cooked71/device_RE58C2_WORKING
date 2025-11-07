@@ -98,9 +98,9 @@ PRODUCT_PACKAGES += \
     ims
 
 # Remove all automatic boot HAL packages
-# PRODUCT_PACKAGES := $(filter-out android.hardware.boot%, $(PRODUCT_PACKAGES))
-# PRODUCT_PACKAGES := $(filter-out %boot-control%, $(PRODUCT_PACKAGES))
-# PRODUCT_PACKAGES := $(filter-out %bootctrl%, $(PRODUCT_PACKAGES))
+ PRODUCT_PACKAGES := $(filter-out android.hardware.boot%, $(PRODUCT_PACKAGES))
+ PRODUCT_PACKAGES := $(filter-out %boot-control%, $(PRODUCT_PACKAGES))
+ PRODUCT_PACKAGES := $(filter-out %bootctrl%, $(PRODUCT_PACKAGES))
 
 
 # ===========================
