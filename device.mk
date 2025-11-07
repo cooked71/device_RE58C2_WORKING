@@ -69,9 +69,6 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.boottime.zygote=180 \
     ro.boottime.surfaceflinger=180
 
-# ===========================
-# BOOT PROPERTIES - MINIMAL
-# ===========================
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.boot.selinux=permissive \
     ro.debuggable=1 \
@@ -81,14 +78,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.hardware.hwcomposer=unisoc \
     ro.hardware.gralloc=default \
     ro.board.platform=ums9230 \
-    ro.hardware.bootctrl=default \
-    debug.sf.enable_gl_backpressure=1 \
-    debug.sf.enable_hwc_vds=0 \
-    debug.sf.hwc.canUseABC=0 \
     init.svc.surfaceflinger.timeout=60000 \
-    ro.odsign.disabled=true \
-    odsign.verification.disabled=true \
-    ro.apex.updatable=false \
     persist.sys.usb.config=adb \
     ro.fastbootd.available=true
 
@@ -108,9 +98,9 @@ PRODUCT_PACKAGES += \
     ims
 
 # Remove all automatic boot HAL packages
-PRODUCT_PACKAGES := $(filter-out android.hardware.boot%, $(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out %boot-control%, $(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out %bootctrl%, $(PRODUCT_PACKAGES))
+# PRODUCT_PACKAGES := $(filter-out android.hardware.boot%, $(PRODUCT_PACKAGES))
+# PRODUCT_PACKAGES := $(filter-out %boot-control%, $(PRODUCT_PACKAGES))
+# PRODUCT_PACKAGES := $(filter-out %bootctrl%, $(PRODUCT_PACKAGES))
 
 
 # ===========================
