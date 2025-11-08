@@ -4,8 +4,7 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
-// === INIT BINARIES (system only) ===
-
+// Init scripts
 sh_binary {
     name: "log_to_csv.sh",
     src: "bin/log_to_csv.sh",
@@ -49,7 +48,7 @@ sh_binary {
 }
 
 sh_binary {
-    name: "init_insmod.sh",
+    name: "init.insmod.sh",
     src: "bin/init.insmod.sh",
     vendor: true,
 }
@@ -66,386 +65,407 @@ sh_binary {
     vendor: true,
 }
 
-// === INIT RC FILES (root directory) ===
-
+// Init configuration files
 prebuilt_etc {
-    name: "init_RMX3624_root",
+    name: "init.RMX3624.rc",
     src: "etc/init.RMX3624.rc",
-    sub_dir: "",
-    filename: "init.RMX3624.rc",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "init_RMX3624_usb_root",
+    name: "init.RMX3624.usb.rc",
     src: "etc/init.RMX3624.usb.rc",
-    sub_dir: "",
-    filename: "init.RMX3624.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "init_ums9230_1h10_root",
-    src: "etc/init.ums9230_1h10.rc",
-    sub_dir: "",
-    filename: "init.ums9230_1h10.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_1h10_usb_root",
-    src: "etc/init.ums9230_1h10.usb.rc",
-    sub_dir: "",
-    filename: "init.ums9230_1h10.usb.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_1h10_go_root",
-    src: "etc/init.ums9230_1h10_go.rc",
-    sub_dir: "",
-    filename: "init.ums9230_1h10_go.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_1h10_go_usb_root",
-    src: "etc/init.ums9230_1h10_go.usb.rc",
-    sub_dir: "",
-    filename: "init.ums9230_1h10_go.usb.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_4h10_root",
-    src: "etc/init.ums9230_4h10.rc",
-    sub_dir: "",
-    filename: "init.ums9230_4h10.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_4h10_usb_root",
-    src: "etc/init.ums9230_4h10.usb.rc",
-    sub_dir: "",
-    filename: "init.ums9230_4h10.usb.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_4h10_go_root",
-    src: "etc/init.ums9230_4h10_go.rc",
-    sub_dir: "",
-    filename: "init.ums9230_4h10_go.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_4h10_go_usb_root",
-    src: "etc/init.ums9230_4h10_go.usb.rc",
-    sub_dir: "",
-    filename: "init.ums9230_4h10_go.usb.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_6h10_root",
-    src: "etc/init.ums9230_6h10.rc",
-    sub_dir: "",
-    filename: "init.ums9230_6h10.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_6h10_usb_root",
-    src: "etc/init.ums9230_6h10.usb.rc",
-    sub_dir: "",
-    filename: "init.ums9230_6h10.usb.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_7h10_root",
-    src: "etc/init.ums9230_7h10.rc",
-    sub_dir: "",
-    filename: "init.ums9230_7h10.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_7h10_usb_root",
-    src: "etc/init.ums9230_7h10.usb.rc",
-    sub_dir: "",
-    filename: "init.ums9230_7h10.usb.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_haps_root",
-    src: "etc/init.ums9230_haps.rc",
-    sub_dir: "",
-    filename: "init.ums9230_haps.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_haps_usb_root",
-    src: "etc/init.ums9230_haps.usb.rc",
-    sub_dir: "",
-    filename: "init.ums9230_haps.usb.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_hulk_root",
-    src: "etc/init.ums9230_hulk.rc",
-    sub_dir: "",
-    filename: "init.ums9230_hulk.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_hulk_usb_root",
-    src: "etc/init.ums9230_hulk.usb.rc",
-    sub_dir: "",
-    filename: "init.ums9230_hulk.usb.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_nico_root",
-    src: "etc/init.ums9230_nico.rc",
-    sub_dir: "",
-    filename: "init.ums9230_nico.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_nico_usb_root",
-    src: "etc/init.ums9230_nico.usb.rc",
-    sub_dir: "",
-    filename: "init.ums9230_nico.usb.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_zebu_root",
-    src: "etc/init.ums9230_zebu.rc",
-    sub_dir: "",
-    filename: "init.ums9230_zebu.rc",
-}
-
-prebuilt_etc {
-    name: "init_ums9230_zebu_usb_root",
-    src: "etc/init.ums9230_zebu.usb.rc",
-    sub_dir: "",
-    filename: "init.ums9230_zebu.usb.rc",
-}
-
-// Common RC files in vendor
-prebuilt_etc {
-    name: "init_cali",
+    name: "init.cali.rc",
     src: "etc/init.cali.rc",
     sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "init_module",
+    name: "init.module.rc",
     src: "etc/init.module.rc",
     sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "init_module_usb",
+    name: "init.module.usb.rc",
     src: "etc/init.module.usb.rc",
     sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "init_ram_gms",
+    name: "init.ram.gms.rc",
     src: "etc/init.ram.gms.rc",
     sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "init_ram_native",
+    name: "init.ram.native.rc",
     src: "etc/init.ram.native.rc",
     sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "init_ram",
+    name: "init.ram.rc",
     src: "etc/init.ram.rc",
     sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "init_storage",
+    name: "init.storage.rc",
     src: "etc/init.storage.rc",
     sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "init_zramwb",
+    name: "init.ums9230_1h10.rc",
+    src: "etc/init.ums9230_1h10.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_1h10.usb.rc",
+    src: "etc/init.ums9230_1h10.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_1h10_go.rc",
+    src: "etc/init.ums9230_1h10_go.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_1h10_go.usb.rc",
+    src: "etc/init.ums9230_1h10_go.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_4h10.rc",
+    src: "etc/init.ums9230_4h10.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_4h10.usb.rc",
+    src: "etc/init.ums9230_4h10.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_4h10_go.rc",
+    src: "etc/init.ums9230_4h10_go.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_4h10_go.usb.rc",
+    src: "etc/init.ums9230_4h10_go.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_6h10.rc",
+    src: "etc/init.ums9230_6h10.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_6h10.usb.rc",
+    src: "etc/init.ums9230_6h10.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_7h10.rc",
+    src: "etc/init.ums9230_7h10.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_7h10.usb.rc",
+    src: "etc/init.ums9230_7h10.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_haps.rc",
+    src: "etc/init.ums9230_haps.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_haps.usb.rc",
+    src: "etc/init.ums9230_haps.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_hulk.rc",
+    src: "etc/init.ums9230_hulk.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_hulk.usb.rc",
+    src: "etc/init.ums9230_hulk.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+
+prebuilt_etc {
+    name: "init.ums9230_nico.rc",
+    src: "etc/init.ums9230_nico.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_nico.usb.rc",
+    src: "etc/init.ums9230_nico.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_zebu.rc",
+    src: "etc/init.ums9230_zebu.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ums9230_zebu.usb.rc",
+    src: "etc/init.ums9230_zebu.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.zramwb.rc",
     src: "etc/init.zramwb.rc",
     sub_dir: "init/hw",
+    vendor: true,
 }
 
+
 prebuilt_etc {
-    name: "init_recovery_common",
+    name: "init.recovery.common.rc",
     src: "etc/init.recovery.common.rc",
     sub_dir: "init/hw",
+    vendor: true,
 }
 
-// === FSTAB FILES (root directory) ===
-
+// fstab files
 prebuilt_etc {
-    name: "fstab_module_root",
+    name: "fstab.module",
     src: "etc/fstab.module",
-    sub_dir: "",
-    filename: "fstab.module",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_RE58C2_root",
+    name: "fstab.RE58C2",
     src: "etc/fstab.RE58C2",
-    sub_dir: "",
-    filename: "fstab.RE58C2",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_RMX3624_root",
+    name: "fstab.RMX3624",
     src: "etc/fstab.RMX3624",
-    sub_dir: "",
-    filename: "fstab.RMX3624",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_ums9230_1h10_root",
+    name: "fstab.ums9230_1h10",
     src: "etc/fstab.ums9230_1h10",
-    sub_dir: "",
-    filename: "fstab.ums9230_1h10",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_ums9230_1h10_go_root",
+    name: "fstab.ums9230_1h10_go",
     src: "etc/fstab.ums9230_1h10_go",
-    sub_dir: "",
-    filename: "fstab.ums9230_1h10_go",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_ums9230_4h10_root",
+    name: "fstab.ums9230_4h10",
     src: "etc/fstab.ums9230_4h10",
-    sub_dir: "",
-    filename: "fstab.ums9230_4h10",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_ums9230_4h10_go_root",
+    name: "fstab.ums9230_4h10_go",
     src: "etc/fstab.ums9230_4h10_go",
-    sub_dir: "",
-    filename: "fstab.ums9230_4h10_go",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_ums9230_6h10_root",
+    name: "fstab.ums9230_6h10",
     src: "etc/fstab.ums9230_6h10",
-    sub_dir: "",
-    filename: "fstab.ums9230_6h10",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_ums9230_7h10_root",
+    name: "fstab.ums9230_7h10",
     src: "etc/fstab.ums9230_7h10",
-    sub_dir: "",
-    filename: "fstab.ums9230_7h10",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_ums9230_haps_root",
+    name: "fstab.ums9230_haps",
     src: "etc/fstab.ums9230_haps",
-    sub_dir: "",
-    filename: "fstab.ums9230_haps",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_ums9230_hulk_root",
+    name: "fstab.ums9230_hulk",
     src: "etc/fstab.ums9230_hulk",
-    sub_dir: "",
-    filename: "fstab.ums9230_hulk",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_ums9230_nico_root",
+    name: "fstab.ums9230_nico",
     src: "etc/fstab.ums9230_nico",
-    sub_dir: "",
-    filename: "fstab.ums9230_nico",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "fstab_ums9230_zebu_root",
+    name: "fstab.ums9230_zebu",
     src: "etc/fstab.ums9230_zebu",
-    sub_dir: "",
-    filename: "fstab.ums9230_zebu",
+    sub_dir: "init/hw",
+    vendor: true,
 }
 
-// === UEVENTD FILES ===
-
+// ueventd files
 prebuilt_etc {
-    name: "ueventd_module",
+    name: "ueventd.module.rc",
     src: "etc/ueventd.module.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_RE58C2",
+    name: "ueventd.RE58C2.rc",
     src: "etc/ueventd.RE58C2.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_RMX3624",
+    name: "ueventd.RMX3624.rc",
     src: "etc/ueventd.RMX3624.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_ums9230_1h10_go",
+    name: "ueventd.ums9230_1h10_go.rc",
     src: "etc/ueventd.ums9230_1h10_go.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_ums9230_1h10",
+    name: "ueventd.ums9230_1h10.rc",
     src: "etc/ueventd.ums9230_1h10.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_ums9230_4h10_go",
+    name: "ueventd.ums9230_4h10_go.rc",
     src: "etc/ueventd.ums9230_4h10_go.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_ums9230_4h10",
+    name: "ueventd.ums9230_4h10.rc",
     src: "etc/ueventd.ums9230_4h10.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_ums9230_6h10",
+    name: "ueventd.ums9230_6h10.rc",
     src: "etc/ueventd.ums9230_6h10.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_ums9230_7h10",
+    name: "ueventd.ums9230_7h10.rc",
     src: "etc/ueventd.ums9230_7h10.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_ums9230_haps",
+    name: "ueventd.ums9230_haps.rc",
     src: "etc/ueventd.ums9230_haps.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_ums9230_hulk",
+    name: "ueventd.ums9230_hulk.rc",
     src: "etc/ueventd.ums9230_hulk.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_ums9230_nico",
+    name: "ueventd.ums9230_nico.rc",
     src: "etc/ueventd.ums9230_nico.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd_ums9230_zebu",
+    name: "ueventd.ums9230_zebu.rc",
     src: "etc/ueventd.ums9230_zebu.rc",
     sub_dir: "ueventd.rc.d",
+    vendor: true,
 }
+
