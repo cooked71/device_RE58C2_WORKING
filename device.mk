@@ -91,6 +91,9 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.dbg.core.arm=1 \
     persist.vendor.sys.dump=1
 
+PRODUCT_PACKAGES += \
+    vndservicemanager
+
 
 
 
