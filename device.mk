@@ -187,7 +187,6 @@ PRODUCT_COPY_FILES += \
 # All ueventd files for ramdisk.cpio
 PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/recoveryx/ramdisk/ueventd.module.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.module.rc \
-      $(LOCAL_PATH)/recoveryx/ramdisk/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.RE58C2.rc \
       $(LOCAL_PATH)/recoveryx/ramdisk/ueventd.RMX3624.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.RMX3624.rc \
       $(LOCAL_PATH)/recoveryx/ramdisk/ueventd.ums9230_1h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_1h10.rc \
       $(LOCAL_PATH)/recoveryx/ramdisk/ueventd.ums9230_1h10_go.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/ueventd.ums9230_1h10_go.rc \
@@ -203,7 +202,6 @@ PRODUCT_COPY_FILES += \
 # All fstab files for first stage ramdisk
 PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.module:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.module \
-      $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.RE58C2:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RE58C2 \
       $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.RMX3624:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.RMX3624 \
       $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.ums9230_1h10:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_1h10 \
       $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.ums9230_1h10_go:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_1h10_go \
@@ -232,7 +230,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.ums9230_haps.rc:root/init.ums9230_haps.rc \
     $(LOCAL_PATH)/rootdir/etc/init.ums9230_nico.rc:root/init.ums9230_nico.rc \
     $(LOCAL_PATH)/rootdir/etc/init.ums9230_zebu.rc:root/init.ums9230_zebu.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.RE58C2.rc:root/init.RE58C2.rc \
     $(LOCAL_PATH)/rootdir/etc/init.RMX3624.rc:root/init.RMX3624.rc
 
 # All fstab files to ramdisk root
@@ -247,7 +244,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_haps:root/fstab.ums9230_haps \
     $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_nico:root/fstab.ums9230_nico \
     $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_zebu:root/fstab.ums9230_zebu \
-    $(LOCAL_PATH)/rootdir/etc/fstab.RE58C2:root/fstab.RE58C2 \
     $(LOCAL_PATH)/rootdir/etc/fstab.RMX3624:root/fstab.RMX3624
 
 # All ueventd files to ramdisk root
@@ -262,7 +258,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_haps.rc:root/ueventd.ums9230_haps.rc \
     $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_nico.rc:root/ueventd.ums9230_nico.rc \
     $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_zebu.rc:root/ueventd.ums9230_zebu.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.RE58C2.rc:root/ueventd.RE58C2.rc \
     $(LOCAL_PATH)/rootdir/etc/ueventd.RMX3624.rc:root/ueventd.RMX3624.rc
 
 # ===========================
@@ -339,7 +334,6 @@ PRODUCT_COPY_FILES += \
 # All ueventd files for recovery.cpio
 PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/recoveryx/recovery/ueventd.module.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.module.rc \
-      $(LOCAL_PATH)/recoveryx/recovery/ueventd.RE58C2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.RE58C2.rc \
       $(LOCAL_PATH)/recoveryx/recovery/ueventd.RMX3624.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.RMX3624.rc \
       $(LOCAL_PATH)/recoveryx/recovery/ueventd.ums9230_1h10.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_1h10.rc \
       $(LOCAL_PATH)/recoveryx/recovery/ueventd.ums9230_1h10_go.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_1h10_go.rc \
@@ -351,7 +345,7 @@ PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/recoveryx/recovery/ueventd.ums9230_hulk.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_hulk.rc \
       $(LOCAL_PATH)/recoveryx/recovery/ueventd.ums9230_nico.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_nico.rc \
       $(LOCAL_PATH)/recoveryx/recovery/ueventd.ums9230_zebu.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.ums9230_zebu.rc
-      
+
 # ===========================
 # A/B OTA CONFIGURATION
 # ===========================
