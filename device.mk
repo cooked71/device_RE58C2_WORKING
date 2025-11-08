@@ -216,6 +216,85 @@ PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.ums9230_nico:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_nico \
       $(LOCAL_PATH)/recoveryx/ramdisk/first_stage_ramdisk/fstab.ums9230_zebu:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_zebu
 
+
+# ===========================
+# MAIN BOOT RAMDISK FILES - ALL DEVICES
+# ===========================
+# All init.rc files to ramdisk root
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.ums9230_hulk.rc:root/init.ums9230_hulk.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.ums9230_1h10.rc:root/init.ums9230_1h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.ums9230_1h10_go.rc:root/init.ums9230_1h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.ums9230_4h10.rc:root/init.ums9230_4h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.ums9230_4h10_go.rc:root/init.ums9230_4h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.ums9230_6h10.rc:root/init.ums9230_6h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.ums9230_7h10.rc:root/init.ums9230_7h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.ums9230_haps.rc:root/init.ums9230_haps.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.ums9230_nico.rc:root/init.ums9230_nico.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.ums9230_zebu.rc:root/init.ums9230_zebu.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.RE58C2.rc:root/init.RE58C2.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.RMX3624.rc:root/init.RMX3624.rc
+
+# All fstab files to ramdisk root
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_hulk:root/fstab.ums9230_hulk \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10:root/fstab.ums9230_1h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_1h10_go:root/fstab.ums9230_1h10_go \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10:root/fstab.ums9230_4h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_4h10_go:root/fstab.ums9230_4h10_go \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_6h10:root/fstab.ums9230_6h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_7h10:root/fstab.ums9230_7h10 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_haps:root/fstab.ums9230_haps \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_nico:root/fstab.ums9230_nico \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_zebu:root/fstab.ums9230_zebu \
+    $(LOCAL_PATH)/rootdir/etc/fstab.RE58C2:root/fstab.RE58C2 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.RMX3624:root/fstab.RMX3624
+
+# All ueventd files to ramdisk root
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_hulk.rc:root/ueventd.ums9230_hulk.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_1h10.rc:root/ueventd.ums9230_1h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_1h10_go.rc:root/ueventd.ums9230_1h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_4h10.rc:root/ueventd.ums9230_4h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_4h10_go.rc:root/ueventd.ums9230_4h10_go.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_6h10.rc:root/ueventd.ums9230_6h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_7h10.rc:root/ueventd.ums9230_7h10.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_haps.rc:root/ueventd.ums9230_haps.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_nico.rc:root/ueventd.ums9230_nico.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.ums9230_zebu.rc:root/ueventd.ums9230_zebu.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.RE58C2.rc:root/ueventd.RE58C2.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.RMX3624.rc:root/ueventd.RMX3624.rc
+
+# ===========================
+# VENDOR FILES FOR MOUNT_ALL - ALL DEVICES
+# ===========================
+# Copy all fstab files to vendor/etc
+PRODUCT_COPY_FILES += $(foreach file,$(wildcard $(LOCAL_PATH)/rootdir/etc/fstab.*),\
+    $(file):$(TARGET_COPY_OUT_VENDOR)/etc/$(notdir $(file)))
+
+# Copy all vendor init files
+PRODUCT_COPY_FILES += $(foreach file,$(wildcard $(LOCAL_PATH)/rootdir/vendor/etc/init/hw/init.*.rc),\
+    $(file):$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/$(notdir $(file)))
+
+# ===========================
+# COMMON/PLATFORM FILES
+# ===========================
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.module.rc:root/init.module.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.module.rc:root/ueventd.module.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.module.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.module.rc \
+    $(LOCAL_PATH)/rootdir/etc/ueventd.module.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
+
+# ===========================
+# SYSTEM INIT FILES
+# ===========================
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/init/hw/init.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.rc \
+    $(LOCAL_PATH)/rootdir/system/etc/init/hw/init.usb.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.usb.rc \
+    $(LOCAL_PATH)/rootdir/system/etc/init/hw/init.usb.configfs.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.usb.configfs.rc \
+    $(LOCAL_PATH)/rootdir/system/etc/init/hw/init.zygote32.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.zygote32.rc \
+    $(LOCAL_PATH)/rootdir/system/etc/init/hw/init.zygote64_32.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/hw/init.zygote64_32.rc
+
 # ===========================
 # Files for RECOVERY boot (recovery.cpio)
 # ===========================
