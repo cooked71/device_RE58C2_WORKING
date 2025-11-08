@@ -9,61 +9,61 @@
 sh_binary {
     name: "log_to_csv.sh",
     src: "bin/log_to_csv.sh",
-    recovery_available: true,
+    vendor: true,
 }
 
 sh_binary {
     name: "loading.sh",
     src: "bin/loading.sh",
-    recovery_available: true,
+    vendor: true,
 }
 
 sh_binary {
     name: "para.sh",
     src: "bin/para.sh",
-    recovery_available: true,
+    vendor: true,
 }
 
 sh_binary {
     name: "total.sh",
     src: "bin/total.sh",
-    recovery_available: true,
+    vendor: true,
 }
 
 sh_binary {
     name: "create_splloader_dual_slot_byname_path.sh",
     src: "bin/create_splloader_dual_slot_byname_path.sh",
-    recovery_available: true,
+    vendor: true,
 }
 
 sh_binary {
     name: "engineer_vendor_shell.sh",
     src: "bin/engineer_vendor_shell.sh",
-    recovery_available: true,
+    vendor: true,
 }
 
 sh_binary {
     name: "idlefast.sh",
     src: "bin/idlefast.sh",
-    recovery_available: true,
+    vendor: true,
 }
 
 sh_binary {
     name: "init_insmod.sh",
     src: "bin/init.insmod.sh",
-    recovery_available: true,
+    vendor: true,
 }
 
 sh_binary {
     name: "swappiness.sh",
     src: "bin/swappiness.sh",
-    recovery_available: true,
+    vendor: true,
 }
 
 sh_binary {
     name: "zramwb.sh",
     src: "bin/zramwb.sh",
-    recovery_available: true,
+    vendor: true,
 }
 
 // === INIT RC FILES (root directory) ===
