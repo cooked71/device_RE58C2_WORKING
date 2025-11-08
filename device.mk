@@ -82,6 +82,18 @@ PRODUCT_SYSTEM_PROPERTIES += \
     persist.sys.usb.config=adb \
     ro.fastbootd.available=true
 
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.debuggable=1 \
+    persist.debug.trace=1 \
+    debug.sysdump.enable=1 \
+    debug.sprd_sysdump.enable=1 \
+    ro.dbg.core.arm=1 \
+    persist.vendor.sys.dump=1
+
+
+
+
 # ===========================
 # DEVICE-SPECIFIC PACKAGES ONLY (NO AOSP CORE COMPONENTS)
 # ===========================
