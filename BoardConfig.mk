@@ -89,20 +89,11 @@ BOARD_KERNEL_PAGESIZE := 4096
 
 BOARD_KERNEL_CMDLINE := \
     console=ttyS1,115200n8 \
-    earlycon \
     androidboot.hardware=ums9230_hulk \
-    androidboot.selinux=permissive \
-    androidboot.verifiedbootstate=orange \
+    androidboot.selinux=permissive \  # ← KEEP FOR INITIAL BOOT
     androidboot.dtbo_idx=7 \
     loop.max_part=7 \
-    swiotlb=1 \
-    loglevel=7 \
-    initcall_debug=1 \
-    printk.devkmsg=on \
-    # ENABLE display console:
-    console=tty0 \
-    androidboot.console=tty0
-    # REMOVED ALL TIMEOUT OVERRIDES
+    swiotlb=1
 
         
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
