@@ -29,7 +29,6 @@ SOONG_CONFIG_realme_RE58C2_use_vendor_bp := true
 PRODUCT_SOONG_NAMESPACES += \
     device/realme/RE58C2 \
     vendor/realme/RE58C2 \
-    external/mesa3d
 
 
 # ===========================
