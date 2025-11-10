@@ -37,7 +37,7 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl \
     android.hardware.boot@1.2-impl.recovery \
-    vendor.sprd.hardware.boot@1.2-service
+    android.hardware.boot@1.2-service
 
 # =============================================
 # HEALTH HAL
