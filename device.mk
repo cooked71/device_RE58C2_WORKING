@@ -31,16 +31,37 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/realme/RE58C2 \
 
 
-# Boot HAL - Unisoc specific
+# =============================================
+# BOOT & A/B UPDATE PACKAGES
+# =============================================
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl \
     android.hardware.boot@1.2-impl.recovery \
     vendor.sprd.hardware.boot@1.2-service
 
-# Health HAL - AOSP example service  
+# =============================================
+# HEALTH HAL
+# =============================================
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health-service.example
+
+# =============================================
+# A/B UPDATE ENGINE
+# =============================================
+PRODUCT_PACKAGES += \
+    update_engine \
+    update_engine_sideload \
+    update_verifier \
+    checkpoint_gc \
+    otapreopt_script
+
+# =============================================
+# FASTBOOT
+# =============================================
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.1-impl-mock \
+    fastbootd
 
 
 
