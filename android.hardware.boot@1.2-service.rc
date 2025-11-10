@@ -1,7 +1,0 @@
-service bootctl /vendor/bin/hw/android.hardware.boot@1.2-service
-    class hal
-    user system
-    group system
-    capabilities SYS_RAWIO
-    writepid /dev/cpuset/system-background/tasks
-    shutdown critical
