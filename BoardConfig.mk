@@ -89,8 +89,9 @@ BOARD_KERNEL_PAGESIZE := 4096
 
 BOARD_KERNEL_CMDLINE := \
     console=ttyS1,115200n8 \
+    earlycon \                       
     androidboot.hardware=ums9230_hulk \
-    androidboot.selinux=permissive \  # ← KEEP FOR INITIAL BOOT
+    androidboot.selinux=permissive \ 
     androidboot.dtbo_idx=7 \
     loop.max_part=7 \
     swiotlb=1
@@ -217,7 +218,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 BOARD_AVB_ENABLE := true
 BOARD_AVB_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_ROLLBACK_INDEX := 1
+BOARD_AVB_ROLLBACK_INDEX := 0
 BOARD_AVB_ROLLBACK_INDEX_LOCATION := 1
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
@@ -225,63 +226,29 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 # Boot signing
 BOARD_AVB_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_BOOT_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_BOOT_ROLLBACK_INDEX := 1
+BOARD_AVB_BOOT_ROLLBACK_INDEX := $(BOARD_AVB_ROLLBACK_INDEX)
 BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 2
 
-# Vendor_boot signing
+# Vendor_boot signing  
 BOARD_AVB_VENDOR_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_VENDOR_BOOT_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX := 1
+BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX := $(BOARD_AVB_ROLLBACK_INDEX)
 BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 3
-
-# AVB signing for partitions
-BOARD_AVB_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_SYSTEM_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_SYSTEM_ROLLBACK_INDEX := 1
-BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 4
-
-BOARD_AVB_SYSTEM_EXT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_SYSTEM_EXT_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_SYSTEM_EXT_ROLLBACK_INDEX := 1
-BOARD_AVB_SYSTEM_EXT_ROLLBACK_INDEX_LOCATION := 5
-
-BOARD_AVB_PRODUCT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_PRODUCT_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_PRODUCT_ROLLBACK_INDEX := 1
-BOARD_AVB_PRODUCT_ROLLBACK_INDEX_LOCATION := 6
-
-BOARD_AVB_VENDOR_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_VENDOR_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_VENDOR_ROLLBACK_INDEX := 1
-BOARD_AVB_VENDOR_ROLLBACK_INDEX_LOCATION := 7
-
-BOARD_AVB_ODM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_ODM_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_ODM_ROLLBACK_INDEX := 1
-BOARD_AVB_ODM_ROLLBACK_INDEX_LOCATION := 8
 
 # Security patch level
 VENDOR_SECURITY_PATCH := 2024-07-05
 
-# =============================================
 # VINTF Configuration
-# =============================================
-
-# Enable VINTF enforcement
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
+# ODM manifests
 ODM_MANIFEST_FILES += vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml
 
-# EROFS OTA Configuration
-TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
+# EROFS for OTA updates
 BOARD_USES_EROFS_POSTINSTALL := true
 
-# Ensure the install plan picks up EROFS
-TARGET_OTA_ASSERT_DEVICE := RE58C2
-
-# Critical for odsign to work
+# Essential for APEX updates
 TARGET_FLATTEN_APEX := false
-
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
