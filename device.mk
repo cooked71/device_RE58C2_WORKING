@@ -10,9 +10,13 @@
 # Dalvik VM Configuration
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
-# Essential inheritances
+# Essential for A/B updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/userspace_reboot.mk)
+
+# Core product (add these)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
 
 PRODUCT_SHIPPING_API_LEVEL := 33
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -31,9 +35,7 @@ PRODUCT_SOONG_NAMESPACES += \
 # ===========================
 # VINTF CONFIGURATION - MINIMAL
 # ===========================
-DEVICE_MANIFEST_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/manifest.xml
-DEVICE_MATRIX_FILE += vendor/realme/RE58C2/proprietary/vendor/etc/vintf/compatibility_matrix.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE += device/realme/RE58C2/manifest.xml
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 # KEEP ONLY WORKING MANIFESTS - REMOVE FAILING ONES
