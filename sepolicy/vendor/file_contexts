@@ -18,3 +18,22 @@
 
 # Thermal HAL
 /(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.thermal@2\.0-service u:object_r:hal_thermal_sprd_exec:s0
+
+# Audio HAL
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.audio@4\.0-service u:object_r:hal_audio_sprd_exec:s0
+
+# Graphics HALs
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.composer@2\.4-service u:object_r:hal_graphics_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.gralloc-4\.0-service u:object_r:hal_graphics_sprd_exec:s0
+
+# Face Biometrics
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.biometrics\.face-service u:object_r:hal_face_sprd_exec:s0
+
+# Broadcast Radio
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.broadcastradio@2\.0-service u:object_r:hal_broadcastradio_sprd_exec:s0
+
+# RIL
+/(vendor|system/vendor)/bin/hw/vendor\.ril-daemon u:object_r:hal_ril_sprd_exec:s0
+
+# NFC
+/(vendor|system/vendor)/bin/hw/vendor\.nfc_hal_service u:object_r:hal_nfc_sprd_exec:s0
