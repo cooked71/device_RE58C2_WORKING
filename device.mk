@@ -39,7 +39,7 @@ PRODUCT_SOONG_NAMESPACES += \
 
 
 # Enable root access
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+# PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.secure=0 \
     ro.adb.secure=0
 
