@@ -37,6 +37,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sys.usb.configfs=0 \
     ro.vendor.usb.use_configfs=0
 
+# In device.mk or BoardConfig.mk
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.debuggable=1 \
+    ro.adb.secure=0 \
+    persist.service.adb.enable=1
+
+# Enable root access
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.adb.secure=0
+?
+
 
 # =============================================
 # BOOT & A/B UPDATE PACKAGES
