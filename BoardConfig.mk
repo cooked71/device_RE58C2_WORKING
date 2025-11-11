@@ -264,6 +264,8 @@ TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
 TARGET_VENDOR_DLKM_PROP += $(DEVICE_PATH)/vendor_dlkm.prop
 TARGET_ODM_DLKM_PROP += $(DEVICE_PATH)/odm_dlkm.prop
 
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
+
 
 
 
