@@ -1,9 +1,3 @@
-recovery_only(`
-userdebug_or_eng(`
-permissive fastbootd;
-')
-')
-
 # MINIMAL file contexts - only for our unique HAL services
 
 # KeyMint HAL (Unisoc specific)
@@ -11,6 +5,7 @@ permissive fastbootd;
 
 # Boot Control HAL (SPRD specific)
 /(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.boot@1\.2-service u:object_r:hal_bootctrl_sprd_exec:s0
+
 
 # GNSS HAL
 /(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.gnss@2\.2-service u:object_r:hal_gnss_sprd_exec:s0
@@ -23,15 +18,3 @@ permissive fastbootd;
 
 # Thermal HAL
 /(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.thermal@2\.0-service u:object_r:hal_thermal_sprd_exec:s0
-
-# Face Biometrics HAL
-/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.biometrics\.face-service u:object_r:hal_face_sprd_exec:s0
-
-# Broadcast Radio HAL
-/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.broadcastradio@2\.0-service u:object_r:hal_broadcastradio_sprd_exec:s0
-
-# Audio HAL
-/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.audio@4\.0-service u:object_r:hal_audio_sprd_exec:s0
-
-# Graphics Composer HAL
-/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.composer@2\.4-service u:object_r:hal_graphics_sprd_exec:s0
