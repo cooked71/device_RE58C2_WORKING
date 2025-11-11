@@ -30,6 +30,11 @@ PRODUCT_SOONG_NAMESPACES += \
     device/realme/RE58C2 \
     vendor/realme/RE58C2 \
 
+# Force the stock ROM's intended USB configuration
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.usb.configfs=0 \
+    sys.usb.controller=musb-hdrc.1.auto
+
 
 # =============================================
 # BOOT & A/B UPDATE PACKAGES
@@ -37,7 +42,7 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl \
     android.hardware.boot@1.2-impl.recovery \
-    vendor.sprd.hardware.boot@1.2-service
+    android.hardware.boot@1.2-service
 
 # =============================================
 # HEALTH HAL

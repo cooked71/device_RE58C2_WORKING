@@ -241,8 +241,13 @@ VENDOR_SECURITY_PATCH := 2024-07-05
 # VINTF Configuration
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
+# VINTF Compatibility Matrix
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
+
+
 # ODM manifests
-ODM_MANIFEST_FILES += vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml
+# ODM_MANIFEST_FILES += vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml
 
 # EROFS for OTA updates
 BOARD_USES_EROFS_POSTINSTALL := true
