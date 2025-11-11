@@ -30,6 +30,14 @@ PRODUCT_SOONG_NAMESPACES += \
     device/realme/RE58C2 \
     vendor/realme/RE58C2 \
 
+
+# disable usb temp for debug
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.sys.usb.config=adb \
+    sys.usb.configfs=0 \
+    ro.vendor.usb.use_configfs=0
+
+
 # =============================================
 # BOOT & A/B UPDATE PACKAGES
 # =============================================
