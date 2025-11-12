@@ -23,7 +23,3 @@
 #/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.audio@4\.0-service u:object_r:hal_audio_sprd_exec:s0
 
 
-# Missing domain transitions
-/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.broadcastradio@2\.0-service u:object_r:hal_broadcastradio_sprd_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.biometrics\.face-service    u:object_r:hal_face_sprd_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.oppo\.engnative\.engineer@1\.0-service      u:object_r:hal_engineer_sprd_exec:s0
