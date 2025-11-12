@@ -114,7 +114,7 @@ PRODUCT_PACKAGES += \
 # ===========================
 # ADB & Fastboot Configuration
 # ===========================
-PRODUCT_SYSTEM_PROPERTIES += \
+# PRODUCT_SYSTEM_PROPERTIES += \
     persist.sys.usb.config=adb \
     sys.usb.controller=ffs-umc \
     sys.usb.configfs=1 \
