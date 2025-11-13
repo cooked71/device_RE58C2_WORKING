@@ -15,7 +15,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 
 # Core product (add these)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+PRODUCT_PACKAGES += lib_android_keymaster_keymint_utils
 
 
 PRODUCT_SHIPPING_API_LEVEL := 33
@@ -43,6 +44,7 @@ PRODUCT_SOONG_NAMESPACES += \
     ro.secure=0 \
     ro.adb.secure=0
 
+PRODUCT_PACKAGES += lib_android_keymaster_keymint_utils
 
 
 # =============================================
@@ -52,6 +54,7 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl \
     android.hardware.boot@1.2-impl.recovery \
     android.hardware.boot@1.2-service
+    
 
 # =============================================
 # HEALTH HAL

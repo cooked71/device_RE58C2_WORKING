@@ -31,8 +31,8 @@ allow { hal_broadcastradio_sprd hal_face_sprd hal_engineer_sprd urild_sprd } hws
 
 # Mali GPU access for SurfaceFlinger
 allow surfaceflinger device:chr_file { read write open getattr ioctl map };
-allow surfaceflinger mali_device:chr_file { read write open getattr ioctl map };
+allow surfaceflinger gpu_device:chr_file { read write open getattr ioctl map };
 
 # Graphics HAL permissions
 allow hal_graphics_sprd device:chr_file { read write open getattr ioctl map };
-allow hal_graphics_sprd mali_device:chr_file { read write open getattr ioctl map };
+allow hal_graphics_sprd gpu_device:chr_file { read write open getattr ioctl map };
