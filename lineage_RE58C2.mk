@@ -13,7 +13,7 @@
 
     # 2. Inherit core Android components
     $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-    $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+    #$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
     # 3. Enable updating of APEXes
     $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
