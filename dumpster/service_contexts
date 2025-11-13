@@ -1,3 +1,0 @@
-vendor.tee_rpc u:object_r:tee_rpc:s0
-android.hardware.security.keymint.IKeyMintDevice/default u:object_r:hal_keymint_unisoc:s0
-vendor.sprd.hardware.* u:object_r:hal_sprd_default:s0

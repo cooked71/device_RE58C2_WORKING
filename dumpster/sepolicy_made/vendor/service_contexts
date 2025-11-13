@@ -1,9 +1,0 @@
-# Use default for all services
-android.hardware.audio@7.1::IDevicesFactory/default         u:object_r:default_android_hwservice:s0
-vendor.sprd.hardware.thermal@2.0::IThermal/default          u:object_r:default_android_hwservice:s0
-vendor.sprd.hardware.power::IPower/default                  u:object_r:default_android_hwservice:s0
-vendor.sprd.hardware.connmgr@1.0::IConnMgr/default          u:object_r:default_android_hwservice:s0
-vendor.sprd.hardware.wcn@1.0::IWcn/default                  u:object_r:default_android_hwservice:s0
-vendor.sprd.hardware.boot@1.2::IBootControl/default         u:object_r:default_android_hwservice:s0
-vendor.sprd.hardware.trusty::ITrustyService/default         u:object_r:default_android_hwservice:s0
-vendor.sprd.hardware.*                                      u:object_r:default_android_hwservice:s0

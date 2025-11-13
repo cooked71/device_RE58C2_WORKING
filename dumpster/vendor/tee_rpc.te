@@ -1,3 +1,0 @@
-type tee_rpc_exec, exec_type, vendor_file_type, file_type;
-type tee_rpc, domain;
-init_daemon_domain(tee_rpc);

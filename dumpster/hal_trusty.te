@@ -1,5 +1,0 @@
-type hal_trusty_exec, exec_type, vendor_file_type, file_type;
-type hal_trusty_default, domain;
-type hal_trusty_default_service, service_manager_type;
-
-init_daemon_domain(hal_trusty_default);
