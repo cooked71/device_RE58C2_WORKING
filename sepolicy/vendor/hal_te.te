@@ -29,10 +29,18 @@ allow { hal_broadcastradio_sprd hal_face_sprd hal_engineer_sprd urild_sprd } sys
 allow { hal_broadcastradio_sprd hal_face_sprd hal_engineer_sprd urild_sprd } servicemanager:binder { call transfer };
 allow { hal_broadcastradio_sprd hal_face_sprd hal_engineer_sprd urild_sprd } hwservicemanager:binder { call transfer };
 
-# Mali GPU access for SurfaceFlinger
-allow surfaceflinger device:chr_file { read write open getattr ioctl map };
-allow surfaceflinger gpu_device:chr_file { read write open getattr ioctl map };
-
-# Graphics HAL permissions
-allow hal_graphics_sprd device:chr_file { read write open getattr ioctl map };
 allow hal_graphics_sprd gpu_device:chr_file { read write open getattr ioctl map };
+
+# Graphics HAL
+type hal_graphics_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_graphics_sprd, domain;
+init_daemon_domain(hal_graphics_sprd)
+
+# Graphics permissions (using standard GPU device)
+allow surfaceflinger gpu_device:chr_file { read write open getattr ioctl map };
+allow hal_graphics_sprd gpu_device:chr_file { read write open getattr ioctl map };
+
+# Basic permissions for graphics HAL
+allow hal_graphics_sprd self:process execmem;
+allow hal_graphics_sprd vendor_file:file { read getattr open };
+allow hal_graphics_sprd system_file:file { read getattr open };
