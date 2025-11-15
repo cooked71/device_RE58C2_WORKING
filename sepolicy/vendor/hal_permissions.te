@@ -33,10 +33,11 @@ allow hal_wifi_sprd system_file:file { read getattr open };
 allow hal_wifi_sprd servicemanager:binder { call transfer };
 allow hal_wifi_sprd hwservicemanager:binder { call transfer };
 
-# WiFi-specific permissions
-allow hal_wifi_sprd wlan_device:chr_file { read write open ioctl };
-allow hal_wifi_sprd sysfs_wlan:dir search;
-allow hal_wifi_sprd sysfs_wlan:file { read write open getattr };
+# WiFi-specific permissions - USE CORRECT TYPES
+allow hal_wifi_sprd wifi_device:chr_file { read write open ioctl };
+allow hal_wifi_sprd sysfs:dir search;
+allow hal_wifi_sprd sysfs:file { read write open getattr };
 allow hal_wifi_sprd netlink_kobject_uevent_socket:socket { create connect bind read write };
 allow hal_wifi_sprd netlink_route_socket:socket { create connect bind read write };
-
+allow hal_wifi_sprd node:rawip_socket node_bind;
+allow hal_wifi_sprd system_prop:property_service set;
