@@ -29,11 +29,3 @@
 
 # urild service
 /(vendor|system/vendor)/bin/hw/urild u:object_r:urild_sprd_exec:s0
-
-# Spreadtrum WiFi services - ADDED FOR WIFI FIX
-/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.wcn@1\.0-service u:object_r:hal_wifi_sprd_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.connmgr@1\.0-service u:object_r:hal_wifi_sprd_exec:s0
-/(vendor|system/vendor)/bin/connmgr u:object_r:hal_wifi_sprd_exec:s0
-/(vendor|system/vendor)/bin/wcn_chr u:object_r:hal_wifi_sprd_exec:s0
-/(vendor|system/vendor)/bin/iwnpi u:object_r:hal_wifi_sprd_exec:s0
-/(vendor|system/vendor)/bin/modem_control u:object_r:hal_wifi_sprd_exec:s0
