@@ -13,3 +13,14 @@ init_daemon_domain(hal_bootctrl_sprd)
 
 # Basic permissions for our HAL domains
 allow { hal_keymint_unisoc hal_bootctrl_sprd } self:process execmem;
+
+# Spreadtrum WiFi HAL
+type hal_wifi_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_wifi_sprd, domain;
+init_daemon_domain(hal_wifi_sprd)
+
+# Allow WiFi services to run in proper domain
+allow hal_wifi_sprd hal_wifi_default_exec:file { execute execute_no_trans };
+allow hal_wifi_sprd hal_wifi_default:process transition;
+allow hal_wifi_sprd hal_wifi_default:fd use;
+

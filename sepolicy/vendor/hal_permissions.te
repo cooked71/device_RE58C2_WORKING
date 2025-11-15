@@ -25,3 +25,18 @@ allow hal_keymint_unisoc vendor_security_patch_level_prop:file { read open getat
 
 # Allow keystore to call KeyMint binder (from boot log denial)
 allow keystore hal_keymint_unisoc:binder { call };
+
+# Basic permissions for WiFi HAL
+allow hal_wifi_sprd self:process execmem;
+allow hal_wifi_sprd vendor_file:file { read getattr open };
+allow hal_wifi_sprd system_file:file { read getattr open };
+allow hal_wifi_sprd servicemanager:binder { call transfer };
+allow hal_wifi_sprd hwservicemanager:binder { call transfer };
+
+# WiFi-specific permissions
+allow hal_wifi_sprd wlan_device:chr_file { read write open ioctl };
+allow hal_wifi_sprd sysfs_wlan:dir search;
+allow hal_wifi_sprd sysfs_wlan:file { read write open getattr };
+allow hal_wifi_sprd netlink_kobject_uevent_socket:socket { create connect bind read write };
+allow hal_wifi_sprd netlink_route_socket:socket { create connect bind read write };
+
