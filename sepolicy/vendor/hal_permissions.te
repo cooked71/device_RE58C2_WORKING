@@ -31,3 +31,6 @@ allow hal_wifi_sprd hwservicemanager:binder { call transfer };
 allow hal_wifi_sprd device:chr_file { read write open ioctl };
 allow hal_wifi_sprd sysfs:dir search;
 allow hal_wifi_sprd sysfs:file { read write open getattr };
+
+# Fix netlink permissions for WiFi
+allow hal_wifi_sprd self:netlink_kobject_uevent_socket { create read write };
