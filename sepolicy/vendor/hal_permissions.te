@@ -28,7 +28,6 @@ allow hal_wifi_sprd vendor_file:file { read getattr open };
 allow hal_wifi_sprd system_file:file { read getattr open };
 allow hal_wifi_sprd servicemanager:binder { call transfer };
 allow hal_wifi_sprd hwservicemanager:binder { call transfer };
-allow hal_wifi_sprd netlink_kobject_uevent_socket:socket { create connect bind read write };
 allow hal_wifi_sprd device:chr_file { read write open ioctl };
 allow hal_wifi_sprd sysfs:dir search;
 allow hal_wifi_sprd sysfs:file { read write open getattr };
