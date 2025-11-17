@@ -37,3 +37,43 @@
 /(vendor|system/vendor)/bin/wcn_chr u:object_r:hal_wifi_sprd_exec:s0
 /(vendor|system/vendor)/bin/iwnpi u:object_r:hal_wifi_sprd_exec:s0
 /(vendor|system/vendor)/bin/modem_control u:object_r:hal_wifi_sprd_exec:s0
+
+# DRM/Widevine HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm-service\.widevine u:object_r:hal_drm_widevine_exec:s0
+
+# Gatekeeper HAL  
+/(vendor|system/vendor)/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.trusty u:object_r:hal_gatekeeper_sprd_exec:s0
+
+# Media C2 HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.media\.c2@1\.1-unisoc-service u:object_r:hal_media_c2_sprd_exec:s0
+
+# SPRD-specific services
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.cplog_svc-service u:object_r:hal_cplog_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.enhance-service u:object_r:hal_enhance_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.hdcp-service u:object_r:hal_hdcp_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.lights-service u:object_r:hal_lights_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.memtrack-service u:object_r:hal_memtrack_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.network-service u:object_r:hal_network_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.trusty-service u:object_r:hal_trusty_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.oemlock-service u:object_r:hal_oemlock_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.unisoc\.hardware\.power-service u:object_r:hal_power_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.log-service u:object_r:hal_log_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.commondcs@1\.0-service u:object_r:hal_commondcs_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.network@1\.0-service u:object_r:hal_network_v1_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.performance@1\.0-service u:object_r:hal_performance_sprd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.vibrator-service u:object_r:hal_vibrator_sprd_exec:s0
+
+# Vendor binaries
+/(vendor|system/vendor)/bin/dcxsrv u:object_r:dcxsrv_sprd_exec:s0
+/(vendor|system/vendor)/bin/engpc u:object_r:engpc_sprd_exec:s0
+/(vendor|system/vendor)/bin/gpsd u:object_r:gpsd_sprd_exec:s0
+/(vendor|system/vendor)/bin/tsupplicant u:object_r:tsupplicant_sprd_exec:s0
+/(vendor|system/vendor)/bin/charged u:object_r:charged_sprd_exec:s0
+/(vendor|system/vendor)/bin/uniber u:object_r:uniber_sprd_exec:s0
+/(vendor|system/vendor)/bin/phasecheckserver u:object_r:phasecheckserver_sprd_exec:s0
+/(vendor|system/vendor)/bin/refnotify u:object_r:refnotify_sprd_exec:s0
+/(vendor|system/vendor)/bin/slogmodem_vendor u:object_r:slogmodem_sprd_exec:s0
+/(vendor|system/vendor)/bin/srtd u:object_r:srtd_sprd_exec:s0
+/(vendor|system/vendor)/bin/thermald u:object_r:thermald_sprd_exec:s0
+/(vendor|system/vendor)/bin/systemDebuggerd u:object_r:systemdebuggerd_sprd_exec:s0
+/(vendor|system/vendor)/bin/cp_diskserver u:object_r:cp_diskserver_sprd_exec:s0

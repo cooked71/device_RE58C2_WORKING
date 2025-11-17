@@ -1,0 +1,176 @@
+
+# DRM/Widevine HAL
+type hal_drm_widevine_exec, exec_type, vendor_file_type, file_type;
+type hal_drm_widevine, domain;
+init_daemon_domain(hal_drm_widevine)
+
+# Gatekeeper HAL
+type hal_gatekeeper_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_gatekeeper_sprd, domain;
+init_daemon_domain(hal_gatekeeper_sprd)
+
+# Media C2 HAL
+type hal_media_c2_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_media_c2_sprd, domain;
+init_daemon_domain(hal_media_c2_sprd)
+
+# SPRD-specific HAL domains
+type hal_cplog_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_cplog_sprd, domain;
+init_daemon_domain(hal_cplog_sprd)
+
+type hal_enhance_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_enhance_sprd, domain;
+init_daemon_domain(hal_enhance_sprd)
+
+type hal_hdcp_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_hdcp_sprd, domain;
+init_daemon_domain(hal_hdcp_sprd)
+
+type hal_lights_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_lights_sprd, domain;
+init_daemon_domain(hal_lights_sprd)
+
+type hal_memtrack_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_memtrack_sprd, domain;
+init_daemon_domain(hal_memtrack_sprd)
+
+type hal_network_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_network_sprd, domain;
+init_daemon_domain(hal_network_sprd)
+
+type hal_trusty_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_trusty_sprd, domain;
+init_daemon_domain(hal_trusty_sprd)
+
+type hal_oemlock_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_oemlock_sprd, domain;
+init_daemon_domain(hal_oemlock_sprd)
+
+type hal_power_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_power_sprd, domain;
+init_daemon_domain(hal_power_sprd)
+
+type hal_log_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_log_sprd, domain;
+init_daemon_domain(hal_log_sprd)
+
+type hal_commondcs_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_commondcs_sprd, domain;
+init_daemon_domain(hal_commondcs_sprd)
+
+type hal_network_v1_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_network_v1_sprd, domain;
+init_daemon_domain(hal_network_v1_sprd)
+
+type hal_performance_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_performance_sprd, domain;
+init_daemon_domain(hal_performance_sprd)
+
+type hal_vibrator_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_vibrator_sprd, domain;
+init_daemon_domain(hal_vibrator_sprd)
+
+# Vendor binary domains
+type dcxsrv_sprd_exec, exec_type, vendor_file_type, file_type;
+type dcxsrv_sprd, domain;
+init_daemon_domain(dcxsrv_sprd)
+
+type engpc_sprd_exec, exec_type, vendor_file_type, file_type;
+type engpc_sprd, domain;
+init_daemon_domain(engpc_sprd)
+
+type gpsd_sprd_exec, exec_type, vendor_file_type, file_type;
+type gpsd_sprd, domain;
+init_daemon_domain(gpsd_sprd)
+
+type tsupplicant_sprd_exec, exec_type, vendor_file_type, file_type;
+type tsupplicant_sprd, domain;
+init_daemon_domain(tsupplicant_sprd)
+
+type charged_sprd_exec, exec_type, vendor_file_type, file_type;
+type charged_sprd, domain;
+init_daemon_domain(charged_sprd)
+
+type uniber_sprd_exec, exec_type, vendor_file_type, file_type;
+type uniber_sprd, domain;
+init_daemon_domain(uniber_sprd)
+
+type phasecheckserver_sprd_exec, exec_type, vendor_file_type, file_type;
+type phasecheckserver_sprd, domain;
+init_daemon_domain(phasecheckserver_sprd)
+
+type refnotify_sprd_exec, exec_type, vendor_file_type, file_type;
+type refnotify_sprd, domain;
+init_daemon_domain(refnotify_sprd)
+
+type slogmodem_sprd_exec, exec_type, vendor_file_type, file_type;
+type slogmodem_sprd, domain;
+init_daemon_domain(slogmodem_sprd)
+
+type srtd_sprd_exec, exec_type, vendor_file_type, file_type;
+type srtd_sprd, domain;
+init_daemon_domain(srtd_sprd)
+
+type thermald_sprd_exec, exec_type, vendor_file_type, file_type;
+type thermald_sprd, domain;
+init_daemon_domain(thermald_sprd)
+
+type systemdebuggerd_sprd_exec, exec_type, vendor_file_type, file_type;
+type systemdebuggerd_sprd, domain;
+init_daemon_domain(systemdebuggerd_sprd)
+
+type cp_diskserver_sprd_exec, exec_type, vendor_file_type, file_type;
+type cp_diskserver_sprd, domain;
+init_daemon_domain(cp_diskserver_sprd)
+
+# Basic permissions for all new domains
+allow {
+    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd
+    hal_cplog_sprd hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd
+    hal_memtrack_sprd hal_network_sprd hal_trusty_sprd hal_oemlock_sprd
+    hal_power_sprd hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd
+    hal_performance_sprd hal_vibrator_sprd
+    dcxsrv_sprd engpc_sprd gpsd_sprd tsupplicant_sprd charged_sprd
+    uniber_sprd phasecheckserver_sprd refnotify_sprd slogmodem_sprd
+    srtd_sprd thermald_sprd systemdebuggerd_sprd cp_diskserver_sprd
+} self:process execmem;
+
+allow {
+    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd
+    hal_cplog_sprd hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd
+    hal_memtrack_sprd hal_network_sprd hal_trusty_sprd hal_oemlock_sprd
+    hal_power_sprd hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd
+    hal_performance_sprd hal_vibrator_sprd
+    dcxsrv_sprd engpc_sprd gpsd_sprd tsupplicant_sprd charged_sprd
+    uniber_sprd phasecheckserver_sprd refnotify_sprd slogmodem_sprd
+    srtd_sprd thermald_sprd systemdebuggerd_sprd cp_diskserver_sprd
+} vendor_file:file { read getattr open execute };
+
+allow {
+    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd
+    hal_cplog_sprd hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd
+    hal_memtrack_sprd hal_network_sprd hal_trusty_sprd hal_oemlock_sprd
+    hal_power_sprd hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd
+    hal_performance_sprd hal_vibrator_sprd
+    dcxsrv_sprd engpc_sprd gpsd_sprd tsupplicant_sprd charged_sprd
+    uniber_sprd phasecheckserver_sprd refnotify_sprd slogmodem_sprd
+    srtd_sprd thermald_sprd systemdebuggerd_sprd cp_diskserver_sprd
+} system_file:file { read getattr open };
+
+# Binder communication
+allow {
+    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd
+    hal_cplog_sprd hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd
+    hal_memtrack_sprd hal_network_sprd hal_trusty_sprd hal_oemlock_sprd
+    hal_power_sprd hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd
+    hal_performance_sprd hal_vibrator_sprd
+} servicemanager:binder { call transfer };
+
+allow {
+    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd
+    hal_cplog_sprd hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd
+    hal_memtrack_sprd hal_network_sprd hal_trusty_sprd hal_oemlock_sprd
+    hal_power_sprd hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd
+    hal_performance_sprd hal_vibrator_sprd
+} hwservicemanager:binder { call transfer };
