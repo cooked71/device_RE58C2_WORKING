@@ -88,10 +88,8 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 
 BOARD_KERNEL_CMDLINE := \
-    console=ttyS1,115200n8 \
-    earlycon \                       
     androidboot.hardware=ums9230_hulk \
-    androidboot.selinux=permissive \ 
+    androidboot.selinux=permissive \
     androidboot.dtbo_idx=7 \
     loop.max_part=7 \
     swiotlb=1
