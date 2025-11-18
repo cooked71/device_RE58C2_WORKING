@@ -168,3 +168,89 @@ type hal_wifi_service_exec, exec_type, vendor_file_type, file_type;
 type hal_supplicant_exec, exec_type, vendor_file_type, file_type;
 type hal_hostapd_exec, exec_type, vendor_file_type, file_type;
 type hal_ethernet_exec, exec_type, vendor_file_type, file_type;
+
+# Domain type declarations for vendor HAL services
+
+# KeyMint HAL (Unisoc specific)
+type hal_keymint_unisoc, domain;
+
+# Boot Control HAL (SPRD specific)  
+type hal_bootctrl_sprd, domain;
+
+# GNSS HAL
+type hal_gnss_sprd, domain;
+
+# Bluetooth HAL
+type hal_bluetooth_sprd, domain;
+
+# Camera HAL
+type hal_camera_sprd, domain;
+
+# Thermal HAL
+type hal_thermal_sprd, domain;
+
+# Broadcast Radio HAL
+type hal_broadcastradio_sprd, domain;
+
+# Face Biometrics HAL
+type hal_face_sprd, domain;
+
+# Engineer service
+type hal_engineer_sprd, domain;
+
+# urild service
+type urild_sprd, domain;
+
+# Spreadtrum WiFi HAL
+type hal_wifi_sprd, domain;
+
+# DRM/Widevine HAL
+type hal_drm_widevine, domain;
+
+# Gatekeeper HAL
+type hal_gatekeeper_sprd, domain;
+
+# Media C2 HAL
+type hal_media_c2_sprd, domain;
+
+# SPRD-specific services
+type hal_cplog_sprd, domain;
+type hal_enhance_sprd, domain;
+type hal_hdcp_sprd, domain;
+type hal_lights_sprd, domain;
+type hal_memtrack_sprd, domain;
+type hal_network_sprd, domain;
+type hal_trusty_sprd, domain;
+type hal_oemlock_sprd, domain;
+type hal_power_sprd, domain;
+type hal_log_sprd, domain;
+type hal_commondcs_sprd, domain;
+type hal_network_v1_sprd, domain;
+type hal_performance_sprd, domain;
+type hal_vibrator_sprd, domain;
+
+# Vendor binaries
+type dcxsrv_sprd, domain;
+type engpc_sprd, domain;
+type gpsd_sprd, domain;
+type tsupplicant_sprd, domain;
+type charged_sprd, domain;
+type uniber_sprd, domain;
+type phasecheckserver_sprd, domain;
+type refnotify_sprd, domain;
+type slogmodem_sprd, domain;
+type srtd_sprd, domain;
+type thermald_sprd, domain;
+type systemdebuggerd_sprd, domain;
+type cp_diskserver_sprd, domain;
+
+# Scripts and utilities
+type idlefast, domain;
+type mmc_ffu, domain;
+type zramwb, domain;
+
+# WiFi and Ethernet services
+type hal_wifi_service, domain;
+type hal_supplicant, domain;
+type hal_hostapd, domain;
+type hal_ethernet, domain;
