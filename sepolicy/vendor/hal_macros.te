@@ -1,4 +1,4 @@
-# Type declarations for vendor HAL services
+#  #Type declarations for vendor HAL services
 
 # KeyMint HAL (Unisoc specific)
 type hal_keymint_unisoc_exec, exec_type, vendor_file_type, file_type;
