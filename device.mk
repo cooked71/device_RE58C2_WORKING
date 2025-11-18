@@ -17,17 +17,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# Add Unisoc framework to system server classpath
-PRODUCT_SYSTEM_SERVER_CLASSPATH += \
-    radio_interactor_common \
-    unisoc-services \
-    unisoc_ims_common
 
-# Also add to system server JARs if needed
-PRODUCT_SYSTEM_SERVER_JARS += \
-    radio_interactor_common \
-    unisoc-services \
-    unisoc_ims_common
 
 
 PRODUCT_PACKAGES += lib_android_keymaster_keymint_utils
