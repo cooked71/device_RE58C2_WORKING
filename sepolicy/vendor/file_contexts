@@ -30,7 +30,7 @@
 # urild service
 /(vendor|system/vendor)/bin/hw/urild u:object_r:urild_sprd_exec:s0
 
-# Spreadtrum WiFi services - ADDED FOR WIFI FIX
+# Spreadtrum WiFi services
 /(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.wcn@1\.0-service u:object_r:hal_wifi_sprd_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.sprd\.hardware\.connmgr@1\.0-service u:object_r:hal_wifi_sprd_exec:s0
 /(vendor|system/vendor)/bin/connmgr u:object_r:hal_wifi_sprd_exec:s0
@@ -38,6 +38,7 @@
 /(vendor|system/vendor)/bin/iwnpi u:object_r:hal_wifi_sprd_exec:s0
 /(vendor|system/vendor)/bin/modem_control u:object_r:hal_wifi_sprd_exec:s0
 
+# New domain transitions for missing services
 # DRM/Widevine HAL
 /(vendor|system/vendor)/bin/hw/android\.hardware\.drm-service\.widevine u:object_r:hal_drm_widevine_exec:s0
 
@@ -77,3 +78,14 @@
 /(vendor|system/vendor)/bin/thermald u:object_r:thermald_sprd_exec:s0
 /(vendor|system/vendor)/bin/systemDebuggerd u:object_r:systemdebuggerd_sprd_exec:s0
 /(vendor|system/vendor)/bin/cp_diskserver u:object_r:cp_diskserver_sprd_exec:s0
+
+# Scripts and utilities
+/(vendor|system/vendor)/bin/idlefast\.sh u:object_r:idlefast_exec:s0
+/(vendor|system/vendor)/bin/mmc_ffu u:object_r:mmc_ffu_exec:s0
+/(vendor|system/vendor)/bin/zramwb\.sh u:object_r:zramwb_exec:s0
+
+# WiFi and Ethernet services
+/(vendor|system/vendor)/bin/hw/android\.hardware\.wifi@1\.0-service u:object_r:hal_wifi_service_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.wifi\.supplicant-service u:object_r:hal_supplicant_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.wifi\.hostapd-service u:object_r:hal_hostapd_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.ethernet@1\.0-service u:object_r:hal_ethernet_exec:s0

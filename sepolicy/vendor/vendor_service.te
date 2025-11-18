@@ -1,4 +1,66 @@
+# MINIMAL HAL domain transitions - only truly unique device-specific types
 
+# KeyMint HAL (Unisoc specific) - this should be unique
+type hal_keymint_unisoc_exec, exec_type, vendor_file_type, file_type;
+type hal_keymint_unisoc, domain;
+init_daemon_domain(hal_keymint_unisoc)
+
+# Boot Control HAL (SPRD specific) - this should be unique  
+type hal_bootctrl_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_bootctrl_sprd, domain;
+init_daemon_domain(hal_bootctrl_sprd)
+
+# Spreadtrum WiFi HAL
+type hal_wifi_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_wifi_sprd, domain;
+init_daemon_domain(hal_wifi_sprd)
+
+# GNSS HAL
+type hal_gnss_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_gnss_sprd, domain;
+init_daemon_domain(hal_gnss_sprd)
+
+# Bluetooth HAL
+type hal_bluetooth_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_bluetooth_sprd, domain;
+init_daemon_domain(hal_bluetooth_sprd)
+
+# Camera HAL
+type hal_camera_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_camera_sprd, domain;
+init_daemon_domain(hal_camera_sprd)
+
+# Thermal HAL
+type hal_thermal_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_thermal_sprd, domain;
+init_daemon_domain(hal_thermal_sprd)
+
+# Broadcast Radio HAL
+type hal_broadcastradio_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_broadcastradio_sprd, domain;
+init_daemon_domain(hal_broadcastradio_sprd)
+
+# Face Biometrics HAL
+type hal_face_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_face_sprd, domain;
+init_daemon_domain(hal_face_sprd)
+
+# Engineer service
+type hal_engineer_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_engineer_sprd, domain;
+init_daemon_domain(hal_engineer_sprd)
+
+# urild service
+type urild_sprd_exec, exec_type, vendor_file_type, file_type;
+type urild_sprd, domain;
+init_daemon_domain(urild_sprd)
+
+# Graphics HAL
+type hal_graphics_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_graphics_sprd, domain;
+init_daemon_domain(hal_graphics_sprd)
+
+# New domain transitions for missing services
 # DRM/Widevine HAL
 type hal_drm_widevine_exec, exec_type, vendor_file_type, file_type;
 type hal_drm_widevine, domain;
@@ -124,53 +186,183 @@ type cp_diskserver_sprd_exec, exec_type, vendor_file_type, file_type;
 type cp_diskserver_sprd, domain;
 init_daemon_domain(cp_diskserver_sprd)
 
-# Basic permissions for all new domains
-allow {
-    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd
-    hal_cplog_sprd hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd
-    hal_memtrack_sprd hal_network_sprd hal_trusty_sprd hal_oemlock_sprd
-    hal_power_sprd hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd
-    hal_performance_sprd hal_vibrator_sprd
-    dcxsrv_sprd engpc_sprd gpsd_sprd tsupplicant_sprd charged_sprd
-    uniber_sprd phasecheckserver_sprd refnotify_sprd slogmodem_sprd
-    srtd_sprd thermald_sprd systemdebuggerd_sprd cp_diskserver_sprd
+# Script domains
+type idlefast_exec, exec_type, vendor_file_type, file_type;
+type idlefast, domain;
+init_daemon_domain(idlefast)
+
+type mmc_ffu_exec, exec_type, vendor_file_type, file_type;
+type mmc_ffu, domain;
+init_daemon_domain(mmc_ffu)
+
+type zramwb_exec, exec_type, vendor_file_type, file_type;
+type zramwb, domain;
+init_daemon_domain(zramwb)
+
+# WiFi and Ethernet service domains
+type hal_wifi_service_exec, exec_type, vendor_file_type, file_type;
+type hal_wifi_service, domain;
+init_daemon_domain(hal_wifi_service)
+
+type hal_supplicant_exec, exec_type, vendor_file_type, file_type;
+type hal_supplicant, domain;
+init_daemon_domain(hal_supplicant)
+
+type hal_hostapd_exec, exec_type, vendor_file_type, file_type;
+type hal_hostapd, domain;
+init_daemon_domain(hal_hostapd)
+
+type hal_ethernet_exec, exec_type, vendor_file_type, file_type;
+type hal_ethernet, domain;
+init_daemon_domain(hal_ethernet)
+
+# MINIMAL permissions for our HAL services
+
+# Basic file access
+allow { 
+    hal_keymint_unisoc hal_bootctrl_sprd hal_wifi_sprd hal_gnss_sprd
+    hal_bluetooth_sprd hal_camera_sprd hal_thermal_sprd hal_broadcastradio_sprd
+    hal_face_sprd hal_engineer_sprd urild_sprd hal_graphics_sprd
+    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd hal_cplog_sprd
+    hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd hal_memtrack_sprd
+    hal_network_sprd hal_trusty_sprd hal_oemlock_sprd hal_power_sprd
+    hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd hal_performance_sprd
+    hal_vibrator_sprd dcxsrv_sprd engpc_sprd gpsd_sprd tsupplicant_sprd
+    charged_sprd uniber_sprd phasecheckserver_sprd refnotify_sprd
+    slogmodem_sprd srtd_sprd thermald_sprd systemdebuggerd_sprd
+    cp_diskserver_sprd idlefast mmc_ffu zramwb hal_wifi_service
+    hal_supplicant hal_hostapd hal_ethernet
 } self:process execmem;
 
-allow {
-    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd
-    hal_cplog_sprd hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd
-    hal_memtrack_sprd hal_network_sprd hal_trusty_sprd hal_oemlock_sprd
-    hal_power_sprd hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd
-    hal_performance_sprd hal_vibrator_sprd
-    dcxsrv_sprd engpc_sprd gpsd_sprd tsupplicant_sprd charged_sprd
-    uniber_sprd phasecheckserver_sprd refnotify_sprd slogmodem_sprd
-    srtd_sprd thermald_sprd systemdebuggerd_sprd cp_diskserver_sprd
+allow { 
+    hal_keymint_unisoc hal_bootctrl_sprd hal_wifi_sprd hal_gnss_sprd
+    hal_bluetooth_sprd hal_camera_sprd hal_thermal_sprd hal_broadcastradio_sprd
+    hal_face_sprd hal_engineer_sprd urild_sprd hal_graphics_sprd
+    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd hal_cplog_sprd
+    hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd hal_memtrack_sprd
+    hal_network_sprd hal_trusty_sprd hal_oemlock_sprd hal_power_sprd
+    hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd hal_performance_sprd
+    hal_vibrator_sprd dcxsrv_sprd engpc_sprd gpsd_sprd tsupplicant_sprd
+    charged_sprd uniber_sprd phasecheckserver_sprd refnotify_sprd
+    slogmodem_sprd srtd_sprd thermald_sprd systemdebuggerd_sprd
+    cp_diskserver_sprd idlefast mmc_ffu zramwb hal_wifi_service
+    hal_supplicant hal_hostapd hal_ethernet
 } vendor_file:file { read getattr open execute };
 
-allow {
-    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd
-    hal_cplog_sprd hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd
-    hal_memtrack_sprd hal_network_sprd hal_trusty_sprd hal_oemlock_sprd
-    hal_power_sprd hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd
-    hal_performance_sprd hal_vibrator_sprd
-    dcxsrv_sprd engpc_sprd gpsd_sprd tsupplicant_sprd charged_sprd
-    uniber_sprd phasecheckserver_sprd refnotify_sprd slogmodem_sprd
-    srtd_sprd thermald_sprd systemdebuggerd_sprd cp_diskserver_sprd
+allow { 
+    hal_keymint_unisoc hal_bootctrl_sprd hal_wifi_sprd hal_gnss_sprd
+    hal_bluetooth_sprd hal_camera_sprd hal_thermal_sprd hal_broadcastradio_sprd
+    hal_face_sprd hal_engineer_sprd urild_sprd hal_graphics_sprd
+    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd hal_cplog_sprd
+    hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd hal_memtrack_sprd
+    hal_network_sprd hal_trusty_sprd hal_oemlock_sprd hal_power_sprd
+    hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd hal_performance_sprd
+    hal_vibrator_sprd dcxsrv_sprd engpc_sprd gpsd_sprd tsupplicant_sprd
+    charged_sprd uniber_sprd phasecheckserver_sprd refnotify_sprd
+    slogmodem_sprd srtd_sprd thermald_sprd systemdebuggerd_sprd
+    cp_diskserver_sprd idlefast mmc_ffu zramwb hal_wifi_service
+    hal_supplicant hal_hostapd hal_ethernet
 } system_file:file { read getattr open };
 
 # Binder communication
 allow {
-    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd
-    hal_cplog_sprd hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd
-    hal_memtrack_sprd hal_network_sprd hal_trusty_sprd hal_oemlock_sprd
-    hal_power_sprd hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd
-    hal_performance_sprd hal_vibrator_sprd
+    hal_keymint_unisoc hal_bootctrl_sprd hal_wifi_sprd hal_gnss_sprd
+    hal_bluetooth_sprd hal_camera_sprd hal_thermal_sprd hal_broadcastradio_sprd
+    hal_face_sprd hal_engineer_sprd urild_sprd hal_graphics_sprd
+    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd hal_cplog_sprd
+    hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd hal_memtrack_sprd
+    hal_network_sprd hal_trusty_sprd hal_oemlock_sprd hal_power_sprd
+    hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd hal_performance_sprd
+    hal_vibrator_sprd
 } servicemanager:binder { call transfer };
 
 allow {
-    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd
-    hal_cplog_sprd hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd
-    hal_memtrack_sprd hal_network_sprd hal_trusty_sprd hal_oemlock_sprd
-    hal_power_sprd hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd
-    hal_performance_sprd hal_vibrator_sprd
+    hal_keymint_unisoc hal_bootctrl_sprd hal_wifi_sprd hal_gnss_sprd
+    hal_bluetooth_sprd hal_camera_sprd hal_thermal_sprd hal_broadcastradio_sprd
+    hal_face_sprd hal_engineer_sprd urild_sprd hal_graphics_sprd
+    hal_drm_widevine hal_gatekeeper_sprd hal_media_c2_sprd hal_cplog_sprd
+    hal_enhance_sprd hal_hdcp_sprd hal_lights_sprd hal_memtrack_sprd
+    hal_network_sprd hal_trusty_sprd hal_oemlock_sprd hal_power_sprd
+    hal_log_sprd hal_commondcs_sprd hal_network_v1_sprd hal_performance_sprd
+    hal_vibrator_sprd
 } hwservicemanager:binder { call transfer };
+
+# Specific permissions
+allow hal_keymint_unisoc tee_device:chr_file { read write open };
+allow hal_bootctrl_sprd system_prop:property_service set;
+
+# Additional boot control permissions
+allow hal_bootctrl_sprd sysfs:file { read open getattr };
+allow hal_bootctrl_sprd block_device:blk_file { read write open getattr };
+allow hal_bootctrl_sprd system_prop:property_service { set };
+
+# KeyMint missing permissions
+allow hal_keymint_unisoc device:chr_file { read write open ioctl };
+allow hal_keymint_unisoc vendor_security_patch_level_prop:file { read open getattr map };
+allow keystore hal_keymint_unisoc:binder { call };
+
+# BASIC WiFi permissions
+allow hal_wifi_sprd self:process execmem;
+allow hal_wifi_sprd vendor_file:file { read getattr open };
+allow hal_wifi_sprd system_file:file { read getattr open };
+allow hal_wifi_sprd servicemanager:binder { call transfer };
+allow hal_wifi_sprd hwservicemanager:binder { call transfer };
+allow hal_wifi_sprd device:chr_file { read write open ioctl };
+allow hal_wifi_sprd sysfs:dir search;
+allow hal_wifi_sprd sysfs:file { read write open getattr };
+
+# Fix netlink permissions for WiFi
+allow hal_wifi_sprd self:netlink_kobject_uevent_socket { create read write };
+
+# Media C2 specific permissions for gralloc
+allow hal_media_c2_sprd graphics_device:dir search;
+allow hal_media_c2_sprd graphics_device:chr_file { read write open ioctl };
+allow hal_media_c2_sprd gpu_device:dir search;
+allow hal_media_c2_sprd gpu_device:chr_file { read write open ioctl };
+allow hal_media_c2_sprd hal_graphics_mapper_hidl_service:service_manager find;
+allow hal_media_c2_sprd hal_graphics_allocator_hidl_service:service_manager find;
+allow hal_media_c2_sprd hal_graphics_mapper_hidl_service:hwservice_manager find;
+allow hal_media_c2_sprd ashmem_device:chr_file { read write execute map };
+allow hal_media_c2_sprd ion_device:chr_file { read write open ioctl };
+allow hal_media_c2_sprd hidl_base_hwservice:hwservice_manager find;
+
+# MMC Firmware Update specific permissions
+allow mmc_ffu block_device:blk_file { read write open ioctl };
+allow mmc_ffu sysfs:file { read write open getattr };
+allow mmc_ffu sysfs_mmc:dir search;
+allow mmc_ffu sysfs_mmc:file { read write open getattr };
+allow mmc_ffu mmc_block_device:blk_file { read write open ioctl };
+allow mmc_ffu vendor_prop:property_service set;
+allow mmc_ffu system_prop:property_service set;
+
+# ZRAM Writeback script specific permissions
+allow zramwb system_prop:property_service { set read };
+allow zramwb vendor_prop:property_service { set read };
+allow zramwb shell_exec:file { read execute };
+allow zramwb toolbox_exec:file { read execute };
+allow zramwb uptime_exec:file { read execute };
+allow zramwb awk_exec:file { read execute };
+allow zramwb sleep_exec:file { read execute };
+allow zramwb sysfs:file { read write open getattr };
+allow zramwb proc:file { read open getattr };
+allow zramwb shell:process { sigchld fork };
+allow zramwb init:process sigchld;
+allow zramwb system_file:file { execute execute_no_trans };
+allow zramwb proc_uptime:file { read open getattr };
+allow zramwb shell:fd use;
+
+# WiFi service permissions
+allow { hal_wifi_service hal_supplicant hal_hostapd } self:process execmem;
+allow { hal_wifi_service hal_supplicant hal_hostapd } vendor_file:file { read getattr open execute };
+allow { hal_wifi_service hal_supplicant hal_hostapd } system_file:file { read getattr open };
+allow { hal_wifi_service hal_supplicant hal_hostapd } servicemanager:binder { call transfer };
+allow { hal_wifi_service hal_supplicant hal_hostapd } hwservicemanager:binder { call transfer };
+allow { hal_wifi_service hal_supplicant hal_hostapd } wifi_data_file:dir { search create };
+allow { hal_wifi_service hal_supplicant hal_hostapd } wifi_data_file:file { read write create open };
+
+# Ethernet service permissions
+allow hal_ethernet self:process execmem;
+allow hal_ethernet vendor_file:file { read getattr open execute };
+allow hal_ethernet system_file:file { read getattr open };
+allow hal_ethernet servicemanager:binder { call transfer };
+allow hal_ethernet hwservicemanager:binder { call transfer };
