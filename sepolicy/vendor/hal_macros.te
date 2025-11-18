@@ -82,3 +82,89 @@ init_daemon_domain(hal_wifi_service)
 init_daemon_domain(hal_supplicant)
 init_daemon_domain(hal_hostapd)
 init_daemon_domain(hal_ethernet)
+
+# Type declarations for vendor HAL services
+
+# KeyMint HAL (Unisoc specific)
+type hal_keymint_unisoc_exec, exec_type, vendor_file_type, file_type;
+
+# Boot Control HAL (SPRD specific)  
+type hal_bootctrl_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# GNSS HAL
+type hal_gnss_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# Bluetooth HAL
+type hal_bluetooth_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# Camera HAL
+type hal_camera_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# Thermal HAL
+type hal_thermal_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# Broadcast Radio HAL
+type hal_broadcastradio_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# Face Biometrics HAL
+type hal_face_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# Engineer service
+type hal_engineer_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# urild service
+type urild_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# Spreadtrum WiFi HAL
+type hal_wifi_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# DRM/Widevine HAL
+type hal_drm_widevine_exec, exec_type, vendor_file_type, file_type;
+
+# Gatekeeper HAL
+type hal_gatekeeper_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# Media C2 HAL
+type hal_media_c2_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# SPRD-specific services
+type hal_cplog_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_enhance_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_hdcp_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_lights_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_memtrack_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_network_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_trusty_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_oemlock_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_power_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_log_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_commondcs_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_network_v1_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_performance_sprd_exec, exec_type, vendor_file_type, file_type;
+type hal_vibrator_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# Vendor binaries
+type dcxsrv_sprd_exec, exec_type, vendor_file_type, file_type;
+type engpc_sprd_exec, exec_type, vendor_file_type, file_type;
+type gpsd_sprd_exec, exec_type, vendor_file_type, file_type;
+type tsupplicant_sprd_exec, exec_type, vendor_file_type, file_type;
+type charged_sprd_exec, exec_type, vendor_file_type, file_type;
+type uniber_sprd_exec, exec_type, vendor_file_type, file_type;
+type phasecheckserver_sprd_exec, exec_type, vendor_file_type, file_type;
+type refnotify_sprd_exec, exec_type, vendor_file_type, file_type;
+type slogmodem_sprd_exec, exec_type, vendor_file_type, file_type;
+type srtd_sprd_exec, exec_type, vendor_file_type, file_type;
+type thermald_sprd_exec, exec_type, vendor_file_type, file_type;
+type systemdebuggerd_sprd_exec, exec_type, vendor_file_type, file_type;
+type cp_diskserver_sprd_exec, exec_type, vendor_file_type, file_type;
+
+# Scripts and utilities
+type idlefast_exec, exec_type, vendor_file_type, file_type;
+type mmc_ffu_exec, exec_type, vendor_file_type, file_type;
+type zramwb_exec, exec_type, vendor_file_type, file_type;
+
+# WiFi and Ethernet services
+type hal_wifi_service_exec, exec_type, vendor_file_type, file_type;
+type hal_supplicant_exec, exec_type, vendor_file_type, file_type;
+type hal_hostapd_exec, exec_type, vendor_file_type, file_type;
+type hal_ethernet_exec, exec_type, vendor_file_type, file_type;
