@@ -1,217 +1,84 @@
-# MINIMAL HAL domain transitions - only truly unique device-specific types
+# HAL domain transitions - using types defined in common policy
 
-# KeyMint HAL (Unisoc specific) - this should be unique
-type hal_keymint_unisoc_exec, exec_type, vendor_file_type, file_type;
-type hal_keymint_unisoc, domain;
+# KeyMint HAL (Unisoc specific)
 init_daemon_domain(hal_keymint_unisoc)
 
-# Boot Control HAL (SPRD specific) - this should be unique  
-type hal_bootctrl_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_bootctrl_sprd, domain;
+# Boot Control HAL (SPRD specific)  
 init_daemon_domain(hal_bootctrl_sprd)
 
 # Spreadtrum WiFi HAL
-type hal_wifi_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_wifi_sprd, domain;
 init_daemon_domain(hal_wifi_sprd)
 
 # GNSS HAL
-type hal_gnss_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_gnss_sprd, domain;
 init_daemon_domain(hal_gnss_sprd)
 
 # Bluetooth HAL
-type hal_bluetooth_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_bluetooth_sprd, domain;
 init_daemon_domain(hal_bluetooth_sprd)
 
 # Camera HAL
-type hal_camera_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_camera_sprd, domain;
 init_daemon_domain(hal_camera_sprd)
 
 # Thermal HAL
-type hal_thermal_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_thermal_sprd, domain;
 init_daemon_domain(hal_thermal_sprd)
 
 # Broadcast Radio HAL
-type hal_broadcastradio_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_broadcastradio_sprd, domain;
 init_daemon_domain(hal_broadcastradio_sprd)
 
 # Face Biometrics HAL
-type hal_face_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_face_sprd, domain;
 init_daemon_domain(hal_face_sprd)
 
 # Engineer service
-type hal_engineer_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_engineer_sprd, domain;
 init_daemon_domain(hal_engineer_sprd)
 
 # urild service
-type urild_sprd_exec, exec_type, vendor_file_type, file_type;
-type urild_sprd, domain;
 init_daemon_domain(urild_sprd)
 
 # Graphics HAL
-type hal_graphics_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_graphics_sprd, domain;
 init_daemon_domain(hal_graphics_sprd)
 
-# New domain transitions for missing services
-# DRM/Widevine HAL
-type hal_drm_widevine_exec, exec_type, vendor_file_type, file_type;
-type hal_drm_widevine, domain;
+# New domain transitions
 init_daemon_domain(hal_drm_widevine)
-
-# Gatekeeper HAL
-type hal_gatekeeper_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_gatekeeper_sprd, domain;
 init_daemon_domain(hal_gatekeeper_sprd)
-
-# Media C2 HAL
-type hal_media_c2_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_media_c2_sprd, domain;
 init_daemon_domain(hal_media_c2_sprd)
 
 # SPRD-specific HAL domains
-type hal_cplog_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_cplog_sprd, domain;
 init_daemon_domain(hal_cplog_sprd)
-
-type hal_enhance_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_enhance_sprd, domain;
 init_daemon_domain(hal_enhance_sprd)
-
-type hal_hdcp_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_hdcp_sprd, domain;
 init_daemon_domain(hal_hdcp_sprd)
-
-type hal_lights_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_lights_sprd, domain;
 init_daemon_domain(hal_lights_sprd)
-
-type hal_memtrack_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_memtrack_sprd, domain;
 init_daemon_domain(hal_memtrack_sprd)
-
-type hal_network_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_network_sprd, domain;
 init_daemon_domain(hal_network_sprd)
-
-type hal_trusty_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_trusty_sprd, domain;
 init_daemon_domain(hal_trusty_sprd)
-
-type hal_oemlock_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_oemlock_sprd, domain;
 init_daemon_domain(hal_oemlock_sprd)
-
-type hal_power_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_power_sprd, domain;
 init_daemon_domain(hal_power_sprd)
-
-type hal_log_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_log_sprd, domain;
 init_daemon_domain(hal_log_sprd)
-
-type hal_commondcs_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_commondcs_sprd, domain;
 init_daemon_domain(hal_commondcs_sprd)
-
-type hal_network_v1_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_network_v1_sprd, domain;
 init_daemon_domain(hal_network_v1_sprd)
-
-type hal_performance_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_performance_sprd, domain;
 init_daemon_domain(hal_performance_sprd)
-
-type hal_vibrator_sprd_exec, exec_type, vendor_file_type, file_type;
-type hal_vibrator_sprd, domain;
 init_daemon_domain(hal_vibrator_sprd)
 
 # Vendor binary domains
-type dcxsrv_sprd_exec, exec_type, vendor_file_type, file_type;
-type dcxsrv_sprd, domain;
 init_daemon_domain(dcxsrv_sprd)
-
-type engpc_sprd_exec, exec_type, vendor_file_type, file_type;
-type engpc_sprd, domain;
 init_daemon_domain(engpc_sprd)
-
-type gpsd_sprd_exec, exec_type, vendor_file_type, file_type;
-type gpsd_sprd, domain;
 init_daemon_domain(gpsd_sprd)
-
-type tsupplicant_sprd_exec, exec_type, vendor_file_type, file_type;
-type tsupplicant_sprd, domain;
 init_daemon_domain(tsupplicant_sprd)
-
-type charged_sprd_exec, exec_type, vendor_file_type, file_type;
-type charged_sprd, domain;
 init_daemon_domain(charged_sprd)
-
-type uniber_sprd_exec, exec_type, vendor_file_type, file_type;
-type uniber_sprd, domain;
 init_daemon_domain(uniber_sprd)
-
-type phasecheckserver_sprd_exec, exec_type, vendor_file_type, file_type;
-type phasecheckserver_sprd, domain;
 init_daemon_domain(phasecheckserver_sprd)
-
-type refnotify_sprd_exec, exec_type, vendor_file_type, file_type;
-type refnotify_sprd, domain;
 init_daemon_domain(refnotify_sprd)
-
-type slogmodem_sprd_exec, exec_type, vendor_file_type, file_type;
-type slogmodem_sprd, domain;
 init_daemon_domain(slogmodem_sprd)
-
-type srtd_sprd_exec, exec_type, vendor_file_type, file_type;
-type srtd_sprd, domain;
 init_daemon_domain(srtd_sprd)
-
-type thermald_sprd_exec, exec_type, vendor_file_type, file_type;
-type thermald_sprd, domain;
 init_daemon_domain(thermald_sprd)
-
-type systemdebuggerd_sprd_exec, exec_type, vendor_file_type, file_type;
-type systemdebuggerd_sprd, domain;
 init_daemon_domain(systemdebuggerd_sprd)
-
-type cp_diskserver_sprd_exec, exec_type, vendor_file_type, file_type;
-type cp_diskserver_sprd, domain;
 init_daemon_domain(cp_diskserver_sprd)
 
 # Script domains
-type idlefast_exec, exec_type, vendor_file_type, file_type;
-type idlefast, domain;
 init_daemon_domain(idlefast)
-
-type mmc_ffu_exec, exec_type, vendor_file_type, file_type;
-type mmc_ffu, domain;
 init_daemon_domain(mmc_ffu)
-
-type zramwb_exec, exec_type, vendor_file_type, file_type;
-type zramwb, domain;
 init_daemon_domain(zramwb)
 
 # WiFi and Ethernet service domains
-type hal_wifi_service_exec, exec_type, vendor_file_type, file_type;
-type hal_wifi_service, domain;
 init_daemon_domain(hal_wifi_service)
-
-type hal_supplicant_exec, exec_type, vendor_file_type, file_type;
-type hal_supplicant, domain;
 init_daemon_domain(hal_supplicant)
-
-type hal_hostapd_exec, exec_type, vendor_file_type, file_type;
-type hal_hostapd, domain;
 init_daemon_domain(hal_hostapd)
-
-type hal_ethernet_exec, exec_type, vendor_file_type, file_type;
-type hal_ethernet, domain;
 init_daemon_domain(hal_ethernet)
