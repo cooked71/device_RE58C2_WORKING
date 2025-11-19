@@ -84,7 +84,7 @@
 /(vendor|system/vendor)/bin/zramwb\.sh u:object_r:zramwb_exec:s0
 
 # WiFi and Ethernet services
-/(vendor|system/vendor)/bin/hw/android\.hardware\.wifi@1\.0-service u:object_r:hal_wifi_service_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.wifi\.supplicant-service u:object_r:hal_supplicant_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.wifi\.hostapd-service u:object_r:hal_hostapd_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.ethernet@1\.0-service u:object_r:hal_ethernet_exec:s0
+# /(vendor|system/vendor)/bin/hw/android\.hardware\.wifi@1\.0-service u:object_r:hal_wifi_service_exec:s0
+# /(vendor|system/vendor)/bin/hw/android\.hardware\.wifi\.supplicant-service u:object_r:hal_supplicant_exec:s0
+# /(vendor|system/vendor)/bin/hw/android\.hardware\.wifi\.hostapd-service u:object_r:hal_hostapd_exec:s0
+# /(vendor|system/vendor)/bin/hw/android\.hardware\.ethernet@1\.0-service u:object_r:hal_ethernet_exec:s0
