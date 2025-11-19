@@ -42,3 +42,12 @@ allow hal_wifi_sprd sysfs:file { read write open getattr };
 
 # Fix netlink permissions for WiFi
 allow hal_wifi_sprd self:netlink_kobject_uevent_socket { create read write };
+
+# Basic permissions for init scripts
+allow init_insmod self:process execmem;
+allow init_insmod vendor_file:file { read getattr open execute };
+allow init_insmod system_file:file { read getattr open };
+
+allow create_splloader self:process execmem;
+allow create_splloader vendor_file:file { read getattr open execute };
+allow create_splloader system_file:file { read getattr open };

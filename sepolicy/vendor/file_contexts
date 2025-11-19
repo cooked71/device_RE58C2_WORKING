@@ -88,3 +88,7 @@
 # /(vendor|system/vendor)/bin/hw/android\.hardware\.wifi\.supplicant-service u:object_r:hal_supplicant_exec:s0
 # /(vendor|system/vendor)/bin/hw/android\.hardware\.wifi\.hostapd-service u:object_r:hal_hostapd_exec:s0
 # /(vendor|system/vendor)/bin/hw/android\.hardware\.ethernet@1\.0-service u:object_r:hal_ethernet_exec:s0
+
+# Init scripts
+/(vendor|system/vendor)/bin/init\.insmod\.sh u:object_r:init_insmod_exec:s0
+/(vendor|system/vendor)/bin/create_splloader_dual_slot_byname_path\.sh u:object_r:create_splloader_exec:s0

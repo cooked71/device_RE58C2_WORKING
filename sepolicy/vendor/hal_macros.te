@@ -186,3 +186,12 @@ init_daemon_domain(hal_wifi_service)
 init_daemon_domain(hal_supplicant)
 init_daemon_domain(hal_hostapd)
 init_daemon_domain(hal_ethernet)
+
+# Init script domains
+type init_insmod_exec, exec_type, vendor_file_type, file_type;
+type init_insmod, domain;
+init_daemon_domain(init_insmod)
+
+type create_splloader_exec, exec_type, vendor_file_type, file_type;
+type create_splloader, domain;
+init_daemon_domain(create_splloader)
