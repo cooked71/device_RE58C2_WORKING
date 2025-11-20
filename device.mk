@@ -17,12 +17,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-#APEX AS APEX NOT FOLDER
-OVERRIDE_TARGET_FLATTEN_APEX := false - Disables APEX flattening (no more directories)
-OVERRIDE_PRODUCT_COMPRESSED_APEX := true - Enables APEX compression (creates .apex files)
-
-
-
+# APEX AS APEX NOT FOLDER
+# Disables APEX flattening (no more directories)
+OVERRIDE_TARGET_FLATTEN_APEX := false 
+# Enables APEX compression (creates .apex files)
+OVERRIDE_PRODUCT_COMPRESSED_APEX := true 
 
 
 PRODUCT_PACKAGES += lib_android_keymaster_keymint_utils
