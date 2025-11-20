@@ -252,6 +252,9 @@ BOARD_USES_EROFS_POSTINSTALL := true
 
 # Essential for APEX updates
 TARGET_FLATTEN_APEX := false
+PRODUCT_COMPRESSED_APEX := true
+
+
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
