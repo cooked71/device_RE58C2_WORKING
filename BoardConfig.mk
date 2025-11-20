@@ -251,9 +251,6 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 BOARD_USES_EROFS_POSTINSTALL := true
 
 # Essential for APEX updates
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-TARGET_FLATTEN_APEX := false
-PRODUCT_COMPRESSED_APEX := true
 
 
 # Properties
