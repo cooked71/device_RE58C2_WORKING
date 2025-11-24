@@ -86,15 +86,11 @@ PRODUCT_PACKAGES += \
 
 
 # Unisoc telephony framework integration
-PRODUCT_BOOT_JARS += \
+PRODUCT_VENDOR_BOOT_JARS += \
     radio_interactor_common \
     unisoc_ims_common \
     unisoc-framework \
     unisoc-services
-
-PRODUCT_SYSTEM_SERVER_JARS += \
-    radio_interactor_common \
-    unisoc_ims_common
 
 
 
