@@ -89,10 +89,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_VENDOR_BOOT_JARS += \
     radio_interactor_common \
     unisoc_ims_common \
+    unisoc-services \
     unisoc-framework \
-    unisoc-services
-
-
+    com.unisoc.sdk.common \
+    uni-telephony-common
 
 
 # ===========================
