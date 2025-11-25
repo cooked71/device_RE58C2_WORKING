@@ -85,9 +85,9 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 PRODUCT_PACKAGES += \
-    unisoc-ims-common \
     ims
-    
+    #unisoc-ims-common 
+
 # ===========================
 # MINIMAL STORAGE FIX - ADD ONLY THESE 4 LINES
 # ===========================
