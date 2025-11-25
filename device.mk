@@ -87,7 +87,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     unisoc-ims-common \
     ims
+    
+# ===========================
+# MINIMAL STORAGE FIX - ADD ONLY THESE 4 LINES
+# ===========================
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp,adb
 
+PRODUCT_PACKAGES += \
+    Gallery2 \
+    DocumentsUI
 
 
 

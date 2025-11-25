@@ -1,27 +1,20 @@
+# MINIMAL STORAGE FIX
+on post-fs-data
+    # CRITICAL: Set external storage property for MTP
+    setprop EXTERNAL_STORAGE /storage/emulated/0
+    
+    # Create directory structure
+    mkdir /storage/emulated 0775 media_rw media_rw
+    mkdir /storage/emulated/0 0775 media_rw media_rw
+    
+    # Bind mount storage (this makes it visible to MTP)
+    mount none /storage/emulated/0 bind /data/media/0
+    
+    # Set permissions for MTP access
+    chown media_rw media_rw /storage/emulated/0
+    chmod 0775 /storage/emulated/0
+
 on boot
-    write /sys/class/android_usb/android0/f_mass_storage/board_support_luns 1
-
-on early-fs
-    export EXTERNAL_STORAGE /storage/self/primary
-    symlink /mnt/user/0/emulated /mnt/runtime/default/self/emulated
-
-on init
-    mkdir /mnt/vendor/productinfo 0771 system system
-    mkdir /mnt/vendor/opporeserve 0777 system system
-    # SPRD: add for storage manage @{
-    export EMULATED_STORAGE /storage/self/emulated
-    export PHYSICAL_STORAGE /storage/sdcard0
-    export PHYSICAL_STORAGE /storage/sdcard1
-    export USBDISK_STORAGE /storage/usbdisk
-    symlink /storage/self/primary /mnt/sdcard
-    # @}
-
-    # SPRD: add for OTG usb disk @{
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0700 system system
-    symlink /storage/usbdisk /mnt/usbdisk
-    # @}
-
-on post-fs
-    mkdir /mnt/vendor/productinfo 0771 system system
-    mkdir /mnt/vendor/opporeserve 0777 system system
+    # Ensure MTP mode is active after boot
+    setprop sys.usb.config mtp,adb
+    setprop persist.sys.usb.config mtp,adb
