@@ -94,9 +94,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp,adb
 
-PRODUCT_PACKAGES += \
-    Gallery2 \
-    DocumentsUI
+
+# ===========================
+# gapps deps
+# ===========================
+PRODUCT_OPTIONAL_USES_LIBRARIES += \
+    org.apache.http.legacy \
+    androidx.window.extensions \
+    androidx.window.sidecar
+
 
 
 
