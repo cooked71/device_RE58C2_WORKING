@@ -103,6 +103,8 @@ PRODUCT_OPTIONAL_USES_LIBRARIES += \
     androidx.window.extensions \
     androidx.window.sidecar
 
+PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
+
 
 
 
