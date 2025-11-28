@@ -178,6 +178,8 @@ PRODUCT_PACKAGES += \
 # VENDOR BLOBS
 # ===========================
 $(call inherit-product, vendor/realme/RE58C2/RE58C2-vendor.mk)
+$(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
+
 
 # ===========================
 # DEVICE TREE BLOBS
