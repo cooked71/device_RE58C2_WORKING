@@ -266,13 +266,13 @@ $(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
 # ==================================================
 
 # Filter out AOSP packages that conflict with GApps
-PRODUCT_PACKAGES := $(filter-out Provision,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out CalendarProvider,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out ContactsProvider,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out ExtServices,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out Markup,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out QuickSearchBox,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES := $(filter-out SetupWizard,$(PRODUCT_PACKAGES))  
+# PRODUCT_PACKAGES := $(filter-out Provision,$(PRODUCT_PACKAGES))
+# PRODUCT_PACKAGES := $(filter-out CalendarProvider,$(PRODUCT_PACKAGES))
+# PRODUCT_PACKAGES := $(filter-out ContactsProvider,$(PRODUCT_PACKAGES))
+# PRODUCT_PACKAGES := $(filter-out ExtServices,$(PRODUCT_PACKAGES))
+# PRODUCT_PACKAGES := $(filter-out Markup,$(PRODUCT_PACKAGES))
+# PRODUCT_PACKAGES := $(filter-out QuickSearchBox,$(PRODUCT_PACKAGES))
+# PRODUCT_PACKAGES := $(filter-out SetupWizard,$(PRODUCT_PACKAGES))  
 
 
 # GApps properties
