@@ -270,6 +270,8 @@ PRODUCT_PACKAGES := $(filter-out ContactsProvider,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out ExtServices,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out Markup,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out QuickSearchBox,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out SetupWizard,$(PRODUCT_PACKAGES))
+
 
 # GApps properties
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
