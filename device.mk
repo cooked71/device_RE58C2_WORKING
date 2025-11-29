@@ -273,6 +273,8 @@ PRODUCT_PACKAGES := $(filter-out Markup,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out QuickSearchBox,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out SetupWizard,$(PRODUCT_PACKAGES))  
 
+$(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
+
 # GApps properties
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.com.google.gmsversion=13 \
