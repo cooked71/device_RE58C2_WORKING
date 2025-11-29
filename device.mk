@@ -257,3 +257,24 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_hulk:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.ums9230_hulk
+
+
+# ==================================================
+# GApps Configuration
+# ==================================================
+
+# Filter out AOSP packages that conflict with GApps
+PRODUCT_PACKAGES := $(filter-out Provision,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out CalendarProvider,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out ContactsProvider,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out ExtServices,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out Markup,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out QuickSearchBox,$(PRODUCT_PACKAGES))
+
+# GApps properties
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.com.google.gmsversion=13 \
+    ro.media.extensionprovider=google \
+    ro.config.media_provider=google \
+    ro.setupwizard.require_network=any \
+    ro.setupwizard.mode=OPTIONAL
