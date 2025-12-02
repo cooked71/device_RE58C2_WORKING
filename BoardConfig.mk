@@ -151,55 +151,88 @@ BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 104857600
 
-# Super partition configuration
-BOARD_SUPER_PARTITION_SIZE := 8388608000
-BOARD_SUPER_PARTITION_GROUPS := realme_dynamic_partitions
-BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 8384418000
-BOARD_REALME_DYNAMIC_PARTITIONS_PARTITION_LIST := system product system_ext vendor odm vendor_dlkm
+# ==================================================
+# PARTITION FILESYSTEM TYPES
+# ==================================================
 
-# Force super image building
-BOARD_BUILD_SUPER_IMAGE := true
-BOARD_BUILD_SUPER_IMAGE_BY_DEFAULT := true
-BOARD_SUPER_IMAGE_IN_UPDATE_PACKAGE := true
+# System: erofs (Android OS - read only for security/performance)
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472  # 3072 MB (3GB)
 
-# System: roomy (GApps do NOT install here in MTG)
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472  # 3.2 GB
+# Product: ext4 (Main location for GApps - needs writable)
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PRODUCTIMAGE_PARTITION_SIZE := 2147483648  # 2048 MB (2GB)
+BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 1073741824  # 1024 MB (1GB free)
 
-# Product: main location for MindTheGapps
-BOARD_PRODUCTIMAGE_PARTITION_SIZE := 1572864000  # 1.5 GB
+# System_ext: ext4 (Additional GApps components)
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 1073741824  # 1024 MB (1GB)
+BOARD_SYSTEM_EXTIMAGE_PARTITION_RESERVED_SIZE := 536870912  # 512 MB free
 
-# system_ext: MTG puts some priv-app here
-BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 268435456  # 256 MB
-
-# Vendor: fits your device needs
+# Vendor: erofs (device blobs, should be stable)
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDORIMAGE_PARTITION_SIZE := 805306368  # 768 MB
 
-# ODM: set safe value based on runtime observations
+# ODM: erofs (device-specific, stable)
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_ODMIMAGE_PARTITION_SIZE := 335544320  # 320 MB
 
-# vendor_dlkm: only small kernel modules
+# Vendor DLKM: erofs (kernel modules)
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE := 67108864  # 64 MB
 
-# BOARD_PRODUCTIMAGE_PARTITION_SIZE := 1610612736
-# BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 536870912
-# BOARD_ODMIMAGE_PARTITION_SIZE := 268435456
-# BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE := 67108864
+# ==================================================
+# ENABLE EXT4 FEATURES
+# ==================================================
 
-# Recommended: Use exact byte values
-# BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2907340800
-# BOARD_VENDORIMAGE_PARTITION_SIZE := 545177600
-# BOARD_PRODUCTIMAGE_PARTITION_SIZE := 16122060800
-# BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 563322880
-# BOARD_ODMIMAGE_PARTITION_SIZE := 335970304
-# BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE := 9793536
+# Critical: Must enable ext4 support
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 
+# ext4 optimization for Android
+BOARD_EXT4_SHARE_DUP_BLOCKS := true
+BOARD_SYSTEMIMAGE_EXTFS_INODE_COUNT := -1  # Auto-calculate
+BOARD_PRODUCTIMAGE_EXTFS_INODE_COUNT := -1
+BOARD_SYSTEM_EXTIMAGE_EXTFS_INODE_COUNT := -1
+
+# ==================================================
+# SUPER PARTITION CONFIGURATION
+# ==================================================
+
+# Calculate total dynamic partitions size:
+# System: 3GB (erofs) + Product: 2GB (ext4) + System_ext: 1GB (ext4) + 
+# Vendor: 768MB (erofs) + ODM: 320MB (erofs) + Vendor_dlkm: 64MB (erofs)
+# Total: ~7.15GB
+
+BOARD_SUPER_PARTITION_SIZE := 8589934592  # 8.4GB (from your stock)
+BOARD_SUPER_PARTITION_GROUPS := realme_dynamic_partitions
+BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 7516192768  # ~7.0GB (leaves ~1.4GB for metadata)
+
+# Partition list
+BOARD_REALME_DYNAMIC_PARTITIONS_PARTITION_LIST := system product system_ext vendor odm vendor_dlkm
+
+# ==================================================
+# UPDATE FSTAB FOR EXT4 MOUNTS
+# ==================================================
+
+# Your fstab MUST match these filesystem types!
+# Change from erofs to ext4 for product/system_ext:
+
+# In recovery.fstab and vendor fstab files, change:
+# FROM:
+# product /product erofs ro wait,avb=...
+# system_ext /system_ext erofs ro wait,avb=...
+
+# TO:
+# product /product ext4 ro,barrier=1,discard wait,avb=...,check,formattable,resize
+# system_ext /system_ext ext4 ro,barrier=1,discard wait,avb=...,check,formattable,resize
 
 
 
 # Dynamic partitions filesystem
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
