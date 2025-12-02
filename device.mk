@@ -259,7 +259,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_hulk:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.ums9230_hulk
 
 
-$(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
+#$(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
 
 # ==================================================
 # GApps Configuration
@@ -276,7 +276,7 @@ $(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
 
 
 # GApps properties
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+#PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.com.google.gmsversion=13 \
     ro.media.extensionprovider=google \
     ro.config.media_provider=google \
