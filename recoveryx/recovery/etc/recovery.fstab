@@ -27,7 +27,7 @@
 /dev/block/by-name/persist /persist emmc defaults defaults
 /dev/block/by-name/logo /logo emmc defaults defaults
 /dev/block/by-name/fbootlogo /fbootlogo emmc defaults defaults
-system       /system       erofs   ro,barrier=1   wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+system       /system       ext4    ro,barrier=1   wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
 system_ext   /system_ext   ext4    ro,barrier=1,discard   wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey,check,formattable,resize
 vendor       /vendor       erofs   ro,barrier=1   wait,slotselect,avb=vbmeta_vendor,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
 odm          /odm          erofs   ro,barrier=1   wait,slotselect,avb=vbmeta_odm,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
