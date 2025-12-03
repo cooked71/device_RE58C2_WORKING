@@ -152,79 +152,106 @@ BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 104857600
 
 # ==================================================
-# PARTITION FILESYSTEM TYPES
+# PARTITION FILESYSTEM TYPES & SIZES
 # ==================================================
 
-# System: erofs (Android OS - read only for security/performance)
+# System: erofs (Android OS)
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472  # 3072 MB (3GB)
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472      # 3,072 MB (3.0 GB)
 
-# Product: ext4 (Main location for GApps - needs writable)
+# Product: ext4 (Main GApps location)
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_PRODUCTIMAGE_PARTITION_SIZE := 2147483648  # 2048 MB (2GB)
+BOARD_PRODUCTIMAGE_PARTITION_SIZE := 2147483648     # 2,048 MB (2.0 GB)
 
-# System_ext: ext4 (Additional GApps components)
+# System_ext: ext4 (Additional GApps)
 BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 1073741824  # 1024 MB (1GB)
+BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 1073741824  # 1,024 MB (1.0 GB)
 
-# Vendor: erofs (device blobs, should be stable)
+# Vendor: erofs (device blobs)
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_VENDORIMAGE_PARTITION_SIZE := 805306368  # 768 MB
+BOARD_VENDORIMAGE_PARTITION_SIZE := 805306368       # 768 MB
 
-# ODM: erofs (device-specific, stable)
+# ODM: erofs (device-specific)
 BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_ODMIMAGE_PARTITION_SIZE := 335544320  # 320 MB
+BOARD_ODMIMAGE_PARTITION_SIZE := 335544320          # 320 MB
 
 # Vendor DLKM: erofs (kernel modules)
 BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE := 67108864  # 64 MB
+BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE := 67108864   # 64 MB
 
 # ==================================================
-# ENABLE EXT4 FEATURES
+# EXT4 CONFIGURATION
 # ==================================================
 
-# Critical: Must enable ext4 support
+# Enable ext4 support (for product/system_ext)
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 
-# ext4 optimization for Android
+# ext4 optimization
 BOARD_EXT4_SHARE_DUP_BLOCKS := true
-BOARD_SYSTEMIMAGE_EXTFS_INODE_COUNT := -1  # Auto-calculate
 BOARD_PRODUCTIMAGE_EXTFS_INODE_COUNT := -1
 BOARD_SYSTEM_EXTIMAGE_EXTFS_INODE_COUNT := -1
 
 # ==================================================
-# SUPER PARTITION CONFIGURATION
+# SUPER PARTITION CONFIGURATION (CORRECTED)
 # ==================================================
 
-# Calculate total dynamic partitions size:
-# System: 3GB (erofs) + Product: 2GB (ext4) + System_ext: 1GB (ext4) + 
-# Vendor: 768MB (erofs) + ODM: 320MB (erofs) + Vendor_dlkm: 64MB (erofs)
-# Total: ~7.15GB
+# 1. Calculate TOTAL of all partitions:
+# System:    3,221,225,472 bytes
+# Product:   2,147,483,648 bytes
+# System_ext:1,073,741,824 bytes
+# Vendor:      805,306,368 bytes
+# ODM:         335,544,320 bytes
+# Vendor_dlkm:  67,108,864 bytes
+# --------------------------------
+# TOTAL:     7,650,410,496 bytes (~7.15 GB)
 
-BOARD_SUPER_PARTITION_SIZE := 8589934592  # 8.4GB (from your stock)
+# 2. Super partition size (from your stock: 8.4 GB)
+BOARD_SUPER_PARTITION_SIZE := 8589934592            # 8,589,934,592 bytes (8.4 GB)
+
+# 3. Dynamic partitions size MUST be >= sum of all partitions
+# Using 7.8 GB (leaves ~600 MB for metadata)
 BOARD_SUPER_PARTITION_GROUPS := realme_dynamic_partitions
-BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 7516192768  # ~7.0GB (leaves ~1.4GB for metadata)
+BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 8375186227  # ~7.8 GB
 
-# Partition list
+# Alternative: Use exact sum + 10% overhead
+# BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 8415451545  # 7.65 GB + 10%
+
+# 4. Partition list
 BOARD_REALME_DYNAMIC_PARTITIONS_PARTITION_LIST := system product system_ext vendor odm vendor_dlkm
 
 # ==================================================
-# UPDATE FSTAB FOR EXT4 MOUNTS
+# SUPER IMAGE BUILD SETTINGS
 # ==================================================
 
-# Your fstab MUST match these filesystem types!
-# Change from erofs to ext4 for product/system_ext:
+# Force super image building
+BOARD_BUILD_SUPER_IMAGE := true
+BOARD_BUILD_SUPER_IMAGE_BY_DEFAULT := true
+BOARD_SUPER_IMAGE_IN_UPDATE_PACKAGE := true
 
-# In recovery.fstab and vendor fstab files, change:
-# FROM:
-# product /product erofs ro wait,avb=...
-# system_ext /system_ext erofs ro wait,avb=...
+# ==================================================
+# EROFS CONFIGURATION
+# ==================================================
 
-# TO:
-# product /product ext4 ro,barrier=1,discard wait,avb=...,check,formattable,resize
-# system_ext /system_ext ext4 ro,barrier=1,discard wait,avb=...,check,formattable,resize
+BOARD_EROFS_COMPRESSOR := lz4
+BOARD_EROFS_PCLUSTER_SIZE := 65536
 
+# ==================================================
+# VERIFICATION (for debugging)
+# ==================================================
+
+$(info === PARTITION SIZE VERIFICATION ===)
+$(info System:      $(BOARD_SYSTEMIMAGE_PARTITION_SIZE) bytes = $$(($(BOARD_SYSTEMIMAGE_PARTITION_SIZE)/1024/1024)) MB)
+$(info Product:     $(BOARD_PRODUCTIMAGE_PARTITION_SIZE) bytes = $$(($(BOARD_PRODUCTIMAGE_PARTITION_SIZE)/1024/1024)) MB)
+$(info System_ext:  $(BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE) bytes = $$(($(BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE)/1024/1024)) MB)
+$(info Vendor:      $(BOARD_VENDORIMAGE_PARTITION_SIZE) bytes = $$(($(BOARD_VENDORIMAGE_PARTITION_SIZE)/1024/1024)) MB)
+$(info ODM:         $(BOARD_ODMIMAGE_PARTITION_SIZE) bytes = $$(($(BOARD_ODMIMAGE_PARTITION_SIZE)/1024/1024)) MB)
+$(info Vendor_dlkm: $(BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE) bytes = $$(($(BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE)/1024/1024)) MB)
+$(info )
+$(info Total partitions: $$(($(BOARD_SYSTEMIMAGE_PARTITION_SIZE)+$(BOARD_PRODUCTIMAGE_PARTITION_SIZE)+$(BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE)+$(BOARD_VENDORIMAGE_PARTITION_SIZE)+$(BOARD_ODMIMAGE_PARTITION_SIZE)+$(BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE))) bytes)
+$(info Dynamic size:     $(BOARD_REALME_DYNAMIC_PARTITIONS_SIZE) bytes)
+$(info Super size:       $(BOARD_SUPER_PARTITION_SIZE) bytes)
+$(info =============================================)
 
 
 # Dynamic partitions filesystem
@@ -234,6 +261,7 @@ BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
+
 
 TARGET_COPY_OUT_SYSTEM := system
 TARGET_COPY_OUT_VENDOR := vendor
