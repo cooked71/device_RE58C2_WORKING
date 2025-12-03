@@ -151,90 +151,43 @@ BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 104857600
 
-# ==================================================
-# PARTITION FILESYSTEM TYPES & SIZES
-# ==================================================
-
-# System: erofs (Android OS)
-BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472      # 3,072 MB (3.0 GB)
-
-# Product: ext4 (Main GApps location)
-BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_PRODUCTIMAGE_PARTITION_SIZE := 2147483648     # 2,048 MB (2.0 GB)
-
-# System_ext: ext4 (Additional GApps)
-BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 1073741824  # 1,024 MB (1.0 GB)
-
-# Vendor: erofs (device blobs)
-BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_VENDORIMAGE_PARTITION_SIZE := 805306368       # 768 MB
-
-# ODM: erofs (device-specific)
-BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_ODMIMAGE_PARTITION_SIZE := 335544320          # 320 MB
-
-# Vendor DLKM: erofs (kernel modules)
-BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE := 67108864   # 64 MB
-
-# ==================================================
-# EXT4 CONFIGURATION
-# ==================================================
-
-# Enable ext4 support (for product/system_ext)
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
-
-# ext4 optimization
-BOARD_EXT4_SHARE_DUP_BLOCKS := true
-BOARD_PRODUCTIMAGE_EXTFS_INODE_COUNT := -1
-BOARD_SYSTEM_EXTIMAGE_EXTFS_INODE_COUNT := -1
-
-# ==================================================
-# SUPER PARTITION CONFIGURATION (CORRECTED)
-# ==================================================
-
-# 1. Calculate TOTAL of all partitions:
-# System:    3,221,225,472 bytes
-# Product:   2,147,483,648 bytes
-# System_ext:1,073,741,824 bytes
-# Vendor:      805,306,368 bytes
-# ODM:         335,544,320 bytes
-# Vendor_dlkm:  67,108,864 bytes
-# --------------------------------
-# TOTAL:     7,650,410,496 bytes (~7.15 GB)
-
-# 2. Super partition size (from your stock: 8.4 GB)
-BOARD_SUPER_PARTITION_SIZE := 8589934592            # 8,589,934,592 bytes (8.4 GB)
-
-# 3. Dynamic partitions size MUST be >= sum of all partitions
-# Using 7.8 GB (leaves ~600 MB for metadata)
+# Super partition configuration
+BOARD_SUPER_PARTITION_SIZE := 8388608000
 BOARD_SUPER_PARTITION_GROUPS := realme_dynamic_partitions
-BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 8375186227  # ~7.8 GB
-
-# Alternative: Use exact sum + 10% overhead
-# BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 8415451545  # 7.65 GB + 10%
-
-# 4. Partition list
+BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 8384418000
 BOARD_REALME_DYNAMIC_PARTITIONS_PARTITION_LIST := system product system_ext vendor odm vendor_dlkm
-
-# ==================================================
-# SUPER IMAGE BUILD SETTINGS
-# ==================================================
 
 # Force super image building
 BOARD_BUILD_SUPER_IMAGE := true
 BOARD_BUILD_SUPER_IMAGE_BY_DEFAULT := true
 BOARD_SUPER_IMAGE_IN_UPDATE_PACKAGE := true
 
-# ==================================================
-# EROFS CONFIGURATION
-# ==================================================
+# Individual partition sizes orig
+# BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
+# BOARD_VENDORIMAGE_PARTITION_SIZE := 805306368
+# BOARD_PRODUCTIMAGE_PARTITION_SIZE := 1610612736
+# BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 536870912
+# BOARD_ODMIMAGE_PARTITION_SIZE := 268435456
+# BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE := 67108864
 
-BOARD_EROFS_COMPRESSOR := lz4
-BOARD_EROFS_PCLUSTER_SIZE := 65536
+# Recommended: Use exact byte values
+# BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2907340800
+# BOARD_VENDORIMAGE_PARTITION_SIZE := 545177600
+# BOARD_PRODUCTIMAGE_PARTITION_SIZE := 16122060800
+# BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 563322880
+# BOARD_ODMIMAGE_PARTITION_SIZE := 335970304
+# BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE := 9793536
+
+
+
+
+# Dynamic partitions filesystem
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 
 TARGET_COPY_OUT_SYSTEM := system
 TARGET_COPY_OUT_VENDOR := vendor
@@ -242,6 +195,7 @@ TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 TARGET_COPY_OUT_ODM := odm
+
 
 # Metadata partition
 BOARD_USES_METADATA_PARTITION := true
@@ -251,7 +205,6 @@ ENABLE_VENDOR_RIL_SERVICE := true
 # Filesystem support
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-
 # Flash block size
 BOARD_FLASH_BLOCK_SIZE := 262144
 
