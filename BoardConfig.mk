@@ -254,13 +254,7 @@ $(info Super size:       $(BOARD_SUPER_PARTITION_SIZE) bytes)
 $(info =============================================)
 
 
-# Dynamic partitions filesystem
-BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
-BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
+
 
 
 TARGET_COPY_OUT_SYSTEM := system
