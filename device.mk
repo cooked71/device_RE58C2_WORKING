@@ -347,7 +347,7 @@ PRODUCT_COPY_FILES += \
 # ===========================
 # All init.rc files to ramdisk root
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recoveryx/ramdisk/init.ums9230_hulk.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/init.ums9230_hulk.rc \
+    $(LOCAL_PATH)/recoveryx/ramdisk/init.ums9230_hulk.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.ums9230_hulk.rc \
     $(LOCAL_PATH)/recoveryx/ramdisk/init.ums9230_1h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.ums9230_1h10.rc \
     $(LOCAL_PATH)/recoveryx/ramdisk/init.ums9230_1h10_go.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.ums9230_1h10_go.rc \
     $(LOCAL_PATH)/recoveryx/ramdisk/init.ums9230_4h10.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.ums9230_4h10.rc \
