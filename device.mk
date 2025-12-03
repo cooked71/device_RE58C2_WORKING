@@ -379,9 +379,6 @@ PRODUCT_COPY_FILES += \
 # ===========================
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.module.rc:root/init.module.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.module.rc:root/ueventd.module.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.module.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.module.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.module.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
 
 # ===========================
 # SYSTEM INIT FILES
@@ -399,11 +396,6 @@ PRODUCT_COPY_FILES += \
 # Recovery init script
 
 # Vendor HALs for recovery
-PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/vendor.sprd.hardware.boot@1.2.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/vendor.sprd.hardware.boot@1.2.so \
-      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/vendor.sprd.hardware.production@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/vendor.sprd.hardware.production@1.0.so \
-      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so \
-      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/hw/android.hardware.health@2.0-impl-default.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/hw/android.hardware.health@2.0-impl-default.so
 
 
 PRODUCT_COPY_FILES += \
