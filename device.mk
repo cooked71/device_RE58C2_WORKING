@@ -369,11 +369,11 @@ PRODUCT_COPY_FILES += \
 # VENDOR FILES FOR MOUNT_ALL - ALL DEVICES
 # ===========================
 # Copy all fstab files to vendor/etc
-PRODUCT_COPY_FILES += $(foreach file,$(wildcard $(LOCAL_PATH)/rootdir/etc/fstab.*),\
+#PRODUCT_COPY_FILES += $(foreach file,$(wildcard $(LOCAL_PATH)/rootdir/etc/fstab.*),\
     $(file):$(TARGET_COPY_OUT_VENDOR)/etc/$(notdir $(file)))
 
 # Copy all vendor init files
-PRODUCT_COPY_FILES += $(foreach file,$(wildcard $(LOCAL_PATH)/rootdir/vendor/etc/init/hw/init.*.rc),\
+#PRODUCT_COPY_FILES += $(foreach file,$(wildcard $(LOCAL_PATH)/rootdir/vendor/etc/init/hw/init.*.rc),\
     $(file):$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/$(notdir $(file)))
 
 # ===========================
