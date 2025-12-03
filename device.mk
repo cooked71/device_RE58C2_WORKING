@@ -357,8 +357,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recoveryx/ramdisk/init.ums9230_haps.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.ums9230_haps.rc \
     $(LOCAL_PATH)/recoveryx/ramdisk/init.ums9230_nico.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.ums9230_nico.rc \
     $(LOCAL_PATH)/recoveryx/ramdisk/init.ums9230_zebu.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.ums9230_zebu.rc \
-    $(LOCAL_PATH)/recoveryx/ramdisk/init.RMX3624.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.RMX3624.rc 
-    #$(LOCAL_PATH)/rootdir/system/etc/init/hw/init.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.rc
+    $(LOCAL_PATH)/recoveryx/ramdisk/init.RMX3624.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.RMX3624.rc \
+    $(LOCAL_PATH)/recoveryx/ramdisk/system/etc/init/hw/init.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.rc
 
 
 
