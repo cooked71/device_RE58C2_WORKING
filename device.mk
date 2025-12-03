@@ -255,8 +255,6 @@ PRODUCT_PACKAGES += \
     init.ums9230_zebu.usb.rc \
     init.zramwb.rc \
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.ums9230_hulk:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.ums9230_hulk
 
 
 #$(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
