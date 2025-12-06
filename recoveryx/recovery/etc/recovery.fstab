@@ -28,12 +28,12 @@
 /dev/block/by-name/persist /persist emmc defaults defaults
 /dev/block/by-name/logo /logo emmc defaults defaults
 /dev/block/by-name/fbootlogo /fbootlogo emmc defaults defaults
-system       /system       erofs   ro,barrier=1   wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+system       /system       ext4    ro,barrier=1,discard   wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey,check,formattable
 system_ext   /system_ext   ext4    ro,barrier=1,discard   wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey,check,formattable
-vendor       /vendor       erofs   ro,barrier=1   wait,slotselect,avb=vbmeta_vendor,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
-odm          /odm          erofs   ro,barrier=1   wait,slotselect,avb=vbmeta_odm,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+vendor       /vendor       ext4    ro,barrier=1,discard   wait,slotselect,avb=vbmeta_vendor,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey,check,formattable
+odm          /odm          ext4    ro,barrier=1,discard   wait,slotselect,avb=vbmeta_odm,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey,check,formattable
 product      /product      ext4    ro,barrier=1,discard   wait,slotselect,avb=vbmeta_product,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey,check,formattable
-vendor_dlkm  /vendor_dlkm  erofs   ro,barrier=1   wait,slotselect,avb=vbmeta_system_ext,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+vendor_dlkm  /vendor_dlkm  ext4    ro,barrier=1,discard   wait,slotselect,avb=vbmeta_system_ext,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey,check,formattable
 /dev/block/by-name/metadata /metadata f2fs nodev,noatime,nosuid wait,formattable,first_stage_mount,check
 /dev/block/by-name/userdata /data f2fs noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065,inline_xattr,inline_data,inlinecrypt,fsync_mode=nobarrier latemount,wait,check,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,reservedsize=128M,checkpoint=fs,formattable
 /dev/block/by-name/cache /cache f2fs noatime,nosuid,nodev,discard wait,check,formattable
