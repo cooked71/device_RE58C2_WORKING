@@ -245,7 +245,7 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 # ODM_MANIFEST_FILES += vendor/realme/RE58C2/proprietary/odm/etc/vintf/manifest_nfc.xml
 
 # EROFS for OTA updates
-BOARD_USES_EROFS_POSTINSTALL := true
+# BOARD_USES_EROFS_POSTINSTALL := true
 
 # Essential for APEX updates
 TARGET_FLATTEN_APEX := false
