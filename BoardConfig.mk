@@ -157,17 +157,27 @@ BOARD_SUPER_PARTITION_GROUPS := realme_dynamic_partitions
 BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 7516192768  # 7.0 GB (keep original)
 BOARD_REALME_DYNAMIC_PARTITIONS_PARTITION_LIST := system product system_ext vendor odm vendor_dlkm
 
-# INDIVIDUAL PARTITION SIZES - UPDATED FOR SYSTEM-AS-ROOT WITH GAPPS
-# Based on actual usage: system=892MB, product=435MB, system_ext=318MB used
-# GApps needs: system+136MB, product+700MB, system_ext+16MB
-# Added 50MB buffer to each
+# FINAL CORRECTED PARTITION SIZES:
 
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1132462080      # 1,080 MB (892 used + GApps)
-BOARD_PRODUCTIMAGE_PARTITION_SIZE := 1241513984     # 1,184 MB (435 used + GApps)
-BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 402653184   # 384 MB (318 used + GApps)
-BOARD_VENDORIMAGE_PARTITION_SIZE := 1174405120      # 1,120 MB (1,081 used + 39 buffer)
-BOARD_ODMIMAGE_PARTITION_SIZE := 481296384          # 459 MB (438 used + 21 buffer)
-BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE := 26214400   # 25 MB (24 used + 1 buffer)
+# Based on actual content sizes + 30MB buffer each:
+
+# System (root): content unknown, but from earlier: 892MB used + 136MB GApps + buffer
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1207959552  # 1,152 MB (safer)
+
+# Product: 435MB used + 700MB GApps + buffer  
+BOARD_PRODUCTIMAGE_PARTITION_SIZE := 1241513984  # 1,184 MB
+
+# System_ext: 318MB used + buffer
+BOARD_SYSTEM_EXTIMAGE_PARTITION_SIZE := 402653184  # 384 MB
+
+# Vendor: 1,081MB content + 69MB buffer
+BOARD_VENDORIMAGE_PARTITION_SIZE := 1207959552  # 1,152 MB
+
+# ODM: 439MB content + 41MB buffer
+BOARD_ODMIMAGE_PARTITION_SIZE := 503316480  # 480 MB
+
+# Vendor_dlkm: 24MB used + 6MB buffer
+BOARD_VENDOR_DLKMIMAGE_PARTITION_SIZE := 31457280  # 30 MB
 
 # Force super image building
 BOARD_BUILD_SUPER_IMAGE := true
