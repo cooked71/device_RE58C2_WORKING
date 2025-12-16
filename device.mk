@@ -55,6 +55,10 @@ PRODUCT_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
 
+PRODUCT_PACKAGES += \
+    sprd_brightness_fix
+
+
 # =============================================
 # BOOT & A/B UPDATE PACKAGES
 # =============================================
@@ -285,8 +289,6 @@ PRODUCT_PACKAGES += \
     ro.setupwizard.require_network=any \
     ro.setupwizard.mode=OPTIONAL
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/overlay/frameworks/base/core/res/res/xml/display_device_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_device_config.xml
 
 
 # ===========================
