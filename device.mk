@@ -205,6 +205,8 @@ PRODUCT_COPY_FILES += \
 ifneq ($(TARGET_BOARD_PLATFORM),)
 PRODUCT_PLATFORM := ums9230
 endif
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/overlay/frameworks/base/core/res/res/xml/display_device_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_device_config.xml
 
 
 # ===========================
@@ -284,6 +286,9 @@ PRODUCT_PACKAGES += \
     ro.config.media_provider=google \
     ro.setupwizard.require_network=any \
     ro.setupwizard.mode=OPTIONAL
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/overlay/frameworks/base/core/res/res/xml/display_device_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_device_config.xml
 
 
 # ===========================
