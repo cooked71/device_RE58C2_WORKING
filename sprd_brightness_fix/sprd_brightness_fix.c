@@ -3,6 +3,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include <sys/inotify.h>
+#include <stdlib.h>
 
 #define BACKLIGHT_PATH "/sys/class/backlight/sprd_backlight/brightness"
 #define LOG_TAG "SPRD-Brightness-Fix"
