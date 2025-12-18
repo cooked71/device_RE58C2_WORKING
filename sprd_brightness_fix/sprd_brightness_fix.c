@@ -1,4 +1,4 @@
-// sprd_brightness_fix.c - FINAL VERSION
+
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
@@ -9,68 +9,28 @@
 
 #define BACKLIGHT_PATH "/sys/class/backlight/sprd_backlight/brightness"
 #define LIGHT_SENSOR_PATH "/sys/class/sprd_sensorhub/sensor_hub/raw_data_als"
-#define POLL_DELAY_MS 50
+#define SETTINGS_CMD "settings get system screen_brightness_mode"
+#define POLL_DELAY_MS 30  // 30ms polling (smooth)
 
-// ==================== KERNEL BUG WORKAROUND ====================
-// Kernel mapping discovered from tests:
-// 0 → 3452 (BUG!)           - Never write 0!
-// 1-240 → value × 16        - Gets multiplied
-// 260-4095 → value × 1      - Direct mapping
-// 241-259 → ???             - Transition zone, avoid!
-// ==============================================================
-
-int workaround_kernel_bug(int target_brightness) {
-    // target_brightness: desired kernel brightness (0-4095)
-    // Returns: what to actually write to /sys/class/backlight/sprd_backlight/brightness
-    
-    if (target_brightness == 0) {
-        return 1;  // Never write 0 due to kernel bug
-    }
-    
-    if (target_brightness <= 3840) {  // 240 × 16
-        // In ×16 range: write target/16
-        int write_val = (target_brightness + 8) / 16;  // Round to nearest
-        if (write_val > 240) write_val = 240;  // Clamp to max ×16 range
-        return write_val;
-    }
-    else if (target_brightness < 260) {
-        // Avoid transition zone (241-259)
-        // Jump to safe 1:1 range
-        return 260;
-    }
-    else {
-        // In 1:1 range
-        if (target_brightness > 4095) target_brightness = 4095;
-        return target_brightness;
-    }
-}
-
-// ==================== SCALING FUNCTIONS ====================
-int android_to_target(int android_val) {
-    // Android 0-255 → Desired kernel brightness 0-4095
-    if (android_val == 0) return 0;
+// ==================== BRIGHTNESS SCALING ====================
+int scale_brightness(int android_val) {
+    if (android_val == 0) return 1;
     if (android_val == 255) return 4095;
-    return (android_val * 4095) / 255;
+    return 1 + (android_val * 4094) / 255;
 }
 
-int target_to_android(int kernel_val) {
-    // Kernel brightness 0-4095 → Android 0-255
-    if (kernel_val == 0) return 0;
-    if (kernel_val == 4095) return 255;
-    return (kernel_val * 255) / 4095;
-}
-
-// ==================== AUTO-BRIGHTNESS ====================
-int lux_to_android(int lux) {
-    // Convert lux to Android brightness (0-255)
-    if (lux < 10) return 20;
-    if (lux < 50) return 40;
-    if (lux < 100) return 60;
-    if (lux < 200) return 80;
-    if (lux < 500) return 120;
-    if (lux < 1000) return 160;
-    if (lux < 3000) return 200;
-    return 255;
+// ==================== AUTO-BRIGHTNESS MAPPING ====================
+int lux_to_brightness(int lux) {
+    // Smooth logarithmic mapping for better UX
+    if (lux < 5) return 10;      // Pitch black
+    if (lux < 20) return 30;     // Very dark
+    if (lux < 50) return 50;     // Dark room
+    if (lux < 100) return 70;    // Dim room
+    if (lux < 200) return 100;   // Normal indoor
+    if (lux < 500) return 140;   // Bright indoor
+    if (lux < 1000) return 180;  // Very bright
+    if (lux < 3000) return 220;  // Daylight
+    return 255;                  // Direct sun
 }
 
 // ==================== SLIDE DETECTION ====================
@@ -79,11 +39,14 @@ typedef struct {
     int last_change_time;
     int is_sliding;
     int slide_timeout;
+    int change_count;
+    int last_written;
 } SlideDetector;
 
 void init_slide_detector(SlideDetector *det) {
     memset(det, 0, sizeof(SlideDetector));
     det->last_value = -1;
+    det->last_written = -1;
 }
 
 int update_slide_detector(SlideDetector *det, int current_value) {
@@ -95,10 +58,15 @@ int update_slide_detector(SlideDetector *det, int current_value) {
         int diff = abs(current_value - det->last_value);
         int time_diff = now_ms - det->last_change_time;
         
-        // Rapid changes = user sliding
-        if (diff > 5 && time_diff < 300) {
-            det->is_sliding = 1;
-            det->slide_timeout = 40;  // 1.2 seconds
+        // Detect rapid changes = user sliding
+        if (diff > 5 && time_diff < 300) {  // >5 change within 300ms
+            det->change_count++;
+            if (det->change_count > 2) {  // Multiple rapid changes
+                det->is_sliding = 1;
+                det->slide_timeout = 40;  // 1.2 seconds (40 * 30ms)
+            }
+        } else {
+            det->change_count = 0;
         }
         
         if (diff > 0) {
@@ -108,10 +76,12 @@ int update_slide_detector(SlideDetector *det, int current_value) {
     
     det->last_value = current_value;
     
+    // Update sliding state
     if (det->is_sliding) {
         det->slide_timeout--;
         if (det->slide_timeout <= 0) {
             det->is_sliding = 0;
+            det->change_count = 0;
             return 0; // Slide ended
         }
         return 1; // Still sliding
@@ -120,27 +90,97 @@ int update_slide_detector(SlideDetector *det, int current_value) {
     return 0; // Not sliding
 }
 
+// ==================== SMOOTH WRITER ====================
+typedef struct {
+    int target_value;
+    int current_value;
+    int step;
+    int last_update;
+} SmoothWriter;
+
+void init_smooth_writer(SmoothWriter *writer) {
+    memset(writer, 0, sizeof(SmoothWriter));
+}
+
+void set_smooth_target(SmoothWriter *writer, int target, int immediate) {
+    writer->target_value = target;
+    if (immediate) {
+        writer->current_value = target;
+        writer->step = 0;
+    } else {
+        // Calculate smooth step (15 steps over 500ms)
+        int diff = target - writer->current_value;
+        writer->step = diff / 15;
+        if (writer->step == 0 && diff != 0) {
+            writer->step = (diff > 0) ? 1 : -1;
+        }
+    }
+}
+
+int update_smooth_writer(SmoothWriter *writer) {
+    if (writer->current_value == writer->target_value) {
+        return writer->current_value;
+    }
+    
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    int now_ms = ts.tv_sec * 1000 + ts.tv_nsec / 1000000;
+    
+    // Update every 33ms (30fps smooth animation)
+    if (now_ms - writer->last_update >= 33) {
+        writer->current_value += writer->step;
+        
+        // Clamp to target
+        if ((writer->step > 0 && writer->current_value > writer->target_value) ||
+            (writer->step < 0 && writer->current_value < writer->target_value)) {
+            writer->current_value = writer->target_value;
+        }
+        
+        writer->last_update = now_ms;
+    }
+    
+    return writer->current_value;
+}
+
 // ==================== MAIN ====================
 int main() {
     char buf[64];
     SlideDetector slider;
+    SmoothWriter writer;
     int auto_mode = 0;
-    int last_written = -1;
-    int stable_count = 0;
+    int last_lux = -1;
+    int lux_stable_count = 0;
     
     init_slide_detector(&slider);
+    init_smooth_writer(&writer);
     
-    // Initial safe brightness
-    system("settings put system screen_brightness 128");
+    // Force manual mode on start (safety)
     system("settings put system screen_brightness_mode 0");
+    system("settings put system screen_brightness 128");
     
     while (1) {
         // ========== CHECK AUTO/MANUAL MODE ==========
-        FILE *fp = popen("settings get system screen_brightness_mode", "r");
+        FILE *fp = popen(SETTINGS_CMD, "r");
         if (fp) {
             fgets(buf, sizeof(buf), fp);
-            auto_mode = atoi(buf);
+            int new_auto_mode = atoi(buf);
             pclose(fp);
+            
+            if (new_auto_mode != auto_mode) {
+                auto_mode = new_auto_mode;
+                if (auto_mode) {
+                    // Switched to auto: read current brightness as baseline
+                    int fd = open(BACKLIGHT_PATH, O_RDONLY);
+                    if (fd >= 0) {
+                        read(fd, buf, sizeof(buf));
+                        close(fd);
+                        int current = atoi(buf);
+                        if (current <= 255) {
+                            set_smooth_target(&writer, scale_brightness(current), 1);
+                        }
+                    }
+                }
+            }
         }
         
         if (auto_mode == 1) {
@@ -152,19 +192,20 @@ int main() {
                 close(lux_fd);
                 
                 int lux = atoi(buf);
-                int android_brightness = lux_to_android(lux);
-                int target = android_to_target(android_brightness);
-                int write_val = workaround_kernel_bug(target);
                 
-                // Write to kernel
-                if (write_val != last_written) {
-                    int fd = open(BACKLIGHT_PATH, O_WRONLY);
-                    if (fd >= 0) {
-                        snprintf(buf, sizeof(buf), "%d\n", write_val);
-                        write(fd, buf, strlen(buf));
-                        close(fd);
-                        last_written = write_val;
-                    }
+                // Debounce lux readings
+                if (lux == last_lux) {
+                    lux_stable_count++;
+                } else {
+                    lux_stable_count = 0;
+                    last_lux = lux;
+                }
+                
+                // Only adjust after stable reading
+                if (lux_stable_count >= 10) { // 300ms stable
+                    int target_brightness = lux_to_brightness(lux);
+                    int target_scaled = scale_brightness(target_brightness);
+                    set_smooth_target(&writer, target_scaled, 0);
                 }
             }
         } else {
@@ -178,41 +219,33 @@ int main() {
                 if (bytes > 0) {
                     int current = atoi(buf);
                     
-                    // If value is in Android range (0-255), process it
                     if (current >= 0 && current <= 255) {
-                        int target = android_to_target(current);
-                        int write_val = workaround_kernel_bug(target);
-                        
-                        // Check if user is sliding
+                        int scaled = scale_brightness(current);
                         int is_sliding = update_slide_detector(&slider, current);
                         
                         if (is_sliding) {
-                            // During slide: write immediately for responsiveness
-                            stable_count = 0;
+                            // User is sliding: immediate response
+                            set_smooth_target(&writer, scaled, 1);
                         } else {
-                            // Not sliding: debounce
-                            if (write_val == last_written) {
-                                stable_count++;
-                            } else {
-                                stable_count = 0;
-                            }
-                        }
-                        
-                        // Write if sliding OR stable for 200ms
-                        if (is_sliding || stable_count >= 4) {
-                            if (write_val != last_written) {
-                                fd = open(BACKLIGHT_PATH, O_WRONLY);
-                                if (fd >= 0) {
-                                    snprintf(buf, sizeof(buf), "%d\n", write_val);
-                                    write(fd, buf, strlen(buf));
-                                    close(fd);
-                                    last_written = write_val;
-                                }
-                            }
-                            if (!is_sliding) stable_count = 0;
+                            // Stable: smooth transition to target
+                            set_smooth_target(&writer, scaled, 0);
                         }
                     }
                 }
+            }
+        }
+        
+        // ========== APPLY BRIGHTNESS ==========
+        int output_value = update_smooth_writer(&writer);
+        
+        // Only write if changed
+        if (output_value != slider.last_written) {
+            int fd = open(BACKLIGHT_PATH, O_WRONLY);
+            if (fd >= 0) {
+                snprintf(buf, sizeof(buf), "%d\n", output_value);
+                write(fd, buf, strlen(buf));
+                close(fd);
+                slider.last_written = output_value;
             }
         }
         
