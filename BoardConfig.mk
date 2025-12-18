@@ -257,6 +257,21 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 TARGET_FLATTEN_APEX := false
 
 
+# In device/realme/RE58C2/BoardConfigCommon.mk
+# This is the STOCK bootclasspath. Use it verbatim.
+BOOTCLASSPATH := \
+    /system/framework/framework.jar \
+    /system/framework/framework-graphics.jar \
+    /system/framework/ext.jar \
+    /system/framework/telephony-common.jar \
+    /system/framework/voip-common.jar \
+    /system/framework/ims-common.jar \
+    /system/framework/radio_interactor_common.jar \
+    /system/framework/unisoc_ims_common.jar \
+    /system_ext/framework/unisoc-framework.jar \
+    /system_ext/framework/unipnp-framework.jar \
+    /apex/com.android.i18n/javalib/core-icu4j.jar
+
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
