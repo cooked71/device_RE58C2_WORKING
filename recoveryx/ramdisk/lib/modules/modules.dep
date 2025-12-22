@@ -16,7 +16,6 @@
 /lib/modules/sprd_shm.ko: /lib/modules/trusty.ko
 /lib/modules/sprd_hwspinlock.ko:
 /lib/modules/i2c-sprd-hw-v2.ko:
-/lib/modules/focaltech_touch-modules.ko: /lib/modules/omnivision_tcm.ko /lib/modules/hardware_info.ko
 /lib/modules/usb_f_vser.ko:
 /lib/modules/clk-sprd.ko:
 /lib/modules/sprd-ion.ko:
@@ -58,7 +57,7 @@
 /lib/modules/rpmb.ko:
 /lib/modules/trusty-pm.ko: /lib/modules/trusty.ko
 /lib/modules/sprd-gsp.ko: /lib/modules/apsys-dvfs.ko /lib/modules/sprd_soc_id.ko /lib/modules/unisoc-iommu.ko /lib/modules/trusty.ko
-/lib/modules/sprd_camera.ko: /lib/modules/sprd_sensor.ko /lib/modules/sprd_camsys_pw_domain.ko /lib/modules/unisoc-iommu.ko /lib/modules/sprd-ion.ko /lib/modules/trusty-ipc.ko /lib/modules/sprd_flash_drv.ko /lib/modules/hardware_info.ko
+/lib/modules/sprd_camera.ko: /lib/modules/sprd-ion.ko /lib/modules/trusty-ipc.ko /lib/modules/unisoc-iommu.ko /lib/modules/sprd_sensor.ko /lib/modules/sprd_camsys_pw_domain.ko /lib/modules/sprd_flash_drv.ko /lib/modules/hardware_info.ko
 /lib/modules/sha1-ce.ko:
 /lib/modules/spipe.ko: /lib/modules/sipc-core.ko /lib/modules/sprd_pdbg.ko /lib/modules/sprd_systimer.ko /lib/modules/sprd_sip_svc.ko /lib/modules/unisoc-mailbox.ko /lib/modules/sprd_power_manager.ko
 /lib/modules/sprd_soc_id.ko:
@@ -80,7 +79,7 @@
 /lib/modules/snd-soc-sipa-tuning.ko:
 /lib/modules/ghash-ce.ko:
 /lib/modules/sprd_camsys_pw_domain.ko:
-/lib/modules/sprd-drm.ko: /lib/modules/lcd_bias_adjust.ko /lib/modules/himax_mmi.ko /lib/modules/sprd-gsp.ko /lib/modules/apsys-dvfs.ko /lib/modules/sprd_soc_id.ko /lib/modules/unisoc-iommu.ko /lib/modules/trusty-ipc.ko /lib/modules/omnivision_tcm.ko /lib/modules/trusty.ko /lib/modules/hardware_info.ko
+/lib/modules/sprd-drm.ko: /lib/modules/lcd_bias_adjust.ko /lib/modules/himax_mmi.ko /lib/modules/sprd-gsp.ko /lib/modules/apsys-dvfs.ko /lib/modules/sprd_soc_id.ko /lib/modules/trusty-ipc.ko /lib/modules/unisoc-iommu.ko /lib/modules/omnivision_tcm.ko /lib/modules/trusty.ko /lib/modules/hardware_info.ko
 /lib/modules/sprd-sipc-virt-bus.ko:
 /lib/modules/trusty-log.ko: /lib/modules/trusty.ko
 /lib/modules/himax_mmi.ko: /lib/modules/omnivision_tcm.ko /lib/modules/hardware_info.ko
@@ -89,14 +88,14 @@
 /lib/modules/sprd_sensor.ko: /lib/modules/sprd_camsys_pw_domain.ko /lib/modules/hardware_info.ko
 /lib/modules/sbuf_bridge.ko: /lib/modules/sipc-core.ko /lib/modules/sprd_pdbg.ko /lib/modules/sprd_systimer.ko /lib/modules/sprd_sip_svc.ko /lib/modules/unisoc-mailbox.ko /lib/modules/sprd_power_manager.ko
 /lib/modules/sprd_pmic_refout.ko:
-/lib/modules/vsp.ko: /lib/modules/apsys-dvfs.ko /lib/modules/sprd_soc_id.ko /lib/modules/sprd_camsys_pw_domain.ko /lib/modules/unisoc-iommu.ko
+/lib/modules/vsp.ko: /lib/modules/apsys-dvfs.ko /lib/modules/sprd_soc_id.ko /lib/modules/unisoc-iommu.ko /lib/modules/sprd_camsys_pw_domain.ko
 /lib/modules/trusty-ipc.ko:
 /lib/modules/mmc_swcq.ko:
 /lib/modules/sprd_pmic_syscon.ko:
 /lib/modules/phy-sprd-qogirl6.ko:
 /lib/modules/audio_sipc.ko: /lib/modules/audio_mem.ko /lib/modules/agdsp_access.ko /lib/modules/sipc-core.ko /lib/modules/sprd_pdbg.ko /lib/modules/sprd_systimer.ko /lib/modules/sprd_sip_svc.ko /lib/modules/unisoc-mailbox.ko /lib/modules/sprd_power_manager.ko
 /lib/modules/zsmalloc.ko:
-/lib/modules/sprd_cpp.ko: /lib/modules/sprd_camsys_pw_domain.ko /lib/modules/unisoc-iommu.ko /lib/modules/sprd-ion.ko
+/lib/modules/sprd_cpp.ko: /lib/modules/sprd-ion.ko /lib/modules/unisoc-iommu.ko /lib/modules/sprd_camsys_pw_domain.ko
 /lib/modules/pinctrl.ko: /lib/modules/core.ko
 /lib/modules/nvmem_sprd_efuse.ko:
 /lib/modules/musb_sprd.ko: /lib/modules/musb_hdrc.ko /lib/modules/oplus_chg.ko /lib/modules/phy-sprd-qogirl6.ko /lib/modules/sc27xx_typec.ko /lib/modules/omnivision_tcm.ko /lib/modules/hardware_info.ko
@@ -135,7 +134,7 @@
 /lib/modules/pwm-sprd.ko:
 /lib/modules/apsys-dvfs.ko: /lib/modules/sprd_soc_id.ko
 /lib/modules/zram.ko: /lib/modules/zsmalloc.ko
-/lib/modules/jpg.ko: /lib/modules/sprd_camsys_pw_domain.ko /lib/modules/unisoc-iommu.ko
+/lib/modules/jpg.ko: /lib/modules/unisoc-iommu.ko /lib/modules/sprd_camsys_pw_domain.ko
 /lib/modules/sdhci-sprd.ko: /lib/modules/mmc_hsq.ko /lib/modules/mmc_swcq.ko
 /lib/modules/lcd_bias_adjust.ko:
 /lib/modules/ion_ipc_trusty.ko: /lib/modules/trusty-ipc.ko

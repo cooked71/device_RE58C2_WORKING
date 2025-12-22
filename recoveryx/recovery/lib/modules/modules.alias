@@ -39,8 +39,6 @@ alias of:N*T*Csprd,tshm sprd_shm
 alias of:N*T*Csprd,tshmC* sprd_shm
 alias of:N*T*Csprd,hwspinlock-r3p0 sprd_hwspinlock
 alias of:N*T*Csprd,hwspinlock-r3p0C* sprd_hwspinlock
-alias of:N*T*Cfocaltech,fts-modules focaltech_touch_modules
-alias of:N*T*Cfocaltech,fts-modulesC* focaltech_touch_modules
 alias usbfunc:vser usb_f_vser
 alias of:N*T*Cfocaltech,fts focaltech_tp
 alias of:N*T*Cfocaltech,ftsC* focaltech_tp

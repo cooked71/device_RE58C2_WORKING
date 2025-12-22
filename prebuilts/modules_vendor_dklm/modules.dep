@@ -12,7 +12,6 @@
 /vendor/lib/modules/aes-ce-ccm.ko:
 /vendor/lib/modules/sprd-vsp-pw-domain.ko:
 /vendor/lib/modules/hyb.ko: /vendor/lib/modules/zsmalloc.ko
-/vendor/lib/modules/focaltech_touch-modules.ko: /vendor/lib/modules/omnivision_tcm.ko /vendor/lib/modules/hardware_info.ko
 /vendor/lib/modules/thermal-generic-adc.ko:
 /vendor/lib/modules/sprd-ion.ko:
 /vendor/lib/modules/focaltech_tp.ko: /vendor/lib/modules/omnivision_tcm.ko /vendor/lib/modules/hardware_info.ko
@@ -47,7 +46,7 @@
 /vendor/lib/modules/snd-soc-sprd-vbc-v4.ko: /vendor/lib/modules/snd-soc-sprd-card.ko /vendor/lib/modules/snd-soc-sipa.ko /vendor/lib/modules/audio_sipc.ko /vendor/lib/modules/audio_mem.ko /vendor/lib/modules/agdsp_access.ko
 /vendor/lib/modules/sprd_cpu_cooling.ko:
 /vendor/lib/modules/sprd-gsp.ko: /vendor/lib/modules/apsys-dvfs.ko /vendor/lib/modules/sprd_soc_id.ko /vendor/lib/modules/unisoc-iommu.ko
-/vendor/lib/modules/sprd_camera.ko: /vendor/lib/modules/sprd_sensor.ko /vendor/lib/modules/sprd_camsys_pw_domain.ko /vendor/lib/modules/unisoc-iommu.ko /vendor/lib/modules/sprd-ion.ko /vendor/lib/modules/sprd_flash_drv.ko /vendor/lib/modules/hardware_info.ko
+/vendor/lib/modules/sprd_camera.ko: /vendor/lib/modules/sprd-ion.ko /vendor/lib/modules/unisoc-iommu.ko /vendor/lib/modules/sprd_sensor.ko /vendor/lib/modules/sprd_camsys_pw_domain.ko /vendor/lib/modules/sprd_flash_drv.ko /vendor/lib/modules/hardware_info.ko
 /vendor/lib/modules/sprd_thermal.ko:
 /vendor/lib/modules/sha1-ce.ko:
 /vendor/lib/modules/sprd_soc_id.ko:
@@ -70,7 +69,7 @@
 /vendor/lib/modules/sprd_sensor.ko: /vendor/lib/modules/sprd_camsys_pw_domain.ko /vendor/lib/modules/hardware_info.ko
 /vendor/lib/modules/sprd_pmic_refout.ko:
 /vendor/lib/modules/sprd_cp_dvfs.ko:
-/vendor/lib/modules/vsp.ko: /vendor/lib/modules/apsys-dvfs.ko /vendor/lib/modules/sprd_soc_id.ko /vendor/lib/modules/sprd_camsys_pw_domain.ko /vendor/lib/modules/unisoc-iommu.ko
+/vendor/lib/modules/vsp.ko: /vendor/lib/modules/apsys-dvfs.ko /vendor/lib/modules/sprd_soc_id.ko /vendor/lib/modules/unisoc-iommu.ko /vendor/lib/modules/sprd_camsys_pw_domain.ko
 /vendor/lib/modules/sprd_pmic_syscon.ko:
 /vendor/lib/modules/sprd-top-dvfs.ko:
 /vendor/lib/modules/sc27xx_tsensor_thermal.ko:
@@ -79,7 +78,7 @@
 /vendor/lib/modules/audio_sipc.ko: /vendor/lib/modules/audio_mem.ko /vendor/lib/modules/agdsp_access.ko
 /vendor/lib/modules/zsmalloc.ko:
 /vendor/lib/modules/gnss_dbg.ko:
-/vendor/lib/modules/sprd_cpp.ko: /vendor/lib/modules/sprd_camsys_pw_domain.ko /vendor/lib/modules/unisoc-iommu.ko /vendor/lib/modules/sprd-ion.ko
+/vendor/lib/modules/sprd_cpp.ko: /vendor/lib/modules/sprd-ion.ko /vendor/lib/modules/unisoc-iommu.ko /vendor/lib/modules/sprd_camsys_pw_domain.ko
 /vendor/lib/modules/pinctrl.ko: /vendor/lib/modules/core.ko
 /vendor/lib/modules/mipi_driver.ko: /vendor/lib/modules/sprd_mipi.ko
 /vendor/lib/modules/musb_sprd.ko: /vendor/lib/modules/musb_hdrc.ko /vendor/lib/modules/oplus_chg.ko /vendor/lib/modules/phy-sprd-qogirl6.ko /vendor/lib/modules/sc27xx_typec.ko /vendor/lib/modules/omnivision_tcm.ko /vendor/lib/modules/hardware_info.ko
@@ -115,7 +114,7 @@
 /vendor/lib/modules/pwm-sprd.ko:
 /vendor/lib/modules/apsys-dvfs.ko: /vendor/lib/modules/sprd_soc_id.ko
 /vendor/lib/modules/zram.ko: /vendor/lib/modules/zsmalloc.ko
-/vendor/lib/modules/jpg.ko: /vendor/lib/modules/sprd_camsys_pw_domain.ko /vendor/lib/modules/unisoc-iommu.ko
+/vendor/lib/modules/jpg.ko: /vendor/lib/modules/unisoc-iommu.ko /vendor/lib/modules/sprd_camsys_pw_domain.ko
 /vendor/lib/modules/lcd_bias_adjust.ko:
 /vendor/lib/modules/ion_ipc_trusty.ko:
 /vendor/lib/modules/sc27xx-vibra.ko:
