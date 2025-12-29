@@ -1790,7 +1790,7 @@
         </config>
         <config>
             <key>CONFIG_SYSVIPC</key>
-            <value type="tristate">n</value>
+            <value type="tristate">y</value>
         </config>
         <config>
             <key>CONFIG_TASKSTATS</key>
@@ -3068,7 +3068,7 @@
         </config>
         <config>
             <key>CONFIG_SYSVIPC</key>
-            <value type="tristate">n</value>
+            <value type="tristate">y</value>
         </config>
         <config>
             <key>CONFIG_TASKSTATS</key>
