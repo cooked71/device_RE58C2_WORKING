@@ -94,6 +94,10 @@ BOARD_KERNEL_CMDLINE := \
     loop.max_part=7 \
     swiotlb=1 
 
+BOARD_KERNEL_CMDLINE += \
+    androidboot.init_fatal_panic=false 
+
+
 CONFIG_CMDLINE="earlycon console=ttyS1,115200n8 androidboot.init_fatal_panic=false androidboot.selinux=permissive"
 
         
