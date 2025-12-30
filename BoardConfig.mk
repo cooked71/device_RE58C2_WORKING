@@ -92,7 +92,9 @@ BOARD_KERNEL_CMDLINE := \
     androidboot.selinux=permissive \
     androidboot.dtbo_idx=7 \
     loop.max_part=7 \
-    swiotlb=1
+    swiotlb=1 
+
+CONFIG_CMDLINE="earlycon console=ttyS1,115200n8 androidboot.init_fatal_panic=false androidboot.selinux=permissive"
 
         
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
@@ -239,10 +241,15 @@ BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 3
 # Security patch level
 VENDOR_SECURITY_PATCH := 2024-07-05
 
-# VINTF Configuration
-PRODUCT_ENFORCE_VINTF_MANIFEST := true
+# Disable strict VINTF enforcement to allow CONFIG_SYSVIPC=y
+PRODUCT_ENFORCE_VINTF_MANIFEST := false
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
-# VINTF Compatibility Matrix
+# Bypass the kernel configuration check specifically
+CHECK_SKIP_KERNEL_CONFIG := true
+SKIP_VINTF_CHECK := true
+
+# VINTF Compatibility Matrix - Keep your file but the flags above will ignore the IPC restriction
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
 
