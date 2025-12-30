@@ -243,7 +243,6 @@ VENDOR_SECURITY_PATCH := 2024-07-05
 
 # Disable strict VINTF enforcement to allow CONFIG_SYSVIPC=y
 PRODUCT_ENFORCE_VINTF_MANIFEST := false
-PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
 # Bypass the kernel configuration check specifically
 CHECK_SKIP_KERNEL_CONFIG := true
