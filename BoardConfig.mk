@@ -265,7 +265,7 @@ TARGET_FLATTEN_APEX := false
 
 # In device/realme/RE58C2/BoardConfigCommon.mk
 # This is the STOCK bootclasspath. Use it verbatim.
-BOOTCLASSPATH := \
+# BOOTCLASSPATH := \
     /system/framework/framework.jar \
     /system/framework/framework-graphics.jar \
     /system/framework/ext.jar \
