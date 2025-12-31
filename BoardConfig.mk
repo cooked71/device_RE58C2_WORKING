@@ -94,6 +94,10 @@ BOARD_KERNEL_CMDLINE := \
     loop.max_part=7 \
     swiotlb=1 
 
+BOARD_KERNEL_CMDLINE += \
+    androidboot.init_fatal_panic=false 
+
+
 CONFIG_CMDLINE="earlycon console=ttyS1,115200n8 androidboot.init_fatal_panic=false androidboot.selinux=permissive"
 
         
@@ -120,7 +124,7 @@ BOARD_PREBUILT_DTBOIMAGE := $(TARGET_PREBUILT_DTBO)
 
 # Kernel source (for headers only)
 TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
-TARGET_KERNEL_CONFIG := RE58C2_defconfig
+TARGET_KERNEL_CONFIG := RE58C2_defconfig_sysvipc
 
 
 LOCAL_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
@@ -243,7 +247,6 @@ VENDOR_SECURITY_PATCH := 2024-07-05
 
 # Disable strict VINTF enforcement to allow CONFIG_SYSVIPC=y
 PRODUCT_ENFORCE_VINTF_MANIFEST := false
-PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
 # Bypass the kernel configuration check specifically
 CHECK_SKIP_KERNEL_CONFIG := true
@@ -266,7 +269,7 @@ TARGET_FLATTEN_APEX := false
 
 # In device/realme/RE58C2/BoardConfigCommon.mk
 # This is the STOCK bootclasspath. Use it verbatim.
-BOOTCLASSPATH := \
+# BOOTCLASSPATH := \
     /system/framework/framework.jar \
     /system/framework/framework-graphics.jar \
     /system/framework/ext.jar \
