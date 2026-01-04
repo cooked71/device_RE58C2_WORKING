@@ -133,7 +133,7 @@ BOARD_PREBUILT_DTBOIMAGE := $(TARGET_PREBUILT_DTBO)
 
 # Kernel source (for headers only)
 TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
-TARGET_KERNEL_CONFIG := RE58C2_defconfig_sysvipc
+TARGET_KERNEL_CONFIG := RE58C2_ipc_defconfig
 
 
 LOCAL_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
