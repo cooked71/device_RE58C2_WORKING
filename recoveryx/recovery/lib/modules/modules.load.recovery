@@ -140,6 +140,5 @@ himax_mmi.ko
 device_info.ko
 focaltech_tp.ko
 chipone-tddi.ko
-focaltech_touch-modules.ko
 lcd_bias_adjust.ko
 hung_task_enhance.ko
