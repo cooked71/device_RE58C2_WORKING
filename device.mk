@@ -18,7 +18,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 
-PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
 
 PRODUCT_PACKAGES += lib_android_keymaster_keymint_utils
@@ -289,7 +288,6 @@ PRODUCT_PACKAGES += \
     ro.config.media_provider=google \
     ro.setupwizard.require_network=any \
     ro.setupwizard.mode=OPTIONAL
-
 
 
 # ===========================

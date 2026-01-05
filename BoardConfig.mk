@@ -83,7 +83,9 @@ BOARD_RAMDISK_USE_LZ4 := true
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 
-
+# Kernel arguments
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_PAGESIZE := 4096
 
 BOARD_KERNEL_CMDLINE := \
     androidboot.hardware=ums9230_hulk \
@@ -100,24 +102,13 @@ CONFIG_CMDLINE="earlycon console=ttyS1,115200n8 androidboot.init_fatal_panic=fal
 
         
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
-# Kernel arguments ORIG
-# BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_PAGESIZE := 4096
-# BOARD_KERNEL_OFFSET := 0x00008000
-# BOARD_RAMDISK_OFFSET := 0x05400000
-#BOARD_TAGS_OFFSET := 0x00000100
+BOARD_KERNEL_OFFSET := 0x00008000
+BOARD_RAMDISK_OFFSET := 0x05400000
+BOARD_TAGS_OFFSET := 0x00000100
 BOARD_DTB_SIZE := 123569
-#BOARD_DTB_OFFSET := 0x01f00000
+BOARD_DTB_OFFSET := 0x01f00000
 BOARD_HEADER_SIZE := 2128
 BOARD_VENDOR_CMDLINE := console=ttyS1,115200n8
-
-# TEST VALUES FOR SYSVIPC
-BOARD_KERNEL_BASE := 0x80000000 
-BOARD_KERNEL_OFFSET := 0x00008000
-BOARD_RAMDISK_OFFSET := 0x06000000  # Shifted from 0x05400000 to give 10MB+ extra space
-BOARD_DTB_OFFSET := 0x05f00000     # Shifted to follow the new ramdisk boundary
-BOARD_TAGS_OFFSET := 0x00000100
-
 
 # ==================================================
 # KERNEL CONFIGURATION - KEEPING YOUR SETUP
@@ -133,7 +124,7 @@ BOARD_PREBUILT_DTBOIMAGE := $(TARGET_PREBUILT_DTBO)
 
 # Kernel source (for headers only)
 TARGET_KERNEL_SOURCE := kernel/realme/RE58C2
-TARGET_KERNEL_CONFIG := RE58C2_ipc_defconfig
+TARGET_KERNEL_CONFIG := RE58C2_defconfig
 
 
 LOCAL_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
@@ -153,7 +144,7 @@ PRODUCT_COPY_FILES += \
 # BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES := $(addprefix $(DEVICE_PATH)/recoveryx/recovery/lib/modules/, $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
 
 # Kernel version
-# KERNEL_VERSION := 5.4.254-android12-9-gb10a25caafa5-ab1063
+KERNEL_VERSION := 5.4.254-android12-9-gb10a25caafa5-ab1063
 
 # Clang Toolchain
 TARGET_KERNEL_CLANG_VERSION := r416183b
@@ -254,14 +245,10 @@ BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 3
 # Security patch level
 VENDOR_SECURITY_PATCH := 2024-07-05
 
-# Disable strict VINTF enforcement to allow CONFIG_SYSVIPC=y
-PRODUCT_ENFORCE_VINTF_MANIFEST := false
+# VINTF Configuration
+PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
-# Bypass the kernel configuration check specifically
-CHECK_SKIP_KERNEL_CONFIG := true
-SKIP_VINTF_CHECK := true
-
-# VINTF Compatibility Matrix - Keep your file but the flags above will ignore the IPC restriction
+# VINTF Compatibility Matrix
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     vendor/realme/RE58C2/proprietary/product/etc/vintf/compatibility_matrix.xml
 
@@ -275,21 +262,6 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 # Essential for APEX updates
 TARGET_FLATTEN_APEX := false
 
-
-# In device/realme/RE58C2/BoardConfigCommon.mk
-# This is the STOCK bootclasspath. Use it verbatim.
-# BOOTCLASSPATH := \
-    /system/framework/framework.jar \
-    /system/framework/framework-graphics.jar \
-    /system/framework/ext.jar \
-    /system/framework/telephony-common.jar \
-    /system/framework/voip-common.jar \
-    /system/framework/ims-common.jar \
-    /system/framework/radio_interactor_common.jar \
-    /system/framework/unisoc_ims_common.jar \
-    /system_ext/framework/unisoc-framework.jar \
-    /system_ext/framework/unipnp-framework.jar \
-    /apex/com.android.i18n/javalib/core-icu4j.jar
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
