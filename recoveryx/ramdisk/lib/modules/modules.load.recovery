@@ -1,4 +1,3 @@
-sprd_wdt_fiq.ko
 sprd_sip_svc.ko
 sprd_systimer.ko
 sprd_time_sync.ko

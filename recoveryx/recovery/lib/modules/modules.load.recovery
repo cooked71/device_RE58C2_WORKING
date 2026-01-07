@@ -4,7 +4,6 @@ sprd_time_sync.ko
 sprd_time_sync_cp.ko
 clk-sprd.ko
 ums9230-clk.ko
-sprd_wdt_fiq.ko
 spi-sprd-adi.ko
 sprd-sc27xx-spi.ko
 sc2730-regulator.ko
