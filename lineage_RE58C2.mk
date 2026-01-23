@@ -62,12 +62,6 @@
     # BUILD_FINGERPRINT := realme/RMX3760/RE58C2:13/TP1A.220624.014/T.R4T2.1720264765:user/release-keys
 
     # Stock fingerprint (critical for SafetyNet/Play Integrity)
-BUILD_FINGERPRINT := realme/RMX3760/RE58C2:13/TP1A.220624.014/T.R4T2.1720264765:user/release-keys
-
-# Add to build properties
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT="$(BUILD_FINGERPRINT)"
-
-# LineageOS-specific
 PRODUCT_SYSTEM_PROPERTIES += \
-    ro.build.fingerprint=$(BUILD_FINGERPRINT)
+    ro.build.fingerprint=realme/RMX3760/RE58C2:13/TP1A.220624.014/T.R4T2.1720264765:user/release-keys
+
