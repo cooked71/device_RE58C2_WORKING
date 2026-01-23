@@ -14,11 +14,13 @@
         <transport>hwbinder</transport>
         <fqname>@1.1::IBluetoothHci/default</fqname>
     </hal>
+    <!-- Lineage 22.1
     <hal format="hidl">
         <name>android.hardware.boot</name>
         <transport>hwbinder</transport>
         <fqname>@1.2::IBootControl/default</fqname>
     </hal>
+    -->
     <hal format="hidl">
         <name>android.hardware.broadcastradio</name>
         <transport>hwbinder</transport>
