@@ -9,11 +9,13 @@
         <transport>hwbinder</transport>
         <fqname>@7.0::IEffectsFactory/default</fqname>
     </hal>
+<-- LINEAGE22    
     <hal format="hidl">
         <name>android.hardware.bluetooth</name>
         <transport>hwbinder</transport>
         <fqname>@1.1::IBluetoothHci/default</fqname>
     </hal>
+    --> 
     <hal format="hidl">
         <name>android.hardware.boot</name>
         <transport>hwbinder</transport>
