@@ -63,7 +63,7 @@ PRODUCT_PACKAGES += \
 # =============================================
 # BOOT & A/B UPDATE PACKAGES
 # =============================================
-PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl \
     android.hardware.boot@1.2-impl.recovery \
     android.hardware.boot@1.2-service
@@ -307,10 +307,16 @@ PRODUCT_COPY_FILES += \
 
 # Vendor HALs for normal boot
 PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/recoveryx/ramdisk/system/lib64/vendor.sprd.hardware.boot@1.2.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/lib64/vendor.sprd.hardware.boot@1.2.so \
-      $(LOCAL_PATH)/recoveryx/ramdisk/system/lib64/vendor.sprd.hardware.production@1.0.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/lib64/vendor.sprd.hardware.production@1.0.so \
-      $(LOCAL_PATH)/recoveryx/ramdisk/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so \
-      $(LOCAL_PATH)/recoveryx/ramdisk/system/lib64/hw/android.hardware.health@2.0-impl-default.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/lib64/hw/android.hardware.health@2.0-impl-default.so
+      $(LOCAL_PATH)/recoveryx/ramdisk/system/lib64/vendor.sprd.hardware.boot@1.2.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor/lib64/vendor.sprd.hardware.boot@1.2.so \
+      $(LOCAL_PATH)/recoveryx/ramdisk/system/lib64/vendor.sprd.hardware.production@1.0.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor/lib64/vendor.sprd.hardware.production@1.0.so \
+      $(LOCAL_PATH)/recoveryx/ramdisk/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor/lib64/hw/android.hardware.boot@1.0-impl-1.2.so \
+      $(LOCAL_PATH)/recoveryx/ramdisk/system/lib64/hw/android.hardware.health@2.0-impl-default.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor/lib64/hw/android.hardware.health@2.0-impl-default.so
+
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/android.hardware.boot@1.0.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor/lib64/android.hardware.boot@1.0.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/android.hardware.boot@1.1.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor/lib64/android.hardware.boot@1.1.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/android.hardware.boot@1.2.so:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor/lib64/android.hardware.boot@1.2.so
+
 
 # Essential modules for normal boot
 NORMAL_MODULES := $(wildcard   $(LOCAL_PATH)/recoveryx/ramdisk/lib/modules/*.ko)
@@ -370,10 +376,16 @@ PRODUCT_COPY_FILES += \
 
 # Vendor HALs for recovery
 PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/vendor.sprd.hardware.boot@1.2.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/vendor.sprd.hardware.boot@1.2.so \
-      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/vendor.sprd.hardware.production@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/vendor.sprd.hardware.production@1.0.so \
-      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so \
-      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/hw/android.hardware.health@2.0-impl-default.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/hw/android.hardware.health@2.0-impl-default.so
+      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/vendor.sprd.hardware.boot@1.2.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/vendor.sprd.hardware.boot@1.2.so \
+      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/vendor.sprd.hardware.production@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/vendor.sprd.hardware.production@1.0.so \
+      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/hw/android.hardware.boot@1.0-impl-1.2.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/hw/android.hardware.boot@1.0-impl-1.2.so \
+      $(LOCAL_PATH)/recoveryx/recovery/system/lib64/hw/android.hardware.health@2.0-impl-default.so:$(TARGET_COPY_OUT_RECOVERY)/vendor/system/lib64/hw/android.hardware.health@2.0-impl-default.so
+
+PRODUCT_COPY_FILES += \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/android.hardware.boot@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/android.hardware.boot@1.0.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/android.hardware.boot@1.1.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/android.hardware.boot@1.1.so \
+    vendor/realme/RE58C2/proprietary/vendor/lib64/android.hardware.boot@1.2.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/android.hardware.boot@1.2.so
+
 
 # All modules for recovery
 RECOVERY_MODULES := $(wildcard   $(LOCAL_PATH)/recoveryx/recovery/lib/modules/*.ko)
