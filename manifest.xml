@@ -14,11 +14,13 @@
         <transport>hwbinder</transport>
         <fqname>@1.1::IBluetoothHci/default</fqname>
     </hal>
+    <!-- Lineage 22.1
     <hal format="hidl">
         <name>android.hardware.boot</name>
         <transport>hwbinder</transport>
         <fqname>@1.2::IBootControl/default</fqname>
     </hal>
+    -->
     <hal format="hidl">
         <name>android.hardware.broadcastradio</name>
         <transport>hwbinder</transport>
@@ -80,10 +82,12 @@
         <transport>hwbinder</transport>
         <fqname>@1.0::IConnmgr/default</fqname>
     </hal>
+    <!-- Lineage 22.1
     <hal format="aidl">
         <name>vendor.sprd.hardware.enhance</name>
         <fqname>IEnhance/default</fqname>
     </hal>
+    -->
     <hal format="hidl">
         <name>vendor.sprd.hardware.network</name>
         <transport>hwbinder</transport>
