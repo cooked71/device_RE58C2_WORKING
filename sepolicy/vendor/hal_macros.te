@@ -127,13 +127,13 @@ type zramwb_exec, exec_type, vendor_file_type, file_type;
 type zramwb, domain;
 
 # WiFi and Ethernet services
-#type hal_wifi_service_exec, exec_type, vendor_file_type, file_type;
+type hal_wifi_service_exec, exec_type, vendor_file_type, file_type;
 type hal_wifi_service, domain;
-#type hal_supplicant_exec, exec_type, vendor_file_type, file_type;
+type hal_supplicant_exec, exec_type, vendor_file_type, file_type;
 type hal_supplicant, domain;
-#type hal_hostapd_exec, exec_type, vendor_file_type, file_type;
+type hal_hostapd_exec, exec_type, vendor_file_type, file_type;
 type hal_hostapd, domain;
-#type hal_ethernet_exec, exec_type, vendor_file_type, file_type;
+type hal_ethernet_exec, exec_type, vendor_file_type, file_type;
 type hal_ethernet, domain;
 
 # HAL domain transitions - AFTER type definitions
