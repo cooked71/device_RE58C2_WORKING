@@ -80,12 +80,10 @@
         <transport>hwbinder</transport>
         <fqname>@1.0::IConnmgr/default</fqname>
     </hal>
-    <!-- Lineage 22.1
     <hal format="aidl">
         <name>vendor.sprd.hardware.enhance</name>
         <fqname>IEnhance/default</fqname>
     </hal>
-    -->
     <hal format="hidl">
         <name>vendor.sprd.hardware.network</name>
         <transport>hwbinder</transport>
